@@ -31,6 +31,8 @@ import { toast } from 'sonner'
 const DEFAULT_CONFIG: AIAgentConfigType = {
   id: 'default-ai-agent',
   name: 'Assistente Virtual de Acolhimento',
+  personality: 'Empático e Profissional',
+  description: 'Assistente virtual padrão para acolhimento psicológico inicial',
   model: 'gpt-4o',
   systemPrompt: `Você é um assistente virtual especializado em acolhimento psicológico inicial. Seu papel é:
 
@@ -69,6 +71,8 @@ Lembre-se: você não é psicólogo, apenas faz o primeiro acolhimento.`,
   autoReferralThreshold: 7,
   temperature: 0.8,
   active: true,
+  color: 'from-blue-500 to-purple-500',
+  icon: 'Heart',
   createdAt: Date.now(),
   updatedAt: Date.now(),
 }

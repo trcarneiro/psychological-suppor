@@ -1,26 +1,36 @@
 import { useState } from 'react'
-import { LandingPage } from '@/components/LandingPage'
-import { ChatInterface } from '@/components/ChatInterface'
+import { ModernLandingPage } from '@/components/ModernLandingPage'
+import { MinimalChatInterface } from '@/components/MinimalChatInterface'
 import { Dashboard } from '@/components/Dashboard'
 import { AdminLogin } from '@/components/AdminLogin'
 import { Toaster } from '@/components/ui/sonner'
+import { AIAgentConfig } from '@/lib/types'
 
 type ViewMode = 'landing' | 'chat' | 'admin-login' | 'dashboard'
 
 function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('landing')
+  const [selectedAgent, setSelectedAgent] = useState<AIAgentConfig | null>(null)
+
+  const handleStartChat = (agent: AIAgentConfig) => {
+    setSelectedAgent(agent)
+    setViewMode('chat')
+  }
 
   return (
     <>
       {viewMode === 'landing' && (
-        <LandingPage
-          onStartChat={() => setViewMode('chat')}
+        <ModernLandingPage
+          onStartChat={handleStartChat}
           onAdminLogin={() => setViewMode('admin-login')}
         />
       )}
 
-      {viewMode === 'chat' && (
-        <ChatInterface onBack={() => setViewMode('landing')} />
+      {viewMode === 'chat' && selectedAgent && (
+        <MinimalChatInterface
+          agent={selectedAgent}
+          onBack={() => setViewMode('landing')}
+        />
       )}
 
       {viewMode === 'admin-login' && (

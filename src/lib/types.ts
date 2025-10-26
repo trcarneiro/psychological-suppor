@@ -90,6 +90,8 @@ export interface Agent {
 export interface AIAgentConfig {
   id: string
   name: string
+  personality: string
+  description: string
   model: 'gpt-4o' | 'gpt-4o-mini'
   systemPrompt: string
   greeting: string
@@ -100,6 +102,8 @@ export interface AIAgentConfig {
   autoReferralThreshold: number
   temperature: number
   active: boolean
+  color: string
+  icon: string
   createdAt: number
   updatedAt: number
 }

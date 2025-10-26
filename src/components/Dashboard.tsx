@@ -32,6 +32,7 @@ import {
 import { LeadDetailDialog } from './LeadDetailDialog'
 import { AgentsManagement } from './AgentsManagement'
 import { AIAgentConfig } from './AIAgentConfig'
+import { AgentsManagementPanel } from './AgentsManagementPanel'
 
 interface DashboardProps {
   onLogout: () => void
@@ -189,7 +190,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
               </TabsTrigger>
               <TabsTrigger value="agents" className="gap-2">
                 <UserCircle size={16} />
-                Agentes
+                Agentes Cadastrados
               </TabsTrigger>
               <TabsTrigger value="ai-config" className="gap-2">
                 <Robot size={16} />
@@ -421,7 +422,9 @@ export function Dashboard({ onLogout }: DashboardProps) {
             </TabsContent>
 
             <TabsContent value="agents" className="flex-1 mt-6 overflow-hidden">
-              <AgentsManagement />
+              <ScrollArea className="h-[calc(100vh-250px)]">
+                <AgentsManagementPanel />
+              </ScrollArea>
             </TabsContent>
 
             <TabsContent value="ai-config" className="flex-1 mt-6 overflow-hidden">
