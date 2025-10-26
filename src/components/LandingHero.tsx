@@ -1,15 +1,26 @@
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
-import { Brain, Heart, Shield, Clock, ArrowRight, CheckCircle } from '@phosphor-icons/react'
+import { Brain, Heart, Shield, Clock, ArrowRight, CheckCircle, Article } from '@phosphor-icons/react'
 
 interface LandingHeroProps {
   onStartChat: () => void
+  onOpenBlog?: () => void
 }
 
-export function LandingHero({ onStartChat }: LandingHeroProps) {
+export function LandingHero({ onStartChat, onOpenBlog }: LandingHeroProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="outline"
+            onClick={onOpenBlog}
+            className="gap-2 hover:bg-primary/5"
+          >
+            <Article size={20} />
+            Blog
+          </Button>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -35,18 +46,29 @@ export function LandingHero({ onStartChat }: LandingHeroProps) {
             Converse com um assistente virtual de pré-atendimento psicológico. Encontre acolhimento e orientação profissional.
           </p>
           
-          <Button 
-            size="lg" 
-            onClick={onStartChat}
-            className="group h-14 px-8 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
-          >
-            Iniciar Conversa
-            <ArrowRight 
-              size={20} 
-              weight="bold" 
-              className="ml-2 group-hover:translate-x-1 transition-transform duration-300" 
-            />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              onClick={onStartChat}
+              className="group h-14 px-8 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
+            >
+              Iniciar Conversa
+              <ArrowRight 
+                size={20} 
+                weight="bold" 
+                className="ml-2 group-hover:translate-x-1 transition-transform duration-300" 
+              />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              onClick={onOpenBlog}
+              className="group h-14 px-8 text-lg hover:bg-primary/5 transition-all duration-300"
+            >
+              <Article size={20} className="mr-2" />
+              Ver Blog
+            </Button>
+          </div>
         </motion.div>
 
         <motion.div

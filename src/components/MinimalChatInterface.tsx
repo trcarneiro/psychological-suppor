@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
+import { Badge } from '@/components/ui/badge'
 import { Message, Conversation, AIAgentConfig } from '@/lib/types'
 import { PaperPlaneTilt, User, List } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -15,6 +16,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { getActiveAgents } from '@/lib/predefined-agents'
+import { getRandomStarters } from '@/lib/conversation-starters'
 
 interface MinimalChatInterfaceProps {
   agent: AIAgentConfig
@@ -22,21 +24,13 @@ interface MinimalChatInterfaceProps {
   onAdminLogin: () => void
 }
 
-const SUGGESTION_PROMPTS = [
-  "Estou me sentindo muito ansioso ultimamente",
-  "Preciso conversar sobre meus relacionamentos",
-  "Tenho dificuldade para dormir e me concentrar",
-  "Me sinto sobrecarregado com tudo",
-  "Gostaria de trabalhar minha autoestima",
-  "Estou passando por um momento difícil",
-]
-
 export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: MinimalChatInterfaceProps) {
   const [conversations, setConversations] = useKV<Conversation[]>('conversations', [])
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null)
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [showSuggestions, setShowSuggestions] = useState(true)
+  const [suggestionPrompts] = useState(() => getRandomStarters(6))
   
   const scrollRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -349,21 +343,24 @@ Responda:`
             className="mb-6"
           >
             <p className="text-sm text-muted-foreground text-center mb-4">
-              Sugestões para começar:
+              💭 Sugestões para começar a conversa:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {SUGGESTION_PROMPTS.map((suggestion, index) => (
+              {suggestionPrompts.map((starter, index) => (
                 <motion.button
-                  key={index}
+                  key={starter.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => handleSuggestionClick(suggestion)}
-                  className="text-left p-4 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50 hover:bg-card/60 hover:border-border transition-all text-sm text-foreground"
+                  onClick={() => handleSuggestionClick(starter.text)}
+                  className="text-left p-4 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50 hover:bg-card/60 hover:border-border transition-all"
                 >
-                  {suggestion}
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl flex-shrink-0">{starter.icon}</span>
+                    <span className="text-sm text-foreground">{starter.text}</span>
+                  </div>
                 </motion.button>
               ))}
             </div>

@@ -1,23 +1,31 @@
 # Planning Guide
 
-Uma plataforma moderna e minimalista de pré-atendimento psicológico com múltiplos assistentes virtuais, cada um com personalidade única. O usuário é recebido por uma landing page atraente que apresenta o serviço, e com um clique inicia a conversa com um assistente padrão. Durante a conversa, pode trocar de assistente a qualquer momento através de um menu acessível.
+Uma plataforma moderna e minimalista de pré-atendimento psicológico com múltiplos assistentes virtuais, cada um com personalidade única, e uma seção de blog completa para SEO. O usuário é recebido por uma landing page atraente que apresenta o serviço e permite acesso ao blog com artigos sobre psicologia e saúde mental. Com um clique, pode iniciar conversa com um assistente padrão. Durante a conversa, pode trocar de assistente a qualquer momento através de um menu acessível.
 
 **Experience Qualities**:
-1. **Acolhedor** - Landing page que transmite confiança e apresenta o serviço de forma clara antes do usuário iniciar
+1. **Acolhedor** - Landing page que transmite confiança e apresenta o serviço de forma clara, com acesso fácil ao conteúdo educativo
 2. **Flexível** - Possibilidade de trocar de assistente durante a conversa conforme a preferência evolui
 3. **Imersivo** - Após iniciar, interface de chat sem distrações que cria um espaço seguro para expressar emoções
+4. **Educativo** - Blog completo com artigos otimizados para SEO sobre saúde mental e psicologia
 
 **Complexity Level**: Complex Application (advanced functionality, accounts)
-  - Múltiplos agentes de IA com personalidades distintas, troca dinâmica de agentes, chat imersivo, extração inteligente de dados, CRM completo e gestão de agentes
+  - Múltiplos agentes de IA com personalidades distintas, troca dinâmica de agentes, chat imersivo, extração inteligente de dados, CRM completo, gestão de agentes, e blog integrado com sistema de busca e categorização
 
 ## Essential Features
 
+### Blog de Conteúdo para SEO
+- **Funcionalidade**: Seção completa de blog com artigos sobre psicologia, saúde mental, terapia e bem-estar. Sistema de busca, filtros por categoria, visualização de artigos individuais com formatação markdown
+- **Purpose**: Melhorar SEO através de conteúdo relevante, educar visitantes, estabelecer autoridade, aumentar tráfego orgânico e conversões
+- **Trigger**: Usuário clica em "Blog" na landing page ou em botão de acesso ao blog
+- **Progression**: Clique no botão → Visualiza lista de artigos com categorias → Pode buscar ou filtrar → Clica em artigo → Lê conteúdo completo → Call-to-action para iniciar conversa
+- **Success criteria**: Grid responsivo de cards de artigos, busca funcional, filtros por categoria, artigos com markdown formatado, meta tags SEO, links internos, cards com preview e tempo de leitura, design consistente com o resto do site
+
 ### Landing Page de Apresentação
-- **Funcionalidade**: Página inicial moderna e atraente que apresenta o serviço, seus benefícios, como funciona e os 5 assistentes disponíveis
-- **Purpose**: Gerar confiança e informar o usuário sobre o serviço antes de iniciar, reduzindo abandono e aumentando engajamento
+- **Funcionalidade**: Página inicial moderna e atraente que apresenta o serviço, seus benefícios, como funciona, os 5 assistentes disponíveis, e botão de acesso ao blog
+- **Purpose**: Gerar confiança e informar o usuário sobre o serviço antes de iniciar, oferecer acesso a conteúdo educativo, reduzindo abandono e aumentando engajamento
 - **Trigger**: Usuário acessa o site
-- **Progression**: App carrega → Landing page aparece com animações suaves → Usuário lê sobre o serviço → Clica em "Iniciar Conversa" → É redirecionado para o chat
-- **Success criteria**: Design moderno e confiável, informações claras sobre os 5 assistentes, CTA destacado, animações suaves de entrada, mensagens de segurança e privacidade visíveis
+- **Progression**: App carrega → Landing page aparece com animações suaves → Usuário lê sobre o serviço ou acessa blog → Clica em "Iniciar Conversa" → É redirecionado para o chat
+- **Success criteria**: Design moderno e confiável, informações claras sobre os 5 assistentes, CTAs destacados (chat e blog), animações suaves de entrada, mensagens de segurança e privacidade visíveis
 
 ### Início Rápido da Conversa
 - **Funcionalidade**: Ao clicar no botão da landing page, usuário inicia conversa instantaneamente com assistente padrão (Lucas - Equilibrado)
@@ -68,7 +76,8 @@ Uma plataforma moderna e minimalista de pré-atendimento psicológico com múlti
 
 ## Edge Case Handling
 
-- **Landing Page**: Botão CTA claramente visível em múltiplos pontos da página para facilitar início
+- **Blog**: Artigos pré-carregados no código, busca em tempo real, filtros funcionando mesmo sem resultados (mensagem amigável), navegação entre artigo e home
+- **Landing Page**: Botão CTA claramente visível em múltiplos pontos da página para facilitar início, botão de blog sempre acessível
 - **Troca de Agente**: Usuário pode trocar entre 5 agentes a qualquer momento, histórico é preservado, nova mensagem de apresentação é adicionada
 - **Agente Padrão**: Lucas é o assistente padrão por ter abordagem equilibrada que agrada maioria dos usuários
 - **Retorno à Landing**: Não há opção de voltar à landing após iniciar chat (evita interrupção de fluxo emocional)
@@ -165,8 +174,13 @@ Animações minimalistas e intencionais que melhoram a experiência sem sobrecar
   - Lightbulb para orientação
   - ShieldCheck para segurança e autenticação
   - ArrowRight para next/continuar
+  - ArrowLeft para voltar
   - PaperPlaneTilt para enviar mensagem
   - Eye para visualizar detalhes
+  - Article para blog e artigos
+  - MagnifyingGlass para busca
+  - Tag para tags de artigos
+  - Calendar para datas de publicação
   
 - **Spacing**: 
   - Padding cards: p-6 a p-8 para sensação de amplitude
