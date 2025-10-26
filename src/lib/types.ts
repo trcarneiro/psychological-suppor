@@ -86,3 +86,20 @@ export interface Agent {
   createdAt: number
   updatedAt: number
 }
+
+export interface AIAgentConfig {
+  id: string
+  name: string
+  model: 'gpt-4o' | 'gpt-4o-mini'
+  systemPrompt: string
+  greeting: string
+  conversationStyle: 'empathetic' | 'professional' | 'friendly' | 'custom'
+  maxMessageLength: number
+  responseDelay: number
+  collectDataFields: string[]
+  autoReferralThreshold: number
+  temperature: number
+  active: boolean
+  createdAt: number
+  updatedAt: number
+}

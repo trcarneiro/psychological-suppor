@@ -9,7 +9,7 @@ import { ChatMessage } from '@/components/ChatMessage'
 import { TypingIndicator } from '@/components/TypingIndicator'
 import { PsychologistInfo } from '@/components/PsychologistInfo'
 import { ReferralDialog } from '@/components/ReferralDialog'
-import { Message, Conversation, LeadData } from '@/lib/types'
+import { Message, Conversation, LeadData, AIAgentConfig } from '@/lib/types'
 import { PaperPlaneTilt, Info, Warning, ArrowLeft } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
@@ -20,6 +20,7 @@ interface ChatInterfaceProps {
 
 export function ChatInterface({ onBack }: ChatInterfaceProps) {
   const [conversations, setConversations] = useKV<Conversation[]>('conversations', [])
+  const [aiConfig] = useKV<AIAgentConfig | undefined>('ai-agent-config', undefined)
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null)
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -85,7 +86,8 @@ Retorne um objeto JSON com apenas os campos que foram mencionados na conversa. U
     
     const messageCount = conversationHistory.filter(m => m.role === 'user').length
 
-    let systemInstructions = `Você é um assistente de pré-atendimento psicológico empático e acolhedor. Seu papel é:
+    const model = aiConfig?.model || 'gpt-4o-mini'
+    const systemPrompt = aiConfig?.systemPrompt || `Você é um assistente de pré-atendimento psicológico empático e acolhedor. Seu papel é:
 
 1. Ouvir atentamente e responder com empatia e sem julgamentos
 2. Fazer perguntas abertas que ajudem a pessoa a se expressar
@@ -100,19 +102,20 @@ IMPORTANTE:
 - Use linguagem simples e acessível
 - Seja breve (2-4 frases por resposta)`
 
+    let contextualInstructions = ''
     if (messageCount === 1) {
-      systemInstructions += `\n\nEsta é a primeira mensagem do usuário. Agradeça por compartilhar e faça uma pergunta aberta para entender melhor a situação.`
+      contextualInstructions = `\n\nEsta é a primeira mensagem do usuário. Agradeça por compartilhar e faça uma pergunta aberta para entender melhor a situação.`
     } else if (messageCount === 3) {
-      systemInstructions += `\n\nTente descobrir sutilmente o nome da pessoa de forma natural na conversa.`
+      contextualInstructions = `\n\nTente descobrir sutilmente o nome da pessoa de forma natural na conversa.`
     } else if (messageCount === 5) {
-      systemInstructions += `\n\nPergunte há quanto tempo a pessoa enfrenta essa situação.`
+      contextualInstructions = `\n\nPergunte há quanto tempo a pessoa enfrenta essa situação.`
     } else if (messageCount === 7) {
-      systemInstructions += `\n\nPergunte se já procurou ajuda profissional antes.`
+      contextualInstructions = `\n\nPergunte se já procurou ajuda profissional antes.`
     } else if (messageCount >= 9) {
-      systemInstructions += `\n\nSe apropriado, sugira gentilmente que um acompanhamento profissional poderia ajudar. Pergunte sobre disponibilidade de horários ou preferência de contato.`
+      contextualInstructions = `\n\nSe apropriado, sugira gentilmente que um acompanhamento profissional poderia ajudar. Pergunte sobre disponibilidade de horários ou preferência de contato.`
     }
 
-    const promptText = `${systemInstructions}
+    const promptText = `${systemPrompt}${contextualInstructions}
 
 Histórico da conversa:
 ${historyText}
@@ -122,7 +125,7 @@ Nova mensagem do usuário: ${userMessage}
 Responda de forma empática e acolhedora:`
 
     try {
-      const response = await window.spark.llm(promptText, 'gpt-4o-mini')
+      const response = await window.spark.llm(promptText, model)
       return response
     } catch (error) {
       console.error('Erro ao gerar resposta:', error)
@@ -168,12 +171,12 @@ Responda de forma empática e acolhedora:`
     setCurrentConversationId(newConversation.id)
     setHasStarted(true)
 
+    const greetingMessage = aiConfig?.greeting || 'Olá, é um prazer ter você aqui. Este é um espaço seguro onde você pode compartilhar o que está sentindo. Como você está se sentindo hoje?'
+    const delay = aiConfig?.responseDelay || 500
+
     setTimeout(() => {
-      addAssistantMessage(
-        'Olá, é um prazer ter você aqui. Este é um espaço seguro onde você pode compartilhar o que está sentindo. Como você está se sentindo hoje?',
-        newConversation.id
-      )
-    }, 500)
+      addAssistantMessage(greetingMessage, newConversation.id)
+    }, delay)
   }
 
   const addUserMessage = async (content: string) => {
@@ -206,6 +209,9 @@ Responda de forma empática e acolhedora:`
     const history = updatedConv ? [...updatedConv.messages, userMessage] : [userMessage]
 
     const aiResponse = await generateAIResponse(content, history)
+    
+    const responseDelay = aiConfig?.responseDelay || 1500
+    await new Promise(resolve => setTimeout(resolve, responseDelay))
     
     setIsTyping(false)
     addAssistantMessage(aiResponse, currentConversationId)

@@ -26,10 +26,12 @@ import {
   Clock,
   CheckCircle,
   Warning,
-  UserCircle
+  UserCircle,
+  Robot
 } from '@phosphor-icons/react'
 import { LeadDetailDialog } from './LeadDetailDialog'
 import { AgentsManagement } from './AgentsManagement'
+import { AIAgentConfig } from './AIAgentConfig'
 
 interface DashboardProps {
   onLogout: () => void
@@ -180,7 +182,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
       <div className="flex-1 overflow-hidden">
         <div className="h-full max-w-7xl mx-auto p-6">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="h-full flex flex-col">
-            <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsList className="grid w-full max-w-2xl grid-cols-3">
               <TabsTrigger value="leads" className="gap-2">
                 <ChatCircle size={16} />
                 Leads
@@ -188,6 +190,10 @@ export function Dashboard({ onLogout }: DashboardProps) {
               <TabsTrigger value="agents" className="gap-2">
                 <UserCircle size={16} />
                 Agentes
+              </TabsTrigger>
+              <TabsTrigger value="ai-config" className="gap-2">
+                <Robot size={16} />
+                Config IA
               </TabsTrigger>
             </TabsList>
 
@@ -416,6 +422,10 @@ export function Dashboard({ onLogout }: DashboardProps) {
 
             <TabsContent value="agents" className="flex-1 mt-6 overflow-hidden">
               <AgentsManagement />
+            </TabsContent>
+
+            <TabsContent value="ai-config" className="flex-1 mt-6 overflow-hidden">
+              <AIAgentConfig />
             </TabsContent>
           </Tabs>
         </div>
