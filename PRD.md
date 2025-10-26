@@ -13,11 +13,11 @@ Uma plataforma completa de pré-atendimento psicológico com landing page profis
 ## Essential Features
 
 ### Landing Page Profissional
-- **Funcionalidade**: Página inicial moderna e persuasiva que apresenta o serviço de forma clara e profissional
-- **Purpose**: Converter visitantes em usuários do chat e construir credibilidade para o serviço
+- **Funcionalidade**: Página inicial moderna, dinâmica e persuasiva que apresenta o serviço de forma impactante com animações sutis e design atraente
+- **Purpose**: Converter visitantes em usuários do chat através de um design envolvente que inspira confiança e encoraja ação imediata
 - **Trigger**: Usuário acessa o site pela primeira vez
-- **Progression**: Usuário visualiza hero section → Lê sobre como funciona → Vê benefícios do serviço → Clica em CTA para iniciar conversa
-- **Success criteria**: Design profissional, mensagem clara, CTAs visíveis, taxa de conversão para chat elevada
+- **Progression**: Usuário visualiza hero section animada → Lê sobre como funciona com cards interativos → Vê benefícios do serviço com hover effects → Sente urgência no CTA final → Clica para iniciar conversa
+- **Success criteria**: Design moderno com animações framer-motion, gradientes atrativos, CTAs destacados com hover effects, badges informativos, taxa de conversão elevada para chat
 
 ### Chat com IA e Coleta Inteligente de Dados
 - **Funcionalidade**: Interface de chat onde IA conversa empaticamente enquanto coleta dados estruturados do lead sutilmente
@@ -90,14 +90,16 @@ Tipografia deve transmitir profissionalismo caloroso e legibilidade excepcional,
 
 ## Animations
 
-Animações extremamente sutis e suaves que comunicam cuidado e atenção, evitando movimentos bruscos que possam causar desconforto emocional - prioriza transições gentis que guiam sem distrair.
+Animações estratégicas e envolventes que comunicam modernidade e guiam o usuário naturalmente através da jornada, criando momentos de encanto que incentivam a conversão sem comprometer a performance.
 
-- **Purposeful Meaning**: Movimentos lentos e orgânicos que evocam respiração calma, reforçando a atmosfera terapêutica de presença e atenção
+- **Purposeful Meaning**: Movimentos fluidos com framer-motion que evocam sensação de cuidado profissional, com elementos que respondem ao hover e scroll para criar engajamento ativo
 - **Hierarchy of Movement**: 
-  - Entrada de mensagens da IA com fade-in suave (300ms) para simular pensamento empático
-  - Transições entre telas com slides suaves (400ms)
-  - Micro-interações em botões com subtle scale (100ms)
-  - Indicador de digitação com animação pulsante orgânica
+  - Hero section com fade-in sequencial dos elementos (badge → ícone → título → descrição → CTAs) para narrativa visual
+  - Cards de benefícios com hover lift e scale para indicar interatividade
+  - CTAs principais com gradient animado, bounce no ícone e translate no arrow ao hover
+  - Ícone de sparkle com rotação e scale infinito para capturar atenção
+  - Scroll-triggered animations nos cards de "Como Funciona" e benefícios com stagger effect
+  - Transições entre telas mantêm slides suaves (400ms)
 
 ## Component Selection
 
