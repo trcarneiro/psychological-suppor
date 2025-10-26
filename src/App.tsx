@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LandingHero } from '@/components/LandingHero'
 import { MinimalChatInterface } from '@/components/MinimalChatInterface'
 import { Dashboard } from '@/components/Dashboard'
 import { AdminLogin } from '@/components/AdminLogin'
@@ -6,10 +7,10 @@ import { Toaster } from '@/components/ui/sonner'
 import { AIAgentConfig } from '@/lib/types'
 import { getDefaultAgent } from '@/lib/predefined-agents'
 
-type ViewMode = 'chat' | 'admin-login' | 'dashboard'
+type ViewMode = 'landing' | 'chat' | 'admin-login' | 'dashboard'
 
 function App() {
-  const [viewMode, setViewMode] = useState<ViewMode>('chat')
+  const [viewMode, setViewMode] = useState<ViewMode>('landing')
   const [selectedAgent, setSelectedAgent] = useState<AIAgentConfig>(getDefaultAgent())
 
   const handleChangeAgent = (agent: AIAgentConfig) => {
@@ -18,6 +19,10 @@ function App() {
 
   return (
     <>
+      {viewMode === 'landing' && (
+        <LandingHero onStartChat={() => setViewMode('chat')} />
+      )}
+
       {viewMode === 'chat' && (
         <MinimalChatInterface
           agent={selectedAgent}

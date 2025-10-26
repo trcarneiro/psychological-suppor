@@ -1,23 +1,30 @@
 # Planning Guide
 
-Uma plataforma moderna e minimalista de pré-atendimento psicológico com múltiplos assistentes virtuais, cada um com personalidade única. O usuário inicia a conversa imediatamente com um assistente padrão e pode trocar de assistente a qualquer momento durante a conversa através de um menu acessível.
+Uma plataforma moderna e minimalista de pré-atendimento psicológico com múltiplos assistentes virtuais, cada um com personalidade única. O usuário é recebido por uma landing page atraente que apresenta o serviço, e com um clique inicia a conversa com um assistente padrão. Durante a conversa, pode trocar de assistente a qualquer momento através de um menu acessível.
 
 **Experience Qualities**:
-1. **Imediato** - Usuário começa a conversar instantaneamente, sem necessidade de escolha prévia ou cadastros
+1. **Acolhedor** - Landing page que transmite confiança e apresenta o serviço de forma clara antes do usuário iniciar
 2. **Flexível** - Possibilidade de trocar de assistente durante a conversa conforme a preferência evolui
-3. **Acolhedor** - Interface que transmite calma e confiança, criando um espaço seguro para expressar emoções
+3. **Imersivo** - Após iniciar, interface de chat sem distrações que cria um espaço seguro para expressar emoções
 
 **Complexity Level**: Complex Application (advanced functionality, accounts)
   - Múltiplos agentes de IA com personalidades distintas, troca dinâmica de agentes, chat imersivo, extração inteligente de dados, CRM completo e gestão de agentes
 
 ## Essential Features
 
-### Início Imediato da Conversa
-- **Funcionalidade**: Usuário inicia conversa instantaneamente com assistente padrão (Lucas - Equilibrado) sem necessidade de escolhas ou landing page
-- **Purpose**: Reduzir fricção e facilitar o acesso imediato ao atendimento, especialmente importante em contextos emocionais
+### Landing Page de Apresentação
+- **Funcionalidade**: Página inicial moderna e atraente que apresenta o serviço, seus benefícios, como funciona e os 5 assistentes disponíveis
+- **Purpose**: Gerar confiança e informar o usuário sobre o serviço antes de iniciar, reduzindo abandono e aumentando engajamento
 - **Trigger**: Usuário acessa o site
-- **Progression**: Aplicação carrega → Conversa inicia automaticamente com mensagem de boas-vindas do assistente padrão
-- **Success criteria**: Tempo de carregamento mínimo, conversa inicia sem cliques adicionais, assistente padrão é acolhedor e versátil
+- **Progression**: App carrega → Landing page aparece com animações suaves → Usuário lê sobre o serviço → Clica em "Iniciar Conversa" → É redirecionado para o chat
+- **Success criteria**: Design moderno e confiável, informações claras sobre os 5 assistentes, CTA destacado, animações suaves de entrada, mensagens de segurança e privacidade visíveis
+
+### Início Rápido da Conversa
+- **Funcionalidade**: Ao clicar no botão da landing page, usuário inicia conversa instantaneamente com assistente padrão (Lucas - Equilibrado)
+- **Purpose**: Após apresentação, permitir início imediato sem fricção adicional (cadastros ou formulários)
+- **Trigger**: Usuário clica em "Iniciar Conversa" na landing page
+- **Progression**: Clique no botão → Transição suave para tela de chat → Conversa inicia automaticamente com mensagem de boas-vindas do assistente padrão
+- **Success criteria**: Transição fluida entre landing e chat, conversa inicia sem cliques adicionais, assistente padrão é acolhedor e versátil
 
 ### Troca de Assistente Durante a Conversa
 - **Funcionalidade**: Menu dropdown acessível no canto superior direito permite trocar de assistente a qualquer momento durante a conversa
@@ -61,8 +68,10 @@ Uma plataforma moderna e minimalista de pré-atendimento psicológico com múlti
 
 ## Edge Case Handling
 
+- **Landing Page**: Botão CTA claramente visível em múltiplos pontos da página para facilitar início
 - **Troca de Agente**: Usuário pode trocar entre 5 agentes a qualquer momento, histórico é preservado, nova mensagem de apresentação é adicionada
 - **Agente Padrão**: Lucas é o assistente padrão por ter abordagem equilibrada que agrada maioria dos usuários
+- **Retorno à Landing**: Não há opção de voltar à landing após iniciar chat (evita interrupção de fluxo emocional)
 - **Crise Emocional Grave**: Se usuário expressar pensamentos suicidas ou crise severa, exibir números de emergência (CVV 188) de forma proeminente
 - **Conversas Inadequadas**: Agentes gentilmente redirecionam para o propósito do app
 - **Limites da IA**: Agentes comunicam que não substituem atendimento profissional
@@ -106,24 +115,26 @@ Animações minimalistas e intencionais que melhoram a experiência sem sobrecar
 
 - **Purposeful Meaning**: Movimentos suaves que guiam atenção, fade-ins sequenciais, hover states sutis
 - **Hierarchy of Movement**: 
-  - Hero: Fade-in sequencial dos elementos
+  - Landing Hero: Fade-in sequencial dos elementos (badge → título → descrição → CTA → features)
+  - Feature cards landing: Fade-in com stagger, hover lift sutil (-4px) com transição de 300ms
+  - CTA buttons landing: Hover com leve scale (1.02) e shadow increase
   - Agent cards: Hover lift sutil (-8px) com transição de 200ms
   - Chat messages: Slide-in com fade (y: 20 → 0) e scale (0.95 → 1)
   - Typing indicator: Animação de pulso nos dots
-  - CTA buttons: Hover com leve scale e movimento do ícone
   - Gradientes de fundo: Efeitos sutis de blur e glow
 
 ## Component Selection
 
 - **Components**: 
-  - Card para mensagens e estatísticas no dashboard
-  - Button (gradientes customizados por agente)
+  - Card para mensagens, feature cards na landing e estatísticas no dashboard
+  - Button (gradientes customizados por agente, CTAs na landing)
   - Badge para status e categorias
   - DropdownMenu para menu de troca de assistente e admin
   - ScrollArea para chat e listas
   - Textarea com auto-resize para input de chat
   
 - **Customizations**: 
+  - LandingHero: Hero section com título grande (80-96px), feature cards com hover lift, seção "Como Funciona", lista de assistentes, CTAs destacados com gradientes
   - MinimalChatInterface: Tela cheia com menu discreto no topo, mensagens com bolhas arredondadas (rounded-3xl), input flutuante
   - DropdownMenu: Lista de agentes com indicadores de cor, opção de admin separada
   - AgentsManagementPanel (Admin): Grid de cards com gradientes identificadores
@@ -165,6 +176,7 @@ Animações minimalistas e intencionais que melhoram a experiência sem sobrecar
   - Mensagens chat: space-y-6 para respiração
   
 - **Mobile**: 
+  - Landing: Hero text ajusta para menor (text-5xl), feature cards em coluna única, padding reduzido
   - Chat: Mantém tela cheia, ajusta apenas padding
   - Menu button: Mantém tamanho adequado para toque (mínimo 44px)
   - Dropdown menu: Ajusta largura para caber na tela
