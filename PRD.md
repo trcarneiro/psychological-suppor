@@ -19,24 +19,31 @@ Uma plataforma completa de pré-atendimento psicológico com landing page profis
 - **Progression**: Usuário visualiza hero section animada → Lê sobre como funciona com cards interativos → Vê benefícios do serviço com hover effects → Sente urgência no CTA final → Clica para iniciar conversa
 - **Success criteria**: Design moderno com animações framer-motion, gradientes atrativos, CTAs destacados com hover effects, badges informativos, taxa de conversão elevada para chat
 
-### Chat com IA e Coleta Inteligente de Dados
-- **Funcionalidade**: Interface de chat onde IA conversa empaticamente enquanto coleta dados estruturados do lead sutilmente
-- **Purpose**: Fornecer acolhimento inicial e simultaneamente qualificar leads com informações valiosas para conversão
+### Chat com IA (Primeiro Atendimento Obrigatório)
+- **Funcionalidade**: Interface de chat onde **o agente de IA sempre faz o primeiro atendimento**, conversando empaticamente enquanto coleta dados estruturados do lead sutilmente antes de encaminhar para um psicólogo humano
+- **Purpose**: Fornecer acolhimento inicial padronizado, qualificar leads com informações valiosas e preparar o terreno para o atendimento profissional
 - **Trigger**: Usuário clica em "Conversar Agora" na landing page
-- **Progression**: Usuário inicia chat → IA acolhe e faz perguntas abertas → Conversa flui naturalmente → IA extrai dados (nome, contato, preocupação, urgência) → Sistema calcula score do lead → IA sugere encaminhamento profissional
-- **Success criteria**: Dados extraídos com precisão, usuário não percebe coleta forçada, conversas naturais e empáticas
+- **Progression**: Usuário inicia chat → **IA faz acolhimento inicial obrigatório** → Conversa flui naturalmente → IA extrai dados (nome, contato, preocupação, urgência) → Sistema calcula score do lead → IA sugere encaminhamento para psicólogo cadastrado → Sistema seleciona profissional adequado
+- **Success criteria**: 100% dos atendimentos começam pela IA, dados extraídos com precisão, usuário não percebe coleta forçada, conversas naturais e empáticas, encaminhamento apropriado para agente humano
+
+### Cadastro e Gestão de Agentes (Psicólogos)
+- **Funcionalidade**: Sistema administrativo completo para cadastrar, editar, ativar/desativar e gerenciar psicólogos disponíveis para atendimento
+- **Purpose**: Manter base de profissionais atualizada para encaminhamento inteligente de leads qualificados pela IA
+- **Trigger**: Administrador acessa aba "Agentes" no dashboard
+- **Progression**: Admin clica em "Adicionar Agente" → Preenche dados completos (nome, CRP, especialidades, abordagem, experiência, bio, contato, disponibilidade, valores, convênios) → Salva cadastro → Agente fica disponível para matching com leads → Sistema pode sugerir profissional baseado em especialidades e necessidades do lead
+- **Success criteria**: Interface intuitiva de CRUD, todos campos relevantes capturados, busca e filtros funcionais, status ativo/inativo gerenciável, dados persistidos corretamente
 
 ### Dashboard CRM Administrativo
-- **Funcionalidade**: Painel completo de gestão de leads com visualização de dados, scoring, filtros e atualização de status
-- **Purpose**: Permitir que administrador gerencie pipeline de leads, priorize contatos e acompanhe conversões
+- **Funcionalidade**: Painel completo de gestão com duas abas principais: Leads (gestão de pipeline) e Agentes (gestão de profissionais)
+- **Purpose**: Permitir que administrador gerencie tanto o pipeline de leads quanto a equipe de psicólogos disponíveis
 - **Trigger**: Administrador faz login com senha
-- **Progression**: Admin acessa → Visualiza estatísticas gerais → Filtra leads por status/prioridade → Abre detalhes de lead → Vê conversa completa e dados extraídos → Atualiza status → Marca como convertido
-- **Success criteria**: Interface clara, dados organizados, fácil gestão de pipeline, métricas de conversão visíveis
+- **Progression**: Admin acessa → Visualiza estatísticas gerais → Alterna entre aba Leads e Agentes → Filtra leads por status/prioridade → Gerencia cadastro de profissionais → Abre detalhes de lead → Vê conversa completa e dados extraídos → Atualiza status → Marca como convertido
+- **Success criteria**: Interface clara com navegação por tabs, dados organizados, fácil gestão de pipeline e profissionais, métricas de conversão visíveis
 
 ### Sistema de Scoring e Priorização
 - **Funcionalidade**: Algoritmo automático que calcula score de leads baseado em urgência, estado emocional e dados coletados
 - **Purpose**: Priorizar leads com maior necessidade e potencial de conversão para otimizar tempo do profissional
-- **Trigger**: Dados são extraídos da conversa
+- **Trigger**: Dados são extraídos da conversa pela IA
 - **Progression**: IA extrai dados → Sistema calcula score (urgência × estado emocional) → Lead é classificado (crítico/alto/moderado/baixo) → Dashboard exibe leads ordenados por prioridade
 - **Success criteria**: Scoring reflete real urgência, leads críticos destacados, priorização eficaz
 
@@ -49,6 +56,7 @@ Uma plataforma completa de pré-atendimento psicológico com landing page profis
 
 ## Edge Case Handling
 
+- **Primeiro Atendimento Sempre pela IA**: 100% dos usuários DEVEM passar pelo agente de IA primeiro. Nenhum atendimento humano inicia sem qualificação prévia pela IA. A IA conduz conversa completa e só então sugere encaminhamento
 - **Crise Emocional Grave**: Se usuário expressar pensamentos suicidas ou crise severa, IA imediatamente fornece números de emergência (CVV 188) e marca lead como crítico no dashboard
 - **Conversas Inadequadas**: Se usuário tentar conversas não relacionadas a bem-estar emocional, IA gentilmente redireciona para o propósito do app
 - **Limites da IA**: IA comunica claramente que não substitui atendimento profissional e tem limitações
@@ -56,6 +64,8 @@ Uma plataforma completa de pré-atendimento psicológico com landing page profis
 - **Dados Incompletos**: Dashboard exibe "não informado" para dados não coletados, permite admin adicionar notas manualmente
 - **Sem Resposta do Usuário**: Se conversa ficar inativa, mensagem suave perguntando se usuário gostaria de continuar depois
 - **Múltiplos Acessos Admin**: Senha simples para demonstração, com aviso de que em produção deveria ter autenticação robusta
+- **Agentes Inativos**: Sistema não sugere agentes marcados como inativos, permitindo gerenciar disponibilidade sem deletar cadastros
+- **Matching de Especialidades**: Sistema pode sugerir agente mais adequado baseado nas especialidades cadastradas e preocupação principal do lead
 
 ## Design Direction
 
@@ -104,22 +114,24 @@ Animações estratégicas e envolventes que comunicam modernidade e guiam o usu�
 ## Component Selection
 
 - **Components**: 
-  - Card para mensagens, leads, seções informativas e estatísticas do dashboard
-  - ScrollArea para área de conversação e lista de leads
+  - Card para mensagens, leads, agentes, seções informativas e estatísticas do dashboard
+  - ScrollArea para área de conversação, lista de leads e lista de agentes
   - Button (variant default para ações primárias, outline para secundárias, ghost para navegação)
-  - Input e Textarea para formulários e busca
+  - Input e Textarea para formulários, busca e cadastro de agentes
   - Label para campos de formulário
-  - Badge para status de leads, prioridades e tags
-  - Dialog para detalhes de lead e confirmações
-  - Tabs para alternar entre visualizações do dashboard
-  - Select para filtros e mudança de status
+  - Badge para status de leads, prioridades, tags e status de agentes (ativo/inativo)
+  - Dialog para detalhes de lead, confirmações e formulário de cadastro de agentes
+  - Tabs para alternar entre Leads e Agentes no dashboard, e entre visualizações de leads
+  - Select para filtros, mudança de status e campos de seleção
   - Separator para divisões visuais
   - Avatar para representar usuário e IA
+  - Switch para campos booleanos (aceita convênios, agente ativo)
   
 - **Customizations**: 
   - LandingPage: Seções hero, benefícios, como funciona com gradientes suaves
   - ChatMessage: Layout diferenciado para mensagens do usuário vs IA
-  - Dashboard: Cards de estatísticas, tabela de leads, sistema de filtros
+  - Dashboard: Cards de estatísticas, navegação por tabs (Leads/Agentes), tabela de leads, sistema de filtros
+  - AgentsManagement: CRUD completo de agentes com formulário detalhado, busca, cards de agentes com todas informações
   - LeadDetailDialog: Visualização completa de dados do lead e histórico de conversa
   - AdminLogin: Tela de autenticação simples com validação
   - TypingIndicator: Animação orgânica de digitação
@@ -128,24 +140,31 @@ Animações estratégicas e envolventes que comunicam modernidade e guiam o usu�
   - Buttons: Hover com subtle lift, estados disabled durante loading
   - Inputs: Focus ring suave em primary color
   - Lead cards: Hover com shadow para indicar clicável
+  - Agent cards: Hover para indicar interatividade, badges de status
   - Status badges: Cores diferentes por estado (novo, contatado, convertido, perdido)
   - Score indicators: Cores de urgência (crítico=vermelho, alto=laranja, moderado=azul, baixo=cinza)
+  - Agent status: Badge visual indicando ativo (verde) ou inativo (cinza)
   
 - **Icon Selection**: 
   - Heart para branding e cuidado emocional
   - ChatCircle para chat e mensagens
   - Users para gestão de leads
+  - UserCircle para perfil de agentes e gestão de profissionais
   - TrendUp para métricas e conversões
   - Phone, Envelope, WhatsappLogo para contato
   - Warning para alertas e urgência
   - Clock para atividade recente
-  - CheckCircle para confirmações e benefícios
+  - CheckCircle para confirmações, benefícios e status positivo
+  - XCircle para desativar/remover
   - Lightbulb para orientação
-  - UserCircle para perfil de profissional
   - ShieldCheck para segurança e autenticação
   - SignOut para logout
   - MagnifyingGlass para busca
   - ArrowLeft para navegação de volta
+  - Plus para adicionar novos itens (agentes, notas)
+  - PencilSimple para editar
+  - Trash para excluir
+  - Info para informações adicionais
   
 - **Spacing**: 
   - Padding interno de cards: p-4 a p-6 dependendo do contexto

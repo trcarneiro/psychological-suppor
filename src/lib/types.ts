@@ -66,3 +66,23 @@ export interface Professional {
   acceptsInsurance: boolean
   image?: string
 }
+
+export interface Agent {
+  id: string
+  name: string
+  crp: string
+  specialties: string[]
+  approach: string
+  experience: string
+  bio: string
+  email: string
+  phone: string
+  availability: string[]
+  priceRange: string
+  acceptsInsurance: boolean
+  insuranceProviders?: string[]
+  photo?: string
+  active: boolean
+  createdAt: number
+  updatedAt: number
+}
