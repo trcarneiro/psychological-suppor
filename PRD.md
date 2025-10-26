@@ -1,52 +1,61 @@
 # Planning Guide
 
-Um assistente virtual de pré-atendimento psicológico que acolhe usuários através de conversas empáticas, avalia suas necessidades emocionais e facilita o encaminhamento para atendimento profissional quando apropriado.
+Uma plataforma completa de pré-atendimento psicológico com landing page profissional, IA conversacional para acolhimento inicial, e dashboard CRM para gestão de leads e conversões.
 
 **Experience Qualities**:
-1. **Acolhedor** - O usuário deve sentir-se ouvido e compreendido sem julgamentos, criando um espaço seguro para expressar suas emoções
-2. **Humano** - Apesar de ser uma IA, a interação deve ser natural, calorosa e empática, evitando respostas robóticas ou excessivamente técnicas
-3. **Confiável** - O design e comunicação devem transmitir profissionalismo e seriedade, garantindo que o usuário se sinta seguro ao compartilhar informações pessoais
+1. **Profissional** - Design de landing page que transmite credibilidade e seriedade, posicionando o serviço como solução confiável em saúde mental
+2. **Acolhedor** - A IA oferece conversas empáticas que fazem o usuário sentir-se ouvido e compreendido, criando um espaço seguro para expressar emoções
+3. **Inteligente** - Sistema automatizado de coleta de dados e qualificação de leads que mapeia informações sutilmente durante a conversa para otimizar conversões
 
-**Complexity Level**: Light Application (multiple features with basic state)
-  - O app possui funcionalidades de chat com IA, histórico de conversas e sistema de encaminhamento, mas mantém a simplicidade de uso como prioridade
+**Complexity Level**: Complex Application (advanced functionality, accounts)
+  - O app possui landing page, chat com IA, extração inteligente de dados, CRM completo com gestão de leads, sistema de scoring e autenticação administrativa
 
 ## Essential Features
 
-### Chat com IA Psicológica
-- **Funcionalidade**: Interface de chat onde o usuário conversa com assistente de IA treinado para acolhimento psicológico inicial
-- **Purpose**: Fornecer suporte emocional imediato e avaliar a necessidade de encaminhamento profissional
-- **Trigger**: Usuário acessa o app e inicia uma nova conversa ou continua conversa existente
-- **Progression**: Usuário digita mensagem → IA processa e responde com empatia → Conversa flui naturalmente → IA identifica padrões que sugerem necessidade de atendimento profissional
-- **Success criteria**: Respostas são empáticas, coerentes com contexto anterior, e identificam corretamente situações que necessitam encaminhamento
+### Landing Page Profissional
+- **Funcionalidade**: Página inicial moderna e persuasiva que apresenta o serviço de forma clara e profissional
+- **Purpose**: Converter visitantes em usuários do chat e construir credibilidade para o serviço
+- **Trigger**: Usuário acessa o site pela primeira vez
+- **Progression**: Usuário visualiza hero section → Lê sobre como funciona → Vê benefícios do serviço → Clica em CTA para iniciar conversa
+- **Success criteria**: Design profissional, mensagem clara, CTAs visíveis, taxa de conversão para chat elevada
 
-### Sistema de Avaliação e Encaminhamento
-- **Funcionalidade**: IA avalia sutilmente o estado emocional do usuário durante conversa e sugere encaminhamento quando apropriado
-- **Purpose**: Garantir que casos que necessitam de atenção profissional sejam identificados e encaminhados adequadamente
-- **Trigger**: Durante a conversa, quando IA identifica sinais de necessidade de suporte profissional
-- **Progression**: IA detecta padrões preocupantes → Sugere de forma sensível o encaminhamento → Usuário aceita → Formulário de contato é apresentado → Informações são enviadas ao psicólogo
-- **Success criteria**: Encaminhamentos são oferecidos no momento apropriado sem alarmar o usuário, formulário é simples de preencher
+### Chat com IA e Coleta Inteligente de Dados
+- **Funcionalidade**: Interface de chat onde IA conversa empaticamente enquanto coleta dados estruturados do lead sutilmente
+- **Purpose**: Fornecer acolhimento inicial e simultaneamente qualificar leads com informações valiosas para conversão
+- **Trigger**: Usuário clica em "Conversar Agora" na landing page
+- **Progression**: Usuário inicia chat → IA acolhe e faz perguntas abertas → Conversa flui naturalmente → IA extrai dados (nome, contato, preocupação, urgência) → Sistema calcula score do lead → IA sugere encaminhamento profissional
+- **Success criteria**: Dados extraídos com precisão, usuário não percebe coleta forçada, conversas naturais e empáticas
 
-### Histórico de Conversas
-- **Funcionalidade**: Armazena conversas anteriores permitindo continuidade do acolhimento
-- **Purpose**: Permitir que usuário retome conversas e que IA tenha contexto de interações anteriores
-- **Trigger**: Usuário retorna ao app e acessa histórico de conversas
-- **Progression**: Usuário abre app → Visualiza conversas anteriores → Seleciona conversa → Continua de onde parou
-- **Success criteria**: Conversas são persistidas corretamente e IA mantém contexto ao retomar
+### Dashboard CRM Administrativo
+- **Funcionalidade**: Painel completo de gestão de leads com visualização de dados, scoring, filtros e atualização de status
+- **Purpose**: Permitir que administrador gerencie pipeline de leads, priorize contatos e acompanhe conversões
+- **Trigger**: Administrador faz login com senha
+- **Progression**: Admin acessa → Visualiza estatísticas gerais → Filtra leads por status/prioridade → Abre detalhes de lead → Vê conversa completa e dados extraídos → Atualiza status → Marca como convertido
+- **Success criteria**: Interface clara, dados organizados, fácil gestão de pipeline, métricas de conversão visíveis
 
-### Informações sobre o Psicólogo
-- **Funcionalidade**: Seção com informações sobre o profissional, abordagem terapêutica e formas de contato
-- **Purpose**: Construir confiança e permitir que usuário conheça o profissional antes de decidir pelo atendimento
-- **Trigger**: Usuário clica em "Sobre o Psicólogo" ou recebe sugestão de encaminhamento
-- **Progression**: Usuário acessa seção → Lê sobre formação e abordagem → Vê foto profissional → Decide contatar
-- **Success criteria**: Informações são claras, transmitem profissionalismo e facilitam decisão de contato
+### Sistema de Scoring e Priorização
+- **Funcionalidade**: Algoritmo automático que calcula score de leads baseado em urgência, estado emocional e dados coletados
+- **Purpose**: Priorizar leads com maior necessidade e potencial de conversão para otimizar tempo do profissional
+- **Trigger**: Dados são extraídos da conversa
+- **Progression**: IA extrai dados → Sistema calcula score (urgência × estado emocional) → Lead é classificado (crítico/alto/moderado/baixo) → Dashboard exibe leads ordenados por prioridade
+- **Success criteria**: Scoring reflete real urgência, leads críticos destacados, priorização eficaz
+
+### Extração Automatizada de Dados do Lead
+- **Funcionalidade**: IA analisa conversa e extrai automaticamente dados estruturados (nome, contato, idade, preocupação, sintomas, orçamento, disponibilidade)
+- **Purpose**: Eliminar trabalho manual de qualificação e ter informações completas para personalizar abordagem profissional
+- **Trigger**: Após 4+ mensagens do usuário na conversa
+- **Progression**: Conversa acumula contexto → IA analisa mensagens → Extrai dados estruturados via LLM → Salva em leadData → Exibe no dashboard
+- **Success criteria**: Extração precisa, dados relevantes identificados, atualizações incrementais conforme conversa avança
 
 ## Edge Case Handling
 
-- **Crise Emocional Grave**: Se usuário expressar pensamentos suicidas ou crise severa, IA imediatamente fornece números de emergência (CVV 188) e encoraja busca por ajuda imediata
+- **Crise Emocional Grave**: Se usuário expressar pensamentos suicidas ou crise severa, IA imediatamente fornece números de emergência (CVV 188) e marca lead como crítico no dashboard
 - **Conversas Inadequadas**: Se usuário tentar conversas não relacionadas a bem-estar emocional, IA gentilmente redireciona para o propósito do app
 - **Limites da IA**: IA comunica claramente que não substitui atendimento profissional e tem limitações
-- **Privacidade**: Aviso claro sobre confidencialidade e limites do armazenamento de dados
+- **Privacidade de Dados**: Dados são armazenados localmente, acesso ao dashboard requer autenticação
+- **Dados Incompletos**: Dashboard exibe "não informado" para dados não coletados, permite admin adicionar notas manualmente
 - **Sem Resposta do Usuário**: Se conversa ficar inativa, mensagem suave perguntando se usuário gostaria de continuar depois
+- **Múltiplos Acessos Admin**: Senha simples para demonstração, com aviso de que em produção deveria ter autenticação robusta
 
 ## Design Direction
 
@@ -93,43 +102,58 @@ Animações extremamente sutis e suaves que comunicam cuidado e atenção, evita
 ## Component Selection
 
 - **Components**: 
-  - Card para mensagens do chat e seções informativas
-  - ScrollArea para área de conversação
+  - Card para mensagens, leads, seções informativas e estatísticas do dashboard
+  - ScrollArea para área de conversação e lista de leads
   - Button (variant default para ações primárias, outline para secundárias, ghost para navegação)
-  - Input e Textarea para formulários de encaminhamento
+  - Input e Textarea para formulários e busca
+  - Label para campos de formulário
+  - Badge para status de leads, prioridades e tags
+  - Dialog para detalhes de lead e confirmações
+  - Tabs para alternar entre visualizações do dashboard
+  - Select para filtros e mudança de status
+  - Separator para divisões visuais
   - Avatar para representar usuário e IA
-  - Dialog para informações importantes e confirmações
-  - Badge para indicadores de status
-  - Separator para divisões visuais suaves
   
 - **Customizations**: 
-  - Componente ChatMessage customizado com layout diferenciado para mensagens do usuário vs IA
-  - Typing indicator animado customizado
-  - Welcome screen com introdução calorosa
+  - LandingPage: Seções hero, benefícios, como funciona com gradientes suaves
+  - ChatMessage: Layout diferenciado para mensagens do usuário vs IA
+  - Dashboard: Cards de estatísticas, tabela de leads, sistema de filtros
+  - LeadDetailDialog: Visualização completa de dados do lead e histórico de conversa
+  - AdminLogin: Tela de autenticação simples com validação
+  - TypingIndicator: Animação orgânica de digitação
   
 - **States**: 
-  - Buttons com hover sutil (lift de 2px e leve brightening)
-  - Inputs com focus ring suave em primary color
-  - Messages com estado "enviando" com opacity reduzida
-  - IA avatar pulsa suavemente quando "pensando"
+  - Buttons: Hover com subtle lift, estados disabled durante loading
+  - Inputs: Focus ring suave em primary color
+  - Lead cards: Hover com shadow para indicar clicável
+  - Status badges: Cores diferentes por estado (novo, contatado, convertido, perdido)
+  - Score indicators: Cores de urgência (crítico=vermelho, alto=laranja, moderado=azul, baixo=cinza)
   
 - **Icon Selection**: 
-  - ChatCircle para chat
-  - User para perfil
-  - PaperPlaneTilt para enviar
-  - Warning para alertas importantes
-  - Heart para elementos de cuidado/apoio
-  - Phone para contato
+  - Heart para branding e cuidado emocional
+  - ChatCircle para chat e mensagens
+  - Users para gestão de leads
+  - TrendUp para métricas e conversões
+  - Phone, Envelope, WhatsappLogo para contato
+  - Warning para alertas e urgência
+  - Clock para atividade recente
+  - CheckCircle para confirmações e benefícios
+  - Lightbulb para orientação
+  - UserCircle para perfil de profissional
+  - ShieldCheck para segurança e autenticação
+  - SignOut para logout
+  - MagnifyingGlass para busca
+  - ArrowLeft para navegação de volta
   
 - **Spacing**: 
-  - Padding interno de cards: p-6
-  - Gap entre mensagens: gap-3
-  - Margin entre seções: mb-8
-  - Container max-width: max-w-4xl
+  - Padding interno de cards: p-4 a p-6 dependendo do contexto
+  - Gap entre elementos: gap-3 a gap-4
+  - Sections da landing page: py-16 a py-20
+  - Container max-width: max-w-7xl para dashboard, max-w-4xl para chat
   
 - **Mobile**: 
-  - Chat ocupa altura total em mobile
-  - Botões fixos no bottom em mobile
-  - Sidebar com informações se torna drawer bottom-sheet
-  - Font-sizes reduzem 1-2px em mobile
-  - Touch targets mínimo 44px
+  - Landing page: Grid de 3 colunas vira single column
+  - Dashboard: Estatísticas empilham verticalmente, tabela com scroll horizontal
+  - Chat: Ocupa altura total, sidebar de info vira drawer
+  - Buttons: Touch targets mínimo 44px
+  - Typography: Font-sizes ajustam em breakpoints mobile
