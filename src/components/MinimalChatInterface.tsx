@@ -22,11 +22,21 @@ interface MinimalChatInterfaceProps {
   onAdminLogin: () => void
 }
 
+const SUGGESTION_PROMPTS = [
+  "Estou me sentindo muito ansioso ultimamente",
+  "Preciso conversar sobre meus relacionamentos",
+  "Tenho dificuldade para dormir e me concentrar",
+  "Me sinto sobrecarregado com tudo",
+  "Gostaria de trabalhar minha autoestima",
+  "Estou passando por um momento difícil",
+]
+
 export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: MinimalChatInterfaceProps) {
   const [conversations, setConversations] = useKV<Conversation[]>('conversations', [])
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null)
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [showSuggestions, setShowSuggestions] = useState(true)
   
   const scrollRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -114,6 +124,8 @@ Responda:`
   const addUserMessage = async (content: string) => {
     if (!currentConversationId || !content.trim()) return
 
+    setShowSuggestions(false)
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
@@ -172,6 +184,11 @@ Responda:`
     if (inputMessage.trim() && !isTyping) {
       addUserMessage(inputMessage)
     }
+  }
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputMessage(suggestion)
+    textareaRef.current?.focus()
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -323,6 +340,35 @@ Responda:`
             </motion.div>
           )}
         </div>
+
+        {showSuggestions && currentConversation?.messages.length === 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="mb-6"
+          >
+            <p className="text-sm text-muted-foreground text-center mb-4">
+              Sugestões para começar:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {SUGGESTION_PROMPTS.map((suggestion, index) => (
+                <motion.button
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => handleSuggestionClick(suggestion)}
+                  className="text-left p-4 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50 hover:bg-card/60 hover:border-border transition-all text-sm text-foreground"
+                >
+                  {suggestion}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
 
         <motion.div
           ref={inputContainerRef}
