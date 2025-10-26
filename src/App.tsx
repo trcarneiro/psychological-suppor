@@ -1,47 +1,40 @@
 import { useState } from 'react'
-import { ModernLandingPage } from '@/components/ModernLandingPage'
 import { MinimalChatInterface } from '@/components/MinimalChatInterface'
 import { Dashboard } from '@/components/Dashboard'
 import { AdminLogin } from '@/components/AdminLogin'
 import { Toaster } from '@/components/ui/sonner'
 import { AIAgentConfig } from '@/lib/types'
+import { getDefaultAgent } from '@/lib/predefined-agents'
 
-type ViewMode = 'landing' | 'chat' | 'admin-login' | 'dashboard'
+type ViewMode = 'chat' | 'admin-login' | 'dashboard'
 
 function App() {
-  const [viewMode, setViewMode] = useState<ViewMode>('landing')
-  const [selectedAgent, setSelectedAgent] = useState<AIAgentConfig | null>(null)
+  const [viewMode, setViewMode] = useState<ViewMode>('chat')
+  const [selectedAgent, setSelectedAgent] = useState<AIAgentConfig>(getDefaultAgent())
 
-  const handleStartChat = (agent: AIAgentConfig) => {
+  const handleChangeAgent = (agent: AIAgentConfig) => {
     setSelectedAgent(agent)
-    setViewMode('chat')
   }
 
   return (
     <>
-      {viewMode === 'landing' && (
-        <ModernLandingPage
-          onStartChat={handleStartChat}
-          onAdminLogin={() => setViewMode('admin-login')}
-        />
-      )}
-
-      {viewMode === 'chat' && selectedAgent && (
+      {viewMode === 'chat' && (
         <MinimalChatInterface
           agent={selectedAgent}
-          onBack={() => setViewMode('landing')}
+          onChangeAgent={handleChangeAgent}
+          onAdminLogin={() => setViewMode('admin-login')}
         />
       )}
 
       {viewMode === 'admin-login' && (
         <AdminLogin
           onLogin={() => setViewMode('dashboard')}
-          onCancel={() => setViewMode('landing')}
+          onCancel={() => setViewMode('chat')}
         />
       )}
 
       {viewMode === 'dashboard' && (
-        <Dashboard onLogout={() => setViewMode('landing')} />
+        <Dashboard onLogout={() => setViewMode('chat')} />
       )}
 
       <Toaster position="top-center" />

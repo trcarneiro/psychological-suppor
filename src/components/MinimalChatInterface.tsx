@@ -3,16 +3,26 @@ import { useKV } from '@github/spark/hooks'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Message, Conversation, AIAgentConfig } from '@/lib/types'
-import { PaperPlaneTilt, X } from '@phosphor-icons/react'
+import { PaperPlaneTilt, User, List } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import { getActiveAgents } from '@/lib/predefined-agents'
 
 interface MinimalChatInterfaceProps {
   agent: AIAgentConfig
-  onBack: () => void
+  onChangeAgent: (agent: AIAgentConfig) => void
+  onAdminLogin: () => void
 }
 
-export function MinimalChatInterface({ agent, onBack }: MinimalChatInterfaceProps) {
+export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: MinimalChatInterfaceProps) {
   const [conversations, setConversations] = useKV<Conversation[]>('conversations', [])
   const [currentConversationId, setCurrentConversationId] = useState<string | null>(null)
   const [inputMessage, setInputMessage] = useState('')
@@ -23,6 +33,15 @@ export function MinimalChatInterface({ agent, onBack }: MinimalChatInterfaceProp
   const inputContainerRef = useRef<HTMLDivElement>(null)
 
   const currentConversation = conversations?.find(c => c.id === currentConversationId)
+  const availableAgents = getActiveAgents()
+  
+  const iconMap: Record<string, any> = {
+    'Heart': User,
+    'Briefcase': User,
+    'Sparkle': User,
+    'Brain': User,
+    'Scales': User,
+  }
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -162,20 +181,73 @@ Responda:`
     }
   }
 
+  const handleAgentChange = (newAgent: AIAgentConfig) => {
+    onChangeAgent(newAgent)
+    
+    if (currentConversation && currentConversation.messages.length > 0) {
+      const transitionMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: `Olá! Agora você está conversando com ${newAgent.name}. ${newAgent.greeting}`,
+        timestamp: Date.now(),
+      }
+
+      setConversations(prev =>
+        (prev || []).map(conv =>
+          conv.id === currentConversationId
+            ? {
+                ...conv,
+                messages: [...conv.messages, transitionMessage],
+                updatedAt: Date.now(),
+              }
+            : conv
+        )
+      )
+    }
+  }
+
   return (
     <div className="h-screen bg-background flex flex-col relative overflow-hidden">
       <div className={`absolute inset-0 bg-gradient-to-br ${agent.color} opacity-5 -z-10`} />
       
-      <motion.button
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={onBack}
-        className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 flex items-center justify-center hover:bg-card shadow-lg hover:shadow-xl transition-all"
-      >
-        <X size={24} className="text-foreground" />
-      </motion.button>
+      <div className="fixed top-6 right-6 z-50 flex gap-3">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="h-12 px-4 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 flex items-center gap-2 hover:bg-card shadow-lg hover:shadow-xl transition-all"
+            >
+              <List size={20} className="text-foreground" />
+              <span className="text-sm font-medium text-foreground">Menu</span>
+            </motion.button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuLabel>Trocar Assistente</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            {availableAgents.map((availableAgent) => (
+              <DropdownMenuItem
+                key={availableAgent.id}
+                onClick={() => handleAgentChange(availableAgent)}
+                disabled={availableAgent.id === agent.id}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <div className={`w-3 h-3 rounded-full bg-gradient-to-br ${availableAgent.color}`} />
+                <div className="flex flex-col">
+                  <span className="font-medium">{availableAgent.name}</span>
+                  <span className="text-xs text-muted-foreground">{availableAgent.personality}</span>
+                </div>
+              </DropdownMenuItem>
+            ))}
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={onAdminLogin} className="cursor-pointer">
+              Admin
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
 
       <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full px-6 py-12">
         <motion.div
