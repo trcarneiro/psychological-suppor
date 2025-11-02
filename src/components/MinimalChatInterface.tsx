@@ -181,12 +181,12 @@ Responda:`
     if (inputMessage.trim() && !isTyping) {
       addUserMessage(inputMessage)
     }
-  }, [inputMessage, isTyping])
+  }, [inputMessage, isTyping, addUserMessage])
 
   const handleSuggestionClick = useCallback((suggestion: string) => {
     setInputMessage(suggestion)
     textareaRef.current?.focus()
-  }, [])
+  }, [setInputMessage])
 
   const handleKeyPress = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {

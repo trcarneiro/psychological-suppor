@@ -46,11 +46,14 @@ export function Dashboard({ onLogout }: DashboardProps) {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [activeTab, setActiveTab] = useState('leads')
   
+  // Memoize the Set of existing conversation IDs for O(1) lookup
+  const existingConvIds = useMemo(
+    () => new Set(leads?.map(l => l.conversationId) || []),
+    [leads]
+  )
+
   const leadsFromConversations = useMemo(() => {
     if (!conversations) return []
-    
-    // Create a Set for faster lookup of existing lead conversation IDs
-    const existingConvIds = new Set(leads?.map(l => l.conversationId) || [])
     
     return conversations
       .filter(conv => conv.leadData && Object.keys(conv.leadData).length > 0)
@@ -81,7 +84,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
         
         return newLead
       })
-  }, [conversations, leads])
+  }, [conversations, existingConvIds, leads])
 
   useEffect(() => {
     if (leadsFromConversations.length > 0) {

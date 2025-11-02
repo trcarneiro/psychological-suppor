@@ -14,6 +14,25 @@ import { PaperPlaneTilt, Info, Warning, ArrowLeft } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
 
+// Keywords for detecting when a user needs professional referral
+const REFERRAL_KEYWORDS = [
+  'não aguento mais',
+  'quero morrer',
+  'suicídio',
+  'me matar',
+  'sem saída',
+  'muito tempo',
+  'semanas',
+  'meses',
+  'anos',
+  'piorou',
+  'piorando',
+  'não consigo',
+  'preciso de ajuda',
+  'procurar um psicólogo',
+  'fazer terapia',
+] as const
+
 interface ChatInterfaceProps {
   onBack: () => void
 }
@@ -137,26 +156,8 @@ Responda de forma empática e acolhedora:`
   }
 
   const checkForReferralNeed = useCallback((message: string): boolean => {
-    const keywords = [
-      'não aguento mais',
-      'quero morrer',
-      'suicídio',
-      'me matar',
-      'sem saída',
-      'muito tempo',
-      'semanas',
-      'meses',
-      'anos',
-      'piorou',
-      'piorando',
-      'não consigo',
-      'preciso de ajuda',
-      'procurar um psicólogo',
-      'fazer terapia',
-    ]
-    
     const messageLower = message.toLowerCase()
-    return keywords.some(keyword => messageLower.includes(keyword))
+    return REFERRAL_KEYWORDS.some(keyword => messageLower.includes(keyword))
   }, [])
 
   const startNewConversation = () => {
