@@ -448,3 +448,5 @@ export function Dashboard({ onLogout }: DashboardProps) {
     </div>
   )
 }
+
+export default Dashboard

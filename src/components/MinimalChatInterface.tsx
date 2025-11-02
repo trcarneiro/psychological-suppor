@@ -409,3 +409,5 @@ Responda:`
     </div>
   )
 }
+
+export default MinimalChatInterface
