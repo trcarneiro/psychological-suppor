@@ -2,12 +2,13 @@ import { Message } from '@/lib/types'
 import { Avatar } from '@/components/ui/avatar'
 import { Brain, User } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
+import { memo } from 'react'
 
 interface ChatMessageProps {
   message: Message
 }
 
-export function ChatMessage({ message }: ChatMessageProps) {
+export const ChatMessage = memo(function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === 'user'
   
   return (
@@ -41,4 +42,4 @@ export function ChatMessage({ message }: ChatMessageProps) {
       </div>
     </motion.div>
   )
-}
+})

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
+import { memo } from 'react'
 
-export function TypingIndicator() {
+export const TypingIndicator = memo(function TypingIndicator() {
   return (
     <div className="flex gap-3">
       <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
@@ -34,4 +35,4 @@ export function TypingIndicator() {
       </div>
     </div>
   )
-}
+})

@@ -133,6 +133,11 @@ export function getStartersByCategory(category: ConversationStarter['category'])
 }
 
 export function getRandomStarters(count: number = 5): ConversationStarter[] {
-  const shuffled = [...CONVERSATION_STARTERS].sort(() => Math.random() - 0.5)
+  const shuffled = [...CONVERSATION_STARTERS]
+  // Fisher-Yates shuffle algorithm - O(n) time complexity
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
   return shuffled.slice(0, count)
 }

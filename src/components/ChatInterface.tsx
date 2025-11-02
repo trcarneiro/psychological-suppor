@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -31,7 +31,10 @@ export function ChatInterface({ onBack }: ChatInterfaceProps) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const currentConversation = conversations?.find(c => c.id === currentConversationId)
+  const currentConversation = useMemo(
+    () => conversations?.find(c => c.id === currentConversationId),
+    [conversations, currentConversationId]
+  )
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -133,7 +136,7 @@ Responda de forma empática e acolhedora:`
     }
   }
 
-  const checkForReferralNeed = (message: string): boolean => {
+  const checkForReferralNeed = useCallback((message: string): boolean => {
     const keywords = [
       'não aguento mais',
       'quero morrer',
@@ -154,7 +157,7 @@ Responda de forma empática e acolhedora:`
     
     const messageLower = message.toLowerCase()
     return keywords.some(keyword => messageLower.includes(keyword))
-  }
+  }, [])
 
   const startNewConversation = () => {
     const newConversation: Conversation = {
