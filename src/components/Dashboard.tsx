@@ -60,7 +60,8 @@ export function Dashboard({ onLogout }: DashboardProps) {
       .map(conv => {
         // If lead already exists, find and return it
         if (existingConvIds.has(conv.id)) {
-          return leads?.find(l => l.conversationId === conv.id)!
+          const existingLead = leads?.find(l => l.conversationId === conv.id)
+          if (existingLead) return existingLead
         }
         
         const urgencyLevel = conv.leadData?.urgencyLevel || 5
