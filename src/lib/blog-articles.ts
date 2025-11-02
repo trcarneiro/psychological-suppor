@@ -2859,6 +2859,1902 @@ Comece hoje. Comece pequeno. Mas comece.`,
     readTime: 16,
     featured: false,
   },
+  {
+    id: '11',
+    title: 'TDAH em Adultos: Sintomas, Diagnóstico e Tratamento',
+    slug: 'tdah-adultos-sintomas-diagnostico-tratamento',
+    excerpt: 'Entenda como o Transtorno de Déficit de Atenção e Hiperatividade se manifesta em adultos e as opções de tratamento disponíveis.',
+    content: `# TDAH em Adultos: Sintomas, Diagnóstico e Tratamento
+
+O Transtorno de Déficit de Atenção e Hiperatividade (TDAH) não é apenas uma condição infantil. Muitos adultos convivem com TDAH sem diagnóstico, enfrentando dificuldades que poderiam ser melhor gerenciadas com tratamento adequado.
+
+## O que é TDAH?
+
+TDAH é um transtorno neurobiológico caracterizado por padrões persistentes de desatenção, hiperatividade e impulsividade que interferem no funcionamento diário. Em adultos, manifesta-se de formas específicas:
+
+- Dificuldade em manter foco
+- Problemas de organização
+- Impulsividade em decisões
+- Inquietação mental constante
+- Dificuldade em completar tarefas
+- Gestão problemática do tempo
+
+## Mitos Sobre TDAH em Adultos
+
+### "TDAH é só em criança"
+**Realidade:** 60% das crianças mantêm sintomas na vida adulta. Muitos só são diagnosticados adultos.
+
+### "Adultos com TDAH não conseguem ter sucesso"
+**Realidade:** Muitos profissionais de sucesso têm TDAH. Com tratamento adequado, prosperam em suas áreas.
+
+### "É só falta de disciplina"
+**Realidade:** TDAH envolve diferenças neurológicas reais na função executiva cerebral.
+
+### "Medicação transforma personalidade"
+**Realidade:** Tratamento adequado ajuda a pessoa a ser mais ela mesma, removendo barreiras.
+
+## Sintomas em Adultos
+
+### Desatenção
+
+**No Trabalho:**
+- Dificuldade em terminar projetos
+- Procrastinação crônica
+- Erros por desatenção
+- Perda de detalhes importantes
+- Dificuldade em seguir instruções longas
+- Múltiplos projetos iniciados, poucos finalizados
+
+**Em Casa:**
+- Esquecimento de compromissos
+- Perda frequente de objetos
+- Dificuldade em manter organização
+- Contas atrasadas
+- Tarefas domésticas inacabadas
+
+**Nos Relacionamentos:**
+- Parecer não escutar
+- Esquecer datas importantes
+- Promessas não cumpridas
+- Distrair-se durante conversas
+
+### Hiperatividade (Adulta)
+
+Diferente de crianças, em adultos se manifesta como:
+
+**Inquietação Mental**
+- Pensamentos acelerados
+- Dificuldade em "desligar" a mente
+- Múltiplas ideias simultâneas
+- Dificuldade em relaxar
+
+**Inquietação Física**
+- Necessidade de movimento constante
+- Mexer mãos ou pés
+- Dificuldade em permanecer sentado
+- Sensação de "motor ligado"
+
+**Excesso de Atividade**
+- Assumir muitos compromissos
+- Dificuldade com inatividade
+- Falar excessivamente
+- Sentir-se "agitado" internamente
+
+### Impulsividade
+
+**Decisões:**
+- Compras por impulso
+- Mudanças abruptas de planos
+- Decisões sem considerar consequências
+- Gastos financeiros problemáticos
+
+**Social:**
+- Interromper conversas
+- Falar sem pensar
+- Impaciência excessiva
+- Dificuldade em esperar
+
+**Emocional:**
+- Reações emocionais intensas
+- Dificuldade em controlar frustração
+- Irritabilidade rápida
+- Busca por estímulo constante
+
+## Impacto na Vida
+
+### Profissional
+
+**Desafios Comuns:**
+- Dificuldade com tarefas repetitivas
+- Problemas de pontualidade
+- Procrastinação de tarefas importantes
+- Dificuldade em seguir hierarquias
+- Mudanças frequentes de emprego
+- Potencial não realizado
+
+**Áreas de Força:**
+- Criatividade e inovação
+- Hiperfoco em temas de interesse
+- Energia e entusiasmo
+- Pensamento divergente
+- Capacidade de multitarefa (quando bem gerenciada)
+- Resiliência desenvolvida
+
+### Relacionamentos
+
+**Dificuldades:**
+- Parceiro se sente ignorado
+- Esquecimento causa conflitos
+- Impulsividade gera problemas
+- Desorganização afeta a família
+- Gestão financeira complicada
+
+**Fortalecimento:**
+- Comunicação aberta sobre TDAH
+- Estratégias compensatórias conjuntas
+- Terapia de casal quando necessário
+- Valorização das qualidades únicas
+
+### Emocional
+
+**Consequências Comuns:**
+- Baixa autoestima de anos de dificuldades
+- Ansiedade por desorganização
+- Depressão secundária comum
+- Frustração com potencial não realizado
+- Sensação de ser "diferente"
+
+### Saúde
+
+**Riscos Associados:**
+- Maior taxa de acidentes
+- Problemas de sono
+- Uso de substâncias (automedicação)
+- Alimentação irregular
+- Sedentarismo ou hiperatividade
+
+## Como é o Diagnóstico?
+
+### Avaliação Completa
+
+**História Detalhada:**
+- Sintomas na infância (crucial)
+- Histórico escolar
+- Relacionamentos
+- Trabalho e carreira
+- Funcionamento diário
+
+**Questionários Padronizados:**
+- Escalas de sintomas
+- Avaliação funcional
+- Questionários para terceiros
+- Autorrelato estruturado
+
+**Avaliação Clínica:**
+- Entrevista diagnóstica
+- Observação comportamental
+- Exame do estado mental
+- Exclusão de outras condições
+
+**Avaliação Neuropsicológica (Opcional):**
+- Testes de atenção
+- Função executiva
+- Memória de trabalho
+- Controle inibitório
+
+### Critérios Diagnósticos
+
+Para diagnóstico de TDAH em adultos:
+
+- Sintomas presentes antes dos 12 anos
+- Sintomas em múltiplos contextos
+- Impacto funcional significativo
+- Não explicado por outra condição
+- Pelo menos 5 sintomas de desatenção e/ou hiperatividade-impulsividade
+
+### Diagnóstico Diferencial
+
+Importante excluir ou identificar comorbidades:
+
+- Ansiedade
+- Depressão
+- Transtorno bipolar
+- Transtornos de aprendizagem
+- Abuso de substâncias
+- Problemas de tireoide
+- Apneia do sono
+
+## Tratamento Multimodal
+
+### Medicação
+
+**Estimulantes (Primeira Linha):**
+- Metilfenidato (Ritalina, Concerta)
+- Anfetaminas (Venvanse)
+- Melhora em 70-80% dos casos
+- Efeito rápido (30-60 minutos)
+- Ajuste de dose necessário
+
+**Não-Estimulantes:**
+- Atomoxetina (Strattera)
+- Antidepressivos (bupropiona)
+- Úteis quando estimulantes não funcionam
+- Efeito mais gradual
+
+**Importantes:**
+- Prescrição e acompanhamento psiquiátrico
+- Ajuste individualizado
+- Monitoramento de efeitos colaterais
+- Não causa dependência quando usado corretamente
+
+### Psicoterapia
+
+**Terapia Cognitivo-Comportamental para TDAH:**
+
+**Foco em Habilidades:**
+- Organização e planejamento
+- Gestão de tempo
+- Quebra de tarefas
+- Controle de impulsos
+- Reestruturação cognitiva
+
+**Estratégias Práticas:**
+- Sistemas de lembretes
+- Listas e checklists
+- Rotinas estruturadas
+- Técnicas de foco
+- Gestão de procrastinação
+
+**Trabalho Emocional:**
+- Autoestima danificada
+- Frustração crônica
+- Ansiedade e depressão comórbidas
+- Aceitação do diagnóstico
+
+### Coaching para TDAH
+
+- Foco em objetivos específicos
+- Accountability
+- Estratégias práticas
+- Suporte entre sessões
+- Complementa terapia
+
+### Intervenções no Estilo de Vida
+
+**Exercício Físico:**
+- Aumenta dopamina e norepinefrina
+- Melhora foco e humor
+- Reduz hiperatividade
+- 30-45 min, 5x/semana ideal
+
+**Sono Regular:**
+- 7-9 horas por noite
+- Horários consistentes
+- Higiene do sono
+- Evitar estimulantes à noite
+
+**Alimentação:**
+- Refeições regulares
+- Proteína em cada refeição
+- Omega-3 pode ajudar
+- Hidratação adequada
+- Limitar açúcar e cafeína
+
+**Mindfulness:**
+- Melhora controle atencional
+- Reduz impulsividade
+- Regula emoções
+- 10-20 min diários
+
+## Estratégias Práticas
+
+### Organização
+
+**Espaço Físico:**
+- Um lugar para cada coisa
+- Etiquetas e cores
+- Minimizar desordem
+- Sistemas visuais
+
+**Digital:**
+- Calendário eletrônico com alertas
+- Apps de tarefas
+- Timers e alarmes
+- Sincronização entre dispositivos
+
+**Rotinas:**
+- Checklist matinal e noturno
+- Rotina de trabalho estruturada
+- Preparação noite anterior
+- Consistência é chave
+
+### Gestão de Tempo
+
+**Técnicas:**
+- Pomodoro (25 min foco + 5 min pausa)
+- Time blocking (blocos de tempo)
+- Buffers entre atividades
+- Subestimar o que consegue fazer
+
+**Ferramentas:**
+- Timers visuais
+- Relógios em vários ambientes
+- Alarmes para transições
+- Apps de produtividade
+
+### Gestão de Tarefas
+
+**Quebra de Projetos:**
+- Dividir em passos pequenos
+- Tornar início óbvio
+- Celebrar micro-conquistas
+- Um passo de cada vez
+
+**Priorização:**
+- Matriz de Eisenhower
+- Três tarefas principais do dia
+- Fazer difícil primeiro
+- Eliminar não essencial
+
+**Anti-Procrastinação:**
+- Regra dos 2 minutos
+- "Só vou começar por 5 min"
+- Body doubling (trabalhar com alguém)
+- Accountability partners
+
+### Controle de Impulsos
+
+**Pausas Intencionais:**
+- Respirar antes de responder
+- Contar até 10
+- Escrever antes de enviar
+- Dormir antes de decisões grandes
+
+**Finanças:**
+- Lista de compras e seguir
+- Esperar 24h para compras grandes
+- Orçamento com buffer
+- Cartão de débito, não crédito
+
+**Social:**
+- Praticar escuta ativa
+- Pausar antes de interromper
+- Validar antes de criticar
+- Pedir feedback honesto
+
+## Adaptações no Trabalho
+
+### Produtividade
+
+**Ambiente:**
+- Espaço quieto quando possível
+- Fones com cancelamento de ruído
+- Minimizar distrações visuais
+- Trabalhar de casa se produtivo
+
+**Tarefas:**
+- Blocos de tempo focado
+- Variedade ao longo do dia
+- Projetos com prazos claros
+- Usar hiperfoco estrategicamente
+
+### Comunicação
+
+**Com Gestor:**
+- Comunicar necessidades (se confortável)
+- Pedir instruções escritas
+- Check-ins regulares
+- Flexibilidade quando possível
+
+**Com Equipe:**
+- Usar ferramentas colaborativas
+- Confirmações por escrito
+- Lembretes sem vergonha
+- Ser transparente sobre estilo
+
+## Relacionamentos e TDAH
+
+### Educação do Parceiro
+
+- Compartilhar informações sobre TDAH
+- Explicar não é preguiça ou desinteresse
+- Identificar padrões juntos
+- Estratégias de casal
+
+### Divisão de Tarefas
+
+- Cada um faz o que faz melhor
+- Sistemas que funcionam para ambos
+- Compensar pontos fracos
+- Não sobre quem está certo
+
+### Comunicação
+
+- Discussões importantes anotadas
+- Repetir pontos-chave sem ofensa
+- Lembretes vistos como ajuda
+- Paciência mútua
+
+## Vida com TDAH
+
+### Desafios Contínuos
+
+- TDAH não tem cura, mas gerenciamento
+- Dias bons e ruins
+- Ajustes constantes necessários
+- Autoaceitação é processo
+
+### Forças Únicas
+
+**Criatividade:**
+- Pensamento fora da caixa
+- Conexões inusitadas
+- Inovação
+
+**Energia:**
+- Entusiasmo contagiante
+- Capacidade de inspirar
+- Paixão por interesses
+
+**Resiliência:**
+- Acostumado a superar desafios
+- Flexibilidade
+- Determinação desenvolvida
+
+**Hiperfoco:**
+- Quando engajado, foco intenso
+- Produtividade excepcional
+- Aprendizado profundo
+
+### Encontrando o Fit Certo
+
+**Carreiras que Podem Funcionar Bem:**
+- Empreendedorismo
+- Criatividade (arte, design, escrita)
+- Emergências (medicina, bombeiro)
+- Vendas e networking
+- Tecnologia e inovação
+- Ensino (para alguns)
+
+**Características Importantes:**
+- Variedade e estimulação
+- Autonomia e flexibilidade
+- Prazos e estrutura externa
+- Alinhamento com interesses
+- Movimento e dinamismo
+
+## Comorbidades Comuns
+
+### Ansiedade
+
+- 50% dos adultos com TDAH
+- Ansiedade de desempenho
+- Preocupação com esquecimentos
+- Tratamento integrado
+
+### Depressão
+
+- 30-40% têm depressão
+- Frustração crônica
+- Baixa autoestima
+- Sentimento de fracasso
+
+### Transtornos de Aprendizagem
+
+- Dislexia
+- Discalculia
+- Disgrafia
+- Avaliação separada necessária
+
+### Abuso de Substâncias
+
+- Taxa maior que população geral
+- Automedicação comum
+- Tratamento do TDAH reduz risco
+- Atenção especial necessária
+
+## Quando Buscar Ajuda
+
+### Sinais de Que Precisa Avaliação
+
+- Dificuldades crônicas inexplicadas
+- Padrão de "não realizar potencial"
+- Relacionamentos e trabalho prejudicados
+- Sentimento de ser diferente sempre
+- Estratégias comuns não funcionam
+- Exaustão de tentar "se consertar"
+
+### Profissionais Indicados
+
+**Psiquiatra:**
+- Diagnóstico especializado
+- Prescrição de medicação
+- Acompanhamento médico
+
+**Psicólogo:**
+- Avaliação neuropsicológica
+- TCC especializada em TDAH
+- Estratégias compensatórias
+- Trabalho emocional
+
+**Neuropsicólogo:**
+- Avaliação detalhada
+- Perfil cognitivo completo
+- Recomendações específicas
+
+## Prognóstico
+
+Com tratamento adequado:
+
+- Melhora significativa em 80-90%
+- Funcionamento próximo ao típico
+- Carreiras bem-sucedidas possíveis
+- Relacionamentos saudáveis viáveis
+- Qualidade de vida muito melhorada
+- Forças únicas podem brilhar
+
+## Recursos e Suporte
+
+### Informação
+
+- ABDA (Associação Brasileira de Déficit de Atenção)
+- Livros especializados
+- Podcasts sobre TDAH
+- Comunidades online
+
+### Suporte
+
+- Grupos de apoio
+- Fóruns online
+- Coaching especializado
+- Comunidades locais
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psicólogos e psiquiatras especializados em TDAH em Belo Horizonte. Profissionais experientes podem fazer avaliação adequada e desenvolver plano de tratamento personalizado.
+
+TDAH em adultos é real, tratável e você não está sozinho. Com diagnóstico correto e tratamento adequado, é possível não apenas funcionar, mas prosperar. Suas diferenças podem se tornar suas maiores forças.
+
+Se você se identificou com os sintomas descritos, buscar avaliação pode ser o primeiro passo para entender dificuldades de toda uma vida e finalmente encontrar estratégias que funcionem para você.`,
+    category: 'Saúde Mental',
+    tags: ['TDAH', 'déficit de atenção', 'hiperatividade', 'adultos', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-01-25',
+    readTime: 18,
+    featured: true,
+  },
+  {
+    id: '12',
+    title: 'Transtorno Bipolar: Entendendo as Oscilações de Humor',
+    slug: 'transtorno-bipolar-oscilacoes-humor',
+    excerpt: 'Conheça os sintomas, tipos e tratamentos do transtorno bipolar, uma condição que vai além de simples mudanças de humor.',
+    content: `# Transtorno Bipolar: Entendendo as Oscilações de Humor
+
+O transtorno bipolar é uma condição de saúde mental caracterizada por mudanças extremas de humor, energia e capacidade de funcionar. Compreender essa condição é essencial para diagnóstico e tratamento adequados.
+
+## O que é Transtorno Bipolar?
+
+O transtorno bipolar, anteriormente chamado de psicose maníaco-depressiva, é caracterizado por episódios alternados de mania (ou hipomania) e depressão. Não são simplesmente "altos e baixos" comuns - são mudanças intensas que afetam significativamente a vida.
+
+### Características Principais
+
+- Episódios de humor distintos
+- Períodos de funcionamento normal entre episódios
+- Impacto significativo no funcionamento
+- Condição crônica que requer tratamento contínuo
+- Geralmente surge no final da adolescência ou início da vida adulta
+
+## Tipos de Transtorno Bipolar
+
+### Tipo I
+
+**Características:**
+- Pelo menos um episódio maníaco completo
+- Episódios depressivos geralmente presentes
+- Mania pode requerer hospitalização
+- Impacto funcional grave
+- Sintomas psicóticos podem ocorrer
+
+**Episódio Maníaco:**
+- Duração mínima de 7 dias
+- Humor elevado ou irritável
+- Aumento de energia marcante
+- Prejuízo funcional significativo
+
+### Tipo II
+
+**Características:**
+- Pelo menos um episódio hipomaníaco
+- Pelo menos um episódio depressivo maior
+- Nunca episódio maníaco completo
+- Depressões geralmente mais frequentes e duradouras
+- Muitas vezes subdiagnosticado
+
+**Hipomania:**
+- Duração mínima de 4 dias
+- Sintomas similares à mania, mas menos intensos
+- Sem prejuízo funcional grave
+- Sem sintomas psicóticos
+
+### Ciclotimia
+
+**Características:**
+- Sintomas hipomaníacos e depressivos crônicos
+- Pelo menos 2 anos de duração
+- Sintomas não atingem critérios completos
+- Períodos de estabilidade breves (menos de 2 meses)
+- Pode evoluir para bipolaridade completa
+
+## Sintomas de Mania
+
+### Humor e Cognição
+
+**Humor Elevado:**
+- Euforia intensa
+- Sensação de invencibilidade
+- Autoconfiança exagerada
+- Irritabilidade extrema
+- Otimismo irrealista
+
+**Pensamentos:**
+- Pensamento acelerado
+- Fuga de ideias
+- Distraibilidade extrema
+- Grandiosidade
+- Insights "geniais"
+- Ideias delirantes (em casos graves)
+
+### Comportamento
+
+**Energia:**
+- Hiperatividade extrema
+- Múltiplos projetos simultâneos
+- Pouca necessidade de sono
+- Inquietação constante
+- Movimento contínuo
+
+**Ações:**
+- Impulsividade acentuada
+- Gastos excessivos
+- Investimentos arriscados
+- Comportamento sexual de risco
+- Uso de substâncias
+- Decisões importantes sem reflexão
+- Agressividade (quando contrariado)
+
+**Social:**
+- Fala excessiva e rápida
+- Desinibição social
+- Intrusividade
+- Conflitos aumentados
+- Dificuldade em escutar
+
+### Funcionamento
+
+**Prejuízos:**
+- Incapacidade de trabalhar
+- Relacionamentos danificados
+- Problemas financeiros graves
+- Questões legais
+- Risco para si e outros
+
+**Em Casos Graves:**
+- Sintomas psicóticos
+- Delírios de grandeza
+- Alucinações
+- Desorganização completa
+- Necessidade de hospitalização
+
+## Sintomas de Hipomania
+
+Similar à mania, mas:
+
+- Menos intensa
+- Sem prejuízo funcional grave
+- Sem sintomas psicóticos
+- Duração menor (4 dias mínimo)
+- Pode até aumentar produtividade temporariamente
+- Muitas vezes vista como "período bom"
+- Frequentemente não reconhecida como problemática
+
+## Sintomas de Depressão Bipolar
+
+### Humor e Emoções
+
+- Tristeza profunda e persistente
+- Vazio ou desesperança
+- Perda total de prazer
+- Irritabilidade
+- Ansiedade intensa
+- Sentimento de inutilidade
+- Culpa excessiva
+
+### Cognição
+
+- Dificuldade de concentração grave
+- Indecisão paralisante
+- Pensamentos lentos
+- Memória prejudicada
+- Pensamentos de morte ou suicídio
+- Ruminação constante
+
+### Físico
+
+- Fadiga extrema
+- Lentidão psicomotora
+- Sono excessivo ou insônia
+- Mudanças no apetite e peso
+- Dores inexplicáveis
+- Baixa libido
+
+### Comportamento
+
+- Isolamento social severo
+- Abandono de atividades
+- Negligência de higiene
+- Incapacidade de trabalhar
+- Absenteísmo
+
+### Diferenças da Depressão Unipolar
+
+Depressão bipolar tende a ter:
+- Hipersonia (em vez de insônia)
+- Aumento de apetite
+- Lentidão psicomotora mais marcante
+- Início mais jovem
+- Episódios mais curtos mas recorrentes
+- Histórico familiar de bipolaridade
+
+## Estados Mistos
+
+### O Que São
+
+Presença simultânea de sintomas maníacos e depressivos:
+
+- Humor deprimido + energia aumentada
+- Pensamento acelerado + desesperança
+- Agitação + fadiga
+- Irritabilidade extrema
+
+### Por Que São Perigosos
+
+- Maior risco de suicídio
+- Sofrimento intenso
+- Impulsividade + desesperança = perigo
+- Difícil de tratar
+- Muito desconfortável
+
+## Causas e Fatores de Risco
+
+### Biológicas
+
+**Genética:**
+- Forte componente hereditário
+- Risco de 10% com um pai afetado
+- Risco de 40% com ambos pais afetados
+- Genes específicos identificados
+
+**Neurobiologia:**
+- Alterações em neurotransmissores
+- Diferenças estruturais cerebrais
+- Disfunção em regulação do humor
+- Ritmos circadianos alterados
+
+### Ambientais
+
+**Estresse:**
+- Eventos estressantes podem desencadear
+- Trauma na infância aumenta risco
+- Perdas significativas
+- Mudanças importantes de vida
+
+**Substâncias:**
+- Uso de drogas pode precipitar
+- Álcool agrava sintomas
+- Alguns medicamentos podem induzir mania
+
+### Gatilhos de Episódios
+
+**Mania:**
+- Privação de sono
+- Antidepressivos (sem estabilizador)
+- Estresse positivo (promoção, casamento)
+- Primavera/verão (alguns casos)
+- Uso de estimulantes
+
+**Depressão:**
+- Estresse negativo
+- Luto e perdas
+- Conflitos relacionais
+- Outono/inverno (alguns casos)
+- Descontinuação de medicação
+
+## Diagnóstico
+
+### Desafios
+
+**Subdiagnóstico:**
+- Hipomania pode não ser reconhecida
+- Pacientes procuram ajuda na depressão
+- Bipolar II frequentemente diagnosticado como depressão
+- Demora média de 10 anos para diagnóstico correto
+
+**Diagnóstico Diferencial:**
+
+Importante distinguir de:
+- Depressão unipolar
+- Transtorno de personalidade borderline
+- TDAH
+- Transtornos de ansiedade
+- Uso de substâncias
+- Condições médicas (tireoide)
+
+### Processo Diagnóstico
+
+**História Detalhada:**
+- Episódios de humor ao longo da vida
+- Histórico familiar crucial
+- Resposta a antidepressivos
+- Padrões de sono e energia
+- Comportamentos de risco
+
+**Avaliação Clínica:**
+- Entrevista estruturada
+- Escalas de avaliação de humor
+- Informações de terceiros importantes
+- Exame do estado mental
+
+**Exames Complementares:**
+- Exclusão de causas médicas
+- Exames de tireoide
+- Níveis de substâncias
+- Neuroimagem quando indicado
+
+## Tratamento
+
+### Estabilizadores de Humor
+
+**Medicações de Primeira Linha:**
+
+**Lítio:**
+- Padrão-ouro histórico
+- Previne mania e depressão
+- Reduz risco de suicídio
+- Requer monitoramento sanguíneo
+- Margem terapêutica estreita
+
+**Anticonvulsivantes:**
+- Valproato (Depakote)
+- Lamotrigina (Lamictal)
+- Carbamazepina
+- Cada um com perfil específico
+
+**Antipsicóticos Atípicos:**
+- Quetiapina (Seroquel)
+- Olanzapina (Zyprexa)
+- Aripiprazol (Abilify)
+- Risperidona
+- Úteis na mania aguda
+
+### Tratamento de Episódios
+
+**Mania Aguda:**
+- Antipsicótico ou estabilizador
+- Benzodiazepínicos para agitação
+- Possível hospitalização
+- Proteção contra decisões prejudiciais
+
+**Depressão Bipolar:**
+- Estabilizador de humor primeiro
+- Antidepressivo (com cautela)
+- Lamotrigina eficaz
+- Quetiapina aprovada
+
+**Estados Mistos:**
+- Antipsicótico atípico
+- Evitar antidepressivos
+- Tratamento mais desafiador
+
+### Psicoterapia
+
+**TCC para Transtorno Bipolar:**
+- Psicoeducação sobre a condição
+- Reconhecimento precoce de sintomas
+- Regulação de rotinas
+- Enfrentamento de estressores
+- Prevenção de recaídas
+
+**Terapia Focada em Família:**
+- Educação familiar
+- Comunicação efetiva
+- Resolução de conflitos
+- Redução de estresse familiar
+- Suporte para cuidadores
+
+**Terapia de Ritmo Social:**
+- Regularização de rotinas
+- Sono consistente
+- Atividades programadas
+- Estabilização de ritmos circadianos
+
+**Terapia Interpessoal:**
+- Relacionamentos e humor
+- Transições de vida
+- Luto e perdas
+- Conflitos interpessoais
+
+### Outras Intervenções
+
+**Eletroconvulsoterapia (ECT):**
+- Casos graves e resistentes
+- Risco suicida iminente
+- Gravidez quando medicação não possível
+- Muito eficaz mas estigmatizada
+
+**Estimulação Magnética Transcraniana:**
+- Depressão bipolar resistente
+- Não-invasiva
+- Menos efeitos colaterais
+
+## Manejo no Dia a Dia
+
+### Rotina é Essencial
+
+**Sono Regular:**
+- Horários fixos de dormir e acordar
+- 7-9 horas por noite
+- Evitar privação de sono rigorosamente
+- Rotina de wind-down
+
+**Refeições:**
+- Horários regulares
+- Não pular refeições
+- Alimentação balanceada
+- Limitar cafeína e açúcar
+
+**Atividades:**
+- Estrutura diária
+- Equilíbrio trabalho-descanso
+- Exercício regular e moderado
+- Hobbies e lazer programados
+
+### Monitoramento de Humor
+
+**Gráfico de Humor:**
+- Registrar humor diariamente
+- Notar energia, sono, irritabilidade
+- Identificar padrões
+- Antecipar mudanças
+- Compartilhar com profissionais
+
+**Sinais de Alerta:**
+
+**Mania se Aproximando:**
+- Diminuição da necessidade de sono
+- Aumento de energia
+- Mais falante
+- Irritabilidade crescente
+- Novos projetos ou gastos
+
+**Depressão se Aproximando:**
+- Fadiga aumentando
+- Perda de interesse
+- Isolamento social
+- Alterações no sono
+- Pessimismo crescente
+
+### Plano de Ação
+
+**Precoce:**
+- Contatar terapeuta/psiquiatra
+- Ajuste de medicação se necessário
+- Aumentar autocuidado
+- Reduzir estressores
+- Ativar rede de apoio
+
+**Crise:**
+- Contatos de emergência
+- Possível hospitalização
+- Proteção financeira (cartões bloqueados)
+- Afastamento do trabalho
+- Supervisão próxima
+
+## Prevenção de Recaídas
+
+### Adesão ao Tratamento
+
+**Maior Desafio:**
+- 50% interrompem medicação
+- Sentir-se bem leva à descontinuação
+- Saudade da mania/hipomania
+- Efeitos colaterais
+- Negação da condição
+
+**Estratégias:**
+- Psicoeducação contínua
+- Caixa de pílulas organizadora
+- Alarmes de lembrete
+- Apoio familiar
+- Relação forte com psiquiatra
+
+### Gestão de Estresse
+
+**Redução:**
+- Identificar estressores
+- Técnicas de relaxamento
+- Mindfulness
+- Atividade física regular
+- Hobbies prazerosos
+
+**Evitar Gatilhos:**
+- Álcool e drogas
+- Privação de sono
+- Mudanças drásticas não planejadas
+- Conflitos desnecessários
+
+### Rede de Apoio
+
+**Família e Amigos:**
+- Educação sobre a condição
+- Sinais de alerta compartilhados
+- Permissão para alertar
+- Suporte sem julgamento
+- Limites saudáveis
+
+**Grupos de Apoio:**
+- Compartilhar experiências
+- Aprender estratégias
+- Reduzir isolamento
+- Esperança e validação
+
+## Vida com Transtorno Bipolar
+
+### Desafios Crônicos
+
+**Realidade:**
+- Condição de longo prazo
+- Necessidade de tratamento contínuo
+- Risco de recaídas
+- Impacto em várias áreas
+- Estigma social
+
+**Aceitação:**
+- Luto pela "vida sem doença"
+- Integração da condição à identidade
+- Não deixar definir quem você é
+- Foco no que é possível
+
+### Conquistas Possíveis
+
+**Com Tratamento Adequado:**
+- Estabilidade de humor duradoura
+- Carreira bem-sucedida
+- Relacionamentos saudáveis
+- Qualidade de vida excelente
+- Funcionamento próximo ao normal
+
+**Pessoas Famosas com Transtorno Bipolar:**
+- Artistas, escritores, cientistas
+- Empresários de sucesso
+- Políticos e líderes
+- Demonstrando potencial total
+
+### Criatividade e Bipolaridade
+
+**Conexão Observada:**
+- Taxas altas em artistas
+- Hipomani pode aumentar criatividade
+- Pensamento divergente
+- Sensibilidade emocional
+
+**Equilíbrio:**
+- Criatividade não requer mania
+- Estabilidade permite criar consistentemente
+- Tratamento não elimina criatividade
+- Maior produtividade quando estável
+
+## Relacionamentos
+
+### Para o Parceiro
+
+**Compreensão:**
+- Educar-se sobre a condição
+- Sintomas não são escolha
+- Distinguir pessoa da doença
+- Paciência em episódios
+
+**Suporte:**
+- Incentivar tratamento
+- Ajudar monitorar humor
+- Apoio em crises
+- Autocuidado próprio também
+
+**Comunicação:**
+- Discutir plano de crise quando estável
+- Limites claros
+- Expressão de necessidades
+- Terapia de casal útil
+
+### Para Quem Tem Bipolaridade
+
+**Com Parceiro:**
+- Ser aberto sobre a condição
+- Educá-lo sobre sintomas
+- Seguir tratamento
+- Comunicar necessidades
+- Não usar condição como desculpa
+
+**Com Filhos:**
+- Educação apropriada à idade
+- Estabilidade e tratamento protegem
+- Modelar enfrentamento saudável
+- Atenção a sinais nos filhos (risco genético)
+
+## Trabalho e Carreira
+
+### Desafios
+
+- Episódios podem afetar desempenho
+- Absenteísmo em crises
+- Decisões de revelar ou não
+- Estigma no ambiente profissional
+- Gestão de estresse
+
+### Estratégias
+
+**Escolha de Carreira:**
+- Considerar flexibilidade
+- Nível de estresse manejável
+- Alinhamento com interesses
+- Possibilidade de autonomia
+
+**No Trabalho:**
+- Rotina regular
+- Gestão proativa de estresse
+- Equilíbrio vida-trabalho
+- Plano para crises
+
+**Revelação:**
+- Decisão pessoal
+- Considerar leis de proteção
+- Possíveis acomodações razoáveis
+- Avaliar cultura da empresa
+
+## Questões Especiais
+
+### Gravidez e Pós-Parto
+
+**Desafios:**
+- Risco aumentado de episódios
+- Medicações e amamentação
+- Privação de sono com bebê
+- Mudanças hormonais
+
+**Manejo:**
+- Planejamento pré-concepção
+- Acompanhamento próximo
+- Equipe multidisciplinar
+- Algumas medicações seguras
+- Plano para pós-parto
+- Rede de apoio essencial
+
+### Comorbidades
+
+**Comuns:**
+- Transtornos de ansiedade (50-60%)
+- Abuso de substâncias (40-60%)
+- TDAH (10-20%)
+- Transtornos alimentares
+
+**Implicações:**
+- Tratamento mais complexo
+- Pior prognóstico se não tratado
+- Abordagem integrada necessária
+
+### Risco de Suicídio
+
+**Estatísticas:**
+- Risco de 20-30x maior
+- 25-50% tentam suicídio
+- Estados mistos mais perigosos
+- Depressão bipolar mais letal
+
+**Prevenção:**
+- Tratamento adequado e contínuo
+- Lítio reduz risco especificamente
+- Monitoramento próximo
+- Rede de apoio ativa
+- Plano de crise claro
+- Sinais de alerta reconhecidos
+
+**Emergência:**
+- CVV: 188 (24h)
+- Emergência psiquiátrica
+- Não deixar sozinho
+- Remover meios letais
+
+## Quando Buscar Ajuda
+
+### Primeiros Sinais
+
+- Mudanças extremas de humor
+- Períodos de energia excessiva + depressão
+- Comportamentos fora do padrão
+- Impulsividade prejudicial
+- Histórico familiar de bipolaridade
+- Resposta ruim a antidepressivos
+
+### Urgência
+
+**Busque Ajuda Imediata Se:**
+- Pensamentos suicidas
+- Comportamento muito impulsivo/de risco
+- Sintomas psicóticos
+- Incapacidade de cuidar de si
+- Risco para outros
+
+## Prognóstico
+
+### Sem Tratamento
+
+- Episódios mais frequentes e graves
+- Funcionamento deteriorado
+- Problemas em múltiplas áreas
+- Risco de suicídio elevado
+- Comorbidades desenvolvem
+
+### Com Tratamento Adequado
+
+- 70-80% têm boa resposta
+- Episódios menos frequentes e intensos
+- Funcionamento restaurado
+- Vida plena possível
+- Carreira e relacionamentos viáveis
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psiquiatras e psicólogos especializados em transtorno bipolar em Belo Horizonte. Tratamento especializado com profissionais experientes faz toda diferença.
+
+Transtorno bipolar é uma condição séria, mas altamente tratável. Com diagnóstico correto, medicação adequada e acompanhamento psicológico, pessoas com bipolaridade podem levar vidas plenas, produtivas e significativas.
+
+Se você ou alguém que você ama apresenta sintomas, buscar avaliação especializada é o primeiro passo para recuperar estabilidade e qualidade de vida. Quanto mais cedo o tratamento adequado começa, melhor o prognóstico.`,
+    category: 'Saúde Mental',
+    tags: ['transtorno bipolar', 'mania', 'depressão', 'oscilações de humor', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-01-28',
+    readTime: 20,
+    featured: true,
+  },
+  {
+    id: '13',
+    title: 'Depressão Pós-Parto: Sintomas, Tratamento e Suporte',
+    slug: 'depressao-pos-parto-sintomas-tratamento',
+    excerpt: 'Compreenda a depressão pós-parto, uma condição comum mas tratável que afeta muitas mães após o nascimento do bebê.',
+    content: `# Depressão Pós-Parto: Sintomas, Tratamento e Suporte
+
+A depressão pós-parto é uma condição séria de saúde mental que afeta até 1 em cada 5 mães após o nascimento do bebê. Não é sinal de fraqueza ou falha - é uma condição médica real que requer atenção e tratamento.
+
+## O que é Depressão Pós-Parto?
+
+Depressão pós-parto (DPP) é um episódio depressivo que ocorre após o nascimento de um bebê, caracterizado por tristeza profunda, ansiedade e exaustão que interferem na capacidade da mãe de cuidar de si mesma e do bebê.
+
+### Quando Ocorre
+
+- Geralmente nas primeiras 4 semanas após o parto
+- Pode surgir até 1 ano após o nascimento
+- Pico de incidência: 6-12 semanas pós-parto
+- Algumas mães têm sintomas durante a gravidez
+
+### Prevalência
+
+- 15-20% das mães
+- Mais comum do que se imagina
+- Pode afetar qualquer mãe
+- Subdiagnosticada e subtratada
+- Pais também podem ter (10%)
+
+## Diferenças Importantes
+
+### Baby Blues vs. Depressão Pós-Parto
+
+**Baby Blues (50-80% das mães):**
+
+**Características:**
+- Início: 2-3 dias após o parto
+- Duração: Até 2 semanas
+- Sintomas leves
+- Melhora espontaneamente
+- Não interfere no funcionamento
+
+**Sintomas:**
+- Choro fácil
+- Mudanças de humor
+- Ansiedade leve
+- Insônia
+- Sensação de sobrecarga
+
+**O Que Fazer:**
+- Descanso
+- Apoio familiar
+- Alimentação adequada
+- Paciência consigo mesma
+
+**Depressão Pós-Parto:**
+
+**Características:**
+- Início: Semanas a meses após parto
+- Duração: Não resolve sozinha
+- Sintomas moderados a graves
+- Interfere significativamente
+- Requer tratamento
+
+### Psicose Pós-Parto (Rara - 0,1-0,2%)
+
+**Emergência Médica:**
+- Início: Primeiros dias a semanas
+- Confusão e desorientação
+- Delírios (crenças falsas)
+- Alucinações
+- Pensamentos sobre ferir bebê
+- Comportamento errático
+
+**IMPORTANTE:** Psicose pós-parto é emergência psiquiátrica. Busque ajuda imediata no hospital mais próximo.
+
+## Sintomas de Depressão Pós-Parto
+
+### Emocionais
+
+**Humor:**
+- Tristeza profunda e persistente
+- Choro frequente e incontrolável
+- Sentimento de vazio
+- Desesperança
+- Irritabilidade extrema
+- Raiva desproporcional
+
+**Ansiedade:**
+- Preocupação excessiva com o bebê
+- Medo de ficar sozinha com bebê
+- Pensamentos intrusivos (medo de machucar bebê)
+- Pânico
+- Sensação constante de pavor
+
+**Culpa:**
+- Sentimento de ser má mãe
+- Culpa por não sentir alegria
+- Vergonha dos sentimentos
+- Sensação de fracasso
+
+### Cognitivos
+
+**Pensamento:**
+- Dificuldade de concentração
+- Indecisão paralisante
+- Esquecimento
+- Pensamentos negativos sobre si
+- Pensamentos sobre morte ou suicídio
+- Pensamentos de ferir bebê (raros mas angustiantes)
+
+**Vínculo:**
+- Dificuldade de sentir conexão com bebê
+- Falta de interesse no bebê
+- Sentimento de rejeição
+- Medo de não amar o bebê suficientemente
+
+### Físicos
+
+- Fadiga extrema além do normal
+- Mudanças no apetite (falta ou excesso)
+- Insônia (mesmo quando bebê dorme)
+- Dores inexplicáveis
+- Agitação ou lentidão
+- Baixa energia constante
+
+### Comportamentais
+
+**Isolamento:**
+- Evitar amigos e família
+- Não querer sair de casa
+- Rejeitar ajuda
+- Afastar-se do parceiro
+
+**Cuidados:**
+- Dificuldade em cuidar do bebê
+- Negligência de autocuidado
+- Alimentação irregular
+- Descuido com higiene
+- Evitação do bebê ou superproteção
+
+## Causas e Fatores de Risco
+
+### Biológicas
+
+**Hormonais:**
+- Queda abrupta de estrogênio e progesterona
+- Alterações em hormônios tireoidianos
+- Mudanças em neurotransmissores
+- Sensibilidade a mudanças hormonais
+
+**Físicas:**
+- Privação extrema de sono
+- Dor física do parto
+- Complicações no parto
+- Recuperação de cesárea
+- Amamentação desafiadora
+
+### Psicológicas
+
+**Histórico:**
+- Depressão ou ansiedade prévia
+- DPP em gravidez anterior (50% de recorrência)
+- Histórico familiar
+- Transtorno bipolar
+- Trauma prévio
+
+**Personalidade:**
+- Perfeccionismo
+- Dificuldade em pedir ajuda
+- Necessidade de controle
+- Baixa autoestima
+
+### Sociais
+
+**Suporte:**
+- Falta de apoio do parceiro
+- Isolamento social
+- Conflitos familiares
+- Ausência de rede de apoio
+- Mudança recente de cidade
+
+**Estressores:**
+- Dificuldades financeiras
+- Problemas no relacionamento
+- Gravidez não planejada
+- Bebê com necessidades especiais
+- Múltiplos filhos pequenos
+
+**Culturais:**
+- Pressão por "maternidade perfeita"
+- Falta de preparo realista
+- Idealização da maternidade
+- Estigma em buscar ajuda
+
+### Circunstanciais
+
+**Gravidez e Parto:**
+- Complicações na gravidez
+- Parto traumático
+- Bebê prematuro ou UTI neonatal
+- Dificuldades na amamentação
+- Bebê com cólicas ou que chora muito
+
+## Impacto
+
+### Na Mãe
+
+**Imediato:**
+- Sofrimento intenso
+- Incapacidade de desfrutar maternidade
+- Exaustão além do normal
+- Funcionamento prejudicado
+
+**Longo Prazo (Sem Tratamento):**
+- Depressão crônica
+- Transtornos de ansiedade
+- Problemas no relacionamento
+- Dificuldades com filhos futuros
+
+### No Bebê
+
+**Vínculo:**
+- Dificuldade no apego
+- Menos interação mãe-bebê
+- Bebê menos responsivo socialmente
+
+**Desenvolvimento:**
+- Atrasos cognitivos possíveis
+- Problemas comportamentais futuros
+- Maior risco de ansiedade/depressão
+
+**IMPORTANTE:** Com tratamento adequado, impactos no bebê são minimizados ou evitados.
+
+### Na Família
+
+- Relacionamento conjugal afetado
+- Irmãos mais velhos impactados
+- Dinâmica familiar alterada
+- Estresse familiar aumentado
+
+## Diagnóstico
+
+### Quando Suspeitar
+
+- Sintomas persistem além de 2 semanas
+- Pioram em vez de melhorar
+- Interferem no cuidado do bebê
+- Pensamentos de se machucar ou machucar bebê
+- Incapacidade de desfrutar momentos
+
+### Triagem
+
+**Escala de Edimburgo (EPDS):**
+- Questionário de 10 itens
+- Validado internacionalmente
+- Pontuação indica probabilidade de DPP
+- Usado por profissionais de saúde
+
+**Avaliação Clínica:**
+- Entrevista detalhada
+- Histórico completo
+- Situação atual
+- Exclusão de outras causas
+- Avaliação de risco
+
+### Profissionais Envolvidos
+
+- Obstetra/ginecologista
+- Pediatra (pode identificar)
+- Psiquiatra
+- Psicólogo
+- Enfermeira obstétrica
+
+## Tratamento
+
+### Psicoterapia
+
+**Terapia Cognitivo-Comportamental:**
+
+**Foco:**
+- Pensamentos negativos sobre maternidade
+- Crenças de inadequação
+- Medos e preocupações
+- Estratégias de enfrentamento
+- Habilidades parentais
+
+**Eficácia:**
+- Muito eficaz para DPP
+- Resultados em 12-20 sessões
+- Previne recorrência
+
+**Terapia Interpessoal:**
+
+**Foco:**
+- Mudança de papel (tornar-se mãe)
+- Relacionamentos afetados
+- Suporte social
+- Expectativas e realidade
+- Comunicação com parceiro
+
+**Terapia em Grupo:**
+- Compartilhar experiências
+- Reduzir isolamento
+- Normalizar sentimentos
+- Aprender com outras mães
+- Rede de apoio
+
+### Medicação
+
+**Quando Considerar:**
+- DPP moderada a grave
+- Não resposta apenas à terapia
+- Incapacidade de cuidar do bebê
+- Pensamentos suicidas
+- Histórico de DPP grave
+
+**Antidepressivos:**
+
+**ISRSs (Primeira Linha):**
+- Sertralina (Zoloft)
+- Paroxetina (Paxil)
+- Fluoxetina (Prozac)
+
+**Compatibilidade com Amamentação:**
+- Muitos antidepressivos são seguros
+- Benefício do tratamento geralmente supera risco
+- Decisão individualizada com psiquiatra
+- Monitoramento do bebê
+
+**Tempo de Efeito:**
+- 4-6 semanas para efeito completo
+- Melhora gradual
+- Continuar 6-12 meses após remissão
+- Descontinuação gradual
+
+**Outros:**
+- Ansiolíticos (curto prazo)
+- Hormônios (investigacional)
+- Estimulação magnética transcraniana
+
+### Suporte Prático
+
+**Apoio em Casa:**
+
+**Essencial:**
+- Ajuda com tarefas domésticas
+- Revezamento nos cuidados noturnos
+- Preparação de refeições
+- Cuidado de outros filhos
+- Permitir descanso da mãe
+
+**Sono:**
+- Priorizar sono materno
+- Revezamento com parceiro/família
+- "Dormir quando bebê dorme"
+- Ajuda noturna se possível
+- Considerar fórmula para alguns mamadas
+
+**Autocuidado:**
+- Encorajar banho e higiene
+- Alimentação nutritiva
+- Saídas breves sozinha
+- Atividade física leve
+- Momentos de prazer
+
+### Grupos de Apoio
+
+- Grupos de mães com DPP
+- Comunidades online
+- Encontros presenciais
+- Compartilhamento de estratégias
+- Redução do isolamento
+
+## Prevenção
+
+### Durante a Gravidez
+
+**Identificação de Risco:**
+- Triagem de história de depressão
+- Avaliação de fatores de risco
+- Psicoeducação sobre DPP
+- Plano preventivo
+
+**Preparação:**
+- Expectativas realistas sobre maternidade
+- Construção de rede de apoio
+- Planejamento prático pós-parto
+- Estratégias de enfrentamento
+- Contatos de profissionais
+
+**Alto Risco:**
+- DPP prévia: Considerar profilaxia
+- Depressão na gravidez: Tratamento
+- Acompanhamento próximo pós-parto
+- Plano de crise
+
+### Pós-Parto
+
+**Primeiras Semanas:**
+- Sono prioritário
+- Aceitação de ajuda
+- Expectativas realistas
+- Conexão social mantida
+- Autocuidado básico
+
+**Monitoramento:**
+- Atenção a sintomas
+- Comunicação aberta
+- Triagem em consultas
+- Busca precoce de ajuda
+
+## Estratégias de Enfrentamento
+
+### Para a Mãe
+
+**Aceite a Realidade:**
+- Maternidade é difícil
+- Você não precisa ser perfeita
+- Pedir ajuda não é fraqueza
+- Sentimentos ambivalentes são normais
+- Tratamento não significa que falhou
+
+**Autocuidado Mínimo:**
+- Banho diário
+- Roupas limpas
+- Refeições regulares (mesmo simples)
+- Saídas de casa (mesmo breves)
+- Contato com outras pessoas
+
+**Conexão Gradual:**
+- Tempo pele-a-pele com bebê
+- Falar com bebê (mesmo sem sentir)
+- Rotinas de cuidado
+- Momentos prazerosos juntos
+- Sem pressão para "amor instantâneo"
+
+**Gestão de Pensamentos:**
+- Reconhecer pensamentos intrusivos são comuns
+- Não significam que você fará
+- Compartilhar com terapeuta
+- Técnicas de distração
+- Autocompaixão
+
+### Para o Parceiro
+
+**Como Ajudar:**
+
+**Reconheça:**
+- Não é preguiça ou frescura
+- É doença real
+- Não vai melhorar sozinha
+- Não é culpa dela
+
+**Apoie:**
+- Incentive tratamento profissional
+- Assuma mais tarefas
+- Cuide do bebê para ela descansar
+- Ouça sem julgar ou minimizar
+- Reconheça o esforço dela
+
+**Monitore:**
+- Atenção a piora de sintomas
+- Pensamentos suicidas
+- Incapacidade de cuidar do bebê
+- Necessidade de intervenção
+
+**Cuide de Si:**
+- Busque seu próprio suporte
+- Reconheça seus limites
+- Considere terapia também
+- Mantenha autocuidado básico
+
+### Para Família e Amigos
+
+**Ofereça Ajuda Concreta:**
+- "Vou levar almoço amanhã" (não "precisa de algo?")
+- Faxina ou lavanderia
+- Cuidar de outros filhos
+- Fazer compras
+- Ficar com bebê para ela dormir
+
+**Seja Presente:**
+- Visitas breves e úteis
+- Sem julgamentos
+- Validação de sentimentos
+- Sem conselhos não solicitados
+- Disponibilidade para escutar
+
+**Não Diga:**
+- "Aproveite, passa rápido"
+- "Você deveria estar feliz"
+- "Outras mães conseguem"
+- "É só cansaço"
+- "Pense positivo"
+
+**Diga:**
+- "Você está fazendo um ótimo trabalho"
+- "É difícil mesmo"
+- "Como posso ajudar?"
+- "Você não está sozinha"
+- "Isso vai passar com tratamento"
+
+## Amamentação e DPP
+
+### Desafios
+
+- Dificuldade pode contribuir para DPP
+- DPP pode dificultar amamentação
+- Pressão social aumenta culpa
+- Privação de sono agravada
+
+### Considerações
+
+**Se Amamentação é Fonte de Estresse:**
+- Considerar complementação
+- Fórmula não é fracasso
+- Saúde mental materna é prioridade
+- Mãe saudável > amamentação a qualquer custo
+
+**Medicação e Amamentação:**
+- Muitos antidepressivos compatíveis
+- Discussão com psiquiatra
+- Benefícios geralmente superam riscos
+- Monitoramento quando necessário
+
+**Suporte:**
+- Consultora de amamentação
+- Grupos de apoio
+- Opções flexíveis
+- Sem julgamento
+
+## Recuperação
+
+### O Que Esperar
+
+**Com Tratamento:**
+- Melhora gradual em semanas
+- Não é linear (altos e baixos)
+- Primeiros sinais: Sono e apetite melhoram
+- Depois: Humor e interesse aumentam
+- Completa: Prazer retorna
+
+**Tempo:**
+- Variável por pessoa
+- Geralmente 3-6 meses
+- Alguns casos mais tempo
+- Tratamento continuado previne recaída
+
+### Vínculo com Bebê
+
+**Reconexão:**
+- Acontece gradualmente
+- Não force
+- Pequenos momentos contam
+- Qualidade sobre quantidade
+- Perdão próprio
+
+**Bebê Estará Bem:**
+- Crianças são resilientes
+- Tratamento materno os beneficia
+- Vínculo pode ser construído depois
+- Amor cresce com tempo
+
+### Novos Filhos
+
+**Planejamento:**
+- Considerar recorrência (50%)
+- Espaçamento entre filhos
+- Suporte garantido
+- Plano preventivo
+- Decisão informada
+
+## Quando Buscar Ajuda Urgente
+
+**Emergência Se:**
+- Pensamentos de machucar a si mesma
+- Pensamentos de machucar o bebê
+- Sintomas psicóticos
+- Incapacidade total de funcionar
+- Desejo de fugir e não voltar
+
+**Contatos de Emergência:**
+- SAMU: 192
+- CVV: 188
+- Emergência hospitalar mais próxima
+- Não hesite em buscar ajuda
+
+## Mitos e Verdades
+
+### "DPP significa que você não ama seu bebê"
+**FALSO.** DPP é doença, não falta de amor. Com tratamento, vínculo se desenvolve.
+
+### "Só mulheres frágeis têm DPP"
+**FALSO.** Pode afetar qualquer mãe, independente de força ou caráter.
+
+### "Se você queria o bebê, não deveria ficar deprimida"
+**FALSO.** DPP não tem relação com querer ou não o bebê.
+
+### "DPP é frescura ou falta de fé"
+**FALSO.** É condição médica com causas biológicas, psicológicas e sociais.
+
+### "Você não pode tomar antidepressivo amamentando"
+**FALSO.** Muitos são seguros. Discussão com psiquiatra é necessária.
+
+### "DPP passa sozinha"
+**FALSO.** Sem tratamento, pode durar meses a anos.
+
+### "Com tratamento, você pode se recuperar completamente"
+**VERDADEIRO.** A maioria das mães se recupera totalmente com tratamento adequado.
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psicólogos e psiquiatras especializados em saúde mental materna e depressão pós-parto em Belo Horizonte. Profissionais experientes podem oferecer o suporte necessário neste momento delicado.
+
+## Mensagem Final
+
+Depressão pós-parto não é falha sua. Você não está sozinha. Milhões de mães passam por isso. Com tratamento adequado, você vai se recuperar e poderá desfrutar da maternidade.
+
+Buscar ajuda não é sinal de fraqueza - é o ato mais corajoso e amoroso que você pode fazer por você e seu bebê. Sua saúde mental importa. Você importa.
+
+A maternidade que venderam para você não é real. A real é difícil, bagunçada, exaustiva - e ainda assim pode ser recompensadora. Mas você precisa estar bem para vivê-la.
+
+Não espere piorar. Se você está se identificando com os sintomas, converse com seu médico hoje. Tratamento funciona. Você pode se sentir bem novamente. Você merece se sentir bem.`,
+    category: 'Saúde Mental',
+    tags: ['depressão pós-parto', 'maternidade', 'saúde mental materna', 'pós-parto', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-01-30',
+    readTime: 19,
+    featured: true,
+  },
 ]
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
