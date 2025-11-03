@@ -5948,6 +5948,2531 @@ Não espere piorar. Se você está se identificando com os sintomas, converse co
     readTime: 19,
     featured: true,
   },
+  {
+    id: '14',
+    title: 'Síndrome do Pânico: Sintomas, Causas e Tratamento Eficaz',
+    slug: 'sindrome-panico-sintomas-causas-tratamento',
+    excerpt: 'Compreenda a síndrome do pânico, seus ataques intensos de medo e como a terapia pode ajudar você a recuperar sua liberdade.',
+    content: `# Síndrome do Pânico: Sintomas, Causas e Tratamento Eficaz
+
+A síndrome do pânico, também conhecida como transtorno de pânico, é caracterizada por ataques de pânico recorrentes e inesperados que causam imenso sofrimento. A boa notícia é que tem tratamento muito eficaz.
+
+## O que é Síndrome do Pânico?
+
+A síndrome do pânico é um transtorno de ansiedade caracterizado por:
+
+- Ataques de pânico inesperados e recorrentes
+- Preocupação persistente sobre ter novos ataques
+- Mudança de comportamento devido ao medo
+- Evitação de situações por medo de pânico
+- Impacto significativo na qualidade de vida
+
+### Prevalência
+
+- 2-3% da população em algum momento da vida
+- Mais comum em mulheres (2:1)
+- Geralmente começa na adolescência ou início da vida adulta
+- Pode surgir em qualquer idade
+- Frequentemente não diagnosticado ou tratado inadequadamente
+
+## O que é um Ataque de Pânico?
+
+Um ataque de pânico é um episódio súbito de medo intenso que desencadeia reações físicas graves sem perigo real ou causa aparente.
+
+### Características do Ataque
+
+**Início:**
+- Abrupto e inesperado
+- Pico de intensidade em 10 minutos
+- Sensação de catástrofe iminente
+
+**Duração:**
+- Geralmente 20-30 minutos
+- Pode durar até 1 hora
+- Exaustão física e emocional depois
+- Sensação de que durou muito mais
+
+**Frequência:**
+- Varia muito entre pessoas
+- Pode ser diária ou semanal
+- Alguns têm poucos na vida
+- Outros têm múltiplos por semana
+
+## Sintomas de Ataque de Pânico
+
+### Sintomas Físicos
+
+**Cardiovasculares:**
+- Palpitações ou coração acelerado
+- Dor ou desconforto no peito
+- Sensação de coração pulando batidas
+- Pulso irregular
+
+**Respiratórios:**
+- Falta de ar ou sufocamento
+- Hiperventilação
+- Sensação de não conseguir respirar
+- Aperto na garganta
+
+**Neurológicos:**
+- Tontura ou vertigem
+- Sensação de desmaio
+- Tremores ou abalos
+- Formigamento ou dormência
+- Calafrios ou ondas de calor
+
+**Gastrointestinais:**
+- Náusea
+- Desconforto abdominal
+- Boca seca
+- Vontade de ir ao banheiro
+
+### Sintomas Psicológicos
+
+**Medos Intensos:**
+- Medo de morrer (ataque cardíaco, sufocamento)
+- Medo de enlouquecer
+- Medo de perder o controle
+- Medo de fazer algo embaraçoso
+- Sensação de morte iminente
+
+**Alterações de Percepção:**
+- Desrealização (mundo parece irreal)
+- Despersonalização (sentir-se fora do corpo)
+- Distorção temporal
+- Hipersensibilidade sensorial
+
+**Cognição:**
+- Pensamentos catastróficos
+- Incapacidade de raciocinar
+- Mente "em branco"
+- Dificuldade de concentração
+
+## Síndrome do Pânico vs. Ataque de Pânico Isolado
+
+### Ataque de Pânico Isolado
+
+- Uma ou poucas crises na vida
+- Geralmente relacionadas a estresse específico
+- Não há preocupação persistente
+- Não muda comportamento
+- Não é um transtorno
+
+### Síndrome do Pânico (Transtorno)
+
+- Ataques recorrentes e inesperados
+- Preocupação constante (ansiedade antecipatória)
+- Mudanças comportamentais significativas
+- Evitação de lugares/situações
+- Impacto funcional importante
+
+## Agorafobia
+
+### O Que É
+
+Medo de estar em lugares ou situações onde:
+- Escape seria difícil ou embaraçoso
+- Ajuda pode não estar disponível
+- Ataque de pânico poderia acontecer
+
+### Desenvolvimento
+
+**Progressão Comum:**
+1. Primeiro ataque de pânico (geralmente em público)
+2. Medo de ter outro no mesmo lugar
+3. Evitação daquele local específico
+4. Generalização para lugares similares
+5. Evitação cada vez mais ampla
+6. Isolamento progressivo
+
+### Situações Comumente Evitadas
+
+- Transporte público (ônibus, metrô, avião)
+- Espaços abertos (estacionamentos, pontes, praças)
+- Espaços fechados (lojas, cinemas, elevadores)
+- Multidões ou filas
+- Estar fora de casa sozinho
+
+### Impacto
+
+- Limitação severa da vida
+- Dependência de outros
+- Impossibilidade de trabalhar
+- Isolamento social
+- Depressão secundária
+
+**IMPORTANTE:** Agorafobia pode ser tratada eficazmente com exposição gradual.
+
+## Causas da Síndrome do Pânico
+
+### Biológicas
+
+**Genética:**
+- Forte componente familiar
+- Risco 8x maior se parente de primeiro grau tem
+- Genes específicos identificados
+- Predisposição herdada
+
+**Neurobiologia:**
+- Hiperatividade da amígdala (centro do medo)
+- Disfunção em neurotransmissores (serotonina, norepinefrina, GABA)
+- Sistema de alarme hipersensível
+- Resposta exagerada a CO2
+
+**Sensibilidade à Ansiedade:**
+- Interpretação catastrófica de sensações corporais
+- Medo das próprias reações físicas
+- Hipervigilância a sinais corporais
+
+### Psicológicas
+
+**Estilo Cognitivo:**
+- Pensamento catastrófico
+- Interpretações ameaçadoras
+- Baixa tolerância à incerteza
+- Necessidade de controle
+
+**Experiências:**
+- Trauma ou estresse significativo
+- Perdas importantes
+- Mudanças de vida estressantes
+- Abuso ou negligência na infância
+
+### Ambientais e Gatilhos
+
+**Estressores:**
+- Estresse crônico ou agudo
+- Privação de sono
+- Conflitos relacionais
+- Problemas financeiros
+- Pressão no trabalho
+
+**Substâncias:**
+- Cafeína excessiva
+- Álcool (especialmente abstinência)
+- Drogas estimulantes
+- Alguns medicamentos
+- Nicotina
+
+**Situações:**
+- Espaços fechados ou lotados
+- Situações novas ou imprevisíveis
+- Conflitos interpessoais
+- Exercício físico intenso (em alguns)
+
+## O Ciclo do Pânico
+
+Compreender o ciclo ajuda a quebrá-lo:
+
+### 1. Gatilho
+- Sensação corporal (coração acelera)
+- Pensamento (sobre saúde, controle)
+- Situação (lugar associado)
+- Estressor
+
+### 2. Interpretação Catastrófica
+- "Estou tendo ataque cardíaco"
+- "Vou desmaiar"
+- "Vou enlouquecer"
+- "Vou morrer"
+
+### 3. Ansiedade Dispara
+- Medo intenso ativado
+- Sistema de alarme total
+- Adrenalina liberada
+
+### 4. Sintomas Físicos Intensificam
+- Coração acelera mais
+- Respiração mais difícil
+- Tremores aumentam
+- Todos os sintomas pioram
+
+### 5. Confirmação do Medo
+- "Está acontecendo!"
+- "É real!"
+- Pânico total
+
+### 6. Pós-Ataque
+- Exaustão
+- Medo de novo ataque
+- Análise excessiva
+- Evitação futura
+
+## Diagnóstico
+
+### Critérios Diagnósticos
+
+Para síndrome do pânico:
+
+**Ataques de Pânico Recorrentes:**
+- Pelo menos 2 ataques inesperados
+- Pelo menos 4 dos 13 sintomas
+- Pico em 10 minutos
+
+**Preocupação Persistente:**
+- Por pelo menos 1 mês:
+- Medo de novos ataques
+- Preocupação com consequências
+- Mudança de comportamento
+
+**Não Causado por:**
+- Substâncias
+- Condição médica
+- Outro transtorno mental
+
+### Avaliação Médica
+
+**Importante Descartar:**
+- Problemas cardíacos
+- Hipertireoidismo
+- Hipoglicemia
+- Distúrbios vestibulares
+- Epilepsia
+- Feocromocitoma
+
+**Exames Comuns:**
+- Eletrocardiograma
+- Exames de tireoide
+- Glicemia
+- Hemograma
+- Outros conforme história
+
+### Avaliação Psicológica
+
+**História Detalhada:**
+- Primeiro ataque (quando, onde, como)
+- Frequência e padrão
+- Gatilhos identificados
+- Evitações desenvolvidas
+- Histórico familiar
+- Estressores atuais
+
+**Questionários:**
+- Escala de Pânico e Agorafobia
+- Inventário de Ansiedade de Beck
+- Questionário de Sensações Corporais
+- Avaliação de evitação
+
+## Tratamento
+
+### Terapia Cognitivo-Comportamental (TCC)
+
+**Padrão-Ouro para Síndrome do Pânico:**
+
+#### Psicoeducação
+- Compreensão da síndrome
+- Desmistificação do pânico
+- Ciclo da ansiedade
+- Fisiologia da resposta de luta-fuga
+- Normalização de sensações
+
+#### Reestruturação Cognitiva
+
+**Identificação de Pensamentos:**
+- Registro de ataques
+- Pensamentos automáticos
+- Interpretações catastróficas
+- Crenças subjacentes
+
+**Questionamento:**
+- Qual a evidência?
+- Já aconteceu antes?
+- Há explicação alternativa?
+- Qual a probabilidade real?
+- E se acontecer, posso lidar?
+
+**Alternativas Realistas:**
+- "Isso é ansiedade, não perigo"
+- "É desconfortável mas não perigoso"
+- "Vai passar em minutos"
+- "Meu corpo está reagindo ao estresse"
+
+#### Exposição Interoceptiva
+
+**O Que É:**
+Exposição controlada às sensações físicas temidas para dessensibilizar.
+
+**Exercícios:**
+- Hiperventilação (1-2 minutos)
+- Girar na cadeira (vertigem)
+- Respirar por canudo (falta de ar)
+- Subir escadas (taquicardia)
+- Tensão muscular (tremores)
+
+**Processo:**
+1. Induzir sensação
+2. Notar ansiedade sem catastrofizar
+3. Usar estratégias de enfrentamento
+4. Permanecer até ansiedade diminuir
+5. Repetir até dessensibilizar
+
+#### Exposição In Vivo (para Agorafobia)
+
+**Hierarquia de Exposição:**
+- Listar situações evitadas
+- Ordenar por nível de dificuldade (0-10)
+- Começar pela menos difícil
+- Progredir gradualmente
+
+**Exemplo de Hierarquia:**
+1. Varanda de casa (2)
+2. Caminhada na rua (3)
+3. Mercado pequeno com acompanhante (4)
+4. Mercado pequeno sozinho (5)
+5. Shopping com acompanhante (6)
+6. Shopping sozinho (7)
+7. Ônibus curta distância (8)
+8. Cinema (9)
+9. Viagem longa (10)
+
+**Regras da Exposição:**
+- Gradual mas consistente
+- Permanecer até ansiedade diminuir (50%)
+- Repetir várias vezes
+- Não usar comportamentos de segurança
+- Celebrar progressos
+
+#### Técnicas de Manejo
+
+**Respiração Diafragmática:**
+- Inspirar profundamente pelo nariz (4 segundos)
+- Segurar (2 segundos)
+- Expirar lentamente pela boca (6 segundos)
+- Repetir até acalmar
+
+**Aterramento 5-4-3-2-1:**
+- 5 coisas que vê
+- 4 coisas que toca
+- 3 coisas que ouve
+- 2 coisas que cheira
+- 1 coisa que saboreia
+
+**Aceitação:**
+- Não lutar contra o pânico
+- Aceitar sensações
+- "Deixar passar"
+- Observar sem julgar
+
+### Medicação
+
+**Quando Considerar:**
+- Ataques muito frequentes
+- Não resposta apenas à terapia
+- Agorafobia severa impedindo terapia
+- Comorbidades (depressão)
+- Preferência do paciente
+
+#### Antidepressivos (Primeira Linha)
+
+**ISRSs:**
+- Sertralina (Zoloft)
+- Paroxetina (Paxil)
+- Fluoxetina (Prozac)
+- Escitalopram (Lexapro)
+
+**Características:**
+- Efeito após 4-6 semanas
+- Reduzem frequência de ataques
+- Melhoram ansiedade antecipatória
+- Uso por 12-24 meses
+
+**IRSNs:**
+- Venlafaxina (Efexor)
+- Também eficaz
+
+#### Benzodiazepínicos
+
+**Uso:**
+- Alívio rápido (20-30 min)
+- Redução de sintomas agudos
+- Uso de curto prazo ou SOS
+
+**Medicações:**
+- Alprazolam (Frontal)
+- Clonazepam (Rivotril)
+- Lorazepam (Lorax)
+
+**Cautela:**
+- Risco de dependência
+- Uso crônico problemático
+- Descontinuação gradual necessária
+- Não resolve causa do problema
+
+#### Combinação
+
+**TCC + Medicação:**
+- Mais eficaz que qualquer um sozinho
+- Medicação facilita início da terapia
+- TCC previne recaída após descontinuação
+- Abordagem ideal para casos moderados-graves
+
+### Outras Intervenções
+
+**Mindfulness:**
+- Reduz ansiedade antecipatória
+- Melhora aceitação de sensações
+- Reduz reatividade
+- 10-20 min diários
+
+**Exercício Físico:**
+- Reduz ansiedade geral
+- Dessensibiliza a sensações (coração acelerado)
+- Melhora regulação emocional
+- 30 min, 5x/semana
+
+**Higiene do Sono:**
+- 7-9 horas regulares
+- Privação de sono é gatilho
+- Rotina de relaxamento
+- Ambiente adequado
+
+**Redução de Cafeína:**
+- Estimulante aumenta ansiedade
+- Pode desencadear ataques
+- Limitar ou eliminar
+- Incluir chá, refrigerantes, energéticos
+
+## Estratégias de Enfrentamento
+
+### Durante o Ataque
+
+**1. Reconhecer:**
+- "Isso é um ataque de pânico"
+- "Não é perigoso"
+- "Vai passar"
+- Não é o que seu cérebro diz que é
+
+**2. Não Fugir:**
+- Permanecer no local se possível
+- Fugir reforça o medo
+- Sentar se necessário
+- Mas não escapar
+
+**3. Respirar Lentamente:**
+- Não hiperventile
+- Respiração 4-6
+- Concentre-se na respiração
+- Controla fisiologia
+
+**4. Aterramento:**
+- Técnica 5-4-3-2-1
+- Tocar objetos
+- Pés no chão
+- Água fria no rosto
+
+**5. Aceitar:**
+- Não lute contra
+- Observe passando
+- "Deixe acontecer"
+- Paradoxalmente, diminui
+
+**6. Autoinstrução:**
+- Frases preparadas
+- "Já passei por isso"
+- "Sei que vai passar"
+- "Posso lidar com isso"
+
+### Prevenção de Ataques
+
+**Estilo de Vida:**
+- Sono regular adequado
+- Exercício físico consistente
+- Alimentação balanceada
+- Redução de cafeína/álcool
+- Gestão de estresse
+
+**Práticas Diárias:**
+- Mindfulness/meditação
+- Relaxamento muscular
+- Respiração diafragmática
+- Atividades prazerosas
+- Conexão social
+
+**Monitoramento:**
+- Diário de ansiedade
+- Identificar gatilhos
+- Reconhecer sinais precoces
+- Usar estratégias preventivamente
+
+**Manutenção:**
+- Continuar exposições
+- Não evitar situações
+- Praticar habilidades
+- Terapia de reforço se necessário
+
+## Comorbidades
+
+### Depressão
+
+- 50-60% têm depressão também
+- Pode ser consequência do pânico
+- Tratamento integrado necessário
+- Antidepressivos tratam ambos
+
+### Outros Transtornos de Ansiedade
+
+- Ansiedade generalizada (50%)
+- Fobia social (30%)
+- Fobias específicas
+- TOC
+
+### Abuso de Substâncias
+
+- 20-30% desenvolvem
+- Automedicação com álcool
+- Dependência de benzodiazepínicos
+- Tratamento simultâneo essencial
+
+## Prognóstico
+
+### Sem Tratamento
+
+- Curso crônico e flutuante
+- Piora progressiva possível
+- Agorafobia se desenvolve (30-50%)
+- Depressão secundária comum
+- Qualidade de vida deteriorada
+
+### Com Tratamento Adequado
+
+**TCC:**
+- 70-90% melhoram significativamente
+- Muitos ficam livres de ataques
+- Habilidades duram para sempre
+- Baixa taxa de recaída
+
+**TCC + Medicação:**
+- Até 90% de resposta
+- Alívio mais rápido
+- Funcionamento restaurado
+- Qualidade de vida normalizada
+
+**Longo Prazo:**
+- Maioria mantém ganhos
+- Alguns têm recaídas (tratáveis)
+- Vida plena possível
+- Retorno a atividades
+
+## Impacto e Qualidade de Vida
+
+### Áreas Afetadas
+
+**Trabalho:**
+- Absenteísmo
+- Perda de oportunidades
+- Mudança de carreira
+- Subemprego
+
+**Social:**
+- Isolamento progressivo
+- Dependência de outros
+- Relacionamentos prejudicados
+- Perda de autonomia
+
+**Pessoal:**
+- Baixa autoestima
+- Sensação de inadequação
+- Frustração crônica
+- Medo constante
+
+### Recuperação
+
+**Com Tratamento:**
+- Independência restaurada
+- Confiança recuperada
+- Atividades retomadas
+- Relacionamentos melhorados
+- Carreira normalizada
+
+## Para Familiares e Amigos
+
+### Como Ajudar
+
+**Durante o Ataque:**
+- Mantenha calma
+- Seja reassegurador
+- Não minimize ("não é nada")
+- Ajude com respiração
+- Permaneça presente
+- Não force nada
+
+**Apoio Contínuo:**
+- Eduque-se sobre o transtorno
+- Incentive tratamento
+- Não reforce evitação
+- Celebre progressos
+- Tenha paciência com recaídas
+- Acompanhe em exposições
+
+**O Que Não Fazer:**
+- "É só respirar"
+- "Você está bem"
+- "Não há nada para ter medo"
+- Ficar frustrado ou impaciente
+- Fazer tudo pela pessoa
+- Criticar ou envergonhar
+
+### Cuidado Próprio
+
+- Reconheça seus limites
+- Busque seu próprio suporte
+- Não assuma responsabilidade total
+- Mantenha sua vida
+- Considere terapia familiar
+
+## Mitos e Verdades
+
+### "Pânico pode causar ataque cardíaco"
+**FALSO.** Pânico não causa dano físico. Coração saudável aguenta perfeitamente.
+
+### "Posso desmaiar de pânico"
+**FALSO.** Pânico aumenta pressão. Desmaio requer queda de pressão. São opostos.
+
+### "Vou enlouquecer"
+**FALSO.** Pânico não causa loucura. É resposta de ansiedade exagerada.
+
+### "Nunca vou melhorar"
+**FALSO.** Síndrome do pânico tem excelente prognóstico com tratamento adequado.
+
+### "Preciso sempre de medicação"
+**FALSO.** Muitos se recuperam completamente com TCC e descontinuam medicação.
+
+### "É sinal de fraqueza"
+**FALSO.** É condição médica. Nada a ver com caráter ou força.
+
+### "Com tratamento adequado, posso me recuperar completamente"
+**VERDADEIRO.** A maioria das pessoas se recupera e retoma vida normal.
+
+## Quando Buscar Ajuda
+
+### Sinais de Alerta
+
+- Primeiro ataque de pânico (descartar causas médicas)
+- Ataques recorrentes
+- Medo de sair de casa
+- Evitação de lugares/situações
+- Impacto no trabalho ou relações
+- Depressão secundária
+- Uso de substâncias para lidar
+
+### Profissionais Indicados
+
+**Psicólogo:**
+- TCC especializada em pânico
+- Exposição gradual
+- Habilidades de enfrentamento
+
+**Psiquiatra:**
+- Avaliação medicamentosa
+- Prescrição se necessário
+- Acompanhamento
+
+**Abordagem Integrada:**
+- Melhor resultado
+- Tratamento completo
+- Suporte contínuo
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psicólogos e psiquiatras especializados em síndrome do pânico e transtornos de ansiedade em Belo Horizonte. Profissionais experientes em TCC podem ajudar você a superar o pânico e recuperar sua liberdade.
+
+## Mensagem de Esperança
+
+Síndrome do pânico pode ser assustadora e debilitante, mas é uma das condições de saúde mental mais tratáveis. Com tratamento adequado - especialmente TCC - a vasta maioria das pessoas se recupera completamente.
+
+Você não precisa viver com medo do próximo ataque. Não precisa evitar lugares e situações. Não precisa depender de outros. Com as ferramentas certas e apoio profissional, é possível:
+
+- Eliminar ou reduzir drasticamente os ataques
+- Perder o medo de ter ataques
+- Retomar atividades evitadas
+- Recuperar sua independência e confiança
+- Viver plenamente
+
+O primeiro passo é buscar ajuda especializada. Quanto mais cedo começar o tratamento, mais rápida será sua recuperação. Você merece viver sem medo. Tratamento funciona. Recuperação é possível.`,
+    category: 'Saúde Mental',
+    tags: ['síndrome do pânico', 'ataque de pânico', 'agorafobia', 'ansiedade', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-02-02',
+    readTime: 22,
+    featured: true,
+  },
+  {
+    id: '15',
+    title: 'TOC - Transtorno Obsessivo-Compulsivo: Sintomas e Tratamento',
+    slug: 'toc-transtorno-obsessivo-compulsivo-sintomas-tratamento',
+    excerpt: 'Entenda o TOC além dos estereótipos: obsessões que atormentam, compulsões que aprisionam e tratamento que liberta.',
+    content: `# TOC - Transtorno Obsessivo-Compulsivo: Sintomas e Tratamento
+
+O Transtorno Obsessivo-Compulsivo (TOC) é muito mais do que "gostar de organização" ou "ser perfeccionista". É uma condição de saúde mental que causa imenso sofrimento através de obsessões incontroláveis e compulsões desgastantes.
+
+## O que é TOC?
+
+TOC é um transtorno de ansiedade caracterizado por:
+
+**Obsessões:**
+- Pensamentos, imagens ou impulsos intrusivos
+- Recorrentes e persistentes
+- Causam ansiedade ou sofrimento significativo
+- Pessoa reconhece como excessivos ou irracionais
+- Não consegue controlar ou eliminar
+
+**Compulsões:**
+- Comportamentos ou atos mentais repetitivos
+- Realizados em resposta às obsessões
+- Visam reduzir ansiedade ou prevenir algo temido
+- São excessivos ou não conectados logicamente
+- Trazem alívio apenas temporário
+
+### Prevalência
+
+- 2-3% da população mundial
+- Afeta igualmente homens e mulheres
+- Geralmente inicia na adolescência ou início da vida adulta
+- Pode começar na infância
+- Curso crônico se não tratado
+
+## Obsessões Comuns
+
+### Contaminação
+
+**Medos:**
+- Germes, bactérias, vírus
+- Sujeira ou substâncias "sujas"
+- Fluidos corporais
+- Químicos ou toxinas
+- Doenças (AIDS, câncer)
+
+**Pensamentos:**
+- "Se eu tocar isso, vou adoecer"
+- "Posso contaminar outras pessoas"
+- "Nunca estarei realmente limpo"
+- "Germes estão em tudo"
+
+### Dúvida e Verificação
+
+**Medos:**
+- Ter esquecido algo importante
+- Causar acidente ou tragédia por negligência
+- Portas/janelas destrancadas
+- Aparelhos elétricos ligados
+- Cometer erros graves
+
+**Pensamentos:**
+- "E se eu deixei o fogão ligado?"
+- "A porta pode não estar trancada"
+- "Posso ter atropelado alguém sem perceber"
+- "E se eu errei naquele documento?"
+
+### Simetria e Ordem
+
+**Necessidades:**
+- Objetos perfeitamente alinhados
+- Organização específica
+- Ações em número específico
+- Simetria completa
+- Sensação de "estar certo"
+
+**Sensações:**
+- Desconforto intenso se não está "certo"
+- Urgência de corrigir
+- Não consegue seguir até estar perfeito
+- Angústia com desordem
+
+### Obsessões de Conteúdo Tabu
+
+**Pensamentos Intrusivos:**
+- Sexuais inadequados ou perversos
+- Violência contra outros
+- Blasfêmia ou sacrilégios
+- Incesto
+- Pedofilia
+
+**Importante:** 
+- São apenas pensamentos indesejados
+- Causam imenso horror e repulsa
+- Pessoa NÃO quer fazer essas coisas
+- São o oposto do que a pessoa valoriza
+- Causam culpa e vergonha extremas
+
+### Obsessões Religiosas/Morais (Escrupulosidade)
+
+**Preocupações:**
+- Ofender Deus
+- Cometer pecados
+- Não ser "bom" o suficiente
+- Blasfêmia
+- Condenação moral
+
+**Comportamentos:**
+- Orações excessivas
+- Confissão repetida
+- Busca constante de reasseguramento
+- Rituais religiosos compulsivos
+
+### Obsessões Somáticas
+
+**Foco:**
+- Preocupação excessiva com doença
+- Atenção a sensações corporais
+- Medo de ter algo sério
+- Necessidade de verificação constante
+- Diferente de hipocondria (no TOC tem compulsões)
+
+## Compulsões Comuns
+
+### Lavagem e Limpeza
+
+**Comportamentos:**
+- Lavar mãos repetidamente
+- Duchas longas (horas)
+- Limpeza excessiva da casa
+- Evitar tocar em objetos "contaminados"
+- Rituais de descontaminação
+- Uso excessivo de álcool gel/desinfetantes
+
+**Consequências:**
+- Mãos rachadas e sangrando
+- Contas de água altíssimas
+- Horas perdidas por dia
+- Isolamento social
+
+### Verificação
+
+**Comportamentos:**
+- Checar portas/janelas múltiplas vezes
+- Verificar fogão, ferro, aparelhos
+- Voltar para checar se atropelou alguém
+- Reler emails/mensagens dezenas de vezes
+- Verificar corpo (para doenças)
+
+**Padrões:**
+- Número específico de vezes
+- Até "sentir certo"
+- Pode levar horas
+- Nunca traz certeza real
+
+### Contagem
+
+**Comportamentos:**
+- Contar até números específicos
+- Contar objetos repetidamente
+- Realizar ações em números "seguros"
+- Evitar números "ruins"
+- Rituais numéricos
+
+### Ordenação e Arranjo
+
+**Comportamentos:**
+- Alinhar objetos perfeitamente
+- Organizar por cor, tamanho, simetria
+- Refazer até estar "certo"
+- Angústia se alguém mexe
+- Horas organizando
+
+### Repetição
+
+**Comportamentos:**
+- Entrar/sair de portas repetidamente
+- Levantar/sentar múltiplas vezes
+- Reler parágrafos
+- Reescrever
+- Repetir palavras ou frases
+
+### Compulsões Mentais
+
+**Comportamentos Internos:**
+- Orações ou frases mentais
+- Revisão mental de eventos
+- Contagem mental
+- "Anular" pensamentos ruins com bons
+- Rituais mentais de reasseguramento
+
+**Difíceis de Identificar:**
+- Não são visíveis
+- Pessoas podem não perceber
+- Igualmente debilitantes
+- Reforçam o ciclo do TOC
+
+### Busca de Reasseguramento
+
+**Comportamentos:**
+- Perguntar repetidamente se está tudo bem
+- Buscar confirmação
+- Pesquisas excessivas online
+- Múltiplas consultas médicas
+- Confissão excessiva
+
+**Problema:**
+- Alívio temporário
+- Reforça obsessão
+- Dependência dos outros
+- Nunca satisfaz completamente
+
+## O Ciclo do TOC
+
+Compreender o ciclo é essencial para quebrá-lo:
+
+### 1. Gatilho
+- Situação, objeto ou pensamento
+- Pode ser externo ou interno
+- Muitas vezes imprevisível
+
+### 2. Obsessão
+- Pensamento intrusivo surge
+- Ansiedade ou desconforto dispara
+- Urgência de fazer algo
+- Não consegue ignorar
+
+### 3. Ansiedade Aumenta
+- Desconforto intenso
+- Sensação de ameaça
+- Necessidade de neutralizar
+- Urgência crescente
+
+### 4. Compulsão
+- Comportamento ou ritual
+- Busca de alívio
+- Seguir "regras"
+- Até sentir "certo"
+
+### 5. Alívio Temporário
+- Ansiedade diminui momentaneamente
+- Sensação de ter prevenido catástrofe
+- Alívio reforça comportamento
+
+### 6. Reforço do Ciclo
+- Compulsão é reforçada
+- Obsessão é fortalecida
+- Próxima vez será mais forte
+- Ciclo se perpetua
+
+**Chave do Tratamento:** Quebrar esse ciclo através de exposição sem ritual.
+
+## Subtipos de TOC
+
+### TOC de Verificação
+
+- Obsessões de dúvida
+- Medo de causar dano por negligência
+- Verificações repetidas
+- Nunca traz certeza
+
+### TOC de Contaminação
+
+- Medo de germes/doenças
+- Compulsões de limpeza
+- Evitação de "contaminantes"
+- Rituais de descontaminação
+
+### TOC de Simetria/Ordenação
+
+- Necessidade de perfeição
+- Desconforto com assimetria
+- Comportamentos de ordenação
+- Sensação de "estar certo"
+
+### TOC de Pensamentos Intrusivos
+
+- Obsessões tabu (sexual, violenta, religiosa)
+- Imenso sofrimento e culpa
+- Compulsões mentais
+- Reasseguramento excessivo
+
+### TOC de Acumulação
+
+- Dificuldade em descartar
+- Medo de precisar depois
+- Casa cheia de objetos
+- Diferente de transtorno de acumulação (quando é só isso)
+
+## Causas do TOC
+
+### Biológicas
+
+**Neurobiologia:**
+- Disfunção em circuitos cerebrais
+- Córtex órbito-frontal hiperativo
+- Núcleos da base envolvidos
+- Desequilíbrio de serotonina
+- Diferenças estruturais no cérebro
+
+**Genética:**
+- Forte componente familiar
+- Risco 4x maior se parente tem
+- Genes específicos identificados
+- Não é 100% genético
+
+### Psicológicas
+
+**Estilo Cognitivo:**
+- Superestimação de ameaça
+- Senso exagerado de responsabilidade
+- Intolerância à incerteza
+- Perfeccionismo
+- Fusão pensamento-ação ("pensar é igual a fazer")
+
+**Aprendizado:**
+- Compulsões são reforçadas
+- Evitação alivia temporariamente
+- Condicionamento se estabelece
+- Ciclo se auto-perpetua
+
+### Ambientais
+
+**Gatilhos:**
+- Estresse intenso
+- Trauma
+- Mudanças de vida
+- Infecções (PANDAS em crianças)
+- Gravidez e pós-parto
+
+## Impacto do TOC
+
+### Tempo Perdido
+
+- Rituais podem tomar horas diárias
+- Trabalho/escola prejudicados
+- Atividades prazerosas abandonadas
+- Vida consumida pelas compulsões
+
+### Funcionamento
+
+**Trabalho:**
+- Procrastinação por rituais
+- Perda de prazos
+- Verificações excessivas
+- Evitação de tarefas
+- Perda de emprego possível
+
+**Relacionamentos:**
+- Exigência de participação em rituais
+- Irritabilidade
+- Isolamento social
+- Conflitos familiares
+- Relacionamentos rompidos
+
+**Pessoal:**
+- Baixa qualidade de vida
+- Exaustão física e mental
+- Vergonha e segredo
+- Depressão secundária
+- Desesperança
+
+### Comorbidades
+
+**Comum:**
+- Depressão (67%)
+- Outros transtornos de ansiedade (76%)
+- Transtornos alimentares
+- Tiques
+- Transtorno bipolar
+
+## Diagnóstico
+
+### Critérios
+
+**Obsessões e/ou Compulsões:**
+- Tomam mais de 1 hora por dia
+- Causam sofrimento significativo
+- Prejudicam funcionamento
+- Não devido a substâncias ou outra condição
+
+**Insight:**
+- Bom: pessoa reconhece como excessivo
+- Pobre: incerta se são excessivos
+- Ausente: convicto que são razoáveis
+
+### Avaliação
+
+**História Detalhada:**
+- Obsessões específicas
+- Compulsões realizadas
+- Tempo gasto
+- Impacto funcional
+- Histórico familiar
+- Início e curso
+
+**Escalas:**
+- Yale-Brown Obsessive Compulsive Scale (Y-BOCS)
+- Padrão-ouro para severidade
+- Guia tratamento
+
+**Diagnóstico Diferencial:**
+- Transtornos de ansiedade
+- Transtornos alimentares
+- Transtorno de personalidade obsessiva-compulsiva (diferente!)
+- Transtorno de acumulação
+- Transtornos de tique
+
+## Tratamento
+
+### Terapia Cognitivo-Comportamental (TCC)
+
+**Padrão-Ouro para TOC:**
+
+#### Exposição e Prevenção de Resposta (EPR)
+
+**O Que É:**
+Exposição gradual a situações/pensamentos que disparam obsessões SEM realizar compulsões.
+
+**Fundamento:**
+- Habituação: ansiedade diminui naturalmente com tempo
+- Aprendizado: catástrofe temida não acontece
+- Quebra do ciclo: sem compulsão, obsessão enfraquece
+
+**Processo:**
+
+**1. Hierarquia:**
+- Listar situações/obsessões (0-10 de ansiedade)
+- Começar pelas menos ansiogênicas
+- Progredir gradualmente
+
+**Exemplo Contaminação:**
+1. Tocar maçaneta com papel (3)
+2. Tocar maçaneta diretamente (5)
+3. Tocar vaso sanitário (7)
+4. Tocar lixo (8)
+5. Tocar chão do banheiro público (9)
+6. Não lavar mãos após qualquer contato (10)
+
+**2. Exposição:**
+- Confrontar situação/pensamento
+- Permanecer até ansiedade diminuir 50%
+- SEM realizar compulsão
+- Repetir várias vezes
+
+**3. Prevenção de Resposta:**
+- Não fazer compulsão
+- Não comportamentos substitutos
+- Tolerar ansiedade
+- Permitir habituação
+
+**4. Generalização:**
+- Aplicar em várias situações
+- Manter ganhos
+- Integrar à vida diária
+
+#### Reestruturação Cognitiva
+
+**Desafiar Distorções:**
+
+**Superestimação de Ameaça:**
+- "Se tocar isso, vou adoecer"
+- Evidência? Probabilidade real? Já aconteceu?
+
+**Responsabilidade Exagerada:**
+- "Se algo ruim acontecer, é minha culpa"
+- Você tem esse poder? É justo/realista?
+
+**Intolerância à Incerteza:**
+- "Preciso ter certeza absoluta"
+- Certeza é possível? Outros vivem sem?
+
+**Fusão Pensamento-Ação:**
+- "Pensar é tão ruim quanto fazer"
+- Pensamento é ação? Todos têm pensamentos intrusivos?
+
+#### Técnicas Adicionais
+
+**Dessensibilização:**
+- Exposição imaginal (para obsessões)
+- Gravar pensamentos, ouvir repetidamente
+- Escrever obsessões
+- Habituação ao conteúdo
+
+**Mindfulness:**
+- Observar pensamentos sem reagir
+- Aceitação de desconforto
+- Desfusão cognitiva
+- Não controle, aceitação
+
+### Medicação
+
+**Quando Considerar:**
+- TOC moderado a grave
+- EPR sozinha insuficiente
+- Comorbidades (depressão)
+- Facilitação de terapia
+
+#### Inibidores Seletivos de Recaptação de Serotonina (ISRSs)
+
+**Primeira Linha:**
+- Fluoxetina (Prozac) - 40-80mg
+- Sertralina (Zoloft) - 150-200mg
+- Paroxetina (Paxil) - 40-60mg
+- Fluvoxamina (Luvox) - 200-300mg
+
+**Características:**
+- Doses mais altas que para depressão
+- Efeito após 10-12 semanas (mais tempo que depressão)
+- Redução de 30-50% dos sintomas
+- Uso prolongado (12-24 meses mínimo)
+
+#### Clomipramina (Anafranil)
+
+**Antidepressivo Tricíclico:**
+- Mais eficaz que ISRSs
+- Mais efeitos colaterais
+- Segunda linha geralmente
+- 150-250mg
+
+#### Aumento (Quando ISRS Não Basta)
+
+- Antipsicóticos atípicos (baixa dose)
+- Risperidona, quetiapina, aripiprazol
+- Para tiques ou insight pobre
+- Combinação aumenta eficácia
+
+### Combinação TCC + Medicação
+
+**Melhor Abordagem:**
+- Mais eficaz que qualquer um sozinho
+- Medicação: reduz sintomas
+- EPR: ensina habilidades duradouras
+- Menor recaída após descontinuação
+- Recomendado para casos moderados-graves
+
+### Outras Intervenções
+
+**Estimulação Magnética Transcraniana (EMT):**
+- Para TOC resistente
+- Não-invasiva
+- Sessões diárias por semanas
+- Resultados promissores
+
+**Estimulação Cerebral Profunda (DBS):**
+- TOC severo e refratário
+- Eletrodos implantados
+- Última linha
+- Eficaz em casos selecionados
+
+## Estratégias de Enfrentamento
+
+### Resistir às Compulsões
+
+**Postergar:**
+- Esperar 15 minutos antes de fazer
+- Gradualmente aumentar tempo
+- Ansiedade diminui sozinha
+- Prova que compulsão não é necessária
+
+**Reduzir Gradualmente:**
+- Fazer menos vezes
+- Menos tempo
+- Menos "perfeito"
+- Progresso gradual
+
+**Mudar Ligeiramente:**
+- Fazer diferente
+- Quebrar "regras"
+- Demonstra flexibilidade
+- Reduz poder do ritual
+
+### Lidar com Obsessões
+
+**Não Engajar:**
+- "É só TOC falando"
+- Rotular pensamento
+- Não discutir ou analisar
+- Deixar passar
+
+**Exposição:**
+- Não evitar pensamento
+- Permitir estar presente
+- Sem neutralizar
+- Habituação acontece
+
+**Aceitar Incerteza:**
+- "Posso viver sem saber"
+- Não buscar reasseguramento
+- Tolerar desconforto
+- Certeza é impossível
+
+### Autocuidado
+
+**Gestão de Estresse:**
+- Estresse piora TOC
+- Técnicas de relaxamento
+- Exercício físico regular
+- Sono adequado
+
+**Suporte Social:**
+- Não isolar-se
+- Compartilhar com confiáveis
+- Grupos de apoio
+- Família educada
+
+**Atividades Prazerosas:**
+- Manter hobbies
+- Não deixar TOC dominar vida
+- Equilíbrio
+- Vida além do TOC
+
+## Vivendo com TOC
+
+### Aceitação
+
+- TOC é condição crônica
+- Sintomas podem flutuar
+- Manejo de longo prazo
+- Não deixar definir você
+
+### Manejo Contínuo
+
+**Práticas:**
+- Continuar EPR
+- Não ceder a compulsões
+- Identificar precocemente recaídas
+- Sessões de reforço
+
+**Sinais de Recaída:**
+- Aumento de rituais
+- Mais tempo em compulsões
+- Evitação crescente
+- Buscar ajuda cedo
+
+### Qualidade de Vida
+
+**Objetivos:**
+- Funcionamento restaurado
+- Relacionamentos saudáveis
+- Trabalho/escola normalizados
+- Vida plena possível
+
+**Realidade:**
+- TOC não desaparece completamente
+- Sintomas residuais comuns
+- Manejo eficaz permite vida normal
+- Foco em funcionalidade
+
+## Para Familiares
+
+### Como Ajudar
+
+**Educar-se:**
+- Entender TOC
+- Não é escolha
+- Não é "frescura"
+- Tratamento necessário
+
+**Não Participar de Rituais:**
+- Não dar reasseguramento
+- Não auxiliar compulsões
+- Apoiar resistência
+- Difícil mas essencial
+
+**Incentivar Tratamento:**
+- EPR é difícil
+- Apoiar persistência
+- Celebrar progressos
+- Paciência com recaídas
+
+**Comunicação:**
+- Expressar suporte
+- Não criticar ou ridicularizar
+- Reconhecer esforço
+- Expectativas realistas
+
+### O Que Evitar
+
+- "Simplesmente pare"
+- "É só não fazer"
+- "Isso é ridículo"
+- Frustração ou raiva
+- Acomodação total
+
+## Mitos e Verdades
+
+### "TOC é ser organizado e limpinho"
+**FALSO.** TOC é transtorno mental debilitante com imenso sofrimento.
+
+### "Pessoas com TOC são perfeccionistas"
+**PARCIALMENTE.** Perfeccionismo pode estar presente mas não define TOC.
+
+### "TOC é incurável"
+**FALSO.** TOC é altamente tratável com EPR e medicação.
+
+### "Todos têm um pouco de TOC"
+**FALSO.** Pensamentos intrusivos são comuns, mas TOC causa prejuízo significativo.
+
+### "Com tratamento adequado posso ter vida normal"
+**VERDADEIRO.** Maioria das pessoas alcança funcionamento normal com tratamento.
+
+## Quando Buscar Ajuda
+
+### Sinais
+
+- Rituais tomam mais de 1 hora/dia
+- Interferem em trabalho/escola
+- Prejudicam relacionamentos
+- Causam sofrimento significativo
+- Pensamentos intrusivos angustiantes
+- Isolamento social
+
+### Urgência
+
+- Pensamentos suicidas
+- Depressão grave
+- Incapacidade de funcionar
+- Rituais ocupam maior parte do dia
+
+## Prognóstico
+
+### Com EPR + Medicação
+
+- 50-70% melhora significativa
+- Redução de sintomas em 40-60%
+- Funcionamento muito melhorado
+- Qualidade de vida restaurada
+- Manejo de longo prazo eficaz
+
+### Fatores de Bom Prognóstico
+
+- Tratamento precoce
+- Boa adesão a EPR
+- Suporte familiar
+- Ausência de comorbidades graves
+- Insight preservado
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psicólogos e psiquiatras especializados em TOC em Belo Horizonte. Profissionais com experiência em Exposição e Prevenção de Resposta (EPR) podem ajudar você a quebrar o ciclo do TOC.
+
+## Mensagem Final
+
+TOC é um transtorno sério que rouba tempo, energia e qualidade de vida. Mas não precisa ser assim para sempre. Com tratamento adequado - especialmente EPR - a maioria das pessoas alcança melhora significativa e duradoura.
+
+O TOC mente para você. Diz que algo terrível vai acontecer se não fizer o ritual. Diz que você precisa da certeza absoluta. Diz que é sua responsabilidade prevenir catástrofes. Mas com tratamento, você aprende a não acreditar nessas mentiras.
+
+EPR é difícil. Confrontar seus medos sem fazer compulsões é uma das coisas mais desafiadoras que você fará. Mas é também uma das mais libertadoras. Cada exposição é uma vitória. Cada ritual resistido é um passo para liberdade.
+
+Você não é seus pensamentos intrusivos. Você não é suas compulsões. Você é a pessoa por trás disso tudo, querendo viver plenamente. E essa vida é possível.
+
+Busque ajuda especializada. TOC responde bem a tratamento quando feito corretamente. Você merece viver livre das amarras do TOC.`,
+    category: 'Saúde Mental',
+    tags: ['TOC', 'transtorno obsessivo-compulsivo', 'obsessões', 'compulsões', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-02-05',
+    readTime: 24,
+    featured: true,
+  },
+  {
+    id: '16',
+    title: 'Transtornos Alimentares: Anorexia, Bulimia e Compulsão Alimentar',
+    slug: 'transtornos-alimentares-anorexia-bulimia-compulsao',
+    excerpt: 'Compreenda os transtornos alimentares além da aparência: condições sérias de saúde mental que afetam corpo e mente.',
+    content: `# Transtornos Alimentares: Anorexia, Bulimia e Compulsão Alimentar
+
+Os transtornos alimentares são condições complexas de saúde mental que envolvem perturbações graves no comportamento alimentar, pensamentos e emoções. Vão muito além de "escolhas" sobre comida - são doenças sérias que requerem tratamento especializado.
+
+## O que são Transtornos Alimentares?
+
+Transtornos alimentares são condições psiquiátricas caracterizadas por:
+
+- Preocupação intensa com comida, peso e forma corporal
+- Comportamentos alimentares disfuncionais
+- Distorção da imagem corporal
+- Impacto significativo na saúde física e mental
+- Não são "fases" ou "escolhas"
+
+### Prevalência
+
+- 9% da população mundial ao longo da vida
+- Mais comum em mulheres (mas homens também têm)
+- Geralmente iniciam na adolescência
+- Podem surgir em qualquer idade
+- Taxas crescentes nas últimas décadas
+
+### Mortalidade
+
+- Transtornos alimentares têm maior mortalidade entre transtornos mentais
+- Anorexia: taxa de mortalidade de 5-10%
+- Causas: complicações médicas e suicídio
+- Tratamento precoce é crítico
+
+## Principais Transtornos Alimentares
+
+### Anorexia Nervosa
+
+#### Características Centrais
+
+**Restrição Alimentar Severa:**
+- Ingestão extremamente limitada
+- Medo intenso de ganhar peso
+- Recusa em manter peso minimamente normal
+- Mesmo estando abaixo do peso
+
+**Distorção de Imagem Corporal:**
+- Vê-se como "gorda" quando está magra
+- Avaliação de si baseada em peso/forma
+- Negação da gravidade do baixo peso
+- Insatisfação corporal intensa
+
+**Subtipos:**
+
+**Tipo Restritivo:**
+- Perda de peso através de dieta, jejum, exercício
+- Sem episódios de compulsão ou purgação
+
+**Tipo Compulsão/Purgação:**
+- Episódios de compulsão e/ou purgação
+- Vômito autoinduzido
+- Uso de laxantes, diuréticos
+
+#### Sintomas e Sinais
+
+**Comportamentais:**
+- Recusa em comer
+- Contar calorias obsessivamente
+- Rituais alimentares (cortar pequeno, comer lento)
+- Esconder comida
+- Cozinhar para outros mas não comer
+- Exercício excessivo e compulsivo
+- Pesar-se constantemente
+- Isolamento social
+
+**Físicos:**
+- Perda de peso dramática
+- Magreza extrema
+- Fadiga e fraqueza
+- Intolerância ao frio
+- Amenorreia (ausência de menstruação)
+- Cabelo fino, quebradiço, queda
+- Lanugo (pelos finos no corpo)
+- Pele seca, amarelada
+- Pressão baixa
+- Frequência cardíaca lenta
+- Desidratação
+
+**Psicológicos:**
+- Preocupação obsessiva com comida/peso
+- Medo intenso de engordar
+- Perfeccionismo
+- Necessidade de controle
+- Negação do problema
+- Irritabilidade
+- Depressão e ansiedade
+- Pensamento rígido
+
+#### Complicações Médicas
+
+**Cardiovasculares:**
+- Bradicardia (coração lento)
+- Arritmias (potencialmente fatais)
+- Hipotensão
+- Insuficiência cardíaca
+
+**Gastrointestinais:**
+- Constipação severa
+- Dor abdominal
+- Retardo no esvaziamento gástrico
+
+**Endócrinas:**
+- Amenorreia
+- Disfunção tireoidiana
+- Redução de hormônios sexuais
+- Crescimento atrasado (adolescentes)
+
+**Ósseas:**
+- Osteoporose/osteopenia
+- Risco aumentado de fraturas
+- Perda óssea pode ser irreversível
+
+**Cerebrais:**
+- Atrofia cerebral
+- Comprometimento cognitivo
+- Dificuldade de concentração
+
+**Outras:**
+- Anemia
+- Desequilíbrios eletrolíticos perigosos
+- Hipoglicemia
+- Falência de órgãos
+
+### Bulimia Nervosa
+
+#### Características Centrais
+
+**Episódios de Compulsão Alimentar:**
+- Comer quantidade grande em curto período
+- Sensação de perda de controle
+- Geralmente escondido
+- Alimentos "proibidos"
+
+**Comportamentos Compensatórios:**
+- Vômito autoinduzido (mais comum)
+- Uso abusivo de laxantes
+- Uso de diuréticos
+- Exercício excessivo
+- Jejum
+
+**Frequência:**
+- Pelo menos 1x/semana por 3 meses
+- Pode ser várias vezes ao dia
+
+**Peso:**
+- Geralmente peso normal ou levemente acima
+- Diferente da anorexia (baixo peso)
+
+#### Ciclo Compulsão-Purgação
+
+**1. Restrição/Dieta Rígida:**
+- Regras alimentares estritas
+- Privação
+- Fome física e emocional
+
+**2. Gatilho:**
+- Emoção negativa
+- Quebra de "regra"
+- Estresse
+
+**3. Compulsão:**
+- Comer rapidamente
+- Quantidade grande
+- Perda de controle
+- Dissociação
+
+**4. Culpa e Vergonha:**
+- Autoacusação
+- Medo de engordar
+- Desespero
+
+**5. Purgação:**
+- Vômito, laxantes
+- Alívio temporário
+- Sensação de "anular"
+
+**6. Restrição Renovada:**
+- Dieta mais rígida
+- Ciclo recomeça
+
+#### Sintomas e Sinais
+
+**Comportamentais:**
+- Desaparecimento após refeições (banheiro)
+- Esconder comida
+- Comer grandes quantidades rapidamente
+- Evidências de vômito
+- Embalagens de laxantes escondidas
+- Exercício compulsivo
+- Preocupação com peso constantemente
+
+**Físicos:**
+- Peso flutuante
+- Inchaço facial (glândulas salivares)
+- Calosidades nos dedos (sinal de Russell)
+- Dentes erosão (ácido do vômito)
+- Garganta inflamada crônica
+- Desidratação
+- Problemas gastrointestinais
+- Desequilíbrios eletrolíticos
+
+**Psicológicos:**
+- Vergonha e culpa intensa
+- Autoimagem negativa
+- Impulsividade
+- Depressão
+- Ansiedade
+- Perfeccionismo
+
+#### Complicações Médicas
+
+**Eletrolíticas:**
+- Hipocalemia (potássio baixo)
+- Arritmias cardíacas
+- Potencialmente fatal
+
+**Gastrointestinais:**
+- Ruptura esofágica (rara mas grave)
+- Pancreatite
+- Constipação
+- Dilatação gástrica
+
+**Dentárias:**
+- Erosão do esmalte
+- Cáries
+- Sensibilidade
+- Perda de dentes
+
+**Outras:**
+- Desidratação crônica
+- Disfunção renal
+- Irregularidade menstrual
+
+### Transtorno de Compulsão Alimentar (TCA)
+
+#### Características Centrais
+
+**Episódios de Compulsão:**
+- Comer quantidade grande
+- Sensação de falta de controle
+- Mais rápido que normal
+- Até desconforto físico
+- Sozinho por vergonha
+
+**SEM Comportamentos Compensatórios:**
+- Não há purgação
+- Não vomita regularmente
+- Não usa laxantes
+- Diferença crucial da bulimia
+
+**Frequência:**
+- Pelo menos 1x/semana por 3 meses
+- Varia em severidade
+
+**Angústia:**
+- Sofrimento intenso sobre compulsões
+- Culpa e vergonha
+- Mas continua acontecendo
+
+#### Sintomas e Sinais
+
+**Durante Compulsão:**
+- Comer muito rapidamente
+- Comer quando não está com fome
+- Comer até desconforto doloroso
+- Comer escondido
+- Vergonha do quanto come
+
+**Comportamentais:**
+- Esconder comida
+- Comer sozinho
+- Ciclos de dieta
+- Evitar eventos sociais com comida
+- Pesquisar dietas constantemente
+
+**Emocionais:**
+- Comer emocional (tristeza, estresse, tédio)
+- Culpa após comer
+- Vergonha do corpo
+- Baixa autoestima
+- Depressão
+- Ansiedade
+
+**Físicos:**
+- Peso geralmente acima do normal
+- Mas pode ser qualquer peso
+- Flutuação de peso
+- Problemas de saúde relacionados ao peso
+
+#### Complicações
+
+**Relacionadas ao Peso:**
+- Diabetes tipo 2
+- Hipertensão
+- Colesterol alto
+- Doenças cardíacas
+- Apneia do sono
+- Problemas articulares
+
+**Psicológicas:**
+- Depressão
+- Ansiedade
+- Isolamento social
+- Baixa qualidade de vida
+
+### Outros Transtornos Alimentares
+
+#### Transtorno Alimentar Restritivo/Evitativo (TARE)
+
+- Evitação de comida por características sensoriais
+- Preocupação com consequências de comer
+- Perda de peso ou deficiências nutricionais
+- Sem preocupação com forma corporal
+- Comum em crianças mas pode persistir
+
+#### Ortorexia (Não Oficialmente Reconhecida)
+
+- Obsessão por alimentação "pura" ou "saudável"
+- Regras alimentares extremamente rígidas
+- Ansiedade severa ao quebrar regras
+- Restrição progressiva de alimentos
+- Impacto social e nutricional
+
+#### Síndrome do Comer Noturno
+
+- Comer excessivo após jantar ou durante noite
+- Consciência dos episódios
+- Sofrimento significativo
+- Não explicado por outros transtornos
+
+## Causas dos Transtornos Alimentares
+
+### Biológicas
+
+**Genética:**
+- 50-80% de herdabilidade
+- Histórico familiar aumenta risco
+- Genes específicos identificados
+- Não é destino, mas vulnerabilidade
+
+**Neurobiologia:**
+- Disfunção em neurotransmissores (serotonina, dopamina)
+- Alterações em circuitos de recompensa
+- Regulação emocional prejudicada
+- Sistema de fome/saciedade alterado
+
+**Temperamento:**
+- Perfeccionismo
+- Rigidez cognitiva
+- Ansiedade elevada
+- Impulsividade (bulimia, TCA)
+
+### Psicológicas
+
+**Fatores Individuais:**
+- Baixa autoestima
+- Autoimagem negativa
+- Insatisfação corporal
+- Dificuldade em regular emoções
+- Histórico de trauma
+- Abuso ou negligência
+- Perfeccionismo
+- Necessidade de controle
+
+**Comorbidades:**
+- Depressão (50-75%)
+- Ansiedade (65%)
+- TOC
+- TEPT
+- Abuso de substâncias
+
+### Socioculturais
+
+**Pressão Social:**
+- Ideal de magreza
+- Cultura de dieta
+- Mídia e redes sociais
+- Comentários sobre corpo/peso
+- Bullying relacionado ao peso
+
+**Ambientes de Risco:**
+- Esportes com exigência de peso (ginástica, ballet)
+- Modelagem
+- Ênfase familiar em aparência
+- Cultura de comparação
+
+### Gatilhos
+
+**Eventos Estressantes:**
+- Mudanças de vida significativas
+- Perdas e lutos
+- Trauma
+- Abuso
+- Rejeição
+
+**Dietas:**
+- Dieta frequentemente precede transtorno
+- Restrição leva a compulsão
+- Ciclo vicioso
+- "Porta de entrada"
+
+## Sinais de Alerta
+
+### Comportamentais
+
+- Pular refeições frequentemente
+- Rituais alimentares rígidos
+- Evitar comer com outros
+- Ir ao banheiro imediatamente após comer
+- Exercício excessivo e compulsivo
+- Pesar-se constantemente
+- Verificar corpo no espelho repetidamente
+- Uso de roupas folgadas
+
+### Físicos
+
+- Mudança significativa de peso
+- Fadiga crônica
+- Tontura ou desmaios
+- Sensibilidade ao frio
+- Problemas gastrointestinais
+- Mudanças no cabelo/pele/unhas
+- Irregularidade menstrual
+
+### Psicossociais
+
+- Preocupação obsessiva com comida/peso
+- Evitar eventos sociais com comida
+- Isolamento progressivo
+- Mudanças de humor
+- Irritabilidade
+- Depressão ou ansiedade
+- Foco excessivo em "comer saudável"
+
+## Diagnóstico e Avaliação
+
+### Avaliação Multidisciplinar
+
+**Médica:**
+- Exame físico completo
+- Sinais vitais
+- Exames laboratoriais
+- ECG (eletrocardiograma)
+- Densitometria óssea
+- Avaliação nutricional
+
+**Psiquiátrica/Psicológica:**
+- Entrevista clínica detalhada
+- História alimentar
+- Histórico de peso
+- Comportamentos específicos
+- Comorbidades
+- Funcionamento geral
+
+**Nutricional:**
+- Padrões alimentares
+- Restrições
+- Compulsões
+- Rituais
+- Deficiências
+
+### Critérios Diagnósticos
+
+**Avaliação Baseada em:**
+- DSM-5 (Manual Diagnóstico)
+- Frequência e severidade de sintomas
+- Impacto funcional
+- Complicações médicas
+- Insight e motivação
+
+## Tratamento
+
+### Abordagem Multidisciplinar
+
+**Equipe Essencial:**
+- Psiquiatra ou médico especializado
+- Psicólogo/psicoterapeuta
+- Nutricionista especializado
+- Médico clínico (monitoramento)
+
+**Coordenação:**
+- Comunicação entre profissionais
+- Plano de tratamento integrado
+- Monitoramento contínuo
+- Ajustes conforme necessário
+
+### Níveis de Cuidado
+
+#### Ambulatorial
+
+**Para Quem:**
+- Medicamente estável
+- Motivação presente
+- Suporte familiar
+- Sintomas menos graves
+
+**Componentes:**
+- Psicoterapia 1-2x/semana
+- Acompanhamento médico regular
+- Orientação nutricional
+- Monitoramento de peso
+
+#### Intensivo Ambulatorial/Hospital-Dia
+
+**Para Quem:**
+- Não respondeu a ambulatorial
+- Precisa estrutura maior
+- Medicamente estável
+- Risco moderado
+
+**Estrutura:**
+- Programa diário (várias horas)
+- Refeições supervisionadas
+- Terapia em grupo e individual
+- Retorna para casa à noite
+
+#### Internação
+
+**Quando Necessária:**
+- Risco médico severo
+- Peso criticamente baixo (< 75% esperado)
+- Instabilidade fisiológica
+- Risco suicida
+- Não responde a níveis menores
+
+**Objetivos:**
+- Estabilização médica
+- Restauração nutricional
+- Interrupção de comportamentos
+- Transição para cuidado ambulatorial
+
+### Psicoterapia
+
+#### Terapia Cognitivo-Comportamental (TCC)
+
+**Padrão-Ouro para Bulimia e TCA:**
+
+**Fases:**
+
+**1. Psicoeducação:**
+- Natureza do transtorno
+- Ciclo restrição-compulsão
+- Consequências médicas
+- Modelo de tratamento
+
+**2. Normalização Alimentar:**
+- Refeições regulares (3 + 2-3 lanches)
+- Quebra de restrição
+- Introdução de alimentos "proibidos"
+- Diário alimentar
+
+**3. Reestruturação Cognitiva:**
+- Pensamentos sobre comida/peso/forma
+- Crenças sobre si
+- Perfeccionismo
+- Pensamentos dicotômicos
+
+**4. Prevenção de Recaídas:**
+- Identificar gatilhos
+- Estratégias de enfrentamento
+- Plano de crise
+- Manutenção de ganhos
+
+#### Terapia Baseada em Família (TBF)
+
+**Padrão-Ouro para Adolescentes com Anorexia:**
+
+**Fases:**
+
+**1. Restauração de Peso:**
+- Pais assumem responsabilidade por alimentação
+- Refeições supervisionadas
+- Apoio intenso
+- Redução de ansiedade
+
+**2. Retorno de Controle:**
+- Gradualmente devolver autonomia
+- Conforme progresso
+- Adolescente reassume controle saudável
+
+**3. Desenvolvimento Adolescente:**
+- Foco em identidade
+- Independência apropriada
+- Vida além do transtorno
+
+#### Terapia Interpessoal (TIP)
+
+- Foco em relacionamentos
+- Padrões interpessoais
+- Regulação emocional
+- Alternativa ou complemento à TCC
+
+#### Terapia Comportamento Dialética (DBT)
+
+- Para desregulação emocional severa
+- Habilidades de tolerância ao sofrimento
+- Regulação emocional
+- Mindfulness
+- Eficácia interpessoal
+
+### Reabilitação Nutricional
+
+**Objetivos:**
+- Restaurar peso saudável (anorexia)
+- Normalizar padrões alimentares
+- Eliminar restrição e compulsão
+- Corrigir deficiências
+
+**Abordagem:**
+- Plano alimentar estruturado
+- Refeições regulares
+- Variedade de alimentos
+- Exposição gradual a medos
+- Educação nutricional
+
+**Não É:**
+- Apenas sobre calorias
+- Dieta para ganhar ou perder peso
+- Foco em "saudável" vs "não saudável"
+- Prescrição de cardápio rígido
+
+### Medicação
+
+**Não É Primeira Linha, Mas Pode Ajudar:**
+
+#### Para Bulimia e TCA:
+
+**Antidepressivos (ISRSs):**
+- Fluoxetina (único aprovado para bulimia)
+- Reduz compulsões e purgações
+- Trata depressão/ansiedade comórbida
+- Dose: 60-80mg (maior que depressão)
+
+#### Para Anorexia:
+
+**Desafio:**
+- Nenhuma medicação eficaz para ganho de peso
+- Antidepressivos podem ajudar após restauração
+- Foco é psicoterapia e reabilitação nutricional
+
+**Antipsicóticos (Olanzapina):**
+- Pode ajudar ansiedade refeição
+- Facilita ganho de peso
+- Evidência limitada
+- Uso criterioso
+
+#### Para Comorbidades:
+
+- Depressão: antidepressivos
+- Ansiedade: ISRSs, terapia
+- TOC: ISRSs, EPR
+
+**Importante:**
+- Medicação não substitui terapia/nutrição
+- Parte de tratamento integrado
+- Monitoramento cuidadoso
+- Risco de uso para controlar peso
+
+### Hospitalização e Realimentação
+
+**Síndrome de Realimentação:**
+- Complicação grave da realimentação rápida
+- Desequilíbrios eletrolíticos perigosos
+- Pode ser fatal
+- Requer monitoramento médico próximo
+- Realimentação gradual e cuidadosa
+
+**Monitoramento Durante Internação:**
+- Sinais vitais frequentes
+- Peso diário
+- Exames laboratoriais
+- ECG
+- Supervisão de refeições
+- Protocolo de atividade física
+
+## Recuperação
+
+### O Que É Recuperação?
+
+**Não É Apenas:**
+- Atingir peso "normal"
+- Não ter compulsões/purgações
+- Comer regularmente
+
+**É Também:**
+- Relação saudável com comida
+- Imagem corporal melhorada
+- Autoestima restaurada
+- Regulação emocional
+- Vida plena e significativa
+- Identidade além do transtorno
+
+### Fases da Recuperação
+
+#### Pré-contemplação
+- Negação do problema
+- Não vê necessidade de mudança
+- Outros percebem, ela não
+
+#### Contemplação
+- Reconhece problema
+- Ambivalência
+- Medo de mudança
+- Considerando tratamento
+
+#### Preparação
+- Decide buscar ajuda
+- Planejamento
+- Primeiros passos
+- Motivação crescente
+
+#### Ação
+- Engajamento ativo no tratamento
+- Mudanças comportamentais
+- Desafios significativos
+- Progressos e recaídas
+
+#### Manutenção
+- Consolidação de mudanças
+- Prevenção de recaídas
+- Vida além do transtorno
+- Identidade renovada
+
+### Tempo de Recuperação
+
+**Realidade:**
+- Não é linear
+- Leva tempo (geralmente anos)
+- Progresso não é constante
+- Recaídas são comuns
+- Cada pessoa é única
+
+**Fatores que Influenciam:**
+- Duração da doença
+- Severidade
+- Comorbidades
+- Suporte
+- Acesso a tratamento especializado
+- Motivação
+
+### Desafios na Recuperação
+
+**Ambivalência:**
+- Parte quer recuperar
+- Parte não quer abrir mão do transtorno
+- Normal e esperado
+- Trabalhar na terapia
+
+**Medo de Ganhar Peso:**
+- Central em anorexia/bulimia
+- Requer exposição gradual
+- Apoio intenso
+- Trabalho de imagem corporal
+
+**Perda de Identidade:**
+- "Quem sou sem o transtorno?"
+- Transtorno serviu função
+- Construir nova identidade
+- Encontrar significado
+
+**Gatilhos:**
+- Estresse
+- Comentários sobre corpo
+- Redes sociais
+- Mudanças de vida
+- Eventos emocionais
+
+### Prevenção de Recaídas
+
+**Sinais de Alerta:**
+- Aumento de preocupação com peso
+- Retorno de comportamentos (pular refeições)
+- Isolamento social
+- Exercício aumentando
+- Verificação de corpo
+- Comparações sociais
+
+**Plano de Ação:**
+- Identificar sinais precoces
+- Estratégias de enfrentamento
+- Quando buscar ajuda
+- Contatos de suporte
+- Revisão de habilidades
+
+**Manutenção:**
+- Continuar práticas saudáveis
+- Terapia de reforço
+- Grupos de apoio
+- Autocuidado prioritário
+- Rede de suporte ativa
+
+## Para Familiares e Amigos
+
+### Como Ajudar
+
+**Educação:**
+- Aprender sobre o transtorno
+- Não é escolha ou vaidade
+- É doença séria
+- Necessita tratamento profissional
+
+**Comunicação:**
+- Expressar preocupação com amor
+- Focar em comportamentos, não aparência
+- Ouvir sem julgar
+- Evitar comentários sobre corpo/comida
+- "Estou preocupado com você"
+
+**Apoio ao Tratamento:**
+- Incentivar busca de ajuda
+- Acompanhar a consultas se apropriado
+- Participar de terapia familiar
+- Seguir orientações da equipe
+- Ter paciência
+
+**Durante Refeições:**
+- Ambiente calmo
+- Não pressionar excessivamente
+- Não discutir comida/calorias/peso
+- Conversas neutras
+- Seguir orientações nutricionista
+
+### O Que NÃO Fazer
+
+**Evitar:**
+- "Só coma" ou "Só pare de vomitar"
+- Comentários sobre aparência
+- Elogios à perda de peso
+- Foco em comida constantemente
+- Vigilância excessiva (polícia alimentar)
+- Comparações
+- Minimizar ("é fase")
+- Culpabilizar
+- Forçar alimentação (exceto sob orientação)
+
+### Autocuidado
+
+- Buscar apoio para si
+- Terapia individual ou familiar
+- Grupos para familiares
+- Não assumir responsabilidade total
+- Manter sua própria vida
+- Reconhecer seus limites
+
+## Prevenção
+
+### Individual
+
+**Relação Saudável com Comida:**
+- Comer variedade
+- Sem alimentos proibidos
+- Ouvir sinais de fome/saciedade
+- Prazer na alimentação
+
+**Imagem Corporal Positiva:**
+- Apreciar corpo por função
+- Desafiar ideais irrealistas
+- Mídia com diversidade corporal
+- Autocuidado amoroso
+
+**Autoestima:**
+- Valor além da aparência
+- Desenvolver habilidades
+- Relacionamentos significativos
+- Propósito de vida
+
+### Familiar
+
+**Ambiente:**
+- Não comentar sobre peso/corpo
+- Refeições familiares regulares
+- Modelo de relação saudável com comida
+- Não usar comida como recompensa/punição
+
+**Comunicação:**
+- Elogios não focados em aparência
+- Valorizar qualidades internas
+- Discussões sobre mídia
+- Abertura para falar
+
+### Societal
+
+- Combate à cultura de dieta
+- Diversidade corporal na mídia
+- Educação sobre transtornos alimentares
+- Acesso a tratamento
+- Redução de estigma
+
+## Quando Buscar Ajuda
+
+### Sinais de Urgência
+
+**Buscar Ajuda Imediata:**
+- Peso perigosamente baixo
+- Desidratação severa
+- Síncope (desmaio)
+- Arritmias cardíacas
+- Pensamentos suicidas
+- Purgação múltipla diária
+- Sintomas eletrolíticos (fraqueza extrema, confusão)
+
+**Emergência: SAMU 192 ou hospital**
+
+### Sinais para Buscar Avaliação
+
+- Preocupação excessiva com peso/comida
+- Restrição alimentar significativa
+- Compulsões frequentes
+- Purgação de qualquer tipo
+- Exercício compulsivo
+- Perda ou ganho de peso rápido
+- Isolamento social
+- Impacto no funcionamento
+
+## Prognóstico
+
+### Variável por Transtorno
+
+**Anorexia:**
+- 50-70% se recuperam completamente
+- 20-30% parcialmente
+- 10-20% curso crônico
+- Tratamento precoce melhora prognóstico
+
+**Bulimia:**
+- 70-80% recuperação com tratamento
+- Melhor prognóstico que anorexia
+- Recaídas comuns mas tratáveis
+
+**TCA:**
+- 60-80% respondem bem a TCC
+- Muitos alcançam recuperação completa
+- Manutenção é desafio
+
+### Fatores de Bom Prognóstico
+
+- Tratamento precoce
+- Curta duração antes de tratamento
+- Menor peso mínimo (anorexia)
+- Motivação para recuperação
+- Suporte familiar
+- Ausência de trauma severo
+- Tratamento especializado e integrado
+
+## Mitos e Verdades
+
+### "Transtorno alimentar é escolha"
+**FALSO.** É doença mental complexa, não escolha ou vaidade.
+
+### "Só afeta adolescentes mulheres"
+**FALSO.** Afeta todas idades, gêneros. Homens também têm (subdiagnosticados).
+
+### "Se ela comer, vai melhorar"
+**FALSO.** Requer tratamento multidisciplinar especializado. Não é só comida.
+
+### "Anorexia é sobre controle"
+**PARCIALMENTE.** Controle é aspecto, mas doença é muito mais complexa.
+
+### "Bulimia não é grave porque peso é normal"
+**FALSO.** Tão grave quanto anorexia. Complicações médicas sérias.
+
+### "Com tratamento adequado, recuperação é possível"
+**VERDADEIRO.** Maioria se recupera com tratamento especializado.
+
+## Encontre Ajuda em BH
+
+Nossa plataforma conecta você com psicólogos, psiquiatras e nutricionistas especializados em transtornos alimentares em Belo Horizonte. Tratamento multidisciplinar especializado é essencial para recuperação.
+
+## Mensagem de Esperança
+
+Transtornos alimentares são condições sérias e potencialmente fatais. Mas também são tratáveis. Com equipe especializada, abordagem integrada e tempo, recuperação completa é possível.
+
+Se você ou alguém que você ama está lutando:
+
+**Saiba que:**
+- Não é sua culpa
+- Você não está sozinho
+- Recuperação é possível
+- Você merece ajuda
+- Vida plena além do transtorno é real
+
+**Entenda que:**
+- Não vai melhorar sozinho
+- Quanto mais cedo buscar ajuda, melhor
+- Tratamento especializado é essencial
+- Equipe multidisciplinar é necessária
+- Progresso não é linear, mas é possível
+
+**Acredite que:**
+- Você pode se recuperar
+- Comida pode ser aliada novamente
+- Seu corpo merece cuidado
+- Sua vida vale muito mais que número na balança
+- Liberdade do transtorno é possível
+
+A jornada de recuperação é desafiadora. Haverá dias difíceis. Mas também haverá dias bons. E gradualmente, os dias bons se tornarão mais frequentes. Você aprenderá a ouvir seu corpo, a nutrir-se com compaixão, a ver-se com gentileza.
+
+Você não precisa ser perfeito. Você precisa ser humano. E humanos merecem comer, nutrir-se, viver plenamente.
+
+Busque ajuda. Você merece recuperação. Você merece vida.`,
+    category: 'Saúde Mental',
+    tags: ['transtornos alimentares', 'anorexia', 'bulimia', 'compulsão alimentar', 'tratamento'],
+    author: 'Equipe Psicólogo BH',
+    publishedAt: '2024-02-08',
+    readTime: 26,
+    featured: true,
+  },
 ]
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {
