@@ -1,3 +1,5 @@
+import { generateStructuredData } from './seo-helpers'
+
 export interface BlogArticle {
   id: string
   title: string
@@ -11,14 +13,51 @@ export interface BlogArticle {
   readTime: number
   featured: boolean
   image?: string
+  metaDescription?: string
+  keywords?: string[]
+  structuredData?: {
+    "@context": string
+    "@type": string
+    headline: string
+    description: string
+    author: {
+      "@type": string
+      name: string
+    }
+    datePublished: string
+    dateModified: string
+    publisher: {
+      "@type": string
+      name: string
+    }
+    articleSection: string
+    keywords: string[]
+    wordCount: number
+    mainEntityOfPage: {
+      "@type": string
+      "@id": string
+    }
+  }
+}
+
+const createArticle = (article: Omit<BlogArticle, 'structuredData'> & {
+  metaDescription: string
+  keywords: string[]
+}): BlogArticle => {
+  return {
+    ...article,
+    structuredData: generateStructuredData(article),
+  }
 }
 
 export const BLOG_ARTICLES: BlogArticle[] = [
-  {
+  createArticle({
     id: '1',
     title: 'Como Escolher um Psicólogo em Belo Horizonte: Guia Completo',
     slug: 'como-escolher-psicologo-belo-horizonte',
     excerpt: 'Entenda os principais critérios para escolher o profissional de psicologia ideal para suas necessidades em BH.',
+    metaDescription: 'Guia completo para escolher o psicólogo ideal em Belo Horizonte. Descubra critérios essenciais, abordagens terapêuticas, valores de consulta, o que perguntar na primeira sessão e como identificar o profissional certo para suas necessidades de saúde mental.',
+    keywords: ['psicólogo belo horizonte', 'como escolher psicólogo', 'primeira sessão terapia', 'terapia BH', 'valores consulta psicológica', 'abordagens terapêuticas', 'tcc belo horizonte', 'psicanálise BH'],
     content: `# Como Escolher um Psicólogo em Belo Horizonte: Guia Completo
 
 Escolher um psicólogo é um passo importante na sua jornada de autoconhecimento e saúde mental. Em Belo Horizonte, existem muitos profissionais qualificados, mas como saber qual é o ideal para você?
@@ -117,12 +156,14 @@ Dar o primeiro passo é o mais importante. A terapia pode transformar sua vida d
     publishedAt: '2024-01-15',
     readTime: 8,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '2',
     title: 'Ansiedade: Sintomas, Causas e Como a Terapia Pode Ajudar',
     slug: 'ansiedade-sintomas-causas-tratamento',
     excerpt: 'Descubra os sinais da ansiedade e como o acompanhamento psicológico pode fazer diferença na sua qualidade de vida.',
+    metaDescription: 'Conheça os sintomas físicos e psicológicos da ansiedade, entenda os diferentes tipos de transtornos de ansiedade (TAG, pânico, fobias) e descubra como a terapia cognitivo-comportamental e outras abordagens podem ajudar você a recuperar sua qualidade de vida em Belo Horizonte.',
+    keywords: ['ansiedade', 'transtorno de ansiedade', 'sintomas ansiedade', 'tratamento ansiedade', 'terapia cognitivo comportamental', 'TAG', 'transtorno de pânico', 'fobia social', 'psicólogo ansiedade BH'],
     content: `# Ansiedade: Sintomas, Causas e Como a Terapia Pode Ajudar
 
 A ansiedade é uma das condições mais comuns que levam pessoas a buscar ajuda psicológica. Entender seus sintomas e causas é o primeiro passo para lidar melhor com ela.
@@ -268,12 +309,14 @@ A ansiedade tem tratamento, e você não precisa enfrentá-la sozinho. Dar o pri
     publishedAt: '2024-01-10',
     readTime: 10,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '3',
     title: 'Terapia Online vs Presencial: Qual Escolher?',
     slug: 'terapia-online-vs-presencial',
     excerpt: 'Compare as vantagens de cada formato e descubra qual é o melhor para você.',
+    metaDescription: 'Terapia online ou presencial? Descubra as vantagens e desvantagens de cada formato, quando escolher cada um, como funciona o atendimento psicológico à distância e o que considerar para tomar a melhor decisão para seu tratamento em Belo Horizonte.',
+    keywords: ['terapia online', 'terapia presencial', 'psicoterapia online', 'atendimento psicológico remoto', 'teleconsulta psicologia', 'qual terapia escolher', 'psicólogo online BH'],
     content: `# Terapia Online vs Presencial: Qual Escolher?
 
 Com a popularização da terapia online, muitas pessoas têm dúvidas sobre qual formato escolher. Vamos explorar as características de cada um para ajudar você a decidir.
@@ -424,12 +467,14 @@ O mais importante é começar. Escolha o formato que faz mais sentido para você
     publishedAt: '2024-01-05',
     readTime: 7,
     featured: false,
-  },
-  {
+  }),
+  createArticle({
     id: '4',
     title: 'Depressão: Como Identificar e Buscar Ajuda',
     slug: 'depressao-identificar-buscar-ajuda',
     excerpt: 'Entenda os sinais da depressão e saiba quando é hora de procurar um psicólogo.',
+    metaDescription: 'Aprenda a identificar os sintomas da depressão (tristeza persistente, perda de interesse, alterações no sono), entenda as causas, conheça os tipos de depressão e saiba quando buscar ajuda profissional. Tratamento eficaz com psicoterapia e medicação em Belo Horizonte.',
+    keywords: ['depressão', 'sintomas depressão', 'tratamento depressão', 'tristeza persistente', 'transtorno depressivo maior', 'psicólogo depressão BH', 'antidepressivos', 'terapia depressão'],
     content: `# Depressão: Como Identificar e Buscar Ajuda
 
 A depressão é mais do que tristeza passageira. É uma condição séria que afeta milhões de brasileiros e tem tratamento eficaz.
@@ -645,11 +690,13 @@ A depressão tem tratamento. Você não precisa sofrer sozinho. Dar o primeiro p
     publishedAt: '2023-12-20',
     readTime: 12,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '5',
     title: 'Benefícios da Psicoterapia: Por Que Fazer Terapia?',
     slug: 'beneficios-psicoterapia',
+    metaDescription: 'Descubra os benefícios comprovados da psicoterapia: melhora da saúde mental, desenvolvimento pessoal, relacionamentos mais saudáveis, autoconhecimento e qualidade de vida. Entenda como a terapia funciona e por que é um investimento essencial em você mesmo.',
+    keywords: ['benefícios psicoterapia', 'por que fazer terapia', 'para que serve terapia', 'psicoterapia funciona', 'desenvolvimento pessoal', 'autoconhecimento', 'saúde mental'],
     excerpt: 'Descubra como a psicoterapia pode melhorar sua vida, mesmo que você não tenha um problema específico.',
     content: `# Benefícios da Psicoterapia: Por Que Fazer Terapia?
 
@@ -893,12 +940,14 @@ Você merece cuidar da sua saúde mental. Comece hoje sua jornada de autoconheci
     publishedAt: '2023-12-15',
     readTime: 9,
     featured: false,
-  },
-  {
+  }),
+  createArticle({
     id: '6',
     title: 'Síndrome de Burnout: Esgotamento Profissional e Como Se Recuperar',
     slug: 'sindrome-burnout-esgotamento-profissional',
     excerpt: 'Entenda o que é burnout, seus sintomas e como a terapia pode ajudar na recuperação do esgotamento profissional.',
+    metaDescription: 'Síndrome de Burnout: reconheça os sintomas do esgotamento profissional (exaustão, despersonalização, baixa realização), entenda as causas, fatores de risco e descubra como se recuperar com terapia, mudanças no trabalho e autocuidado em Belo Horizonte.',
+    keywords: ['burnout', 'síndrome de burnout', 'esgotamento profissional', 'estresse no trabalho', 'exaustão emocional', 'tratamento burnout', 'psicólogo burnout BH', 'saúde mental no trabalho'],
     content: `# Síndrome de Burnout: Esgotamento Profissional e Como Se Recuperar
 
 A Síndrome de Burnout é um estado de esgotamento físico, emocional e mental causado por estresse crônico no trabalho. Reconhecida pela OMS como fenômeno ocupacional, afeta milhões de profissionais.
@@ -1246,12 +1295,14 @@ Burnout é sério, mas tratável. Você merece uma vida profissional que não de
     publishedAt: '2024-01-20',
     readTime: 11,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '7',
     title: 'Transtorno de Ansiedade Social (Fobia Social): Sintomas e Tratamento',
     slug: 'transtorno-ansiedade-social-fobia-social',
-    excerpt: 'Descubra como identificar e tratar o transtorno de ansiedade social, que vai além da timidez comum.',
+    excerpt: 'Descubra como identificar e tratar o transtorno de ansiedade social, que va além da timidez comum.',
+    metaDescription: 'Transtorno de Ansiedade Social (Fobia Social): conheça os sintomas (medo de julgamento, evitação social, sintomas físicos), diferencie de timidez, entenda as causas e descubra tratamentos eficazes como TCC e exposição gradual em Belo Horizonte.',
+    keywords: ['fobia social', 'transtorno de ansiedade social', 'medo de falar em público', 'ansiedade social', 'timidez extrema', 'tratamento fobia social', 'TCC ansiedade social', 'psicólogo fobia social BH'],
     content: `# Transtorno de Ansiedade Social (Fobia Social): Sintomas e Tratamento
 
 O Transtorno de Ansiedade Social vai muito além da timidez. É um medo intenso e persistente de situações sociais que pode limitar significativamente a vida de uma pessoa.
@@ -1630,12 +1681,14 @@ Ansiedade social tem tratamento eficaz. Você não precisa viver evitando o mund
     publishedAt: '2024-01-18',
     readTime: 13,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '8',
     title: 'Como Lidar com Crises de Pânico: Guia Prático',
     slug: 'como-lidar-crises-panico',
     excerpt: 'Aprenda técnicas eficazes para gerenciar e prevenir crises de pânico no dia a dia.',
+    metaDescription: 'Crises de pânico: aprenda técnicas práticas e eficazes para lidar com ataques de pânico (respiração, aterramento, questionamento de pensamentos), entenda os sintomas, causas e tratamentos disponíveis incluindo TCC e medicação em Belo Horizonte.',
+    keywords: ['crise de pânico', 'ataque de pânico', 'transtorno de pânico', 'sintomas pânico', 'técnicas pânico', 'como controlar pânico', 'tratamento pânico', 'psicólogo pânico BH'],
     content: `# Como Lidar com Crises de Pânico: Guia Prático
 
 As crises de pânico podem ser aterrorizantes, mas compreendê-las e ter ferramentas práticas pode fazer toda diferença. Este guia oferece estratégias comprovadas para gerenciar e superar o pânico.
@@ -2020,12 +2073,14 @@ Crises de pânico são tratáveis. Você não precisa viver com medo do próximo
     publishedAt: '2024-01-16',
     readTime: 14,
     featured: false,
-  },
-  {
+  }),
+  createArticle({
     id: '9',
     title: 'Relacionamentos Saudáveis: Sinais e Como Construir',
     slug: 'relacionamentos-saudaveis-como-construir',
     excerpt: 'Aprenda a identificar e cultivar relacionamentos saudáveis e reconhecer sinais de alerta.',
+    metaDescription: 'Relacionamentos saudáveis: identifique as características essenciais (respeito, comunicação, confiança), reconheça sinais de relacionamento tóxico, aprenda a estabelecer limites e descubra como construir vínculos amorosos e duradouros com ajuda da terapia de casal em BH.',
+    keywords: ['relacionamentos saudáveis', 'relacionamento tóxico', 'sinais de abuso', 'comunicação casal', 'terapia de casal', 'limites relacionamento', 'amor saudável', 'psicólogo casal BH'],
     content: `# Relacionamentos Saudáveis: Sinais e Como Construir
 
 Relacionamentos saudáveis são fundamentais para nossa saúde mental e bem-estar. Entender suas características e como cultivá-los pode transformar sua vida afetiva.
@@ -2439,10 +2494,12 @@ Relacionamentos saudáveis são possíveis e transformadores. Investir neles é 
     publishedAt: '2024-01-12',
     readTime: 15,
     featured: false,
-  },
-  {
+  }),
+  createArticle({
     id: '10',
     title: 'Autocuidado e Saúde Mental: Práticas Essenciais',
+    metaDescription: 'Autocuidado para saúde mental: descubra práticas essenciais de cuidado físico, emocional, social e espiritual. Aprenda a criar rotinas sustentáveis, estabelecer limites e priorizar seu bem-estar sem culpa. Guia prático com estratégias validadas cientificamente.',
+    keywords: ['autocuidado', 'saúde mental', 'bem-estar', 'práticas de autocuidado', 'cuidado emocional', 'rotina saudável', 'mindfulness', 'qualidade de vida'],
     slug: 'autocuidado-saude-mental-praticas',
     excerpt: 'Descubra práticas de autocuidado que promovem bem-estar mental e emocional no dia a dia.',
     content: `# Autocuidado e Saúde Mental: Práticas Essenciais
@@ -2858,9 +2915,11 @@ Comece hoje. Comece pequeno. Mas comece.`,
     publishedAt: '2024-01-08',
     readTime: 16,
     featured: false,
-  },
-  {
+  }),
+  createArticle({
     id: '11',
+    metaDescription: 'TDAH em adultos: conheça os sintomas (desatenção, hiperatividade, impulsividade), entenda como o transtorno afeta trabalho e relacionamentos, descubra opções de tratamento (medicação e terapia) e estratégias práticas para gerenciar o TDAH no dia a dia em Belo Horizonte.',
+    keywords: ['TDAH adulto', 'transtorno de déficit de atenção', 'sintomas TDAH', 'tratamento TDAH', 'desatenção', 'hiperatividade', 'impulsividade', 'psicólogo TDAH BH', 'medicação TDAH'],
     title: 'TDAH em Adultos: Sintomas, Diagnóstico e Tratamento',
     slug: 'tdah-adultos-sintomas-diagnostico-tratamento',
     excerpt: 'Entenda como o Transtorno de Déficit de Atenção e Hiperatividade se manifesta em adultos e as opções de tratamento disponíveis.',
@@ -8472,7 +8531,7 @@ Busque ajuda. Você merece recuperação. Você merece vida.`,
     publishedAt: '2024-02-08',
     readTime: 26,
     featured: true,
-  },
+  }),
 ]
 
 export function getArticleBySlug(slug: string): BlogArticle | undefined {

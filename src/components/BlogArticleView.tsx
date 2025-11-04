@@ -1,8 +1,11 @@
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { BlogArticle } from '@/lib/blog-articles'
+import { getArticleSEO } from '@/lib/article-seo-metadata'
+import { updateDocumentMeta, generateStructuredData } from '@/lib/seo-helpers'
 import { Clock, Calendar, ArrowLeft, Tag } from '@phosphor-icons/react'
 import { marked } from 'marked'
 
@@ -14,6 +17,36 @@ interface BlogArticleViewProps {
 
 export function BlogArticleView({ article, onBack, onBackToHome }: BlogArticleViewProps) {
   const htmlContent = marked(article.content)
+
+  useEffect(() => {
+    const seoData = getArticleSEO(article.id)
+    
+    const articleWithSEO = {
+      ...article,
+      metaDescription: article.metaDescription || seoData?.metaDescription || article.excerpt,
+      keywords: article.keywords || seoData?.keywords || article.tags,
+      structuredData: article.structuredData || generateStructuredData({
+        ...article,
+        keywords: article.keywords || seoData?.keywords || article.tags,
+      }),
+    }
+    
+    updateDocumentMeta(articleWithSEO)
+    
+    return () => {
+      document.title = 'Psicólogo BH - Atendimento Psicológico em Belo Horizonte | Terapia Online e Presencial'
+      
+      const canonical = document.querySelector('link[rel="canonical"]')
+      if (canonical) {
+        canonical.setAttribute('href', 'https://psicologobelohorizonte.com.br/')
+      }
+      
+      const articleSchema = document.querySelector('script[id="article-schema"]')
+      if (articleSchema) {
+        articleSchema.remove()
+      }
+    }
+  }, [article])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
