@@ -14,54 +14,46 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol
         itemScope
+        itemType="https://schema.org/BreadcrumbList"
+        className="flex items-center gap-2 text-sm"
       >
+        {items.map((item, index) => {
           const isLast = index === items.length - 1
-       
+          
+          return (
+            <li
               key={index}
               itemScope
-
-              {ite
-               
-                  classNa
-                >
-                  <span
-              ) : (
+              itemProp="itemListElement"
+              itemType="https://schema.org/ListItem"
+              className="flex items-center gap-2"
+            >
+              {item.onClick ? (
+                <button
+                  onClick={item.onClick}
                   itemProp="item"
-             
-                  aria-current=
-                  {inde
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <span itemProp="name">{item.label}</span>
+                </button>
+              ) : (
+                <span
+                  itemProp="item"
+                  className={isLast ? "text-foreground font-medium" : "text-muted-foreground"}
+                  aria-current={isLast ? "page" : undefined}
+                >
+                  <span itemProp="name">{item.label}</span>
                 </span>
-              <meta itemProp="pos
+              )}
+              <meta itemProp="position" content={String(index + 1)} />
               {!isLast && (
+                <CaretRight
                   size={14}
-                 
+                  className="text-muted-foreground"
                 />
+              )}
             </li>
-        })}
-    </nav>
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          )
         })}
       </ol>
     </nav>

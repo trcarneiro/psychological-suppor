@@ -3481,9 +3481,11 @@ Se você se identificou com os sintomas descritos, buscar avaliação pode ser o
     publishedAt: '2024-01-25',
     readTime: 18,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '12',
+    metaDescription: 'Transtorno Bipolar: entenda os tipos (I, II e ciclotimia), reconheça sintomas de mania e depressão, conheça opções de tratamento (estabilizadores de humor, psicoterapia) e descubra como viver bem com bipolaridade em Belo Horizonte.',
+    keywords: ['transtorno bipolar', 'bipolaridade', 'mania', 'depressão bipolar', 'hipomania', 'estabilizadores de humor', 'tratamento bipolar', 'psiquiatra BH', 'oscilações de humor'],
     title: 'Transtorno Bipolar: Entendendo as Oscilações de Humor',
     slug: 'transtorno-bipolar-oscilacoes-humor',
     excerpt: 'Conheça os sintomas, tipos e tratamentos do transtorno bipolar, uma condição que vai além de simples mudanças de humor.',
@@ -4183,9 +4185,11 @@ Se você ou alguém que você ama apresenta sintomas, buscar avaliação especia
     publishedAt: '2024-01-28',
     readTime: 20,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '13',
+    metaDescription: 'Depressão Pós-Parto: reconheça sintomas além do baby blues, entenda causas (hormonais, psicológicas), conheça tratamentos seguros (terapia, medicação compatível com amamentação) e encontre suporte em Belo Horizonte para saúde mental materna.',
+    keywords: ['depressão pós-parto', 'DPP', 'baby blues', 'saúde mental materna', 'pós-parto', 'maternidade', 'psicólogo BH', 'tratamento seguro amamentação'],
     title: 'Depressão Pós-Parto: Sintomas, Tratamento e Suporte',
     slug: 'depressao-pos-parto-sintomas-tratamento',
     excerpt: 'Compreenda a depressão pós-parto, uma condição comum mas tratável que afeta muitas mães após o nascimento do bebê.',
@@ -4813,9 +4817,11 @@ Não espere piorar. Se você está se identificando com os sintomas, converse co
     publishedAt: '2024-01-30',
     readTime: 19,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '11',
+    metaDescription: 'TDAH em adultos: conheça os sintomas (desatenção, hiperatividade, impulsividade), entenda como o transtorno afeta trabalho e relacionamentos, descubra opções de tratamento (medicação e terapia) e estratégias práticas para gerenciar o TDAH no dia a dia em Belo Horizonte.',
+    keywords: ['TDAH adulto', 'transtorno de déficit de atenção', 'sintomas TDAH', 'tratamento TDAH', 'desatenção', 'hiperatividade', 'impulsividade', 'psicólogo TDAH BH', 'medicação TDAH'],
     title: 'TDAH em Adultos: Sintomas, Diagnóstico e Tratamento',
     slug: 'tdah-adultos-sintomas-diagnostico-tratamento',
     excerpt: 'Entenda como o Transtorno de Déficit de Atenção e Hiperatividade se manifesta em adultos e as opções de tratamento disponíveis.',
@@ -5156,9 +5162,11 @@ Se você se identificou com os sintomas descritos, buscar avaliação pode ser o
     publishedAt: '2024-01-25',
     readTime: 18,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '12',
+    metaDescription: 'Transtorno Bipolar: entenda os tipos (I, II e ciclotimia), reconheça sintomas de mania e depressão, conheça opções de tratamento (estabilizadores de humor, psicoterapia) e descubra como viver bem com bipolaridade em Belo Horizonte.',
+    keywords: ['transtorno bipolar', 'bipolaridade', 'mania', 'depressão bipolar', 'hipomania', 'estabilizadores de humor', 'tratamento bipolar', 'psiquiatra BH', 'oscilações de humor'],
     title: 'Transtorno Bipolar: Entendendo as Oscilações de Humor',
     slug: 'transtorno-bipolar-oscilacoes-humor',
     excerpt: 'Conheça os sintomas, tipos e tratamentos do transtorno bipolar, uma condição que vai além de simples mudanças de humor.',
@@ -5541,9 +5549,11 @@ Se você ou alguém que você ama apresenta sintomas, buscar avaliação especia
     publishedAt: '2024-01-28',
     readTime: 20,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '13',
+    metaDescription: 'Depressão Pós-Parto: reconheça sintomas além do baby blues, entenda causas (hormonais, psicológicas), conheça tratamentos seguros (terapia, medicação compatível com amamentação) e encontre suporte em Belo Horizonte para saúde mental materna.',
+    keywords: ['depressão pós-parto', 'DPP', 'baby blues', 'saúde mental materna', 'pós-parto', 'maternidade', 'psicólogo BH', 'tratamento seguro amamentação'],
     title: 'Depressão Pós-Parto: Sintomas, Tratamento e Suporte',
     slug: 'depressao-pos-parto-sintomas-tratamento',
     excerpt: 'Compreenda a depressão pós-parto, uma condição comum mas tratável que afeta muitas mães após o nascimento do bebê.',
@@ -6006,9 +6016,11 @@ Não espere piorar. Se você está se identificando com os sintomas, converse co
     publishedAt: '2024-01-30',
     readTime: 19,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '14',
+    metaDescription: 'Síndrome do Pânico: entenda os ataques de pânico (sintomas físicos e psicológicos), descubra as causas, conheça tratamento eficaz (TCC, exposição gradual, medicação) e recupere sua liberdade em Belo Horizonte.',
+    keywords: ['síndrome do pânico', 'ataque de pânico', 'agorafobia', 'ansiedade', 'tratamento pânico', 'TCC', 'psicólogo BH', 'palpitações', 'medo de morrer'],
     title: 'Síndrome do Pânico: Sintomas, Causas e Tratamento Eficaz',
     slug: 'sindrome-panico-sintomas-causas-tratamento',
     excerpt: 'Compreenda a síndrome do pânico, seus ataques intensos de medo e como a terapia pode ajudar você a recuperar sua liberdade.',
@@ -6754,9 +6766,11 @@ O primeiro passo é buscar ajuda especializada. Quanto mais cedo começar o trat
     publishedAt: '2024-02-02',
     readTime: 22,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '15',
+    metaDescription: 'TOC (Transtorno Obsessivo-Compulsivo): entenda obsessões e compulsões, reconheça subtipos (contaminação, verificação, simetria), conheça tratamento eficaz (EPR, medicação) e encontre especialistas em Belo Horizonte.',
+    keywords: ['TOC', 'transtorno obsessivo-compulsivo', 'obsessões', 'compulsões', 'EPR', 'terapia comportamental', 'rituais', 'psicólogo BH', 'tratamento TOC'],
     title: 'TOC - Transtorno Obsessivo-Compulsivo: Sintomas e Tratamento',
     slug: 'toc-transtorno-obsessivo-compulsivo-sintomas-tratamento',
     excerpt: 'Entenda o TOC além dos estereótipos: obsessões que atormentam, compulsões que aprisionam e tratamento que liberta.',
@@ -7514,9 +7528,11 @@ Busque ajuda especializada. TOC responde bem a tratamento quando feito corretame
     publishedAt: '2024-02-05',
     readTime: 24,
     featured: true,
-  },
-  {
+  }),
+  createArticle({
     id: '16',
+    metaDescription: 'Transtornos Alimentares (anorexia, bulimia, compulsão alimentar): reconheça sintomas, entenda causas, conheça tratamento multidisciplinar (terapia, reabilitação nutricional) e encontre ajuda especializada em Belo Horizonte.',
+    keywords: ['transtornos alimentares', 'anorexia nervosa', 'bulimia', 'compulsão alimentar', 'TCA', 'tratamento', 'imagem corporal', 'nutricionista BH', 'psicólogo BH'],
     title: 'Transtornos Alimentares: Anorexia, Bulimia e Compulsão Alimentar',
     slug: 'transtornos-alimentares-anorexia-bulimia-compulsao',
     excerpt: 'Compreenda os transtornos alimentares além da aparência: condições sérias de saúde mental que afetam corpo e mente.',
