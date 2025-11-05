@@ -14,11 +14,11 @@ Uma plataforma moderna e minimalista de pré-atendimento psicológico com múlti
 ## Essential Features
 
 ### Blog de Conteúdo para SEO
-- **Funcionalidade**: Seção completa de blog com artigos sobre psicologia, saúde mental, terapia e bem-estar. Sistema de busca, filtros por categoria, visualização de artigos individuais com formatação markdown
-- **Purpose**: Melhorar SEO através de conteúdo relevante, educar visitantes, estabelecer autoridade, aumentar tráfego orgânico e conversões
+- **Funcionalidade**: Seção completa de blog com artigos sobre psicologia, saúde mental, terapia e bem-estar. Sistema de busca, filtros por categoria, visualização de artigos individuais com formatação markdown, breadcrumbs para navegação hierárquica
+- **Purpose**: Melhorar SEO através de conteúdo relevante e breadcrumbs estruturados, educar visitantes, estabelecer autoridade, aumentar tráfego orgânico e conversões, facilitar navegação
 - **Trigger**: Usuário clica em "Blog" na landing page ou em botão de acesso ao blog
-- **Progression**: Clique no botão → Visualiza lista de artigos com categorias → Pode buscar ou filtrar → Clica em artigo → Lê conteúdo completo → Call-to-action para iniciar conversa
-- **Success criteria**: Grid responsivo de cards de artigos, busca funcional, filtros por categoria, artigos com markdown formatado, meta tags SEO, links internos, cards com preview e tempo de leitura, design consistente com o resto do site
+- **Progression**: Clique no botão → Visualiza lista de artigos com breadcrumbs (Home > Blog) → Pode buscar ou filtrar → Clica em artigo → Lê conteúdo completo com breadcrumbs (Home > Blog > Título do Artigo) → Call-to-action para iniciar conversa
+- **Success criteria**: Grid responsivo de cards de artigos, busca funcional, filtros por categoria, artigos com markdown formatado, meta tags SEO, breadcrumbs com schema.org markup, links internos, cards com preview e tempo de leitura, design consistente com o resto do site
 
 ### Landing Page de Apresentação
 - **Funcionalidade**: Página inicial moderna e atraente que apresenta o serviço, seus benefícios, como funciona, os 5 assistentes disponíveis, e botão de acesso ao blog
@@ -76,7 +76,7 @@ Uma plataforma moderna e minimalista de pré-atendimento psicológico com múlti
 
 ## Edge Case Handling
 
-- **Blog**: Artigos pré-carregados no código, busca em tempo real, filtros funcionando mesmo sem resultados (mensagem amigável), navegação entre artigo e home
+- **Blog**: Artigos pré-carregados no código, busca em tempo real, filtros funcionando mesmo sem resultados (mensagem amigável), navegação entre artigo e home com breadcrumbs estruturados para SEO, breadcrumbs sempre visíveis e clicáveis
 - **Landing Page**: Botão CTA claramente visível em múltiplos pontos da página para facilitar início, botão de blog sempre acessível
 - **Troca de Agente**: Usuário pode trocar entre 5 agentes a qualquer momento, histórico é preservado, nova mensagem de apresentação é adicionada
 - **Agente Padrão**: Lucas é o assistente padrão por ter abordagem equilibrada que agrada maioria dos usuários

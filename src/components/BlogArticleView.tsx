@@ -3,10 +3,11 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { BlogArticle } from '@/lib/blog-articles'
 import { getArticleSEO } from '@/lib/article-seo-metadata'
 import { updateDocumentMeta, generateStructuredData } from '@/lib/seo-helpers'
-import { Clock, Calendar, ArrowLeft, Tag } from '@phosphor-icons/react'
+import { Clock, Calendar, Tag } from '@phosphor-icons/react'
 import { marked } from 'marked'
 
 interface BlogArticleViewProps {
@@ -51,23 +52,13 @@ export function BlogArticleView({ article, onBack, onBackToHome }: BlogArticleVi
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container max-w-4xl mx-auto px-4 py-12 space-y-8">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            onClick={onBack}
-            className="gap-2 hover:gap-3 transition-all"
-          >
-            <ArrowLeft size={16} />
-            Voltar para Blog
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={onBackToHome}
-            className="gap-2 hover:gap-3 transition-all"
-          >
-            Voltar para Home
-          </Button>
-        </div>
+        <Breadcrumbs
+          items={[
+            { label: 'Home', onClick: onBackToHome },
+            { label: 'Blog', onClick: onBack },
+            { label: article.title },
+          ]}
+        />
 
         <article className="space-y-8">
           <header className="space-y-6">

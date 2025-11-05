@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { BlogCard } from '@/components/BlogCard'
 import { BlogArticleView } from '@/components/BlogArticleView'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
 import {
   BLOG_ARTICLES,
   getAllCategories,
@@ -50,13 +51,12 @@ export function BlogSection({ onBack }: BlogSectionProps) {
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container max-w-7xl mx-auto px-4 py-12 space-y-12">
         <div className="space-y-4">
-          <Button
-            variant="ghost"
-            onClick={onBack}
-            className="gap-2 mb-4 hover:gap-3 transition-all"
-          >
-            ← Voltar para Home
-          </Button>
+          <Breadcrumbs
+            items={[
+              { label: 'Home', onClick: onBack },
+              { label: 'Blog' },
+            ]}
+          />
 
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-primary">
