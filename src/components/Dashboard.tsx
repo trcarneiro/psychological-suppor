@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -46,16 +46,22 @@ export function Dashboard({ onLogout }: DashboardProps) {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [activeTab, setActiveTab] = useState('leads')
   
+  // Memoize the Set of existing conversation IDs for O(1) lookup
+  const existingConvIds = useMemo(
+    () => new Set(leads?.map(l => l.conversationId) || []),
+    [leads]
+  )
+
   const leadsFromConversations = useMemo(() => {
     if (!conversations) return []
     
     return conversations
       .filter(conv => conv.leadData && Object.keys(conv.leadData).length > 0)
       .map(conv => {
-        const existingLead = leads?.find(l => l.conversationId === conv.id)
-        
-        if (existingLead) {
-          return existingLead
+        // If lead already exists, find and return it
+        if (existingConvIds.has(conv.id)) {
+          const existingLead = leads?.find(l => l.conversationId === conv.id)
+          if (existingLead) return existingLead
         }
         
         const urgencyLevel = conv.leadData?.urgencyLevel || 5
@@ -79,9 +85,9 @@ export function Dashboard({ onLogout }: DashboardProps) {
         
         return newLead
       })
-  }, [conversations, leads])
+  }, [conversations, existingConvIds, leads])
 
-  useMemo(() => {
+  useEffect(() => {
     if (leadsFromConversations.length > 0) {
       const newLeads = leadsFromConversations.filter(
         newLead => !leads?.find(l => l.id === newLead.id)
@@ -446,3 +452,5 @@ export function Dashboard({ onLogout }: DashboardProps) {
     </div>
   )
 }
+
+export default Dashboard

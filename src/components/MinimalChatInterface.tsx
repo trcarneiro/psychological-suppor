@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
@@ -36,8 +36,11 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: Min
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const inputContainerRef = useRef<HTMLDivElement>(null)
 
-  const currentConversation = conversations?.find(c => c.id === currentConversationId)
-  const availableAgents = getActiveAgents()
+  const currentConversation = useMemo(
+    () => conversations?.find(c => c.id === currentConversationId),
+    [conversations, currentConversationId]
+  )
+  const availableAgents = useMemo(() => getActiveAgents(), [])
   
   const iconMap: Record<string, any> = {
     'Heart': User,
@@ -174,25 +177,25 @@ Responda:`
     )
   }
 
-  const handleSendMessage = () => {
+  const handleSendMessage = useCallback(() => {
     if (inputMessage.trim() && !isTyping) {
       addUserMessage(inputMessage)
     }
-  }
+  }, [inputMessage, isTyping, addUserMessage])
 
-  const handleSuggestionClick = (suggestion: string) => {
+  const handleSuggestionClick = useCallback((suggestion: string) => {
     setInputMessage(suggestion)
     textareaRef.current?.focus()
-  }
+  }, [setInputMessage])
 
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyPress = useCallback((e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
       handleSendMessage()
     }
-  }
+  }, [handleSendMessage])
 
-  const handleAgentChange = (newAgent: AIAgentConfig) => {
+  const handleAgentChange = useCallback((newAgent: AIAgentConfig) => {
     onChangeAgent(newAgent)
     
     if (currentConversation && currentConversation.messages.length > 0) {
@@ -215,7 +218,7 @@ Responda:`
         )
       )
     }
-  }
+  }, [currentConversation, currentConversationId, onChangeAgent, setConversations])
 
   return (
     <div className="h-screen bg-background flex flex-col relative overflow-hidden">
@@ -406,3 +409,5 @@ Responda:`
     </div>
   )
 }
+
+export default MinimalChatInterface

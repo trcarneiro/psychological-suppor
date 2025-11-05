@@ -134,3 +134,5 @@ export function BlogSection({ onBack }: BlogSectionProps) {
     </div>
   )
 }
+
+export default BlogSection
