@@ -1,4 +1,4 @@
-import { CaretRight, House } from '@phosphor-icons/react'
+import { CaretRight } from '@phosphor-icons/react'
 
 interface BreadcrumbItem {
   label: string

@@ -2,14 +2,6 @@ import { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Switch } from '@/components/ui/switch'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { PREDEFINED_AGENTS } from '@/lib/predefined-agents'
 import { AIAgentConfig } from '@/lib/types'
 import { Heart, User, Sparkle, Eye } from '@phosphor-icons/react'
@@ -24,7 +16,7 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Label } from '@/components/ui/label'
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, typeof Heart> = {
   'Heart': Heart,
   'Briefcase': User,
   'Sparkle': Sparkle,

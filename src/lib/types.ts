@@ -45,6 +45,9 @@ export interface Conversation {
   updatedAt: number
   needsReferral?: boolean
   isConverted?: boolean
+  agentId?: string
+  agentName?: string
+  agentSnapshot?: AIAgentConfig
 }
 
 export interface ReferralForm {

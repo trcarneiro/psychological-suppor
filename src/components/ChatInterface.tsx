@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -38,12 +38,6 @@ export function ChatInterface({ onBack }: ChatInterfaceProps) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, [currentConversation?.messages, isTyping])
-
-  useEffect(() => {
-    if (!hasStarted && !currentConversationId) {
-      startNewConversation()
-    }
-  }, [])
 
   const extractDataFromConversation = async (messages: Message[]): Promise<Partial<LeadData>> => {
     const conversationText = messages.map(m => `${m.role === 'user' ? 'Usuário' : 'Assistente'}: ${m.content}`).join('\n')
@@ -115,7 +109,11 @@ IMPORTANTE:
       contextualInstructions = `\n\nSe apropriado, sugira gentilmente que um acompanhamento profissional poderia ajudar. Pergunte sobre disponibilidade de horários ou preferência de contato.`
     }
 
-    const promptText = `${systemPrompt}${contextualInstructions}
+  const promptText = `${systemPrompt}${contextualInstructions}
+
+Regras adicionais:
+- Mantenha respostas enxutas, acolhedoras e evite resolver completamente a situação de imediato.
+- Incentive a pessoa a continuar falando e sempre finalize com uma pergunta aberta ou convite para compartilhar mais.
 
 Histórico da conversa:
 ${historyText}
@@ -156,7 +154,31 @@ Responda de forma empática e acolhedora:`
     return keywords.some(keyword => messageLower.includes(keyword))
   }
 
-  const startNewConversation = () => {
+  const addAssistantMessage = useCallback(
+    (content: string, conversationId: string) => {
+      const assistantMessage: Message = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content,
+        timestamp: Date.now(),
+      }
+
+      setConversations(prev =>
+        (prev || []).map(conv =>
+          conv.id === conversationId
+            ? {
+                ...conv,
+                messages: [...conv.messages, assistantMessage],
+                updatedAt: Date.now(),
+              }
+            : conv
+        )
+      )
+    },
+    [setConversations]
+  )
+
+  const startNewConversation = useCallback(() => {
     const newConversation: Conversation = {
       id: Date.now().toString(),
       title: 'Nova Conversa',
@@ -177,7 +199,13 @@ Responda de forma empática e acolhedora:`
     setTimeout(() => {
       addAssistantMessage(greetingMessage, newConversation.id)
     }, delay)
-  }
+  }, [addAssistantMessage, aiConfig?.greeting, aiConfig?.responseDelay, setConversations])
+
+  useEffect(() => {
+    if (!hasStarted && !currentConversationId) {
+      startNewConversation()
+    }
+  }, [hasStarted, currentConversationId, startNewConversation])
 
   const addUserMessage = async (content: string) => {
     if (!currentConversationId || !content.trim()) return
@@ -248,27 +276,6 @@ Responda de forma empática e acolhedora:`
         })
       }, 2000)
     }
-  }
-
-  const addAssistantMessage = (content: string, conversationId: string) => {
-    const assistantMessage: Message = {
-      id: Date.now().toString(),
-      role: 'assistant',
-      content,
-      timestamp: Date.now(),
-    }
-
-    setConversations(prev =>
-      (prev || []).map(conv =>
-        conv.id === conversationId
-          ? {
-              ...conv,
-              messages: [...conv.messages, assistantMessage],
-              updatedAt: Date.now(),
-            }
-          : conv
-      )
-    )
   }
 
   const handleSendMessage = () => {

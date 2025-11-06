@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -27,6 +27,7 @@ import {
   Sparkle,
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
+import { fetchAiConfig, updateAiConfig } from '@/lib/api-client'
 
 const DEFAULT_CONFIG: AIAgentConfigType = {
   id: 'default-ai-agent',
@@ -97,34 +98,73 @@ const CONVERSATION_STYLES = {
 }
 
 export function AIAgentConfig() {
-  const [config, setConfig] = useKV<AIAgentConfigType>('ai-agent-config', DEFAULT_CONFIG)
-  const [formData, setFormData] = useState<AIAgentConfigType>(config || DEFAULT_CONFIG)
+  const queryClient = useQueryClient()
+  const [formData, setFormData] = useState<AIAgentConfigType>(DEFAULT_CONFIG)
   const [hasChanges, setHasChanges] = useState(false)
+
+  const {
+    data: config,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ['ai-agent-config'],
+    queryFn: fetchAiConfig,
+    retry: 1,
+  })
 
   useEffect(() => {
     if (config) {
-      setFormData(config)
+      setFormData({
+        ...DEFAULT_CONFIG,
+        ...config,
+        createdAt: config.createdAt ?? Date.now(),
+        updatedAt: config.updatedAt ?? Date.now(),
+      })
+      setHasChanges(false)
     }
   }, [config])
 
   useEffect(() => {
-    if (!config) {
-      setConfig(DEFAULT_CONFIG)
+    if (!config && !isLoading && !isError) {
+      setFormData({
+        ...DEFAULT_CONFIG,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      })
+      setHasChanges(true)
     }
-  }, [config, setConfig])
+  }, [config, isLoading, isError])
+
+  const saveMutation = useMutation({
+    mutationFn: updateAiConfig,
+    onSuccess: updated => {
+      queryClient.setQueryData(['ai-agent-config'], updated)
+      setFormData(updated)
+      setHasChanges(false)
+      toast.success('Configurações salvas com sucesso!')
+    },
+    onError: err => {
+      const message = err instanceof Error ? err.message : 'Não foi possível salvar as configurações.'
+      toast.error(message)
+    },
+  })
 
   const handleSave = () => {
-    setConfig({
+    saveMutation.mutate({
       ...formData,
+      createdAt: formData.createdAt ?? Date.now(),
       updatedAt: Date.now(),
     })
-    setHasChanges(false)
-    toast.success('Configurações salvas com sucesso!')
   }
 
   const handleReset = () => {
     if (confirm('Tem certeza que deseja restaurar as configurações padrão?')) {
-      setFormData(DEFAULT_CONFIG)
+      setFormData({
+        ...DEFAULT_CONFIG,
+        createdAt: Date.now(),
+        updatedAt: Date.now(),
+      })
       setHasChanges(true)
       toast.success('Configurações restauradas. Clique em "Salvar" para aplicar.')
     }
@@ -155,9 +195,13 @@ export function AIAgentConfig() {
             <ArrowCounterClockwise size={16} />
             Restaurar Padrão
           </Button>
-          <Button onClick={handleSave} disabled={!hasChanges} className="gap-2">
+          <Button
+            onClick={handleSave}
+            disabled={!hasChanges || saveMutation.isPending}
+            className="gap-2"
+          >
             <FloppyDisk size={16} />
-            Salvar Alterações
+            {saveMutation.isPending ? 'Salvando...' : 'Salvar Alterações'}
           </Button>
         </div>
       </div>
@@ -170,6 +214,24 @@ export function AIAgentConfig() {
               Você tem alterações não salvas. Clique em "Salvar Alterações" para aplicar.
             </p>
           </div>
+        </Card>
+      )}
+
+      {isLoading && (
+        <Card className="p-6 flex items-center justify-center text-sm text-muted-foreground">
+          Carregando configurações do agente...
+        </Card>
+      )}
+
+      {isError && (
+        <Card className="p-6 bg-destructive/10 border-destructive text-destructive">
+          <p className="font-semibold">Não foi possível carregar as configurações atuais.</p>
+          <p className="text-sm mt-2">
+            {error instanceof Error ? error.message : 'Tente novamente mais tarde.'}
+          </p>
+          <Button variant="outline" onClick={() => queryClient.invalidateQueries({ queryKey: ['ai-agent-config'] })} className="mt-4">
+            Tentar novamente
+          </Button>
         </Card>
       )}
 

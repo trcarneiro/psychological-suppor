@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useMemo, useState } from 'react'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -10,78 +10,129 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
   DialogDescription,
   DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from '@/components/ui/dialog'
 import { Switch } from '@/components/ui/switch'
 import { Agent } from '@/lib/types'
+import { createAgent, deleteAgent, fetchAgents, updateAgent } from '@/lib/api-client'
 import {
-  UserCircle,
-  Plus,
-  PencilSimple,
-  Trash,
   CheckCircle,
-  XCircle,
   Envelope,
+  FloppyDisk,
+  PencilSimple,
   Phone,
+  Plus,
+  Trash,
+  UserCircle,
+  Warning,
+  XCircle,
 } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
+type FormState = {
+  name: string
+  crp: string
+  specialties: string
+  approach: string
+  experience: string
+  bio: string
+  email: string
+  phone: string
+  availability: string
+  priceRange: string
+  acceptsInsurance: boolean
+  insuranceProviders: string
+  active: boolean
+}
+
+const initialFormState: FormState = {
+  name: '',
+  crp: '',
+  specialties: '',
+  approach: '',
+  experience: '',
+  bio: '',
+  email: '',
+  phone: '',
+  availability: '',
+  priceRange: '',
+  acceptsInsurance: false,
+  insuranceProviders: '',
+  active: true,
+}
+
+const parseList = (value: string) =>
+  value
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean)
+
+const formatList = (items?: string[] | null) => (items && items.length > 0 ? items.join(', ') : '')
+
 export function AgentsManagement() {
-  const [agents, setAgents] = useKV<Agent[]>('agents', [])
+  const queryClient = useQueryClient()
+  const { data: agents = [], isLoading, isError } = useQuery({
+    queryKey: ['agents'],
+    queryFn: fetchAgents,
+  })
+
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingAgent, setEditingAgent] = useState<Agent | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [formData, setFormData] = useState<FormState>(initialFormState)
 
-  const [formData, setFormData] = useState({
-    name: '',
-    crp: '',
-    specialties: '',
-    approach: '',
-    experience: '',
-    bio: '',
-    email: '',
-    phone: '',
-    availability: '',
-    priceRange: '',
-    acceptsInsurance: false,
-    insuranceProviders: '',
-    active: true,
+  const createAgentMutation = useMutation({
+    mutationFn: createAgent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['agents'] })
+      toast.success('Agente cadastrado com sucesso')
+    },
+    onError: () => toast.error('Não foi possível salvar o agente. Tente novamente.'),
   })
 
+  const updateAgentMutation = useMutation({
+    mutationFn: ({ agentId, payload }: { agentId: string; payload: Partial<Agent> }) =>
+      updateAgent(agentId, payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['agents'] })
+      toast.success('Agente atualizado com sucesso')
+    },
+    onError: () => toast.error('Não foi possível atualizar o agente. Tente novamente.'),
+  })
+
+  const deleteAgentMutation = useMutation({
+    mutationFn: deleteAgent,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['agents'] })
+      toast.success('Agente excluído com sucesso')
+    },
+    onError: () => toast.error('Não foi possível excluir o agente. Tente novamente.'),
+  })
+
+  const isSaving = createAgentMutation.isPending || updateAgentMutation.isPending
+
   const filteredAgents = useMemo(() => {
-    if (!agents) return []
-    
     if (!searchQuery) return agents
 
     const query = searchQuery.toLowerCase()
     return agents.filter(agent =>
       agent.name.toLowerCase().includes(query) ||
       agent.crp.toLowerCase().includes(query) ||
-      agent.specialties.some(s => s.toLowerCase().includes(query)) ||
+      (agent.specialties ?? []).some(s => s.toLowerCase().includes(query)) ||
       agent.email.toLowerCase().includes(query)
     )
   }, [agents, searchQuery])
 
-  const openCreateDialog = () => {
+  const resetForm = () => {
+    setFormData(initialFormState)
     setEditingAgent(null)
-    setFormData({
-      name: '',
-      crp: '',
-      specialties: '',
-      approach: '',
-      experience: '',
-      bio: '',
-      email: '',
-      phone: '',
-      availability: '',
-      priceRange: '',
-      acceptsInsurance: false,
-      insuranceProviders: '',
-      active: true,
-    })
+  }
+
+  const openCreateDialog = () => {
+    resetForm()
     setIsDialogOpen(true)
   }
 
@@ -90,73 +141,82 @@ export function AgentsManagement() {
     setFormData({
       name: agent.name,
       crp: agent.crp,
-      specialties: agent.specialties.join(', '),
-      approach: agent.approach,
-      experience: agent.experience,
-      bio: agent.bio,
+      specialties: formatList(agent.specialties),
+      approach: agent.approach ?? '',
+      experience: agent.experience ?? '',
+      bio: agent.bio ?? '',
       email: agent.email,
-      phone: agent.phone,
-      availability: agent.availability.join(', '),
-      priceRange: agent.priceRange,
-      acceptsInsurance: agent.acceptsInsurance,
-      insuranceProviders: agent.insuranceProviders?.join(', ') || '',
-      active: agent.active,
+      phone: agent.phone ?? '',
+      availability: formatList(agent.availability),
+      priceRange: agent.priceRange ?? '',
+      acceptsInsurance: agent.acceptsInsurance ?? false,
+      insuranceProviders: formatList(agent.insuranceProviders),
+      active: agent.active ?? true,
     })
     setIsDialogOpen(true)
   }
 
-  const handleSaveAgent = () => {
-    if (!formData.name || !formData.crp || !formData.email) {
+  const buildPayload = (): Partial<Agent> | null => {
+    if (!formData.name.trim() || !formData.crp.trim() || !formData.email.trim()) {
       toast.error('Preencha os campos obrigatórios: Nome, CRP e Email')
-      return
+      return null
     }
 
-    const agentData: Agent = {
-      id: editingAgent?.id || `agent-${Date.now()}`,
-      name: formData.name,
-      crp: formData.crp,
-      specialties: formData.specialties.split(',').map(s => s.trim()).filter(Boolean),
-      approach: formData.approach,
-      experience: formData.experience,
-      bio: formData.bio,
-      email: formData.email,
-      phone: formData.phone,
-      availability: formData.availability.split(',').map(s => s.trim()).filter(Boolean),
-      priceRange: formData.priceRange,
+    return {
+      name: formData.name.trim(),
+      crp: formData.crp.trim(),
+      specialties: parseList(formData.specialties),
+      approach: formData.approach.trim() || undefined,
+      experience: formData.experience.trim() || undefined,
+      bio: formData.bio.trim() || undefined,
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || undefined,
+      availability: parseList(formData.availability),
+      priceRange: formData.priceRange.trim() || undefined,
       acceptsInsurance: formData.acceptsInsurance,
-      insuranceProviders: formData.insuranceProviders
-        ? formData.insuranceProviders.split(',').map(s => s.trim()).filter(Boolean)
-        : undefined,
+      insuranceProviders: parseList(formData.insuranceProviders),
       active: formData.active,
-      createdAt: editingAgent?.createdAt || Date.now(),
-      updatedAt: Date.now(),
     }
+  }
+
+  const handleSaveAgent = async () => {
+    const payload = buildPayload()
+    if (!payload) return
 
     if (editingAgent) {
-      setAgents(prev => (prev || []).map(a => (a.id === editingAgent.id ? agentData : a)))
-      toast.success('Agente atualizado com sucesso')
+      await updateAgentMutation.mutateAsync({ agentId: editingAgent.id, payload })
     } else {
-      setAgents(prev => [...(prev || []), agentData])
-      toast.success('Agente cadastrado com sucesso')
+      await createAgentMutation.mutateAsync(payload)
     }
 
     setIsDialogOpen(false)
+    resetForm()
   }
 
-  const handleDeleteAgent = (agentId: string) => {
-    if (confirm('Tem certeza que deseja excluir este agente?')) {
-      setAgents(prev => (prev || []).filter(a => a.id !== agentId))
-      toast.success('Agente excluído com sucesso')
+  const handleDeleteAgent = async (agentId: string) => {
+    if (!confirm('Tem certeza que deseja excluir este agente?')) return
+    await deleteAgentMutation.mutateAsync(agentId)
+  }
+
+  const toggleAgentStatus = async (agent: Agent) => {
+    const payload = {
+      name: agent.name,
+      crp: agent.crp,
+      specialties: agent.specialties ?? [],
+      approach: agent.approach ?? undefined,
+      experience: agent.experience ?? undefined,
+      bio: agent.bio ?? undefined,
+      email: agent.email,
+      phone: agent.phone ?? undefined,
+      availability: agent.availability ?? [],
+      priceRange: agent.priceRange ?? undefined,
+      acceptsInsurance: agent.acceptsInsurance ?? false,
+      insuranceProviders: agent.insuranceProviders ?? [],
+      photo: agent.photo ?? undefined,
+      active: !agent.active,
     }
-  }
 
-  const toggleAgentStatus = (agentId: string) => {
-    setAgents(prev =>
-      (prev || []).map(a =>
-        a.id === agentId ? { ...a, active: !a.active, updatedAt: Date.now() } : a
-      )
-    )
-    toast.success('Status do agente atualizado')
+    await updateAgentMutation.mutateAsync({ agentId: agent.id, payload })
   }
 
   return (
@@ -190,7 +250,17 @@ export function AgentsManagement() {
 
       <ScrollArea className="h-[calc(100vh-350px)]">
         <div className="grid gap-4">
-          {filteredAgents.length === 0 ? (
+          {isLoading ? (
+            <Card className="p-12 text-center">
+              <UserCircle size={48} className="mx-auto mb-4 text-muted-foreground opacity-50 animate-spin" />
+              <p className="text-muted-foreground">Carregando agentes...</p>
+            </Card>
+          ) : isError ? (
+            <Card className="p-12 text-center">
+              <Warning size={48} className="mx-auto mb-4 text-destructive" />
+              <p className="text-destructive">Não foi possível carregar os agentes.</p>
+            </Card>
+          ) : filteredAgents.length === 0 ? (
             <Card className="p-12 text-center">
               <UserCircle size={48} className="mx-auto mb-4 text-muted-foreground opacity-50" />
               <p className="text-muted-foreground">
@@ -216,9 +286,9 @@ export function AgentsManagement() {
                       <p className="text-sm text-muted-foreground line-clamp-2">{agent.bio}</p>
                     )}
 
-                    {agent.specialties.length > 0 && (
+                    {(agent.specialties ?? []).length > 0 && (
                       <div className="flex flex-wrap gap-2">
-                        {agent.specialties.map((specialty, idx) => (
+                        {(agent.specialties ?? []).map((specialty, idx) => (
                           <Badge key={idx} variant="outline">
                             {specialty}
                           </Badge>
@@ -262,11 +332,11 @@ export function AgentsManagement() {
                       )}
                     </div>
 
-                    {agent.acceptsInsurance && agent.insuranceProviders && (
+                    {agent.acceptsInsurance && (agent.insuranceProviders ?? []).length > 0 && (
                       <div className="text-sm">
                         <span className="font-medium text-foreground">Convênios:</span>{' '}
                         <span className="text-muted-foreground">
-                          {agent.insuranceProviders.join(', ')}
+                          {(agent.insuranceProviders ?? []).join(', ')}
                         </span>
                       </div>
                     )}
@@ -285,8 +355,9 @@ export function AgentsManagement() {
                     <Button
                       variant={agent.active ? 'outline' : 'default'}
                       size="sm"
-                      onClick={() => toggleAgentStatus(agent.id)}
+                      onClick={() => toggleAgentStatus(agent)}
                       className="gap-2"
+                      disabled={updateAgentMutation.isPending}
                     >
                       {agent.active ? (
                         <>
@@ -305,6 +376,7 @@ export function AgentsManagement() {
                       size="sm"
                       onClick={() => handleDeleteAgent(agent.id)}
                       className="gap-2"
+                      disabled={deleteAgentMutation.isPending}
                     >
                       <Trash size={16} />
                       Excluir
@@ -477,8 +549,9 @@ export function AgentsManagement() {
             <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
               Cancelar
             </Button>
-            <Button onClick={handleSaveAgent}>
-              {editingAgent ? 'Atualizar' : 'Cadastrar'}
+            <Button onClick={handleSaveAgent} disabled={isSaving} className="gap-2">
+              <FloppyDisk size={16} />
+              {editingAgent ? 'Salvar Alterações' : 'Cadastrar Agente'}
             </Button>
           </DialogFooter>
         </DialogContent>

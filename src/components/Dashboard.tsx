@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Lead, Conversation } from '@/lib/types'
+import { Lead } from '@/lib/types'
 import { 
   Users, 
   ChatCircle, 
@@ -30,73 +30,55 @@ import {
   Robot
 } from '@phosphor-icons/react'
 import { LeadDetailDialog } from './LeadDetailDialog'
-import { AgentsManagement } from './AgentsManagement'
 import { AIAgentConfig } from './AIAgentConfig'
 import { AgentsManagementPanel } from './AgentsManagementPanel'
+import { fetchLeads, updateLeadStatus as apiUpdateLeadStatus, fetchConversation } from '@/lib/api-client'
 
 interface DashboardProps {
   onLogout: () => void
 }
 
 export function Dashboard({ onLogout }: DashboardProps) {
-  const [conversations] = useKV<Conversation[]>('conversations', [])
-  const [leads, setLeads] = useKV<Lead[]>('leads', [])
+  const queryClient = useQueryClient()
+  const {
+    data: leads = [],
+    isLoading: leadsLoading,
+    isError: leadsError,
+  } = useQuery({
+    queryKey: ['leads'],
+    queryFn: fetchLeads,
+  })
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [activeTab, setActiveTab] = useState('leads')
   
-  const leadsFromConversations = useMemo(() => {
-    if (!conversations) return []
-    
-    return conversations
-      .filter(conv => conv.leadData && Object.keys(conv.leadData).length > 0)
-      .map(conv => {
-        const existingLead = leads?.find(l => l.conversationId === conv.id)
-        
-        if (existingLead) {
-          return existingLead
-        }
-        
-        const urgencyLevel = conv.leadData?.urgencyLevel || 5
-        const emotionalState = conv.leadData?.emotionalState || 'moderate'
-        
-        let score = urgencyLevel * 10
-        if (emotionalState === 'critical') score += 30
-        else if (emotionalState === 'high') score += 20
-        else if (emotionalState === 'moderate') score += 10
-        
-        const newLead: Lead = {
-          id: `lead-${conv.id}`,
-          conversationId: conv.id,
-          data: conv.leadData || {},
-          status: 'new',
-          score,
-          createdAt: conv.createdAt,
-          updatedAt: conv.updatedAt,
-          lastActivity: conv.updatedAt,
-        }
-        
-        return newLead
-      })
-  }, [conversations, leads])
+  const { data: selectedConversation } = useQuery({
+    queryKey: ['conversation', selectedLead?.conversationId],
+    queryFn: () => fetchConversation(selectedLead!.conversationId),
+    enabled: !!selectedLead?.conversationId,
+  })
 
-  useMemo(() => {
-    if (leadsFromConversations.length > 0) {
-      const newLeads = leadsFromConversations.filter(
-        newLead => !leads?.find(l => l.id === newLead.id)
-      )
-      
-      if (newLeads.length > 0) {
-        setLeads(prev => [...(prev || []), ...newLeads])
+  const updateLeadStatusMutation = useMutation({
+    mutationFn: ({ leadId, status }: { leadId: string; status: Lead['status'] }) => apiUpdateLeadStatus(leadId, status),
+  })
+
+  const handleUpdateLeadStatus = (leadId: string, status: Lead['status']) => {
+    updateLeadStatusMutation.mutate(
+      { leadId, status },
+      {
+        onSuccess: (updatedLead) => {
+          queryClient.invalidateQueries({ queryKey: ['leads'] })
+          if (selectedLead?.id === updatedLead.id) {
+            setSelectedLead(updatedLead)
+          }
+        },
       }
-    }
-  }, [leadsFromConversations, leads, setLeads])
-
-  const allLeads = leads || []
+    )
+  }
 
   const filteredLeads = useMemo(() => {
-    return allLeads
+    return leads
       .filter(lead => {
         if (statusFilter !== 'all' && lead.status !== statusFilter) return false
         
@@ -113,27 +95,17 @@ export function Dashboard({ onLogout }: DashboardProps) {
         return true
       })
       .sort((a, b) => b.score - a.score)
-  }, [allLeads, statusFilter, searchQuery])
+  }, [leads, statusFilter, searchQuery])
 
   const stats = useMemo(() => {
-    const total = allLeads.length
-    const newLeads = allLeads.filter(l => l.status === 'new').length
-    const contacted = allLeads.filter(l => l.status === 'contacted').length
-    const converted = allLeads.filter(l => l.status === 'converted').length
+    const total = leads.length
+    const newLeads = leads.filter(l => l.status === 'new').length
+    const contacted = leads.filter(l => l.status === 'contacted').length
+    const converted = leads.filter(l => l.status === 'converted').length
     const conversionRate = total > 0 ? ((converted / total) * 100).toFixed(1) : '0'
     
     return { total, newLeads, contacted, converted, conversionRate }
-  }, [allLeads])
-
-  const updateLeadStatus = (leadId: string, newStatus: Lead['status']) => {
-    setLeads(prev =>
-      (prev || []).map(lead =>
-        lead.id === leadId
-          ? { ...lead, status: newStatus, updatedAt: Date.now() }
-          : lead
-      )
-    )
-  }
+  }, [leads])
 
   const getStatusBadge = (status: Lead['status']) => {
     const variants: Record<Lead['status'], { label: string; variant: 'default' | 'secondary' | 'destructive' | 'outline' }> = {
@@ -269,7 +241,17 @@ export function Dashboard({ onLogout }: DashboardProps) {
                   <TabsContent value="list" className="flex-1 mt-4 min-h-0">
                     <ScrollArea className="h-[calc(100vh-550px)]">
                       <div className="space-y-3">
-                        {filteredLeads.length === 0 ? (
+                        {leadsLoading ? (
+                          <div className="text-center py-12 text-muted-foreground">
+                            <Clock size={48} className="mx-auto mb-4 opacity-50 animate-spin" />
+                            <p>Carregando leads...</p>
+                          </div>
+                        ) : leadsError ? (
+                          <div className="text-center py-12 text-destructive">
+                            <Warning size={48} className="mx-auto mb-4" />
+                            <p>Não foi possível carregar os leads. Tente novamente mais tarde.</p>
+                          </div>
+                        ) : filteredLeads.length === 0 ? (
                           <div className="text-center py-12 text-muted-foreground">
                             <Users size={48} className="mx-auto mb-4 opacity-50" />
                             <p>Nenhum lead encontrado</p>
@@ -318,8 +300,9 @@ export function Dashboard({ onLogout }: DashboardProps) {
                                   <Select
                                     value={lead.status}
                                     onValueChange={(value) => {
-                                      updateLeadStatus(lead.id, value as Lead['status'])
+                                      handleUpdateLeadStatus(lead.id, value as Lead['status'])
                                     }}
+                                    disabled={updateLeadStatusMutation.isPending}
                                   >
                                     <SelectTrigger 
                                       className="w-[140px]"
@@ -437,10 +420,10 @@ export function Dashboard({ onLogout }: DashboardProps) {
       {selectedLead && (
         <LeadDetailDialog
           lead={selectedLead}
-          conversation={conversations?.find(c => c.id === selectedLead.conversationId)}
+          conversation={selectedConversation ?? undefined}
           open={!!selectedLead}
           onOpenChange={(open) => !open && setSelectedLead(null)}
-          onUpdateStatus={(status) => updateLeadStatus(selectedLead.id, status)}
+          onUpdateStatus={(status) => handleUpdateLeadStatus(selectedLead.id, status)}
         />
       )}
     </div>

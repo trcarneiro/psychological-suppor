@@ -1,10 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
-import { useKV } from '@github/spark/hooks'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { Badge } from '@/components/ui/badge'
 import { Message, Conversation, AIAgentConfig } from '@/lib/types'
-import { PaperPlaneTilt, User, List } from '@phosphor-icons/react'
+import { PaperPlaneTilt, User, List, X } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import {
@@ -17,18 +16,21 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { getActiveAgents } from '@/lib/predefined-agents'
 import { getRandomStarters } from '@/lib/conversation-starters'
+import { createConversation, sendConversationMessage } from '@/lib/api-client'
 
 interface MinimalChatInterfaceProps {
   agent: AIAgentConfig
   onChangeAgent: (agent: AIAgentConfig) => void
   onAdminLogin: () => void
+  onClose: () => void
 }
 
-export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: MinimalChatInterfaceProps) {
-  const [conversations, setConversations] = useKV<Conversation[]>('conversations', [])
-  const [currentConversationId, setCurrentConversationId] = useState<string | null>(null)
+export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClose }: MinimalChatInterfaceProps) {
+  const queryClient = useQueryClient()
+  const [conversation, setConversation] = useState<Conversation | null>(null)
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [isInitializing, setIsInitializing] = useState(false)
   const [showSuggestions, setShowSuggestions] = useState(true)
   const [suggestionPrompts] = useState(() => getRandomStarters(6))
   
@@ -36,26 +38,13 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: Min
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const inputContainerRef = useRef<HTMLDivElement>(null)
 
-  const currentConversation = conversations?.find(c => c.id === currentConversationId)
   const availableAgents = getActiveAgents()
   
-  const iconMap: Record<string, any> = {
-    'Heart': User,
-    'Briefcase': User,
-    'Sparkle': User,
-    'Brain': User,
-    'Scales': User,
-  }
-
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
-  }, [currentConversation?.messages, isTyping])
-
-  useEffect(() => {
-    startNewConversation()
-  }, [])
+  }, [conversation?.messages, isTyping])
 
   useEffect(() => {
     if (textareaRef.current) {
@@ -64,121 +53,74 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin }: Min
     }
   }, [inputMessage])
 
-  const generateAIResponse = async (userMessage: string, conversationHistory: Message[]): Promise<string> => {
-    const historyText = conversationHistory?.map(m => `${m.role === 'user' ? 'Usuário' : agent.name}: ${m.content}`).join('\n') || ''
-    
-    const messageCount = conversationHistory.filter(m => m.role === 'user').length
+  const delay = useCallback((ms: number) => new Promise(resolve => setTimeout(resolve, ms)), [])
 
-    let contextualInstructions = ''
-    if (messageCount === 1) {
-      contextualInstructions = `\n\nEsta é a primeira mensagem. Agradeça e faça uma pergunta aberta.`
-    } else if (messageCount === 3) {
-      contextualInstructions = `\n\nTente descobrir o nome da pessoa naturalmente.`
-    } else if (messageCount >= 5) {
-      contextualInstructions = `\n\nPergunte sobre disponibilidade ou preferência de contato se apropriado.`
-    }
-
-    const promptText = `${agent.systemPrompt}${contextualInstructions}
-
-Histórico:
-${historyText}
-
-Usuário: ${userMessage}
-
-Responda:`
+  const initializeConversation = useCallback(async (agentConfig: AIAgentConfig) => {
+    setIsInitializing(true)
+    setIsTyping(true)
+    setShowSuggestions(true)
+    setConversation(null)
 
     try {
-      const response = await window.spark.llm(promptText, agent.model)
-      return response
+      const result = await createConversation(agentConfig)
+      await delay(result.responseDelay)
+      setConversation(result.conversation)
+      await queryClient.invalidateQueries({ queryKey: ['conversations'] })
     } catch (error) {
-      console.error('Erro:', error)
-      return 'Desculpe, tive uma dificuldade técnica. Pode repetir?'
+      console.error('Erro ao iniciar conversa:', error)
+    } finally {
+      setIsInitializing(false)
+      setIsTyping(false)
     }
-  }
+  }, [delay, queryClient])
 
-  const startNewConversation = () => {
-    const newConversation: Conversation = {
-      id: Date.now().toString(),
-      title: `Conversa com ${agent.name}`,
-      messages: [],
-      leadData: {},
-      createdAt: Date.now(),
-      updatedAt: Date.now(),
-      needsReferral: false,
-    }
+  useEffect(() => {
+    initializeConversation(agent)
+  }, [agent, initializeConversation])
 
-    setConversations(prev => [newConversation, ...(prev || [])])
-    setCurrentConversationId(newConversation.id)
+  const handleSendMessage = useCallback(async () => {
+    if (!conversation || isTyping || isInitializing) return
 
-    setTimeout(() => {
-      addAssistantMessage(agent.greeting, newConversation.id)
-    }, agent.responseDelay)
-  }
-
-  const addUserMessage = async (content: string) => {
-    if (!currentConversationId || !content.trim()) return
-
-    setShowSuggestions(false)
-
-    const userMessage: Message = {
-      id: Date.now().toString(),
-      role: 'user',
-      content: content.trim(),
-      timestamp: Date.now(),
-    }
-
-    setConversations(prev =>
-      (prev || []).map(conv =>
-        conv.id === currentConversationId
-          ? {
-              ...conv,
-              messages: [...conv.messages, userMessage],
-              updatedAt: Date.now(),
-            }
-          : conv
-      )
-    )
+    const trimmed = inputMessage.trim()
+    if (!trimmed) return
 
     setInputMessage('')
-    setIsTyping(true)
+    setShowSuggestions(false)
 
-    const updatedConv = conversations?.find(c => c.id === currentConversationId)
-    const history = updatedConv ? [...updatedConv.messages, userMessage] : [userMessage]
-
-    const aiResponse = await generateAIResponse(content, history)
-    
-    await new Promise(resolve => setTimeout(resolve, agent.responseDelay))
-    
-    setIsTyping(false)
-    addAssistantMessage(aiResponse, currentConversationId)
-  }
-
-  const addAssistantMessage = (content: string, conversationId: string) => {
-    const assistantMessage: Message = {
-      id: Date.now().toString(),
-      role: 'assistant',
-      content,
+    const previousConversation = conversation
+    const optimisticMessage: Message = {
+      id: `temp-${Date.now()}`,
+      role: 'user',
+      content: trimmed,
       timestamp: Date.now(),
     }
 
-    setConversations(prev =>
-      (prev || []).map(conv =>
-        conv.id === conversationId
-          ? {
-              ...conv,
-              messages: [...conv.messages, assistantMessage],
-              updatedAt: Date.now(),
-            }
-          : conv
-      )
-    )
-  }
+    setConversation(prev => prev ? {
+      ...prev,
+      messages: [...prev.messages, optimisticMessage],
+    } : prev)
 
-  const handleSendMessage = () => {
-    if (inputMessage.trim() && !isTyping) {
-      addUserMessage(inputMessage)
+    setIsTyping(true)
+
+    try {
+      const result = await sendConversationMessage({
+        conversationId: previousConversation.id,
+        content: trimmed,
+      })
+
+      await delay(result.responseDelay)
+      setConversation(result.conversation)
+      await queryClient.invalidateQueries({ queryKey: ['conversations'] })
+      if (result.lead) {
+        await queryClient.invalidateQueries({ queryKey: ['leads'] })
+      }
+    } catch (error) {
+      console.error('Erro ao enviar mensagem:', error)
+      setConversation(previousConversation)
+    } finally {
+      setIsTyping(false)
     }
-  }
+  }, [conversation, delay, inputMessage, isInitializing, isTyping, queryClient])
 
   const handleSuggestionClick = (suggestion: string) => {
     setInputMessage(suggestion)
@@ -192,36 +134,27 @@ Responda:`
     }
   }
 
-  const handleAgentChange = (newAgent: AIAgentConfig) => {
+  const handleAgentChange = useCallback((newAgent: AIAgentConfig) => {
     onChangeAgent(newAgent)
-    
-    if (currentConversation && currentConversation.messages.length > 0) {
-      const transitionMessage: Message = {
-        id: Date.now().toString(),
-        role: 'assistant',
-        content: `Olá! Agora você está conversando com ${newAgent.name}. ${newAgent.greeting}`,
-        timestamp: Date.now(),
-      }
-
-      setConversations(prev =>
-        (prev || []).map(conv =>
-          conv.id === currentConversationId
-            ? {
-                ...conv,
-                messages: [...conv.messages, transitionMessage],
-                updatedAt: Date.now(),
-              }
-            : conv
-        )
-      )
-    }
-  }
+    setConversation(null)
+    setShowSuggestions(true)
+  }, [onChangeAgent])
 
   return (
     <div className="h-screen bg-background flex flex-col relative overflow-hidden">
       <div className={`absolute inset-0 bg-gradient-to-br ${agent.color} opacity-5 -z-10`} />
       
       <div className="fixed top-6 right-6 z-50 flex gap-3">
+        <Button
+          size="icon"
+          variant="ghost"
+          onClick={onClose}
+          className="h-12 w-12 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg hover:bg-card"
+        >
+          <X size={20} className="text-foreground" />
+          <span className="sr-only">Fechar chat</span>
+        </Button>
+
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <motion.button
@@ -279,7 +212,7 @@ Responda:`
           className="flex-1 overflow-y-auto space-y-6 mb-6 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent"
         >
           <AnimatePresence mode="popLayout">
-            {currentConversation?.messages.map((message, index) => (
+            {conversation?.messages.map((message, index) => (
               <motion.div
                 key={message.id}
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -335,7 +268,7 @@ Responda:`
           )}
         </div>
 
-        {showSuggestions && currentConversation?.messages.length === 1 && (
+  {showSuggestions && conversation?.messages.length === 1 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -383,15 +316,15 @@ Responda:`
               placeholder="Digite sua mensagem..."
               className="resize-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-lg px-3 py-2 max-h-32 scrollbar-none"
               rows={1}
-              disabled={isTyping}
+              disabled={isTyping || isInitializing}
             />
             <Button
               onClick={handleSendMessage}
-              disabled={!inputMessage.trim() || isTyping}
+              disabled={!inputMessage.trim() || isTyping || isInitializing}
               size="lg"
               className={cn(
                 `bg-gradient-to-r ${agent.color} hover:opacity-90 text-white rounded-2xl h-12 w-12 p-0 flex-shrink-0 shadow-md`,
-                (!inputMessage.trim() || isTyping) && 'opacity-50'
+                (!inputMessage.trim() || isTyping || isInitializing) && 'opacity-50'
               )}
             >
               <PaperPlaneTilt size={20} weight="fill" />

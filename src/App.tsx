@@ -36,6 +36,7 @@ function App() {
           agent={selectedAgent}
           onChangeAgent={handleChangeAgent}
           onAdminLogin={() => setViewMode('admin-login')}
+          onClose={() => setViewMode('landing')}
         />
       )}
 

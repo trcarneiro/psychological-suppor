@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "mysql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum MessageRole {
+  user
+  assistant
+}
+
+enum LeadStatus {
+  new
+  contacted
+  scheduled
+  converted
+  lost
+}
+
+enum EmotionalState {
+  low
+  moderate
+  high
+  critical
+}
+
+enum ContactPreference {
+  email
+  phone
+  whatsapp
+}
+
+model Conversation {
+  id             String    @id @default(cuid())
+  title          String
+  agentId        String
+  agentName      String
+  agentSnapshot  Json
+  needsReferral  Boolean   @default(false)
+  isConverted    Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  messages       Message[]
+  lead           Lead?
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  conversationId String
+  role           MessageRole
+  content        String       @db.LongText
+  timestamp      DateTime     @default(now())
+}
+
+model Lead {
+  id                  String           @id @default(cuid())
+  conversation        Conversation     @relation(fields: [conversationId], references: [id])
+  conversationId      String           @unique
+  name                String?
+  email               String?
+  phone               String?
+  age                 Int?
+  mainConcern         String?          @db.LongText
+  emotionalState      EmotionalState?
+  urgencyLevel        Int?
+  symptoms            Json?
+  duration            String?
+  previousTherapy     Boolean?
+  preferredContact    ContactPreference?
+  availability        String?
+  budget              String?
+  insuranceProvider   String?
+  status              LeadStatus       @default(new)
+  score               Int              @default(0)
+  suggestedProfessional String?
+  notes               String?          @db.LongText
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  lastActivity        DateTime         @default(now())
+}
+
+model Agent {
+  id                 String   @id @default(cuid())
+  name               String
+  crp                String
+  specialties        Json?
+  approach           String?
+  experience         String?
+  bio                String?  @db.LongText
+  email              String
+  phone              String?
+  availability       Json?
+  priceRange         String?
+  acceptsInsurance   Boolean  @default(false)
+  insuranceProviders Json?
+  photo              String?
+  active             Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model AIAgentConfig {
+  id                   String  @id
+  name                 String
+  personality          String
+  description          String  @db.LongText
+  model                String
+  systemPrompt         String  @db.LongText
+  greeting             String  @db.LongText
+  conversationStyle    String
+  maxMessageLength     Int
+  responseDelay        Int
+  collectDataFields    Json
+  autoReferralThreshold Int
+  temperature          Float
+  active               Boolean
+  color                String
+  icon                 String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}

@@ -15,7 +15,6 @@ import {
   Phone, 
   WhatsappLogo,
   Clock,
-  Warning,
   ChatCircle,
   Calendar,
   Heart
