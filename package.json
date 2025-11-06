@@ -87,8 +87,8 @@
     },
     "devDependencies": {
         "@eslint/js": "^9.21.0",
-        "@rollup/rollup-win32-x64-msvc": "^4.52.5",
-        "@swc/core-win32-x64-msvc": "^1.15.0",
+    "@rollup/rollup": "^4.52.5",
+    "@swc/core": "^1.15.0",
         "@tailwindcss/postcss": "^4.1.8",
         "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
