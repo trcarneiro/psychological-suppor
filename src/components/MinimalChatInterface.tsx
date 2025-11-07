@@ -124,7 +124,9 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
 
   const handleSuggestionClick = (suggestion: string) => {
     setInputMessage(suggestion)
-    textareaRef.current?.focus()
+    setTimeout(() => {
+      handleSendMessage()
+    }, 100)
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {

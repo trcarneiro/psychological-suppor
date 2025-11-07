@@ -5,6 +5,7 @@ import conversationsRouter from './routes/conversations'
 import leadsRouter from './routes/leads'
 import agentsRouter from './routes/agents'
 import settingsRouter from './routes/settings'
+import messagesRouter from './routes/messages'
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use('/api/conversations', conversationsRouter)
 app.use('/api/leads', leadsRouter)
 app.use('/api/agents', agentsRouter)
 app.use('/api/settings', settingsRouter)
+app.use('/api/messages', messagesRouter)
 
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint não encontrado.' })

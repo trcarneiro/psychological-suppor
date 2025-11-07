@@ -149,3 +149,18 @@ export async function updateAiConfig(payload: AIAgentConfig) {
     updatedAt: normalizeTimestamp(updatedAt),
   }
 }
+
+export async function updateMessage(messageId: string, content: string) {
+  const data = await apiFetch<{ message: Message }>(`/api/messages/${messageId}`, {
+    method: 'PATCH',
+    body: JSON.stringify({ content }),
+  })
+  return data.message
+}
+
+export async function deleteMessage(messageId: string) {
+  await apiFetch<void>(`/api/messages/${messageId}`, {
+    method: 'DELETE',
+  })
+}
+

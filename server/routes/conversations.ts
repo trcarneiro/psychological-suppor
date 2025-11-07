@@ -114,6 +114,9 @@ router.post('/:id/messages', async (req, res) => {
   const { id } = req.params
   const { content } = sendMessageSchema.parse(req.body)
 
+  console.log('[POST /conversations/:id/messages] conversationId:', id)
+  console.log('[POST /conversations/:id/messages] user content:', content)
+
   const conversation = await prisma.conversation.findUnique({
     where: { id },
     include: {
@@ -123,10 +126,12 @@ router.post('/:id/messages', async (req, res) => {
   })
 
   if (!conversation) {
+    console.error('[POST /conversations/:id/messages] Conversa não encontrada:', id)
     return res.status(404).json({ error: 'Conversa não encontrada.' })
   }
 
   const agent = conversation.agentSnapshot as unknown as AgentSnapshot
+  console.log('[POST /conversations/:id/messages] Agent:', agent.name, 'Model:', agent.model)
 
   const userMessageRecord = await prisma.message.create({
     data: {
@@ -147,11 +152,19 @@ router.post('/:id/messages', async (req, res) => {
     },
   ]
 
-  const assistantResponse = await generateAssistantReply({
-    agent,
-    history,
-    userMessage: content,
-  })
+  console.log('[POST /conversations/:id/messages] Gerando resposta do assistente...')
+  let assistantResponse: string
+  try {
+    assistantResponse = await generateAssistantReply({
+      agent,
+      history,
+      userMessage: content,
+    })
+    console.log('[POST /conversations/:id/messages] Resposta gerada:', assistantResponse.substring(0, 100))
+  } catch (error) {
+    console.error('[POST /conversations/:id/messages] Erro ao gerar resposta:', error)
+    throw error
+  }
 
   const assistantMessageRecord = await prisma.message.create({
     data: {
