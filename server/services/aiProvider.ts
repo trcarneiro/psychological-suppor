@@ -68,11 +68,59 @@ export async function generateAssistantReply(params: {
   })
 
   if (!text) {
-    return 'Desculpe, encontrei uma dificuldade técnica ao responder agora. Podemos tentar novamente?'}
+    return 'Desculpe, encontrei uma dificuldade técnica ao responder agora. Podemos tentar novamente?'
+  }
 
   const truncated = text.length > agent.maxMessageLength
     ? `${text.slice(0, agent.maxMessageLength - 1)}…`
     : text
 
   return truncated
+}
+
+export async function generateSuggestions(params: {
+  agent: AgentSnapshot
+  history: ConversationMessage[]
+  lastAssistantMessage: string
+}) {
+  const { agent, history, lastAssistantMessage } = params
+  
+  const historyText = history
+    .slice(-6)
+    .map(message => `${message.role === 'user' ? 'Usuário' : agent.name}: ${message.content}`)
+    .join('\n')
+
+  const prompt = `Você é ${agent.name}, um assistente de acolhimento psicológico.
+
+Histórico recente da conversa:
+${historyText}
+
+Sua última mensagem foi:
+"${lastAssistantMessage}"
+
+Com base no contexto da conversa, gere EXATAMENTE 3 sugestões de resposta curtas e naturais que a pessoa poderia dar. 
+
+Regras importantes:
+- Cada sugestão deve ter no máximo 6-8 palavras
+- Devem ser respostas diretas, naturais e humanas
+- Se você fez uma pergunta, inclua possíveis respostas
+- Mantenha o tom empático e acolhedor
+- Não use aspas ou formatação especial
+
+Retorne apenas as 3 sugestões, uma por linha, sem numeração ou marcadores.`
+
+  const text = await generateText(prompt, {
+    temperature: 0.7,
+    maxOutputTokens: 150,
+  })
+
+  if (!text) return []
+
+  const suggestions = text
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0 && line.length < 80)
+    .slice(0, 3)
+
+  return suggestions
 }
