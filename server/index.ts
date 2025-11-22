@@ -9,7 +9,11 @@ import messagesRouter from './routes/messages'
 
 const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: '*', // Allow all origins for now to fix CORS issues
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}))
 app.use(express.json({ limit: '1mb' }))
 
 app.get('/health', (_req, res) => {
