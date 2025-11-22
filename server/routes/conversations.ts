@@ -2,10 +2,11 @@ import { Router } from 'express'
 import { z } from 'zod'
 import { prisma } from '../prisma'
 import { mapConversation, mapMessage, mapLead } from './formatters'
-import { generateAssistantReply, type AgentSnapshot, type ConversationMessage } from '../services/aiProvider'
+import { generateAssistantReply, generateSuggestions, type AgentSnapshot, type ConversationMessage } from '../services/aiProvider'
 import { extractLeadData } from '../services/leadExtractor'
 import { calculateLeadScore } from '../services/leadScore'
 import { shouldSuggestReferral } from '../services/referral'
+import { requireAuth } from '../middleware/auth'
 
 const router = Router()
 
@@ -38,7 +39,7 @@ const sendMessageSchema = z.object({
   content: z.string().min(1, 'Mensagem não pode ficar vazia.'),
 })
 
-router.get('/', async (_req, res) => {
+router.get('/', requireAuth, async (_req, res) => {
   const conversations = await prisma.conversation.findMany({
     orderBy: { updatedAt: 'desc' },
     include: {
@@ -216,6 +217,12 @@ router.post('/:id/messages', async (req, res) => {
           preferredContact: leadData.preferredContact ?? undefined,
           availability: leadData.availability ?? undefined,
           budget: leadData.budget ?? undefined,
+          budgetMin: leadData.budgetMin ?? undefined,
+          budgetMax: leadData.budgetMax ?? undefined,
+          city: leadData.city ?? undefined,
+          state: leadData.state ?? undefined,
+          neighborhood: leadData.neighborhood ?? undefined,
+          modality: leadData.modality ?? undefined,
           insuranceProvider: leadData.insuranceProvider ?? undefined,
           score,
           lastActivity: new Date(),
@@ -234,6 +241,12 @@ router.post('/:id/messages', async (req, res) => {
           preferredContact: leadData.preferredContact ?? undefined,
           availability: leadData.availability ?? undefined,
           budget: leadData.budget ?? undefined,
+          budgetMin: leadData.budgetMin ?? undefined,
+          budgetMax: leadData.budgetMax ?? undefined,
+          city: leadData.city ?? undefined,
+          state: leadData.state ?? undefined,
+          neighborhood: leadData.neighborhood ?? undefined,
+          modality: leadData.modality ?? undefined,
           insuranceProvider: leadData.insuranceProvider ?? undefined,
           score,
           lastActivity: new Date(),
@@ -250,6 +263,22 @@ router.post('/:id/messages', async (req, res) => {
     },
   })
 
+  // Delay estratégico antes de gerar sugestões
+  // Previne rate limiting do Gemini FREE tier (5 RPM, 1M TPM)
+  // Pequeno delay (500ms) reduz chance de MAX_TOKENS em chamadas rápidas
+  console.log('[SUGG] Aguardando 500ms antes de gerar sugestões (previne rate limit)...')
+  await new Promise(resolve => setTimeout(resolve, 500))
+  
+  console.log('[SUGG] Iniciando geração de sugestões...')
+  let suggestions: string[] = []
+  try {
+    suggestions = await generateSuggestions({ agent, history: [...history, { role: 'assistant', content: assistantResponse }], lastAssistantMessage: assistantResponse })
+    console.log('[SUGG] ✅ Geradas:', suggestions)
+  } catch (e) { 
+    console.error('[SUGG] ❌ Erro ao gerar sugestões:', e)
+    console.log('[SUGG] ℹ️ Fallback contextual será usado automaticamente')
+  }
+
   res.status(201).json({
     conversation: mapConversation(updatedConversation!),
     newMessages: {
@@ -258,6 +287,7 @@ router.post('/:id/messages', async (req, res) => {
     },
     responseDelay: agent.responseDelay,
     lead: leadRecord ? mapLead(leadRecord) : undefined,
+    suggestions: suggestions.length > 0 ? suggestions : undefined,
   })
 })
 

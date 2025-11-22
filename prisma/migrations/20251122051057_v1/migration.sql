@@ -1,0 +1,15 @@
+-- AlterTable
+ALTER TABLE `Agent` ADD COLUMN `city` VARCHAR(191) NULL,
+    ADD COLUMN `modalities` JSON NULL,
+    ADD COLUMN `neighborhood` VARCHAR(191) NULL,
+    ADD COLUMN `priceMax` INTEGER NULL,
+    ADD COLUMN `priceMin` INTEGER NULL,
+    ADD COLUMN `state` VARCHAR(191) NULL;
+
+-- AlterTable
+ALTER TABLE `Lead` ADD COLUMN `budgetMax` INTEGER NULL,
+    ADD COLUMN `budgetMin` INTEGER NULL,
+    ADD COLUMN `city` VARCHAR(191) NULL,
+    ADD COLUMN `modality` VARCHAR(191) NULL,
+    ADD COLUMN `neighborhood` VARCHAR(191) NULL,
+    ADD COLUMN `state` VARCHAR(191) NULL;

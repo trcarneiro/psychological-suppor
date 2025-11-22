@@ -74,6 +74,12 @@ model Lead {
   preferredContact    ContactPreference?
   availability        String?
   budget              String?
+  budgetMin           Int?
+  budgetMax           Int?
+  city                String?
+  state               String?
+  neighborhood        String?
+  modality            String?          // "online", "presencial", "hibrido"
   insuranceProvider   String?
   status              LeadStatus       @default(new)
   score               Int              @default(0)
@@ -96,6 +102,12 @@ model Agent {
   phone              String?
   availability       Json?
   priceRange         String?
+  priceMin           Int?
+  priceMax           Int?
+  city               String?
+  state              String?
+  neighborhood       String?
+  modalities         Json?    // ["online", "presencial"]
   acceptsInsurance   Boolean  @default(false)
   insuranceProviders Json?
   photo              String?

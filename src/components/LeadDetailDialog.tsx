@@ -17,8 +17,13 @@ import {
   Clock,
   ChatCircle,
   Calendar,
-  Heart
+  Heart,
+  MapPin,
+  CurrencyDollar,
+  VideoCamera
 } from '@phosphor-icons/react'
+import { useEffect, useState } from 'react'
+import { getLeadMatches } from '@/lib/api-client'
 
 interface LeadDetailDialogProps {
   lead: Lead
@@ -28,6 +33,18 @@ interface LeadDetailDialogProps {
   onUpdateStatus: (status: Lead['status']) => void
 }
 
+interface MatchScore {
+  agentId: string
+  score: number
+  reasons: string[]
+  agent?: {
+    name: string
+    priceMin?: number
+    city?: string
+    modalities?: string[]
+  }
+}
+
 export function LeadDetailDialog({ 
   lead, 
   conversation, 
@@ -35,6 +52,19 @@ export function LeadDetailDialog({
   onOpenChange,
   onUpdateStatus 
 }: LeadDetailDialogProps) {
+  const [matches, setMatches] = useState<MatchScore[]>([])
+  const [loadingMatches, setLoadingMatches] = useState(false)
+
+  useEffect(() => {
+    if (open && lead.id) {
+      setLoadingMatches(true)
+      getLeadMatches(lead.id)
+        .then(matches => setMatches(matches))
+        .catch(err => console.error('Failed to fetch matches', err))
+        .finally(() => setLoadingMatches(false))
+    }
+  }, [open, lead.id])
+
   const getUrgencyBadge = (score: number) => {
     if (score >= 80) return { label: 'Crítico', variant: 'destructive' as const }
     if (score >= 60) return { label: 'Alto', variant: 'default' as const }
@@ -100,18 +130,51 @@ export function LeadDetailDialog({
                     {lead.data.preferredContact === 'email' && <Envelope size={20} className="text-muted-foreground" />}
                     {lead.data.preferredContact === 'phone' && <Phone size={20} className="text-muted-foreground" />}
                     <div>
-                      <p className="text-xs text-muted-foreground">Contato Preferido</p>
+                      <p className="text-xs text-muted-foreground">Preferência de Contato</p>
                       <p className="font-medium capitalize">{lead.data.preferredContact}</p>
                     </div>
                   </div>
                 )}
+              </div>
+            </div>
 
-                {lead.data.age && (
+            <div>
+              <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                <MapPin size={20} weight="duotone" />
+                Preferências de Atendimento
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-muted/30 rounded-lg p-4">
+                {(lead.data.city || lead.data.state) && (
                   <div className="flex items-center gap-3">
-                    <Calendar size={20} className="text-muted-foreground" />
+                    <MapPin size={20} className="text-muted-foreground" />
                     <div>
-                      <p className="text-xs text-muted-foreground">Idade</p>
-                      <p className="font-medium">{lead.data.age} anos</p>
+                      <p className="text-xs text-muted-foreground">Localização</p>
+                      <p className="font-medium">
+                        {[lead.data.neighborhood, lead.data.city, lead.data.state].filter(Boolean).join(', ')}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {lead.data.modality && (
+                  <div className="flex items-center gap-3">
+                    <VideoCamera size={20} className="text-muted-foreground" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Modalidade</p>
+                      <p className="font-medium capitalize">{lead.data.modality}</p>
+                    </div>
+                  </div>
+                )}
+
+                {(lead.data.budget || lead.data.budgetMax) && (
+                  <div className="flex items-center gap-3">
+                    <CurrencyDollar size={20} className="text-muted-foreground" />
+                    <div>
+                      <p className="text-xs text-muted-foreground">Orçamento</p>
+                      <p className="font-medium">
+                        {lead.data.budgetMax ? `Até R$ ${lead.data.budgetMax}` : lead.data.budget}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -208,6 +271,46 @@ export function LeadDetailDialog({
                 </div>
               </div>
             )}
+
+            <div>
+              <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                <Heart size={20} weight="duotone" />
+                Psicólogos Compatíveis
+              </h3>
+              
+              {loadingMatches ? (
+                <div className="text-center py-4 text-muted-foreground">Buscando compatibilidade...</div>
+              ) : matches.length > 0 ? (
+                <div className="space-y-3">
+                  {matches.map((match) => (
+                    <div key={match.agentId} className="bg-muted/30 rounded-lg p-4 border border-border/50">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <p className="font-medium text-primary">Psicólogo (ID: {match.agentId.substring(0, 8)}...)</p>
+                          <div className="flex gap-2 mt-1">
+                            <Badge variant="outline" className="bg-green-500/10 text-green-600 border-green-200">
+                              {match.score}% Compatível
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        {match.reasons.map((reason, idx) => (
+                          <p key={idx} className="text-xs text-muted-foreground flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-primary/50" />
+                            {reason}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-4 text-muted-foreground bg-muted/30 rounded-lg">
+                  Nenhum psicólogo compatível encontrado.
+                </div>
+              )}
+            </div>
 
             {conversation && conversation.messages.length > 0 && (
               <div>

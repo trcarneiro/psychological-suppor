@@ -33,6 +33,7 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
   const [isInitializing, setIsInitializing] = useState(false)
   const [showSuggestions, setShowSuggestions] = useState(true)
   const [suggestionPrompts] = useState(() => getRandomStarters(6))
+  const [aiSuggestions, setAiSuggestions] = useState<string[]>([])
   
   const scrollRef = useRef<HTMLDivElement>(null)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -110,6 +111,12 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
 
       await delay(result.responseDelay)
       setConversation(result.conversation)
+      
+      if (result.suggestions && result.suggestions.length > 0) {
+        setAiSuggestions(result.suggestions)
+        setShowSuggestions(true)
+      }
+
       await queryClient.invalidateQueries({ queryKey: ['conversations'] })
       if (result.lead) {
         await queryClient.invalidateQueries({ queryKey: ['leads'] })
@@ -211,7 +218,7 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
 
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto space-y-6 mb-6 scrollbar-thin scrollbar-thumb-border scrollbar-track-transparent"
+          className="flex-1 overflow-y-auto space-y-6 mb-6 scrollbar-thin pr-2"
         >
           <AnimatePresence mode="popLayout">
             {conversation?.messages.map((message, index) => (
@@ -270,7 +277,7 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
           )}
         </div>
 
-  {showSuggestions && conversation?.messages.length === 1 && (
+  {showSuggestions && (aiSuggestions.length > 0 || conversation?.messages.length === 1) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -278,10 +285,13 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
             className="mb-6"
           >
             <p className="text-sm text-muted-foreground text-center mb-4">
-              💭 Sugestões para começar a conversa:
+              {aiSuggestions.length > 0 ? '💭 Sugestões de resposta:' : '💭 Sugestões para começar a conversa:'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {suggestionPrompts.map((starter, index) => (
+              {(aiSuggestions.length > 0 
+                ? aiSuggestions.map(text => ({ id: text, text, icon: '💬' })) 
+                : suggestionPrompts
+              ).map((starter, index) => (
                 <motion.button
                   key={starter.id}
                   initial={{ opacity: 0, y: 20 }}

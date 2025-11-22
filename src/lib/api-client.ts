@@ -1,4 +1,5 @@
 import type { AIAgentConfig, Agent, Conversation, Lead, Message } from './types'
+import { supabase, isSupabaseConfigured } from './supabase'
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
 
@@ -23,11 +24,20 @@ function normalizeTimestamp(value: unknown) {
 }
 
 async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    ...options.headers,
+  }
+
+  if (isSupabaseConfigured()) {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (session?.access_token) {
+      headers['Authorization'] = `Bearer ${session.access_token}`
+    }
+  }
+
   const response = await fetch(buildUrl(path), {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
+    headers,
     ...options,
   })
 
@@ -67,6 +77,7 @@ export async function sendConversationMessage(params: { conversationId: string; 
     newMessages: { user: Message; assistant: Message }
     responseDelay: number
     lead?: Lead
+    suggestions?: string[]
   }>(`/api/conversations/${params.conversationId}/messages`, {
     method: 'POST',
     body: JSON.stringify({ content: params.content }),
@@ -162,5 +173,10 @@ export async function deleteMessage(messageId: string) {
   await apiFetch<void>(`/api/messages/${messageId}`, {
     method: 'DELETE',
   })
+}
+
+export async function getLeadMatches(leadId: string) {
+  const data = await apiFetch<{ matches: any[] }>(`/api/leads/${leadId}/matches`)
+  return data.matches
 }
 

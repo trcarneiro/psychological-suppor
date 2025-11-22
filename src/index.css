@@ -81,8 +81,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
 }
 
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
 .scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
@@ -90,12 +95,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
+  background-color: var(--border);
+  border-radius: 9999px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+  background-color: var(--muted-foreground);
 }
 
 .scrollbar-none::-webkit-scrollbar {

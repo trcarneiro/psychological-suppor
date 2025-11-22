@@ -15,6 +15,12 @@ export interface LeadDataPayload {
   preferredContact?: 'email' | 'phone' | 'whatsapp' | null
   availability?: string | null
   budget?: string | null
+  budgetMin?: number | null
+  budgetMax?: number | null
+  city?: string | null
+  state?: string | null
+  neighborhood?: string | null
+  modality?: 'online' | 'presencial' | 'hibrido' | null
   insuranceProvider?: string | null
 }
 
@@ -29,10 +35,17 @@ Se algum dado não estiver presente, utilize null.
 Conversa:
 ${conversationText}
 
-Retorne um JSON com as chaves: name, email, phone, age, mainConcern,
-emotionalState (low|moderate|high|critical), urgencyLevel (1-10),
-symptoms (array de strings), duration, previousTherapy (boolean),
-preferredContact (email|phone|whatsapp), availability, budget, insuranceProvider.
+Retorne um JSON com as chaves:
+- name, email, phone, age
+- mainConcern, emotionalState (low|moderate|high|critical), urgencyLevel (1-10)
+- symptoms (array de strings), duration, previousTherapy (boolean)
+- preferredContact (email|phone|whatsapp), availability
+- budget (texto livre), budgetMin (número), budgetMax (número)
+- city, state (UF), neighborhood
+- modality (online|presencial|hibrido)
+- insuranceProvider
+
+Para budgetMin e budgetMax, tente inferir valores numéricos se o usuário mencionar faixas de preço (ex: "até 200 reais" -> budgetMax: 200).
 Inclua apenas as chaves solicitadas.`
 }
 

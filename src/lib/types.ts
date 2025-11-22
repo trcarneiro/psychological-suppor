@@ -20,6 +20,12 @@ export interface LeadData {
   preferredContact?: 'email' | 'phone' | 'whatsapp'
   availability?: string
   budget?: string
+  budgetMin?: number
+  budgetMax?: number
+  city?: string
+  state?: string
+  neighborhood?: string
+  modality?: 'online' | 'presencial' | 'hibrido'
   insuranceProvider?: string
 }
 
@@ -82,6 +88,12 @@ export interface Agent {
   phone: string
   availability: string[]
   priceRange: string
+  priceMin?: number
+  priceMax?: number
+  city?: string
+  state?: string
+  neighborhood?: string
+  modalities?: string[]
   acceptsInsurance: boolean
   insuranceProviders?: string[]
   photo?: string
@@ -95,7 +107,7 @@ export interface AIAgentConfig {
   name: string
   personality: string
   description: string
-  model: 'gpt-4o' | 'gpt-4o-mini'
+  model: 'gpt-4o' | 'gpt-4o-mini' | 'gemini-2.5-pro'
   systemPrompt: string
   greeting: string
   conversationStyle: 'empathetic' | 'professional' | 'friendly' | 'custom'

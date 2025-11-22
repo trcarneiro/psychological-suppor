@@ -43,6 +43,12 @@ type FormState = {
   phone: string
   availability: string
   priceRange: string
+  priceMin: string
+  priceMax: string
+  city: string
+  state: string
+  neighborhood: string
+  modalities: string
   acceptsInsurance: boolean
   insuranceProviders: string
   active: boolean
@@ -59,6 +65,12 @@ const initialFormState: FormState = {
   phone: '',
   availability: '',
   priceRange: '',
+  priceMin: '',
+  priceMax: '',
+  city: '',
+  state: '',
+  neighborhood: '',
+  modalities: '',
   acceptsInsurance: false,
   insuranceProviders: '',
   active: true,
@@ -149,6 +161,12 @@ export function AgentsManagement() {
       phone: agent.phone ?? '',
       availability: formatList(agent.availability),
       priceRange: agent.priceRange ?? '',
+      priceMin: agent.priceMin?.toString() ?? '',
+      priceMax: agent.priceMax?.toString() ?? '',
+      city: agent.city ?? '',
+      state: agent.state ?? '',
+      neighborhood: agent.neighborhood ?? '',
+      modalities: formatList(agent.modalities),
       acceptsInsurance: agent.acceptsInsurance ?? false,
       insuranceProviders: formatList(agent.insuranceProviders),
       active: agent.active ?? true,
@@ -173,6 +191,12 @@ export function AgentsManagement() {
       phone: formData.phone.trim() || undefined,
       availability: parseList(formData.availability),
       priceRange: formData.priceRange.trim() || undefined,
+      priceMin: formData.priceMin ? Number(formData.priceMin) : undefined,
+      priceMax: formData.priceMax ? Number(formData.priceMax) : undefined,
+      city: formData.city.trim() || undefined,
+      state: formData.state.trim() || undefined,
+      neighborhood: formData.neighborhood.trim() || undefined,
+      modalities: parseList(formData.modalities),
       acceptsInsurance: formData.acceptsInsurance,
       insuranceProviders: parseList(formData.insuranceProviders),
       active: formData.active,
@@ -474,7 +498,7 @@ export function AgentsManagement() {
                   type="email"
                   value={formData.email}
                   onChange={e => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  placeholder="psicologo@email.com"
+                  placeholder="email@exemplo.com"
                 />
               </div>
 
@@ -484,7 +508,80 @@ export function AgentsManagement() {
                   id="phone"
                   value={formData.phone}
                   onChange={e => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder="(31) 99999-9999"
+                  placeholder="(11) 99999-9999"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="city">Cidade</Label>
+                <Input
+                  id="city"
+                  value={formData.city}
+                  onChange={e => setFormData(prev => ({ ...prev, city: e.target.value }))}
+                  placeholder="São Paulo"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="state">Estado (UF)</Label>
+                <Input
+                  id="state"
+                  value={formData.state}
+                  onChange={e => setFormData(prev => ({ ...prev, state: e.target.value }))}
+                  placeholder="SP"
+                  maxLength={2}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="neighborhood">Bairro</Label>
+                <Input
+                  id="neighborhood"
+                  value={formData.neighborhood}
+                  onChange={e => setFormData(prev => ({ ...prev, neighborhood: e.target.value }))}
+                  placeholder="Centro"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="modalities">Modalidades</Label>
+              <Input
+                id="modalities"
+                value={formData.modalities}
+                onChange={e => setFormData(prev => ({ ...prev, modalities: e.target.value }))}
+                placeholder="online, presencial, hibrido (separar por vírgula)"
+              />
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="priceMin">Preço Mínimo</Label>
+                <Input
+                  id="priceMin"
+                  type="number"
+                  value={formData.priceMin}
+                  onChange={e => setFormData(prev => ({ ...prev, priceMin: e.target.value }))}
+                  placeholder="150"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="priceMax">Preço Máximo</Label>
+                <Input
+                  id="priceMax"
+                  type="number"
+                  value={formData.priceMax}
+                  onChange={e => setFormData(prev => ({ ...prev, priceMax: e.target.value }))}
+                  placeholder="300"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="priceRange">Faixa (Texto)</Label>
+                <Input
+                  id="priceRange"
+                  value={formData.priceRange}
+                  onChange={e => setFormData(prev => ({ ...prev, priceRange: e.target.value }))}
+                  placeholder="R$ 150 - R$ 300"
                 />
               </div>
             </div>
@@ -499,29 +596,17 @@ export function AgentsManagement() {
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="priceRange">Faixa de Preço</Label>
-                <Input
-                  id="priceRange"
-                  value={formData.priceRange}
-                  onChange={e => setFormData(prev => ({ ...prev, priceRange: e.target.value }))}
-                  placeholder="R$ 150 - R$ 200"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="insuranceProviders">Convênios</Label>
-                <Input
-                  id="insuranceProviders"
-                  value={formData.insuranceProviders}
-                  onChange={e =>
-                    setFormData(prev => ({ ...prev, insuranceProviders: e.target.value }))
-                  }
-                  placeholder="Unimed, Amil (separar por vírgula)"
-                  disabled={!formData.acceptsInsurance}
-                />
-              </div>
+            <div className="space-y-2">
+              <Label htmlFor="insuranceProviders">Convênios</Label>
+              <Input
+                id="insuranceProviders"
+                value={formData.insuranceProviders}
+                onChange={e =>
+                  setFormData(prev => ({ ...prev, insuranceProviders: e.target.value }))
+                }
+                placeholder="Unimed, Amil (separar por vírgula)"
+                disabled={!formData.acceptsInsurance}
+              />
             </div>
 
             <div className="flex items-center space-x-2">

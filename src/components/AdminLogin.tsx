@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { ShieldCheck } from '@phosphor-icons/react'
 import { toast } from 'sonner'
+import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
 interface AdminLoginProps {
   onLogin: () => void
@@ -12,19 +13,36 @@ interface AdminLoginProps {
 }
 
 export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
   const handleLogin = async () => {
     setIsLoading(true)
     
-    await new Promise(resolve => setTimeout(resolve, 500))
-    
-    if (password === 'admin123') {
+    if (!isSupabaseConfigured()) {
+      // Fallback para modo sem Supabase
+      await new Promise(resolve => setTimeout(resolve, 500))
+      if (password === 'admin123') {
+        toast.success('Login realizado (Modo DEV)')
+        onLogin()
+      } else {
+        toast.error('Senha incorreta (Modo DEV: admin123)')
+      }
+      setIsLoading(false)
+      return
+    }
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+
+    if (error) {
+      toast.error('Erro ao fazer login: ' + error.message)
+    } else {
       toast.success('Login realizado com sucesso')
       onLogin()
-    } else {
-      toast.error('Senha incorreta')
     }
     
     setIsLoading(false)
@@ -54,6 +72,19 @@ export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
 
         <div className="space-y-4">
           <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="admin@exemplo.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyPress={handleKeyPress}
+              disabled={isLoading}
+            />
+          </div>
+
+          <div className="space-y-2">
             <Label htmlFor="password">Senha</Label>
             <Input
               id="password"
@@ -77,16 +108,12 @@ export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
             </Button>
             <Button
               onClick={handleLogin}
-              disabled={isLoading || !password}
+              disabled={isLoading || !email || !password}
               className="flex-1 bg-primary"
             >
               {isLoading ? 'Entrando...' : 'Entrar'}
             </Button>
           </div>
-
-          <p className="text-xs text-muted-foreground text-center mt-4">
-            Para fins de demonstração, use a senha: <strong>admin123</strong>
-          </p>
         </div>
       </Card>
     </div>

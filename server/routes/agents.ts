@@ -1,8 +1,11 @@
 import { Router } from 'express'
 import { z } from 'zod'
 import { prisma } from '../prisma'
+import { requireAuth } from '../middleware/auth'
 
 const router = Router()
+
+router.use(requireAuth)
 
 const agentBodySchema = z.object({
   name: z.string(),

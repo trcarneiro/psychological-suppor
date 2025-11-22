@@ -60,11 +60,11 @@ export async function generateAssistantReply(params: {
   userMessage: string
 }) {
   const { agent, history, userMessage } = params
-  const prompt = buildPrompt(agent, history, userMessage)
-
+  // Prompt simplificado: evita "para:" que causa MAX_TOKENS
+  const prompt = `Liste 3 respostas curtas (m�ximo 6 palavras):`
   const text = await generateText(prompt, {
     temperature: agent.temperature ?? 0.8,
-    maxOutputTokens: 4096,
+    maxOutputTokens: Math.min(Math.ceil(agent.maxMessageLength * 1.5), 1024),
   })
 
   if (!text) {
@@ -72,7 +72,7 @@ export async function generateAssistantReply(params: {
   }
 
   const truncated = text.length > agent.maxMessageLength
-    ? `${text.slice(0, agent.maxMessageLength)}…`
+    ? `${text.slice(0, agent.maxMessageLength - 1)}…`
     : text
 
   return truncated
@@ -85,10 +85,15 @@ export async function generateSuggestions(params: {
 }) {
   const { lastAssistantMessage } = params
   
-  const prompt = `Você é um assistente que sugere respostas rápidas para o usuário.
-Mensagem anterior do assistente: ${lastAssistantMessage}
-Liste exatamente 3 sugestões curtas, com no máximo 6 palavras cada, separadas por quebras de linha.
-Não use números ou frases como "Aqui estão".`
+  // Prompt ultra-simplificado para economizar tokens
+  const prompt = `Gere 3 respostas curtas (máximo 6 palavras cada) que uma pessoa poderia dar para:
+
+"${lastAssistantMessage.substring(0, 50)}"
+
+Formato:
+Resposta 1
+Resposta 2
+Resposta 3`
 
   console.log('[generateSuggestions] Prompt length:', prompt.length, 'chars')
   console.log('[generateSuggestions] Chamando LLM...')
@@ -96,29 +101,66 @@ Não use números ou frases como "Aqui estão".`
   try {
     const text = await generateText(prompt, {
       temperature: 0.9,
-      maxOutputTokens: 4096,
+      maxOutputTokens: 150, // Reduzido drasticamente
     })
     
-    console.log('[generateSuggestions] API respondeu:', text?.substring(0, 100))
+    console.log('[generateSuggestions] Resposta LLM:', text)
 
     if (!text || text.length === 0) {
-      console.log('[generateSuggestions] LLM retornou vazio.')
-      return []
+      console.log('[generateSuggestions] LLM retornou vazio! Usando fallback...')
+      return getFallbackSuggestions(lastAssistantMessage)
     }
 
     const suggestions = text
       .split('\n')
       .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .map(line => line.replace(/^[-*\d.)\s]+/, ''))
-      .filter(line => line.length > 0 && line.length <= 80)
-      .filter(line => !/^aqui\s+est/i.test(line))
+      .filter(line => line.length > 0 && line.length < 80)
       .slice(0, 3)
 
-    console.log('[generateSuggestions] Extraídas', suggestions.length, 'sugestões:', suggestions)
+    console.log('[generateSuggestions] Sugestões processadas:', suggestions)
+    
+    // Se conseguiu menos de 3, completa com fallback
+    if (suggestions.length < 3) {
+      const fallback = getFallbackSuggestions(lastAssistantMessage)
+      return [...suggestions, ...fallback].slice(0, 3)
+    }
+    
     return suggestions
   } catch (error) {
     console.error('[generateSuggestions] Erro:', error)
-    return []
+    return getFallbackSuggestions(lastAssistantMessage)
   }
+}
+
+// Sugestões de fallback baseadas em padrões comuns
+function getFallbackSuggestions(assistantMessage: string): string[] {
+  const lower = assistantMessage.toLowerCase()
+  
+  // Detecta perguntas e oferece respostas apropriadas
+  if (lower.includes('como você') || lower.includes('como está')) {
+    return ['Estou bem, obrigado(a)', 'Poderia estar melhor', 'Tenho tido dias difíceis']
+  }
+  
+  if (lower.includes('o que') || lower.includes('qual')) {
+    return ['Não tenho certeza ainda', 'Preciso pensar melhor', 'Gostaria de explorar isso']
+  }
+  
+  if (lower.includes('quanto tempo') || lower.includes('há quanto')) {
+    return ['Algumas semanas', 'Há alguns meses', 'Já faz um tempo']
+  }
+  
+  if (lower.includes('ajuda profissional') || lower.includes('psicólogo') || lower.includes('terapia')) {
+    return ['Ainda não busquei', 'Já tentei antes', 'Estou considerando']
+  }
+  
+  if (lower.includes('compartilhar') || lower.includes('contar') || lower.includes('falar')) {
+    return ['Sim, gostaria de falar', 'Prefiro não entrar em detalhes', 'Posso tentar explicar']
+  }
+  
+  // Padrão genérico para qualquer situação
+  return [
+    'Sim, entendo',
+    'Pode continuar',
+    'Gostaria de saber mais'
+  ]
 }
