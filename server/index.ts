@@ -31,6 +31,11 @@ app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json({ error: 'Erro interno do servidor.' })
 })
 
-app.listen(PORT, () => {
-  console.log(`API rodando em http://localhost:${PORT}`)
-})
+// Export app for Vercel
+export default app
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`API rodando em http://localhost:${PORT}`)
+  })
+}

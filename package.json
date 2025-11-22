@@ -17,7 +17,8 @@
         "prisma:migrate": "prisma migrate dev",
         "test:gemini": "tsx scripts/gemini-sample.ts",
         "test:suggestions": "tsx scripts/test-suggestions.ts",
-        "test:model": "tsx scripts/test-gemini-model.ts"
+        "test:model": "tsx scripts/test-gemini-model.ts",
+        "postinstall": "prisma generate"
     },
     "dependencies": {
         "@github/spark": "^0.39.0",
