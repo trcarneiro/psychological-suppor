@@ -1,7 +1,14 @@
 import type { AIAgentConfig, Agent, Conversation, Lead, Message } from './types'
 import { supabase, isSupabaseConfigured } from './supabase'
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+let API_BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+
+// Safety check: If we are in production but VITE_API_URL points to localhost, 
+// force it to be empty to use relative paths (same-origin).
+if (import.meta.env.PROD && API_BASE_URL.includes('localhost')) {
+  console.warn('⚠️ VITE_API_URL points to localhost in production. Falling back to relative path to avoid connection errors.')
+  API_BASE_URL = ''
+}
 
 function buildUrl(path: string) {
   if (!API_BASE_URL) return path
