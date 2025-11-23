@@ -1,6 +1,8 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const GEMINI_API_KEY = "AIzaSyBGz97Mic8bG2qTGwBylcJFyD52E3TM9NM"
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ""
 const GEMINI_MODEL = "gemini-2.5-pro"
 
 const SAFETY_SETTINGS = [

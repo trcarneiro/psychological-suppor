@@ -1,6 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import dotenv from 'dotenv'
+dotenv.config()
 
-const GEMINI_API_KEY = "AIzaSyBGz97Mic8bG2qTGwBylcJFyD52E3TM9NM"
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || ""
 
 async function testDirect() {
   console.log('\n🧪 Teste DIRETO com gemini-2.5-flash...\n')
