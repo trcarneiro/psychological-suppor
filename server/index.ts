@@ -32,7 +32,10 @@ app.use((req, res) => {
 
 app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error('[Server] Erro não tratado:', error)
-  res.status(500).json({ error: 'Erro interno do servidor.' })
+  res.status(500).json({ 
+    error: 'Erro interno do servidor.',
+    details: process.env.NODE_ENV === 'development' ? error.message : undefined
+  })
 })
 
 // Export app for Vercel
