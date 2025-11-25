@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+﻿import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import { PORT } from './config'
 import conversationsRouter from './routes/conversations'
@@ -8,6 +8,14 @@ import settingsRouter from './routes/settings'
 import messagesRouter from './routes/messages'
 
 const app = express()
+
+// Debug logs for Vercel deployment
+console.log('[Server] Initializing...', {
+  nodeEnv: process.env.NODE_ENV,
+  hasDatabaseUrl: !!process.env.DATABASE_URL,
+  hasGeminiKey: !!process.env.GEMINI_API_KEY,
+  hasSupabaseUrl: !!process.env.VITE_SUPABASE_URL || !!process.env.SUPABASE_URL
+})
 
 app.use(cors({
   origin: (origin, callback) => {
@@ -33,7 +41,8 @@ app.use(cors({
 }))
 app.use(express.json({ limit: '1mb' }))
 
-app.get('/health', (_req, res) => {
+// Health check - mapped to /api/health
+app.get('/api/health', (_req, res) => {
   res.json({ 
     status: 'ok', 
     timestamp: Date.now(),
@@ -68,6 +77,6 @@ export default app
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
-    console.log(`API rodando em http://localhost:${PORT}`)
+    console.log(API rodando em http://localhost:)
   })
 }
