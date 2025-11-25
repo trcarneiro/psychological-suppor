@@ -16,7 +16,6 @@ import {
   WhatsappLogo,
   Clock,
   ChatCircle,
-  Calendar,
   Heart,
   MapPin,
   CurrencyDollar,

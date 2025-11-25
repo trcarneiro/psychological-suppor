@@ -59,7 +59,7 @@ Formato numerado simples.`
         const suggestions = text
           .split('\n')
           .map(line => line.trim())
-          .map(line => line.replace(/^\d+[\.\)]\s*/, ''))
+          .map(line => line.replace(/^\d+[.)]\s*/, ''))
           .filter(line => line.length > 3 && line.length < 80)
           .slice(0, 3)
         

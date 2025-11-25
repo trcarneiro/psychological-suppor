@@ -3,7 +3,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Message, Conversation, AIAgentConfig } from '@/lib/types'
-import { PaperPlaneTilt, User, List, X } from '@phosphor-icons/react'
+import { PaperPlaneTilt, List, X } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import {

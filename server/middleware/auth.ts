@@ -10,10 +10,15 @@ const supabase = isConfigured
 
 export const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
   if (!isConfigured) {
-    console.warn('[Auth] Supabase não configurado. Permitindo acesso irrestrito (DEV MODE).')
-    // @ts-ignore
-    req.user = { id: 'admin-dev', email: 'admin@dev.local' }
-    return next()
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[Auth] Supabase não configurado. Permitindo acesso irrestrito (DEV MODE).')
+      // @ts-expect-error - Adicionando user ao request para dev mode
+      req.user = { id: 'admin-dev', email: 'admin@dev.local' }
+      return next()
+    } else {
+      console.error('[Auth] CRÍTICO: Supabase não configurado em produção. Bloqueando acesso.')
+      return res.status(500).json({ error: 'Erro de configuração de autenticação.' })
+    }
   }
 
   const authHeader = req.headers.authorization
@@ -34,7 +39,7 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
     return res.status(401).json({ error: 'Token inválido ou expirado.' })
   }
 
-  // @ts-ignore - Adicionando user ao request
+  // @ts-expect-error - Adicionando user ao request
   req.user = user
   next()
 }

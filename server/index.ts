@@ -10,7 +10,24 @@ import messagesRouter from './routes/messages'
 const app = express()
 
 app.use(cors({
-  origin: '*', // Allow all origins for now to fix CORS issues
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true)
+    
+    // Allow localhost in dev
+    if (process.env.NODE_ENV !== 'production') return callback(null, true)
+
+    // Allow vercel domains
+    if (origin.endsWith('.vercel.app')) return callback(null, true)
+
+    // Allow specific production domain if configured
+    if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
+      return callback(null, true)
+    }
+    
+    // Block others
+    callback(new Error('Not allowed by CORS'))
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))

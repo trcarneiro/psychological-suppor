@@ -78,6 +78,32 @@ export async function generateAssistantReply(params: {
   return truncated
 }
 
+function getFallbackSuggestions(assistantMessage: string): string[] {
+  const lower = assistantMessage.toLowerCase()
+  
+  if (lower.includes('como você') || lower.includes('como está') || lower.includes('tudo bem')) {
+    return ['Estou bem, obrigado(a)', 'Poderia estar melhor', 'Tenho tido dias difíceis']
+  }
+  
+  if (lower.includes('quanto tempo')) {
+    return ['Algumas semanas', 'Há alguns meses', 'Já faz um tempo']
+  }
+
+  if (lower.includes('ajuda profissional') || lower.includes('psicólogo') || lower.includes('terapia')) {
+    return ['Ainda não busquei', 'Já tentei antes', 'Estou considerando']
+  }
+
+  if (lower.includes('nome') || lower.includes('chama')) {
+    return ['Prefiro não dizer', 'Me chamo...', 'Pode me chamar de...']
+  }
+  
+  if (lower.includes('olá') || lower.includes('oi') || lower.includes('bom dia') || lower.includes('boa tarde') || lower.includes('boa noite')) {
+    return ['Olá, tudo bem?', 'Oi, preciso desabafar', 'Olá, gostaria de conversar']
+  }
+
+  return ['Sim, entendo', 'Pode continuar', 'Gostaria de saber mais']
+}
+
 export async function generateSuggestions(params: {
   agent: AgentSnapshot
   history: ConversationMessage[]
@@ -85,40 +111,54 @@ export async function generateSuggestions(params: {
 }) {
   const { lastAssistantMessage } = params
   
-  const prompt = `Você é um assistente que sugere respostas rápidas para o usuário.
-Mensagem anterior do assistente: ${lastAssistantMessage}
-Liste exatamente 3 sugestões curtas, com no máximo 6 palavras cada, separadas por quebras de linha.
-Não use números ou frases como "Aqui estão".`
+  // Fix 1: Prompt Minimalista
+  const prompt = `Gere 3 respostas curtas (máximo 6 palavras cada) para:
+
+"${lastAssistantMessage.substring(0, 150)}"
+
+Formato:
+Resposta 1
+Resposta 2
+Resposta 3`
 
   console.log('[generateSuggestions] Prompt length:', prompt.length, 'chars')
   console.log('[generateSuggestions] Chamando LLM...')
   
   try {
+    // Fix 2: Redução Drástica de maxOutputTokens (Ajustado para 1000 para suportar thinking tokens)
     const text = await generateText(prompt, {
-      temperature: 0.9,
-      maxOutputTokens: 4096,
+      temperature: 0.7,
+      maxOutputTokens: 1000,
     })
     
     console.log('[generateSuggestions] API respondeu:', text?.substring(0, 100))
 
-    if (!text || text.length === 0) {
-      console.log('[generateSuggestions] LLM retornou vazio.')
-      return []
+    let suggestions: string[] = []
+
+    if (text && text.length > 0) {
+      suggestions = text
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0)
+        .map(line => line.replace(/^[-*\d.)\s]+/, ''))
+        .filter(line => line.length > 0 && line.length <= 60)
+        .filter(line => !/^aqui\s+est/i.test(line))
+        .slice(0, 3)
     }
 
-    const suggestions = text
-      .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
-      .map(line => line.replace(/^[-*\d.)\s]+/, ''))
-      .filter(line => line.length > 0 && line.length <= 80)
-      .filter(line => !/^aqui\s+est/i.test(line))
-      .slice(0, 3)
+    // Fix 4: Completamento Híbrido
+    if (suggestions.length < 3) {
+      console.log(`[generateSuggestions] Apenas ${suggestions.length} sugestões geradas. Usando fallback.`)
+      const fallback = getFallbackSuggestions(lastAssistantMessage)
+      const combined = [...suggestions, ...fallback]
+      const unique = Array.from(new Set(combined))
+      suggestions = unique.slice(0, 3)
+    }
 
-    console.log('[generateSuggestions] Extraídas', suggestions.length, 'sugestões:', suggestions)
+    console.log('[generateSuggestions] Final:', suggestions)
     return suggestions
   } catch (error) {
     console.error('[generateSuggestions] Erro:', error)
-    return []
+    return getFallbackSuggestions(lastAssistantMessage).slice(0, 3)
   }
 }
