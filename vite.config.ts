@@ -22,4 +22,16 @@ export default defineConfig({
       '@': resolve(projectRoot, 'src')
     }
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+          ui: ['@phosphor-icons/react', 'lucide-react'],
+          utils: ['date-fns', 'marked', 'zod', '@supabase/supabase-js']
+        }
+      }
+    }
+  }
 });
