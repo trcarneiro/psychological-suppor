@@ -1,4 +1,4 @@
-ï»¿import express, { NextFunction, Request, Response } from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import { PORT } from './config'
 import conversationsRouter from './routes/conversations'
@@ -61,11 +61,11 @@ app.use('/api/settings', settingsRouter)
 app.use('/api/messages', messagesRouter)
 
 app.use((req, res) => {
-  res.status(404).json({ error: 'Endpoint nÃ£o encontrado.' })
+  res.status(404).json({ error: 'Endpoint não encontrado.' })
 })
 
 app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error('[Server] Erro nÃ£o tratado:', error)
+  console.error('[Server] Erro não tratado:', error)
   res.status(500).json({ 
     error: 'Erro interno do servidor.',
     details: process.env.NODE_ENV === 'development' ? error.message : undefined
@@ -77,6 +77,6 @@ export default app
 
 if (process.env.NODE_ENV !== 'production') {
   app.listen(PORT, () => {
-    console.log(API rodando em http://localhost:)
+    console.log(`API rodando em http://localhost:${PORT}`)
   })
 }
