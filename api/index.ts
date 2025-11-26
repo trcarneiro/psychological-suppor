@@ -1,13 +1,6 @@
-// Vercel Serverless Function Entry Point
-console.log('[API] Loading api/index.ts...')
+﻿import app from '../server/index'
 
-try {
-  // @ts-ignore
-  var app = require('../server/index').default
-  console.log('[API] Successfully imported app from ../server/index')
-} catch (e) {
-  console.error('[API] Failed to import app:', e)
-  throw e
-}
+// Debug log to confirm module load
+console.log('[API] Server module loaded successfully')
 
 export default app
