@@ -61,11 +61,11 @@ app.use('/api/settings', settingsRouter)
 app.use('/api/messages', messagesRouter)
 
 app.use((req, res) => {
-  res.status(404).json({ error: 'Endpoint não encontrado.' })
+  res.status(404).json({ error: 'Endpoint nï¿½o encontrado.' })
 })
 
 app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error('[Server] Erro não tratado:', error)
+  console.error('[Server] Erro nï¿½o tratado:', error)
   res.status(500).json({ 
     error: 'Erro interno do servidor.',
     details: process.env.NODE_ENV === 'development' ? error.message : undefined
