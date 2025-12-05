@@ -11,6 +11,9 @@ var GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 var GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-pro";
 var SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "";
 var SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || "";
+var OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
+var OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "google/gemini-2.5-pro-preview";
+var LLM_PROVIDER = process.env.LLM_PROVIDER || "gemini";
 
 // server/routes/conversations.ts
 import { Router } from "express";
@@ -91,34 +94,79 @@ function mapLead(lead) {
 
 // server/services/llm.ts
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
-var client = null;
-var EXPECTED_MODEL = "gemini-2.5-pro";
-var warnedModelMismatch = false;
-function getClient() {
-  if (!client && GEMINI_API_KEY) {
-    client = new GoogleGenerativeAI(GEMINI_API_KEY);
+var geminiClient = null;
+function getGeminiClient() {
+  if (!geminiClient && GEMINI_API_KEY) {
+    geminiClient = new GoogleGenerativeAI(GEMINI_API_KEY);
   }
-  return client;
+  return geminiClient;
 }
-async function generateText(prompt, options = {}) {
-  if (!GEMINI_API_KEY) {
-    console.log("[LLM] GEMINI_API_KEY n\xE3o configurada!");
+async function generateWithOpenRouter(prompt, options) {
+  const startTime = Date.now();
+  console.log("[LLM:OpenRouter] ====== NOVA REQUISI\xC7\xC3O ======");
+  console.log("[LLM:OpenRouter] Modelo:", OPENROUTER_MODEL);
+  console.log("[LLM:OpenRouter] Prompt length:", prompt.length, "chars");
+  console.log("[LLM:OpenRouter] Temperature:", options.temperature ?? 0.8);
+  console.log("[LLM:OpenRouter] MaxTokens:", options.maxOutputTokens ?? 4096);
+  try {
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://psychological-suppor.vercel.app",
+        "X-Title": "Psychological Support Chat"
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        messages: [{ role: "user", content: prompt }],
+        temperature: options.temperature ?? 0.8,
+        max_tokens: options.maxOutputTokens ?? 4096
+      })
+    });
+    const elapsed = Date.now() - startTime;
+    console.log("[LLM:OpenRouter] Response status:", response.status);
+    console.log("[LLM:OpenRouter] Response time:", elapsed, "ms");
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("[LLM:OpenRouter] \u274C ERRO HTTP:", response.status);
+      console.error("[LLM:OpenRouter] Error body:", errorText);
+      return null;
+    }
+    const data = await response.json();
+    console.log("[LLM:OpenRouter] Response ID:", data.id);
+    console.log("[LLM:OpenRouter] Model used:", data.model);
+    console.log("[LLM:OpenRouter] Usage:", JSON.stringify(data.usage));
+    if (data.choices && data.choices.length > 0) {
+      const text = data.choices[0].message?.content;
+      console.log("[LLM:OpenRouter] Finish reason:", data.choices[0].finish_reason);
+      console.log("[LLM:OpenRouter] Text length:", text?.length ?? 0);
+      console.log("[LLM:OpenRouter] Text preview:", text?.substring(0, 100));
+      return text?.trim() ?? null;
+    }
+    console.error("[LLM:OpenRouter] \u274C Sem choices na resposta");
+    return null;
+  } catch (error) {
+    console.error("[LLM:OpenRouter] \u274C ERRO DE CONEX\xC3O:");
+    console.error("[LLM:OpenRouter] Message:", error.message);
+    console.error("[LLM:OpenRouter] Stack:", error.stack);
+    return null;
+  }
+}
+async function generateWithGemini(prompt, options) {
+  const startTime = Date.now();
+  console.log("[LLM:Gemini] ====== NOVA REQUISI\xC7\xC3O ======");
+  console.log("[LLM:Gemini] API Key prefix:", GEMINI_API_KEY?.substring(0, 10) + "...");
+  console.log("[LLM:Gemini] Modelo:", GEMINI_MODEL);
+  console.log("[LLM:Gemini] Prompt length:", prompt.length, "chars");
+  console.log("[LLM:Gemini] Temperature:", options.temperature ?? 0.8);
+  console.log("[LLM:Gemini] MaxTokens:", options.maxOutputTokens ?? 4096);
+  const genAI = getGeminiClient();
+  if (!genAI) {
+    console.error("[LLM:Gemini] \u274C Client n\xE3o inicializado! GEMINI_API_KEY vazia?");
     return null;
   }
   try {
-    const genAI = getClient();
-    if (!genAI) {
-      console.log("[LLM] Client n\xE3o inicializado!");
-      return null;
-    }
-    if (GEMINI_MODEL !== EXPECTED_MODEL && !warnedModelMismatch) {
-      console.warn("[LLM] \u26A0\uFE0F Modelo configurado difere do recomendado!");
-      console.warn("[LLM]   Atual:", GEMINI_MODEL);
-      console.warn("[LLM]   Esperado:", EXPECTED_MODEL);
-      console.warn("[LLM]   Ajuste GEMINI_MODEL para garantir consist\xEAncia nas respostas.");
-      warnedModelMismatch = true;
-    }
-    console.log("[LLM] Gerando com modelo:", GEMINI_MODEL);
     const model = genAI.getGenerativeModel({
       model: GEMINI_MODEL,
       generationConfig: {
@@ -132,35 +180,54 @@ async function generateText(prompt, options = {}) {
         { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE }
       ]
     });
+    console.log("[LLM:Gemini] Chamando generateContent...");
     const response = await model.generateContent(prompt);
-    console.log("[LLM] Response obtida. PromptFeedback:", JSON.stringify(response.response.promptFeedback));
-    console.log("[LLM] Candidates:", response.response.candidates?.length ?? 0);
+    const elapsed = Date.now() - startTime;
+    console.log("[LLM:Gemini] Response time:", elapsed, "ms");
+    console.log("[LLM:Gemini] PromptFeedback:", JSON.stringify(response.response.promptFeedback));
+    console.log("[LLM:Gemini] Candidates:", response.response.candidates?.length ?? 0);
     if (response.response.candidates && response.response.candidates.length > 0) {
       const firstCandidate = response.response.candidates[0];
-      console.log("[LLM] Candidate[0].content:", JSON.stringify(firstCandidate.content));
-      console.log("[LLM] Candidate[0].finishReason:", firstCandidate.finishReason);
+      console.log("[LLM:Gemini] Content:", JSON.stringify(firstCandidate.content));
+      console.log("[LLM:Gemini] FinishReason:", firstCandidate.finishReason);
       if (response.response.usageMetadata) {
-        console.log("[LLM] Usage Metadata:", JSON.stringify(response.response.usageMetadata));
+        console.log("[LLM:Gemini] Usage:", JSON.stringify(response.response.usageMetadata));
       }
       if (firstCandidate.finishReason === "MAX_TOKENS") {
-        console.warn("[LLM] \u26A0\uFE0F AVISO: Resposta truncada por MAX_TOKENS! Considere:");
-        console.warn("[LLM]   1. Aumentar maxOutputTokens");
-        console.warn("[LLM]   2. Reduzir tamanho do prompt");
-        console.warn("[LLM]   Prompt length:", prompt.length, "chars");
+        console.warn("[LLM:Gemini] \u26A0\uFE0F Resposta truncada por MAX_TOKENS!");
       }
     }
     const text = response.response.text();
-    console.log("[LLM] Texto extra\xEDdo (length:", text?.length ?? 0, "):", text?.substring(0, 100));
+    console.log("[LLM:Gemini] Text length:", text?.length ?? 0);
+    console.log("[LLM:Gemini] Text preview:", text?.substring(0, 100));
     return text?.trim() ?? null;
   } catch (error) {
-    console.error("[LLM] \u274C ERRO ao gerar resposta:");
-    console.error("[LLM]   Modelo:", GEMINI_MODEL);
-    console.error("[LLM]   Mensagem:", error.message);
+    const elapsed = Date.now() - startTime;
+    console.error("[LLM:Gemini] \u274C ERRO ap\xF3s", elapsed, "ms:");
+    console.error("[LLM:Gemini] Name:", error.name);
+    console.error("[LLM:Gemini] Message:", error.message);
+    console.error("[LLM:Gemini] Stack:", error.stack?.substring(0, 500));
     if (error.response) {
-      console.error("[LLM]   Status:", error.response.status);
-      console.error("[LLM]   Data:", JSON.stringify(error.response.data));
+      console.error("[LLM:Gemini] Response status:", error.response.status);
+      console.error("[LLM:Gemini] Response data:", JSON.stringify(error.response.data));
     }
     return null;
+  }
+}
+async function generateText(prompt, options = {}) {
+  console.log("[LLM] Provider configurado:", LLM_PROVIDER);
+  if (LLM_PROVIDER === "openrouter") {
+    if (!OPENROUTER_API_KEY) {
+      console.error("[LLM] \u274C OPENROUTER_API_KEY n\xE3o configurada!");
+      return null;
+    }
+    return generateWithOpenRouter(prompt, options);
+  } else {
+    if (!GEMINI_API_KEY) {
+      console.error("[LLM] \u274C GEMINI_API_KEY n\xE3o configurada!");
+      return null;
+    }
+    return generateWithGemini(prompt, options);
   }
 }
 
