@@ -236,7 +236,7 @@ Resposta 3`;
   try {
     const text = await generateText(prompt, {
       temperature: 0.7,
-      maxOutputTokens: 1e3
+      maxOutputTokens: 4096
     });
     console.log("[generateSuggestions] API respondeu:", text?.substring(0, 100));
     let suggestions = [];

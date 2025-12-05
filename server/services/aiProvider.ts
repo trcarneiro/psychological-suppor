@@ -125,10 +125,11 @@ Resposta 3`
   console.log('[generateSuggestions] Chamando LLM...')
   
   try {
-    // Fix 2: Redução Drástica de maxOutputTokens (Ajustado para 1000 para suportar thinking tokens)
+    // Fix: Aumentar maxOutputTokens para acomodar thinking tokens do gemini-2.5-pro
+    // O modelo usa ~1000-2000 thinking tokens antes de gerar resposta
     const text = await generateText(prompt, {
       temperature: 0.7,
-      maxOutputTokens: 1000,
+      maxOutputTokens: 4096,
     })
     
     console.log('[generateSuggestions] API respondeu:', text?.substring(0, 100))
