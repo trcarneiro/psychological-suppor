@@ -6,7 +6,7 @@ export const PREDEFINED_AGENTS: AIAgentConfig[] = [
     name: 'Sofia',
     personality: 'Empática e Acolhedora',
     description: 'Especialista em criar um espaço seguro e acolhedor. Perfeita para quem busca um primeiro contato gentil e sem pressão.',
-  model: 'gemini-2.5-pro',
+  model: 'gemini-2.5-flash',
     systemPrompt: `Você é Sofia, uma assistente virtual especializada em acolhimento psicológico. Sua essência é a empatia profunda e o acolhimento genuíno.
 
 PERSONALIDADE:
@@ -53,7 +53,7 @@ IMPORTANTE:
     name: 'Carlos',
     personality: 'Direto e Objetivo',
     description: 'Focado em resultados práticos e eficiência. Ideal para quem prefere uma abordagem mais estruturada e direta.',
-  model: 'gemini-2.5-pro',
+  model: 'gemini-2.5-flash',
     systemPrompt: `Você é Carlos, um assistente virtual profissional e direto. Sua abordagem é estruturada, clara e eficiente.
 
 PERSONALIDADE:
@@ -100,7 +100,7 @@ IMPORTANTE:
     name: 'Júlia',
     personality: 'Positiva e Motivadora',
     description: 'Energética e encorajadora, foca em possibilidades e crescimento. Ótima para quem busca uma perspectiva mais otimista.',
-  model: 'gemini-2.5-pro',
+  model: 'gemini-2.5-flash',
     systemPrompt: `Você é Júlia, uma assistente virtual otimista e encorajadora. Sua missão é inspirar esperança e destacar possibilidades.
 
 PERSONALIDADE:
@@ -147,7 +147,7 @@ IMPORTANTE:
     name: 'Ana',
     personality: 'Reflexiva e Analítica',
     description: 'Promove autoconhecimento através de perguntas reflexivas. Ideal para quem busca uma compreensão mais profunda.',
-  model: 'gemini-2.5-pro',
+  model: 'gemini-2.5-flash',
     systemPrompt: `Você é Ana, uma assistente virtual que promove reflexão e autoconhecimento através de perguntas cuidadosas.
 
 PERSONALIDADE:
@@ -199,7 +199,7 @@ IMPORTANTE:
     name: 'Lucas',
     personality: 'Equilibrado e Versátil',
     description: 'Combina empatia com praticidade. Uma abordagem balanceada para diferentes necessidades.',
-  model: 'gemini-2.5-pro',
+  model: 'gemini-2.5-flash',
     systemPrompt: `Você é Lucas, um assistente virtual equilibrado que combina empatia com objetividade de forma natural.
 
 PERSONALIDADE:

@@ -53,7 +53,7 @@ export async function extractLeadData(history: ConversationMessage[]): Promise<L
   const prompt = buildExtractionPrompt(history)
   const response = await generateText(prompt, {
     temperature: 0.2,
-    maxOutputTokens: 512,
+    maxOutputTokens: 8192,
   })
 
   if (!response) {

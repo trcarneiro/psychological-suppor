@@ -8,7 +8,7 @@ import dotenv from "dotenv";
 dotenv.config();
 var PORT = Number(process.env.PORT || 3333);
 var GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-var GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-pro";
+var GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 var SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "";
 var SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || "";
 var OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
@@ -101,133 +101,127 @@ function getGeminiClient() {
   }
   return geminiClient;
 }
+var MAX_RETRIES = 3;
+var RETRY_DELAY = 2e3;
+async function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 async function generateWithOpenRouter(prompt, options) {
   const startTime = Date.now();
   console.log("[LLM:OpenRouter] ====== NOVA REQUISI\xC7\xC3O ======");
   console.log("[LLM:OpenRouter] Modelo:", OPENROUTER_MODEL);
-  console.log("[LLM:OpenRouter] Prompt length:", prompt.length, "chars");
-  console.log("[LLM:OpenRouter] Temperature:", options.temperature ?? 0.8);
-  console.log("[LLM:OpenRouter] MaxTokens:", options.maxOutputTokens ?? 4096);
-  try {
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json",
-        "HTTP-Referer": "https://psychological-suppor.vercel.app",
-        "X-Title": "Psychological Support Chat"
-      },
-      body: JSON.stringify({
-        model: OPENROUTER_MODEL,
-        messages: [{ role: "user", content: prompt }],
-        temperature: options.temperature ?? 0.8,
-        max_tokens: options.maxOutputTokens ?? 4096
-      })
-    });
-    const elapsed = Date.now() - startTime;
-    console.log("[LLM:OpenRouter] Response status:", response.status);
-    console.log("[LLM:OpenRouter] Response time:", elapsed, "ms");
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("[LLM:OpenRouter] \u274C ERRO HTTP:", response.status);
-      console.error("[LLM:OpenRouter] Error body:", errorText);
-      return null;
-    }
-    const data = await response.json();
-    console.log("[LLM:OpenRouter] Response ID:", data.id);
-    console.log("[LLM:OpenRouter] Model used:", data.model);
-    console.log("[LLM:OpenRouter] Usage:", JSON.stringify(data.usage));
-    if (data.choices && data.choices.length > 0) {
-      const text = data.choices[0].message?.content;
-      console.log("[LLM:OpenRouter] Finish reason:", data.choices[0].finish_reason);
-      console.log("[LLM:OpenRouter] Text length:", text?.length ?? 0);
-      console.log("[LLM:OpenRouter] Text preview:", text?.substring(0, 100));
-      return text?.trim() ?? null;
-    }
-    console.error("[LLM:OpenRouter] \u274C Sem choices na resposta");
-    return null;
-  } catch (error) {
-    console.error("[LLM:OpenRouter] \u274C ERRO DE CONEX\xC3O:");
-    console.error("[LLM:OpenRouter] Message:", error.message);
-    console.error("[LLM:OpenRouter] Stack:", error.stack);
-    return null;
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": "https://psychological-suppor.vercel.app",
+      "X-Title": "Psychological Support Chat"
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL,
+      messages: [{ role: "user", content: prompt }],
+      temperature: options.temperature ?? 0.8,
+      max_tokens: options.maxOutputTokens ?? 4096
+    })
+  });
+  const elapsed = Date.now() - startTime;
+  console.log("[LLM:OpenRouter] Response time:", elapsed, "ms");
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`OpenRouter API Error: ${response.status} - ${errorText}`);
   }
+  const data = await response.json();
+  if (data.choices && data.choices.length > 0) {
+    const text = data.choices[0].message?.content;
+    return text?.trim() ?? "";
+  }
+  throw new Error("OpenRouter returned no choices");
 }
 async function generateWithGemini(prompt, options) {
   const startTime = Date.now();
   console.log("[LLM:Gemini] ====== NOVA REQUISI\xC7\xC3O ======");
-  console.log("[LLM:Gemini] API Key prefix:", GEMINI_API_KEY?.substring(0, 10) + "...");
   console.log("[LLM:Gemini] Modelo:", GEMINI_MODEL);
-  console.log("[LLM:Gemini] Prompt length:", prompt.length, "chars");
-  console.log("[LLM:Gemini] Temperature:", options.temperature ?? 0.8);
-  console.log("[LLM:Gemini] MaxTokens:", options.maxOutputTokens ?? 4096);
   const genAI = getGeminiClient();
   if (!genAI) {
-    console.error("[LLM:Gemini] \u274C Client n\xE3o inicializado! GEMINI_API_KEY vazia?");
-    return null;
+    throw new Error("Gemini Client not initialized (missing API Key)");
   }
-  try {
-    const model = genAI.getGenerativeModel({
-      model: GEMINI_MODEL,
-      generationConfig: {
-        temperature: options.temperature ?? 0.8,
-        maxOutputTokens: options.maxOutputTokens ?? 4096
-      },
-      safetySettings: [
-        { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
-        { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE }
-      ]
-    });
-    console.log("[LLM:Gemini] Chamando generateContent...");
-    const response = await model.generateContent(prompt);
-    const elapsed = Date.now() - startTime;
-    console.log("[LLM:Gemini] Response time:", elapsed, "ms");
-    console.log("[LLM:Gemini] PromptFeedback:", JSON.stringify(response.response.promptFeedback));
-    console.log("[LLM:Gemini] Candidates:", response.response.candidates?.length ?? 0);
-    if (response.response.candidates && response.response.candidates.length > 0) {
-      const firstCandidate = response.response.candidates[0];
-      console.log("[LLM:Gemini] Content:", JSON.stringify(firstCandidate.content));
-      console.log("[LLM:Gemini] FinishReason:", firstCandidate.finishReason);
-      if (response.response.usageMetadata) {
-        console.log("[LLM:Gemini] Usage:", JSON.stringify(response.response.usageMetadata));
-      }
-      if (firstCandidate.finishReason === "MAX_TOKENS") {
-        console.warn("[LLM:Gemini] \u26A0\uFE0F Resposta truncada por MAX_TOKENS!");
-      }
+  const model = genAI.getGenerativeModel({
+    model: GEMINI_MODEL,
+    generationConfig: {
+      temperature: options.temperature ?? 0.8,
+      maxOutputTokens: options.maxOutputTokens ?? 8192
+    },
+    safetySettings: [
+      { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_NONE },
+      { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_NONE }
+    ]
+  });
+  console.log("[LLM:Gemini] Chamando generateContent...");
+  const response = await model.generateContent(prompt);
+  const elapsed = Date.now() - startTime;
+  console.log("[LLM:Gemini] Response time:", elapsed, "ms");
+  let text = "";
+  if (response.response.candidates && response.response.candidates.length > 0) {
+    const firstCandidate = response.response.candidates[0];
+    if (firstCandidate.finishReason === "MAX_TOKENS") {
+      console.warn("[LLM:Gemini] \u26A0\uFE0F Resposta truncada por MAX_TOKENS!");
     }
-    const text = response.response.text();
-    console.log("[LLM:Gemini] Text length:", text?.length ?? 0);
-    console.log("[LLM:Gemini] Text preview:", text?.substring(0, 100));
-    return text?.trim() ?? null;
-  } catch (error) {
-    const elapsed = Date.now() - startTime;
-    console.error("[LLM:Gemini] \u274C ERRO ap\xF3s", elapsed, "ms:");
-    console.error("[LLM:Gemini] Name:", error.name);
-    console.error("[LLM:Gemini] Message:", error.message);
-    console.error("[LLM:Gemini] Stack:", error.stack?.substring(0, 500));
-    if (error.response) {
-      console.error("[LLM:Gemini] Response status:", error.response.status);
-      console.error("[LLM:Gemini] Response data:", JSON.stringify(error.response.data));
+    try {
+      if (firstCandidate.content && firstCandidate.content.parts && firstCandidate.content.parts.length > 0) {
+        text = firstCandidate.content.parts.map((part) => part.text).join("");
+      }
+    } catch (e) {
+      console.error("[LLM:Gemini] Erro ao extrair texto das partes:", e);
     }
-    return null;
   }
+  if (!text) {
+    try {
+      text = response.response.text();
+    } catch (e) {
+      console.warn("[LLM:Gemini] response.text() falhou (esperado se houver bloqueio/erro):", e);
+    }
+  }
+  console.log("[LLM:Gemini] Text length:", text?.length ?? 0);
+  return text?.trim() ?? "";
 }
 async function generateText(prompt, options = {}) {
   console.log("[LLM] Provider configurado:", LLM_PROVIDER);
-  if (LLM_PROVIDER === "openrouter") {
-    if (!OPENROUTER_API_KEY) {
-      console.error("[LLM] \u274C OPENROUTER_API_KEY n\xE3o configurada!");
-      return null;
+  const tryProvider = async (provider, attempt = 1) => {
+    try {
+      if (provider === "openrouter") {
+        if (!OPENROUTER_API_KEY) throw new Error("OPENROUTER_API_KEY missing");
+        return await generateWithOpenRouter(prompt, options);
+      } else {
+        if (!GEMINI_API_KEY) throw new Error("GEMINI_API_KEY missing");
+        return await generateWithGemini(prompt, options);
+      }
+    } catch (error) {
+      console.error(`[LLM] Erro no provider ${provider} (Tentativa ${attempt}/${MAX_RETRIES}):`, error.message);
+      if (attempt < MAX_RETRIES) {
+        console.log(`[LLM] Aguardando ${RETRY_DELAY}ms antes de tentar novamente...`);
+        await delay(RETRY_DELAY * attempt);
+        return tryProvider(provider, attempt + 1);
+      }
+      throw error;
     }
-    return generateWithOpenRouter(prompt, options);
-  } else {
-    if (!GEMINI_API_KEY) {
-      console.error("[LLM] \u274C GEMINI_API_KEY n\xE3o configurada!");
-      return null;
+  };
+  try {
+    return await tryProvider(LLM_PROVIDER);
+  } catch (primaryError) {
+    console.error("[LLM] \u274C Provider principal falhou ap\xF3s todas as tentativas.", primaryError);
+    if (LLM_PROVIDER === "gemini" && OPENROUTER_API_KEY) {
+      console.log("[LLM] \u{1F504} Tentando fallback para OpenRouter...");
+      try {
+        return await tryProvider("openrouter");
+      } catch (fallbackError) {
+        console.error("[LLM] \u274C Fallback tamb\xE9m falhou.", fallbackError);
+        return null;
+      }
     }
-    return generateWithGemini(prompt, options);
+    return null;
   }
 }
 
@@ -261,7 +255,7 @@ async function generateAssistantReply(params) {
   const prompt = buildPrompt(agent, history, userMessage);
   const text = await generateText(prompt, {
     temperature: agent.temperature ?? 0.8,
-    maxOutputTokens: 4096
+    maxOutputTokens: 8192
   });
   if (!text) {
     return "Desculpe, encontrei uma dificuldade t\xE9cnica ao responder agora. Podemos tentar novamente?";
@@ -300,7 +294,7 @@ Responda APENAS com as 3 frases, uma por linha, sem numera\xE7\xE3o ou r\xF3tulo
   try {
     const text = await generateText(prompt, {
       temperature: 0.7,
-      maxOutputTokens: 4096
+      maxOutputTokens: 8192
     });
     console.log("[generateSuggestions] API respondeu:", text?.substring(0, 100));
     let suggestions = [];
@@ -348,7 +342,7 @@ async function extractLeadData(history) {
   const prompt = buildExtractionPrompt(history);
   const response = await generateText(prompt, {
     temperature: 0.2,
-    maxOutputTokens: 512
+    maxOutputTokens: 8192
   });
   if (!response) {
     return null;

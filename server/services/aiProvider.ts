@@ -64,7 +64,7 @@ export async function generateAssistantReply(params: {
 
   const text = await generateText(prompt, {
     temperature: agent.temperature ?? 0.8,
-    maxOutputTokens: 4096,
+    maxOutputTokens: 8192,
   })
 
   if (!text) {
@@ -126,7 +126,7 @@ Responda APENAS com as 3 frases, uma por linha, sem numeração ou rótulos.`
     // O modelo usa ~1000-2000 thinking tokens antes de gerar resposta
     const text = await generateText(prompt, {
       temperature: 0.7,
-      maxOutputTokens: 4096,
+      maxOutputTokens: 8192,
     })
     
     console.log('[generateSuggestions] API respondeu:', text?.substring(0, 100))
