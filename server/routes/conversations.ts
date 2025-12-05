@@ -70,8 +70,10 @@ router.get('/:id', async (req, res) => {
   res.json({ conversation: mapConversation(conversation) })
 })
 
-router.post('/', async (req, res) => {
-  const { agent } = createConversationSchema.parse(req.body)
+router.post('/', async (req, res, next) => {
+  try {
+    console.log('[POST /conversations] Body received:', JSON.stringify(req.body, null, 2))
+    const { agent } = createConversationSchema.parse(req.body)
 
   const conversation = await prisma.conversation.create({
     data: {
@@ -105,10 +107,14 @@ router.post('/', async (req, res) => {
     },
   })
 
-  res.status(201).json({
-    conversation: mapConversation(withMessages!),
-    responseDelay: agent.responseDelay,
-  })
+    res.status(201).json({
+      conversation: mapConversation(withMessages!),
+      responseDelay: agent.responseDelay,
+    })
+  } catch (error) {
+    console.error('[POST /conversations] Error:', error)
+    next(error)
+  }
 })
 
 router.post('/:id/messages', async (req, res) => {

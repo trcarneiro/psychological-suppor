@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
+import { ZodError } from 'zod'
 import { PORT } from './config'
 import conversationsRouter from './routes/conversations'
 import leadsRouter from './routes/leads'
@@ -65,10 +66,31 @@ app.use((req, res) => {
 })
 
 app.use((error: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error('[Server] Erro n�o tratado:', error)
+  console.error('[Server] Erro não tratado:', error)
+  
+  // Zod validation errors
+  if (error instanceof ZodError) {
+    console.error('[Server] Zod validation error:', JSON.stringify(error.errors, null, 2))
+    return res.status(400).json({ 
+      error: 'Dados inválidos.',
+      details: error.errors
+    })
+  }
+  
+  // Prisma errors
+  if (error.constructor.name === 'PrismaClientKnownRequestError') {
+    console.error('[Server] Prisma error:', error.message)
+    return res.status(500).json({ 
+      error: 'Erro de banco de dados.',
+      code: (error as any).code,
+      details: error.message
+    })
+  }
+  
   res.status(500).json({ 
     error: 'Erro interno do servidor.',
-    details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    message: error.message,
+    stack: process.env.NODE_ENV !== 'production' ? error.stack : undefined
   })
 })
 
