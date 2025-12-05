@@ -1,4 +1,7 @@
 {
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": "vite",
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -7,7 +10,7 @@
   ],
   "functions": {
     "api/index.ts": {
-      "includeFiles": ["server/**/*", "prisma/**/*", "node_modules/.prisma/**/*", "node_modules/@prisma/client/**/*"],
+      "runtime": "nodejs20.x",
       "maxDuration": 30
     }
   }
