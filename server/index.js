@@ -223,14 +223,11 @@ function getFallbackSuggestions(assistantMessage) {
 }
 async function generateSuggestions(params) {
   const { lastAssistantMessage } = params;
-  const prompt = `Gere 3 respostas curtas (m\xE1ximo 6 palavras cada) para:
+  const prompt = `Gere 3 respostas curtas (m\xE1ximo 6 palavras cada) que um usu\xE1rio poderia dar para:
 
 "${lastAssistantMessage.substring(0, 150)}"
 
-Formato:
-Resposta 1
-Resposta 2
-Resposta 3`;
+Responda APENAS com as 3 frases, uma por linha, sem numera\xE7\xE3o ou r\xF3tulos.`;
   console.log("[generateSuggestions] Prompt length:", prompt.length, "chars");
   console.log("[generateSuggestions] Chamando LLM...");
   try {
@@ -241,7 +238,7 @@ Resposta 3`;
     console.log("[generateSuggestions] API respondeu:", text?.substring(0, 100));
     let suggestions = [];
     if (text && text.length > 0) {
-      suggestions = text.split("\n").map((line) => line.trim()).filter((line) => line.length > 0).map((line) => line.replace(/^[-*\d.)\s]+/, "")).filter((line) => line.length > 0 && line.length <= 60).filter((line) => !/^aqui\s+est/i.test(line)).slice(0, 3);
+      suggestions = text.split("\n").map((line) => line.trim()).filter((line) => line.length > 0).map((line) => line.replace(/^(resposta\s*\d+[:\s]*|[-*\d.)\s]+)/i, "")).filter((line) => line.length > 0 && line.length <= 60).filter((line) => !/^resposta\s*\d*$/i.test(line)).filter((line) => !/^aqui\s+est/i.test(line)).slice(0, 3);
     }
     if (suggestions.length < 3) {
       console.log(`[generateSuggestions] Apenas ${suggestions.length} sugest\xF5es geradas. Usando fallback.`);

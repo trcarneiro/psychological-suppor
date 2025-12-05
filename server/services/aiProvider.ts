@@ -111,15 +111,12 @@ export async function generateSuggestions(params: {
 }) {
   const { lastAssistantMessage } = params
   
-  // Fix 1: Prompt Minimalista
-  const prompt = `Gere 3 respostas curtas (máximo 6 palavras cada) para:
+  // Prompt direto sem rótulos
+  const prompt = `Gere 3 respostas curtas (máximo 6 palavras cada) que um usuário poderia dar para:
 
 "${lastAssistantMessage.substring(0, 150)}"
 
-Formato:
-Resposta 1
-Resposta 2
-Resposta 3`
+Responda APENAS com as 3 frases, uma por linha, sem numeração ou rótulos.`
 
   console.log('[generateSuggestions] Prompt length:', prompt.length, 'chars')
   console.log('[generateSuggestions] Chamando LLM...')
@@ -141,8 +138,11 @@ Resposta 3`
         .split('\n')
         .map(line => line.trim())
         .filter(line => line.length > 0)
-        .map(line => line.replace(/^[-*\d.)\s]+/, ''))
+        // Remove prefixos como "Resposta 1", "Resposta 2", números, marcadores
+        .map(line => line.replace(/^(resposta\s*\d+[:\s]*|[-*\d.)\s]+)/i, ''))
         .filter(line => line.length > 0 && line.length <= 60)
+        // Filtra linhas que são apenas "Resposta X" sem conteúdo
+        .filter(line => !/^resposta\s*\d*$/i.test(line))
         .filter(line => !/^aqui\s+est/i.test(line))
         .slice(0, 3)
     }
