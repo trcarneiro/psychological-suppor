@@ -9,7 +9,7 @@
         "dev:server": "tsx watch server/index.ts",
         "kill": "fuser -k 5000/tcp",
         "build": "npm run build:server && vite build",
-        "build:server": "esbuild server/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=server/index.js --external:@prisma/client --external:express --external:cors --external:zod --external:@google/generative-ai",
+        "build:server": "esbuild server/index.ts --bundle --platform=node --target=node20 --format=esm --outfile=server/index.js --packages=external",
         "lint": "eslint .",
         "optimize": "vite optimize",
         "preview": "vite preview",
