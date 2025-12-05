@@ -1,16 +1,16 @@
-const express = require('express');
+import express from 'express';
 
 const app = express();
 
 app.get('/api/health', (req, res) => {
   res.json({ 
-    status: 'js-api-ok',
+    status: 'esm-api-ok',
     timestamp: Date.now()
   });
 });
 
 app.use((req, res) => {
-  res.json({ message: 'js-api-fallback' });
+  res.json({ message: 'esm-api-fallback' });
 });
 
-module.exports = app;
+export default app;
