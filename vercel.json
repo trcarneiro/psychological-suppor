@@ -6,8 +6,7 @@
     }
   ],
   "functions": {
-    "api/index.ts": {
-      "includeFiles": "server/**/*",
+    "api/index.mjs": {
       "maxDuration": 30
     }
   }
