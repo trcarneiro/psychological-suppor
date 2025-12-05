@@ -6,7 +6,7 @@
     }
   ],
   "functions": {
-    "api/index.js": {
+    "api/index.ts": {
       "includeFiles": "server/**/*",
       "maxDuration": 30
     }

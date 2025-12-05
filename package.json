@@ -18,6 +18,7 @@
         "test:gemini": "tsx scripts/gemini-sample.ts",
         "test:suggestions": "tsx scripts/test-suggestions.ts",
         "test:model": "tsx scripts/test-gemini-model.ts",
+        "test:api": "tsx scripts/test-all-endpoints.ts",
         "postinstall": "prisma generate"
     },
     "dependencies": {
