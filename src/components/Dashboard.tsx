@@ -88,7 +88,9 @@ export function Dashboard({ onLogout }: DashboardProps) {
             lead.data.name?.toLowerCase().includes(query) ||
             lead.data.email?.toLowerCase().includes(query) ||
             lead.data.phone?.toLowerCase().includes(query) ||
-            lead.data.mainConcern?.toLowerCase().includes(query)
+            lead.data.mainConcern?.toLowerCase().includes(query) ||
+            lead.data.city?.toLowerCase().includes(query) ||
+            lead.data.cep?.includes(query)
           )
         }
         

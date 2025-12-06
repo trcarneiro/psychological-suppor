@@ -167,7 +167,9 @@ router.post('/:id/messages', async (req, res) => {
       history,
       userMessage: content,
     })
-    console.log('[POST /conversations/:id/messages] Resposta gerada:', assistantResponse.substring(0, 100))
+    console.log('[POST /conversations/:id/messages] ✅ Resposta gerada completa:')
+    console.log('[POST /conversations/:id/messages] Comprimento:', assistantResponse.length, 'caracteres')
+    console.log('[POST /conversations/:id/messages] Conteúdo:', assistantResponse)
   } catch (error) {
     console.error('[POST /conversations/:id/messages] Erro ao gerar resposta:', error)
     throw error
@@ -227,6 +229,7 @@ router.post('/:id/messages', async (req, res) => {
           budgetMax: leadData.budgetMax ?? undefined,
           city: leadData.city ?? undefined,
           state: leadData.state ?? undefined,
+          cep: leadData.cep ?? undefined,
           neighborhood: leadData.neighborhood ?? undefined,
           modality: leadData.modality ?? undefined,
           insuranceProvider: leadData.insuranceProvider ?? undefined,
@@ -251,6 +254,7 @@ router.post('/:id/messages', async (req, res) => {
           budgetMax: leadData.budgetMax ?? undefined,
           city: leadData.city ?? undefined,
           state: leadData.state ?? undefined,
+          cep: leadData.cep ?? undefined,
           neighborhood: leadData.neighborhood ?? undefined,
           modality: leadData.modality ?? undefined,
           insuranceProvider: leadData.insuranceProvider ?? undefined,

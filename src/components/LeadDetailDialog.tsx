@@ -144,13 +144,14 @@ export function LeadDetailDialog({
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-muted/30 rounded-lg p-4">
-                {(lead.data.city || lead.data.state) && (
+                {(lead.data.city || lead.data.state || lead.data.cep) && (
                   <div className="flex items-center gap-3">
                     <MapPin size={20} className="text-muted-foreground" />
                     <div>
                       <p className="text-xs text-muted-foreground">Localização</p>
                       <p className="font-medium">
                         {[lead.data.neighborhood, lead.data.city, lead.data.state].filter(Boolean).join(', ')}
+                        {lead.data.cep && <span className="block text-xs text-muted-foreground">CEP: {lead.data.cep}</span>}
                       </p>
                     </div>
                   </div>

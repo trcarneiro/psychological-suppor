@@ -19,6 +19,7 @@ export interface LeadDataPayload {
   budgetMax?: number | null
   city?: string | null
   state?: string | null
+  cep?: string | null
   neighborhood?: string | null
   modality?: 'online' | 'presencial' | 'hibrido' | null
   insuranceProvider?: string | null
@@ -41,7 +42,7 @@ Retorne um JSON com as chaves:
 - symptoms (array de strings), duration, previousTherapy (boolean)
 - preferredContact (email|phone|whatsapp), availability
 - budget (texto livre), budgetMin (número), budgetMax (número)
-- city, state (UF), neighborhood
+- city, state (UF), cep, neighborhood
 - modality (online|presencial|hibrido)
 - insuranceProvider
 

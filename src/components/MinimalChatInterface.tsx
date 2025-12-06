@@ -31,7 +31,6 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
   const [inputMessage, setInputMessage] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const [isInitializing, setIsInitializing] = useState(false)
-  const [showSuggestions, setShowSuggestions] = useState(true)
   const [suggestionPrompts] = useState(() => getRandomStarters(6))
   const [aiSuggestions, setAiSuggestions] = useState<string[]>([])
   
@@ -59,7 +58,6 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
   const initializeConversation = useCallback(async (agentConfig: AIAgentConfig) => {
     setIsInitializing(true)
     setIsTyping(true)
-    setShowSuggestions(true)
     setConversation(null)
 
     try {
@@ -86,7 +84,6 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
     if (!trimmed) return
 
     setInputMessage('')
-    setShowSuggestions(false)
 
     const previousConversation = conversation
     const optimisticMessage: Message = {
@@ -114,7 +111,6 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
       
       if (result.suggestions && result.suggestions.length > 0) {
         setAiSuggestions(result.suggestions)
-        setShowSuggestions(true)
       }
 
       await queryClient.invalidateQueries({ queryKey: ['conversations'] })
@@ -146,21 +142,20 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
   const handleAgentChange = useCallback((newAgent: AIAgentConfig) => {
     onChangeAgent(newAgent)
     setConversation(null)
-    setShowSuggestions(true)
   }, [onChangeAgent])
 
   return (
-    <div className="h-screen bg-background flex flex-col relative overflow-hidden">
+    <div className="h-screen bg-background flex flex-col relative overflow-hidden safe-area-inset">
       <div className={`absolute inset-0 bg-gradient-to-br ${agent.color} opacity-5 -z-10`} />
       
-      <div className="fixed top-6 right-6 z-50 flex gap-3">
+      <div className="fixed top-3 right-3 md:top-6 md:right-6 z-50 flex gap-2 md:gap-3">
         <Button
           size="icon"
           variant="ghost"
           onClick={onClose}
-          className="h-12 w-12 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg hover:bg-card"
+          className="h-10 w-10 md:h-12 md:w-12 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg hover:bg-card"
         >
-          <X size={20} className="text-foreground" />
+          <X size={18} className="text-foreground md:w-5 md:h-5" />
           <span className="sr-only">Fechar chat</span>
         </Button>
 
@@ -171,10 +166,10 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="h-12 px-4 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 flex items-center gap-2 hover:bg-card shadow-lg hover:shadow-xl transition-all"
+              className="h-10 md:h-12 px-3 md:px-4 rounded-full bg-card/80 backdrop-blur-xl border border-border/50 flex items-center gap-2 hover:bg-card shadow-lg hover:shadow-xl transition-all"
             >
-              <List size={20} className="text-foreground" />
-              <span className="text-sm font-medium text-foreground">Menu</span>
+              <List size={18} className="text-foreground md:w-5 md:h-5" />
+              <span className="text-xs md:text-sm font-medium text-foreground hidden sm:inline">Menu</span>
             </motion.button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
@@ -202,23 +197,24 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
         </DropdownMenu>
       </div>
 
-      <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full px-6 py-12">
+      <div className="flex-1 flex flex-col max-w-3xl mx-auto w-full px-3 md:px-6 py-14 md:py-12 pb-3">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
+          className="mb-4 md:mb-12 text-center"
         >
-          <h1 className="font-serif text-4xl font-semibold text-foreground mb-2">
+          <h1 className="font-serif text-2xl md:text-4xl font-semibold text-foreground mb-1 md:mb-2">
             {agent.name}
           </h1>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-xs md:text-sm text-muted-foreground">
             {agent.personality}
           </p>
         </motion.div>
 
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto space-y-6 mb-6 scrollbar-thin pr-2"
+          className="flex-1 min-h-0 overflow-y-auto space-y-4 md:space-y-6 mb-4 md:mb-6 pb-4 scrollbar-thin pr-1 md:pr-2 -mx-1"
+          style={{ WebkitOverflowScrolling: 'touch' }}
         >
           <AnimatePresence mode="popLayout">
             {conversation?.messages.map((message, index) => (
@@ -234,13 +230,13 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
               >
                 <div
                   className={cn(
-                    'max-w-[85%] rounded-3xl px-6 py-4 shadow-sm',
+                    'max-w-[90%] md:max-w-[85%] rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4 shadow-sm',
                     message.role === 'user'
                       ? `bg-gradient-to-br ${agent.color} text-white`
                       : 'bg-card/60 backdrop-blur-sm border border-border/50 text-foreground'
                   )}
                 >
-                  <p className="text-lg leading-relaxed whitespace-pre-wrap">
+                  <p className="text-[15px] md:text-lg leading-relaxed whitespace-pre-wrap break-words overflow-wrap-anywhere">
                     {message.content}
                   </p>
                 </div>
@@ -254,7 +250,7 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
               animate={{ opacity: 1, y: 0 }}
               className="flex justify-start"
             >
-              <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-3xl px-6 py-4">
+              <div className="bg-card/60 backdrop-blur-sm border border-border/50 rounded-2xl md:rounded-3xl px-4 md:px-6 py-3 md:py-4">
                 <div className="flex gap-2">
                   <motion.div
                     animate={{ scale: [1, 1.2, 1] }}
@@ -277,17 +273,17 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
           )}
         </div>
 
-  {showSuggestions && (aiSuggestions.length > 0 || conversation?.messages.length === 1) && (
+        {(aiSuggestions.length > 0 || (conversation?.messages.length === 1 && suggestionPrompts.length > 0)) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="mb-6"
+            className="mb-4 md:mb-6"
           >
-            <p className="text-sm text-muted-foreground text-center mb-4">
+            <p className="text-xs md:text-sm text-muted-foreground text-center mb-3 md:mb-4">
               {aiSuggestions.length > 0 ? '💭 Sugestões de resposta:' : '💭 Sugestões para começar a conversa:'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
               {(aiSuggestions.length > 0 
                 ? aiSuggestions.map(text => ({ id: text, text, icon: '💬' })) 
                 : suggestionPrompts
@@ -300,11 +296,11 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => handleSuggestionClick(starter.text)}
-                  className="text-left p-4 rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50 hover:bg-card/60 hover:border-border transition-all"
+                  className="text-left p-3 md:p-4 min-h-[48px] rounded-xl md:rounded-2xl bg-card/40 backdrop-blur-sm border border-border/50 hover:bg-card/60 hover:border-border transition-all active:scale-95"
                 >
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">{starter.icon}</span>
-                    <span className="text-sm text-foreground">{starter.text}</span>
+                  <div className="flex items-start gap-2 md:gap-3">
+                    <span className="text-xl md:text-2xl flex-shrink-0">{starter.icon}</span>
+                    <span className="text-xs md:text-sm text-foreground leading-snug">{starter.text}</span>
                   </div>
                 </motion.button>
               ))}
@@ -317,16 +313,16 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="relative"
+          className="relative sticky bottom-0 pb-safe"
         >
-          <div className="flex gap-3 items-end bg-card/60 backdrop-blur-xl border border-border/50 rounded-3xl p-3 shadow-lg">
+          <div className="flex gap-2 md:gap-3 items-end bg-card/80 md:bg-card/60 backdrop-blur-xl border border-border/50 rounded-2xl md:rounded-3xl p-2 md:p-3 shadow-lg">
             <Textarea
               ref={textareaRef}
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyDown={handleKeyPress}
               placeholder="Digite sua mensagem..."
-              className="resize-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-lg px-3 py-2 max-h-32 scrollbar-none"
+              className="resize-none border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-base md:text-lg px-2 md:px-3 py-2 max-h-32 scrollbar-none"
               rows={1}
               disabled={isTyping || isInitializing}
             />
@@ -335,15 +331,15 @@ export function MinimalChatInterface({ agent, onChangeAgent, onAdminLogin, onClo
               disabled={!inputMessage.trim() || isTyping || isInitializing}
               size="lg"
               className={cn(
-                `bg-gradient-to-r ${agent.color} hover:opacity-90 text-white rounded-2xl h-12 w-12 p-0 flex-shrink-0 shadow-md`,
+                `bg-gradient-to-r ${agent.color} hover:opacity-90 text-white rounded-xl md:rounded-2xl h-12 w-12 md:h-12 md:w-12 p-0 flex-shrink-0 shadow-md active:scale-95 transition-transform`,
                 (!inputMessage.trim() || isTyping || isInitializing) && 'opacity-50'
               )}
             >
-              <PaperPlaneTilt size={20} weight="fill" />
+              <PaperPlaneTilt size={20} weight="fill" className="md:w-5 md:h-5" />
             </Button>
           </div>
           
-          <p className="text-xs text-muted-foreground text-center mt-4">
+          <p className="text-[10px] md:text-xs text-muted-foreground text-center mt-2 md:mt-4 px-2">
             Em crise? Ligue CVV: <span className="font-semibold">188</span> (gratuito, 24h)
           </p>
         </motion.div>

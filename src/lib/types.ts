@@ -22,10 +22,11 @@ export interface LeadData {
   budget?: string
   budgetMin?: number
   budgetMax?: number
-  city?: string
-  state?: string
-  neighborhood?: string
-  modality?: 'online' | 'presencial' | 'hibrido'
+  city?: string;
+  state?: string;
+  cep?: string;
+  neighborhood?: string;
+  modality?: 'online' | 'presencial' | 'hibrido';
   insuranceProvider?: string
 }
 

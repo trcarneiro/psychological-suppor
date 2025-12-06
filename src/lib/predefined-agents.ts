@@ -25,6 +25,8 @@ ABORDAGEM:
 COLETA DE DADOS (sutil e natural):
 - Nome: pergunte naturalmente após criar conexão
 - Contato: sugira de forma gentil quando apropriado
+- Localização: pergunte cidade/estado ou CEP de forma natural
+- Orçamento: pergunte delicadamente sobre disponibilidade financeira
 - Preocupação: deixe a pessoa compartilhar no seu ritmo
 - Estado emocional: observe nas entrelinhas
 - Histórico: pergunte com delicadeza
@@ -39,7 +41,7 @@ IMPORTANTE:
     conversationStyle: 'empathetic',
     maxMessageLength: 500,
     responseDelay: 1800,
-    collectDataFields: ['name', 'email', 'phone', 'mainConcern', 'emotionalState', 'previousTherapy'],
+    collectDataFields: ['name', 'email', 'phone', 'cep', 'budget', 'mainConcern', 'emotionalState', 'previousTherapy'],
     autoReferralThreshold: 7,
     temperature: 0.9,
     active: true,
@@ -72,6 +74,8 @@ ABORDAGEM:
 COLETA DE DADOS (estruturada):
 - Apresente-se e explique o processo
 - Colete informações de forma organizada
+- Solicite cidade, estado e CEP
+- Pergunte diretamente sobre faixa de valor disponível (orçamento)
 - Faça perguntas específicas e diretas
 - Resuma e confirme o que foi compartilhado
 - Sugira encaminhamento quando apropriado
@@ -86,7 +90,7 @@ IMPORTANTE:
     conversationStyle: 'professional',
     maxMessageLength: 400,
     responseDelay: 1000,
-    collectDataFields: ['name', 'email', 'phone', 'mainConcern', 'urgencyLevel', 'symptoms', 'previousTherapy', 'preferredContact'],
+    collectDataFields: ['name', 'email', 'phone', 'cep', 'budget', 'mainConcern', 'urgencyLevel', 'symptoms', 'previousTherapy', 'preferredContact'],
     autoReferralThreshold: 6,
     temperature: 0.6,
     active: true,
@@ -119,6 +123,8 @@ ABORDAGEM:
 COLETA DE DADOS (motivadora):
 - Pergunte sobre o que já tentou (destacando proatividade)
 - Explore objetivos e aspirações
+- Pergunte de onde a pessoa fala (CEP/Cidade)
+- Explore possibilidades financeiras de forma positiva
 - Conecte preocupações com possibilidades de mudança
 - Mostre entusiasmo por ajudar
 - Sugira próximos passos de forma encorajadora
@@ -133,7 +139,7 @@ IMPORTANTE:
     conversationStyle: 'friendly',
     maxMessageLength: 500,
     responseDelay: 1500,
-    collectDataFields: ['name', 'mainConcern', 'email', 'phone', 'previousTherapy', 'preferredContact'],
+    collectDataFields: ['name', 'mainConcern', 'email', 'phone', 'cep', 'budget', 'previousTherapy', 'preferredContact'],
     autoReferralThreshold: 7,
     temperature: 0.85,
     active: true,
@@ -172,6 +178,8 @@ ESTILO DE PERGUNTAS:
 COLETA DE DADOS (reflexiva):
 - Permita que insights naturalmente revelem informações
 - Faça perguntas que convidem ao aprofundamento
+- Entenda o contexto geográfico (CEP/Cidade)
+- Reflita sobre o investimento em si mesmo (valor disponível)
 - Conecte o que é compartilhado com contexto maior
 - Sugira reflexões sobre próximos passos
 
@@ -185,7 +193,7 @@ IMPORTANTE:
     conversationStyle: 'empathetic',
     maxMessageLength: 500,
     responseDelay: 2000,
-    collectDataFields: ['name', 'mainConcern', 'emotionalState', 'duration', 'previousTherapy', 'email'],
+    collectDataFields: ['name', 'mainConcern', 'emotionalState', 'duration', 'previousTherapy', 'email', 'cep', 'budget'],
     autoReferralThreshold: 8,
     temperature: 0.75,
     active: true,
@@ -224,6 +232,8 @@ ESTILO ADAPTATIVO:
 COLETA DE DADOS (natural):
 - Flua com a conversa
 - Colete informações organicamente
+- Pergunte onde a pessoa está (CEP/Cidade)
+- Aborde a questão financeira com naturalidade
 - Não force estrutura rígida
 - Adapte perguntas ao contexto
 - Balance coleta com conexão humana
@@ -238,7 +248,7 @@ IMPORTANTE:
     conversationStyle: 'friendly',
     maxMessageLength: 500,
     responseDelay: 1500,
-    collectDataFields: ['name', 'email', 'phone', 'mainConcern', 'emotionalState', 'urgencyLevel', 'previousTherapy', 'preferredContact'],
+    collectDataFields: ['name', 'email', 'phone', 'cep', 'budget', 'mainConcern', 'emotionalState', 'urgencyLevel', 'previousTherapy', 'preferredContact'],
     autoReferralThreshold: 7,
     temperature: 0.8,
     active: true,

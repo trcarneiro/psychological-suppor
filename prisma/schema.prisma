@@ -79,6 +79,7 @@ model Lead {
   budgetMax           Int?
   city                String?
   state               String?
+  cep                 String?
   neighborhood        String?
   modality            String?          // "online", "presencial", "hibrido"
   insuranceProvider   String?
