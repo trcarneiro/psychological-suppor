@@ -60,7 +60,7 @@ export function LandingHero() {
             <Button 
               size="lg" 
               variant="outline"
-              onClick={onOpenBlog}
+              onClick={() => navigate('/blog')}
               className="group h-14 px-8 text-lg hover:bg-primary/5 transition-all duration-300"
             >
               <Article size={20} className="mr-2" />
@@ -206,4 +206,5 @@ export function LandingHero() {
     </div>
   )
 }
+
 
