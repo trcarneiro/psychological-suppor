@@ -1,14 +1,15 @@
-import { useState, Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LandingHero } from '@/components/LandingHero'
 import { MinimalChatInterface } from '@/components/MinimalChatInterface'
 import { Toaster } from '@/components/ui/sonner'
-import { AIAgentConfig } from '@/lib/types'
 import { getDefaultAgent } from '@/lib/predefined-agents'
 
 // Lazy load heavy components
 const Dashboard = lazy(() => import('@/components/Dashboard').then(module => ({ default: module.Dashboard })))
 const AdminLogin = lazy(() => import('@/components/AdminLogin').then(module => ({ default: module.AdminLogin })))
 const BlogSection = lazy(() => import('@/components/BlogSection').then(module => ({ default: module.BlogSection })))
+const BlogArticleView = lazy(() => import('@/components/BlogArticleView').then(module => ({ default: module.BlogArticleView })))
 
 function LoadingScreen() {
   return (
@@ -21,57 +22,36 @@ function LoadingScreen() {
   )
 }
 
-type ViewMode = 'landing' | 'chat' | 'admin-login' | 'dashboard' | 'blog'
-
 function App() {
-  const [viewMode, setViewMode] = useState<ViewMode>('landing')
-  const [selectedAgent, setSelectedAgent] = useState<AIAgentConfig>(getDefaultAgent())
-
-  const handleChangeAgent = (agent: AIAgentConfig) => {
-    setSelectedAgent(agent)
-  }
-
   return (
-    <>
-      {viewMode === 'landing' && (
-        <LandingHero 
-          onStartChat={() => setViewMode('chat')} 
-          onOpenBlog={() => setViewMode('blog')}
-        />
-      )}
-
-      {viewMode === 'blog' && (
-        <Suspense fallback={<LoadingScreen />}>
-          <BlogSection onBack={() => setViewMode('landing')} />
-        </Suspense>
-      )}
-
-      {viewMode === 'chat' && (
-        <MinimalChatInterface
-          agent={selectedAgent}
-          onChangeAgent={handleChangeAgent}
-          onAdminLogin={() => setViewMode('admin-login')}
-          onClose={() => setViewMode('landing')}
-        />
-      )}
-
-      {viewMode === 'admin-login' && (
-        <Suspense fallback={<LoadingScreen />}>
-          <AdminLogin
-            onLogin={() => setViewMode('dashboard')}
-            onCancel={() => setViewMode('chat')}
-          />
-        </Suspense>
-      )}
-
-      {viewMode === 'dashboard' && (
-        <Suspense fallback={<LoadingScreen />}>
-          <Dashboard onLogout={() => setViewMode('chat')} />
-        </Suspense>
-      )}
-
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingHero />} />
+        <Route path="/chat" element={<MinimalChatInterface agent={getDefaultAgent()} />} />
+        <Route path="/blog" element={
+          <Suspense fallback={<LoadingScreen />}>
+            <BlogSection />
+          </Suspense>
+        } />
+        <Route path="/blog/:slug" element={
+          <Suspense fallback={<LoadingScreen />}>
+            <BlogArticleView />
+          </Suspense>
+        } />
+        <Route path="/admin" element={
+          <Suspense fallback={<LoadingScreen />}>
+            <AdminLogin />
+          </Suspense>
+        } />
+        <Route path="/dashboard" element={
+          <Suspense fallback={<LoadingScreen />}>
+            <Dashboard />
+          </Suspense>
+        } />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
       <Toaster position="top-center" />
-    </>
+    </BrowserRouter>
   )
 }
 

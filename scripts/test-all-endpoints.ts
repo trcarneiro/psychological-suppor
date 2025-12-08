@@ -198,7 +198,8 @@ async function runTests() {
   
   if (conversationId) {
     await test('DELETE /api/conversations/:id - Deletar conversa de teste', async () => {
-      const response = await fetchJSON(`${API_BASE}/conversations/${conversationId}`, {
+      // Get conversation
+      await fetchJSON(`${API_BASE}/conversations/${conversationId}`, {
         method: 'DELETE',
       });
       return { deleted: true };

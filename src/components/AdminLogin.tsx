@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,12 +8,8 @@ import { ShieldCheck } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 import { supabase, isSupabaseConfigured } from '@/lib/supabase'
 
-interface AdminLoginProps {
-  onLogin: () => void
-  onCancel: () => void
-}
-
-export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
+export function AdminLogin() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -25,7 +22,7 @@ export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
       await new Promise(resolve => setTimeout(resolve, 500))
       if (password === 'admin123') {
         toast.success('Login realizado (Modo DEV)')
-        onLogin()
+        navigate('/dashboard')
       } else {
         toast.error('Senha incorreta (Modo DEV: admin123)')
       }
@@ -42,7 +39,7 @@ export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
       toast.error('Erro ao fazer login: ' + error.message)
     } else {
       toast.success('Login realizado com sucesso')
-      onLogin()
+      navigate('/dashboard')
     }
     
     setIsLoading(false)
@@ -100,7 +97,7 @@ export function AdminLogin({ onLogin, onCancel }: AdminLoginProps) {
           <div className="flex gap-3">
             <Button
               variant="outline"
-              onClick={onCancel}
+              onClick={() => navigate('/chat')}
               disabled={isLoading}
               className="flex-1"
             >

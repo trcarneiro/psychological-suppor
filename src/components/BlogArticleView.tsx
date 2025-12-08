@@ -1,22 +1,25 @@
 import { useEffect } from 'react'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
-import { BlogArticle } from '@/lib/blog-articles'
+import { BLOG_ARTICLES } from '@/lib/blog-articles'
 import { getArticleSEO } from '@/lib/article-seo-metadata'
 import { updateDocumentMeta, generateStructuredData } from '@/lib/seo-helpers'
 import { Clock, Calendar, Tag } from '@phosphor-icons/react'
 import { marked } from 'marked'
 
-interface BlogArticleViewProps {
-  article: BlogArticle
-  onBack: () => void
-  onBackToHome: () => void
-}
-
-export function BlogArticleView({ article, onBack, onBackToHome }: BlogArticleViewProps) {
+export function BlogArticleView() {
+  const { slug } = useParams<{ slug: string }>()
+  const navigate = useNavigate()
+  
+  const article = BLOG_ARTICLES.find(a => a.slug === slug)
+  
+  if (!article) {
+    return <Navigate to="/blog" replace />
+  }
   const htmlContent = marked(article.content)
 
   useEffect(() => {
@@ -54,8 +57,8 @@ export function BlogArticleView({ article, onBack, onBackToHome }: BlogArticleVi
       <div className="container max-w-4xl mx-auto px-4 py-12 space-y-8">
         <Breadcrumbs
           items={[
-            { label: 'Home', onClick: onBackToHome },
-            { label: 'Blog', onClick: onBack },
+            { label: 'Home', onClick: () => navigate('/') },
+            { label: 'Blog', onClick: () => navigate('/blog') },
             { label: article.title },
           ]}
         />
@@ -138,7 +141,7 @@ export function BlogArticleView({ article, onBack, onBackToHome }: BlogArticleVi
                   Comece uma conversa com nosso assistente virtual e encontre o profissional ideal para você.
                 </p>
                 <Button
-                  onClick={onBackToHome}
+                  onClick={() => navigate('/chat')}
                   className="w-full sm:w-auto"
                 >
                   Conversar Agora

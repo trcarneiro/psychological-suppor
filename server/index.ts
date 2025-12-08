@@ -33,7 +33,17 @@ app.use(cors({
     if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
       return callback(null, true)
     }
+
+    // Allow known custom domains
+    const allowedDomains = [
+      'https://psicologobelohorizonte.com.br',
+      'https://www.psicologobelohorizonte.com.br'
+    ]
+    if (allowedDomains.includes(origin)) {
+      return callback(null, true)
+    }
     
+    console.warn(`[CORS] Blocked origin: ${origin}`)
     // Block others
     callback(new Error('Not allowed by CORS'))
   },

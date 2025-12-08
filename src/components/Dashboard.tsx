@@ -33,12 +33,10 @@ import { LeadDetailDialog } from './LeadDetailDialog'
 import { AIAgentConfig } from './AIAgentConfig'
 import { AgentsManagementPanel } from './AgentsManagementPanel'
 import { fetchLeads, updateLeadStatus as apiUpdateLeadStatus, fetchConversation } from '@/lib/api-client'
+import { useNavigate } from 'react-router-dom'
 
-interface DashboardProps {
-  onLogout: () => void
-}
-
-export function Dashboard({ onLogout }: DashboardProps) {
+export function Dashboard() {
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
   const {
     data: leads = [],
@@ -145,7 +143,7 @@ export function Dashboard({ onLogout }: DashboardProps) {
           <Button
             variant="outline"
             size="sm"
-            onClick={onLogout}
+            onClick={() => navigate('/chat')}
             className="gap-2"
           >
             <SignOut size={16} />

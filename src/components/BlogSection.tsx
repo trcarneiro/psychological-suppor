@@ -1,24 +1,19 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { BlogCard } from '@/components/BlogCard'
-import { BlogArticleView } from '@/components/BlogArticleView'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import {
   BLOG_ARTICLES,
   getAllCategories,
   getArticlesByCategory,
   searchArticles,
-  BlogArticle,
 } from '@/lib/blog-articles'
 import { MagnifyingGlass, Article } from '@phosphor-icons/react'
 
-interface BlogSectionProps {
-  onBack: () => void
-}
-
-export function BlogSection({ onBack }: BlogSectionProps) {
-  const [selectedArticle, setSelectedArticle] = useState<BlogArticle | null>(null)
+export function BlogSection() {
+  const navigate = useNavigate()
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -36,23 +31,13 @@ export function BlogSection({ onBack }: BlogSectionProps) {
 
   const filteredArticles = getFilteredArticles()
 
-  if (selectedArticle) {
-    return (
-      <BlogArticleView
-        article={selectedArticle}
-        onBack={() => setSelectedArticle(null)}
-        onBackToHome={onBack}
-      />
-    )
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-muted/20">
       <div className="container max-w-7xl mx-auto px-4 py-12 space-y-12">
         <div className="space-y-4">
           <Breadcrumbs
             items={[
-              { label: 'Home', onClick: onBack },
+              { label: 'Home', onClick: () => navigate('/') },
               { label: 'Blog' },
             ]}
           />
@@ -119,7 +104,7 @@ export function BlogSection({ onBack }: BlogSectionProps) {
                 <BlogCard
                   key={article.id}
                   article={article}
-                  onReadMore={() => setSelectedArticle(article)}
+                  onReadMore={() => navigate(`/blog/${article.slug}`)}
                 />
               ))}
             </div>

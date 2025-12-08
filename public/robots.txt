@@ -1,0 +1,17 @@
+# Robots.txt - Psicólogo BH
+# Última atualização: 2025-12-07
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+
+# Arquivos específicos
+Disallow: /*.json$
+Disallow: /*.env$
+
+# Sitemap
+Sitemap: https://psicologobelohorizonte.com.br/sitemap.xml
+
+# Crawl delay (respeitoso com o servidor)
+Crawl-delay: 1

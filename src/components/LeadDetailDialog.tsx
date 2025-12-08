@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog'
 import { Badge } from '@/components/ui/badge'
+import { logger } from '@/lib/logger'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
@@ -59,7 +60,7 @@ export function LeadDetailDialog({
       setLoadingMatches(true)
       getLeadMatches(lead.id)
         .then(matches => setMatches(matches))
-        .catch(err => console.error('Failed to fetch matches', err))
+        .catch(err => logger.error('Failed to fetch matches', { error: err }))
         .finally(() => setLoadingMatches(false))
     }
   }, [open, lead.id])

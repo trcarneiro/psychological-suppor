@@ -1,8 +1,10 @@
 import { CaretRight } from '@phosphor-icons/react'
+import { useEffect } from 'react'
 
 interface BreadcrumbItem {
   label: string
   onClick?: () => void
+  href?: string
 }
 
 interface BreadcrumbsProps {
@@ -10,6 +12,29 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
+  // Inject JSON-LD structured data
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.id = 'breadcrumb-schema'
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.label,
+        item: item.href || (typeof window !== 'undefined' ? window.location.href : ''),
+      })),
+    })
+    document.head.appendChild(script)
+    
+    return () => {
+      const existing = document.getElementById('breadcrumb-schema')
+      if (existing) existing.remove()
+    }
+  }, [items])
+
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol

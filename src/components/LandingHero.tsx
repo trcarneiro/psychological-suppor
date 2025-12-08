@@ -1,20 +1,18 @@
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
 import { Brain, Heart, Shield, Clock, ArrowRight, CheckCircle, Article } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 
-interface LandingHeroProps {
-  onStartChat: () => void
-  onOpenBlog?: () => void
-}
+export function LandingHero() {
+  const navigate = useNavigate()
 
-export function LandingHero({ onStartChat, onOpenBlog }: LandingHeroProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
-            onClick={onOpenBlog}
+            onClick={() => navigate('/blog')}
             className="gap-2 hover:bg-primary/5"
           >
             <Article size={20} />
