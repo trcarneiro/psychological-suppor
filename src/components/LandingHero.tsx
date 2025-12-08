@@ -47,7 +47,7 @@ export function LandingHero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              onClick={onStartChat}
+              onClick={() => navigate('/chat')}
               className="group h-14 px-8 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               Iniciar Conversa
@@ -176,7 +176,7 @@ export function LandingHero() {
           <div className="text-center">
             <Button 
               size="lg" 
-              onClick={onStartChat}
+              onClick={() => navigate('/chat')}
               className="group h-14 px-10 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               Comece Agora
@@ -206,3 +206,4 @@ export function LandingHero() {
     </div>
   )
 }
+
