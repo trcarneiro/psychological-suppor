@@ -465,8 +465,11 @@ var createConversationSchema = z.object({
 var sendMessageSchema = z.object({
   content: z.string().min(1, "Mensagem n\xE3o pode ficar vazia.")
 });
-router.get("/", requireAuth, async (_req, res) => {
+router.get("/", requireAuth, async (req, res) => {
+  const { clientEmail } = req.query;
+  const where = clientEmail ? { clientEmail } : {};
   const conversations = await prisma.conversation.findMany({
+    where,
     orderBy: { updatedAt: "desc" },
     include: {
       messages: { orderBy: { timestamp: "asc" } },

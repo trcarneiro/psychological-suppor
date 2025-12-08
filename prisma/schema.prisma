@@ -41,6 +41,7 @@ model Conversation {
   agentId        String
   agentName      String
   agentSnapshot  Json
+  clientEmail    String?
   needsReferral  Boolean   @default(false)
   isConverted    Boolean   @default(false)
   createdAt      DateTime  @default(now())
