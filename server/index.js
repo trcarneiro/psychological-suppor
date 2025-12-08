@@ -331,7 +331,7 @@ Retorne um JSON com as chaves:
 - symptoms (array de strings), duration, previousTherapy (boolean)
 - preferredContact (email|phone|whatsapp), availability
 - budget (texto livre), budgetMin (n\xFAmero), budgetMax (n\xFAmero)
-- city, state (UF), neighborhood
+- city, state (UF), cep, neighborhood
 - modality (online|presencial|hibrido)
 - insuranceProvider
 
@@ -376,7 +376,13 @@ function calculateLeadScore(data) {
       emotionalWeight = 0;
   }
   const symptomBonus = Array.isArray(data.symptoms) ? Math.min(data.symptoms.length, 5) * 2 : 0;
-  return Math.min(urgency + emotionalWeight + symptomBonus, 100);
+  let completenessBonus = 0;
+  if (data.name) completenessBonus += 5;
+  if (data.phone || data.email) completenessBonus += 10;
+  if (data.city || data.state || data.cep) completenessBonus += 5;
+  if (data.budget || data.budgetMin || data.budgetMax) completenessBonus += 10;
+  if (data.modality) completenessBonus += 5;
+  return Math.min(urgency + emotionalWeight + symptomBonus + completenessBonus, 100);
 }
 
 // server/services/referral.ts
@@ -568,7 +574,9 @@ router.post("/:id/messages", async (req, res) => {
       history,
       userMessage: content
     });
-    console.log("[POST /conversations/:id/messages] Resposta gerada:", assistantResponse.substring(0, 100));
+    console.log("[POST /conversations/:id/messages] \u2705 Resposta gerada completa:");
+    console.log("[POST /conversations/:id/messages] Comprimento:", assistantResponse.length, "caracteres");
+    console.log("[POST /conversations/:id/messages] Conte\xFAdo:", assistantResponse);
   } catch (error) {
     console.error("[POST /conversations/:id/messages] Erro ao gerar resposta:", error);
     throw error;
@@ -621,6 +629,7 @@ router.post("/:id/messages", async (req, res) => {
           budgetMax: leadData.budgetMax ?? void 0,
           city: leadData.city ?? void 0,
           state: leadData.state ?? void 0,
+          cep: leadData.cep ?? void 0,
           neighborhood: leadData.neighborhood ?? void 0,
           modality: leadData.modality ?? void 0,
           insuranceProvider: leadData.insuranceProvider ?? void 0,
@@ -645,6 +654,7 @@ router.post("/:id/messages", async (req, res) => {
           budgetMax: leadData.budgetMax ?? void 0,
           city: leadData.city ?? void 0,
           state: leadData.state ?? void 0,
+          cep: leadData.cep ?? void 0,
           neighborhood: leadData.neighborhood ?? void 0,
           modality: leadData.modality ?? void 0,
           insuranceProvider: leadData.insuranceProvider ?? void 0,
@@ -1052,11 +1062,20 @@ console.log("[Server] Initializing...", {
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
-    if (process.env.NODE_ENV !== "production") return callback(null, true);
-    if (origin.endsWith(".vercel.app")) return callback(null, true);
-    if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
+    if (origin.includes("localhost") || origin.includes("127.0.0.1")) {
       return callback(null, true);
     }
+    if (origin.endsWith(".vercel.app")) return callback(null, true);
+    const allowedDomains = [
+      "https://psicologobelohorizonte.com.br",
+      "https://www.psicologobelohorizonte.com.br",
+      "http://psicologobelohorizonte.com.br",
+      "http://www.psicologobelohorizonte.com.br"
+    ];
+    if (allowedDomains.includes(origin)) {
+      return callback(null, true);
+    }
+    console.warn(`[CORS] Blocked origin: ${origin}`);
     callback(new Error("Not allowed by CORS"));
   },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
