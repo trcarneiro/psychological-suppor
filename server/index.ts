@@ -24,20 +24,19 @@ app.use(cors({
     if (!origin) return callback(null, true)
     
     // Allow localhost in dev
-    if (process.env.NODE_ENV !== 'production') return callback(null, true)
+    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true)
+    }
 
     // Allow vercel domains
     if (origin.endsWith('.vercel.app')) return callback(null, true)
 
-    // Allow specific production domain if configured
-    if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) {
-      return callback(null, true)
-    }
-
     // Allow known custom domains
     const allowedDomains = [
       'https://psicologobelohorizonte.com.br',
-      'https://www.psicologobelohorizonte.com.br'
+      'https://www.psicologobelohorizonte.com.br',
+      'http://psicologobelohorizonte.com.br',
+      'http://www.psicologobelohorizonte.com.br'
     ]
     if (allowedDomains.includes(origin)) {
       return callback(null, true)
