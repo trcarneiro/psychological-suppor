@@ -7,13 +7,16 @@ import { ZodError } from "zod";
 import dotenv from "dotenv";
 dotenv.config();
 var PORT = Number(process.env.PORT || 3333);
-var GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+var GEMINI_API_KEY2 = process.env.GEMINI_API_KEY || "";
+var GEMINI_API_KEYS = [GEMINI_API_KEY2];
 var GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
 var SUPABASE_URL = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "";
 var SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || "";
 var OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || "";
 var OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || "google/gemini-2.5-pro-preview";
 var LLM_PROVIDER = process.env.LLM_PROVIDER || "gemini";
+var RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+var ADMIN_EMAIL = process.env.ADMIN_EMAIL || "";
 
 // server/routes/conversations.ts
 import { Router } from "express";
@@ -94,12 +97,14 @@ function mapLead(lead) {
 
 // server/services/llm.ts
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
-var geminiClient = null;
+var geminiClients = [];
 function getGeminiClient() {
-  if (!geminiClient && GEMINI_API_KEY) {
-    geminiClient = new GoogleGenerativeAI(GEMINI_API_KEY);
+  if (geminiClients.length === 0 && GEMINI_API_KEYS.length > 0) {
+    geminiClients = GEMINI_API_KEYS.map((key) => new GoogleGenerativeAI(key));
   }
-  return geminiClient;
+  if (geminiClients.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * geminiClients.length);
+  return geminiClients[randomIndex];
 }
 var MAX_RETRIES = 3;
 var RETRY_DELAY = 2e3;
@@ -140,14 +145,15 @@ async function generateWithOpenRouter(prompt, options) {
 }
 async function generateWithGemini(prompt, options) {
   const startTime = Date.now();
+  const modelName = options.model || GEMINI_MODEL;
   console.log("[LLM:Gemini] ====== NOVA REQUISI\xC7\xC3O ======");
-  console.log("[LLM:Gemini] Modelo:", GEMINI_MODEL);
+  console.log("[LLM:Gemini] Modelo:", modelName);
   const genAI = getGeminiClient();
   if (!genAI) {
     throw new Error("Gemini Client not initialized (missing API Key)");
   }
   const model = genAI.getGenerativeModel({
-    model: GEMINI_MODEL,
+    model: modelName,
     generationConfig: {
       temperature: options.temperature ?? 0.8,
       maxOutputTokens: options.maxOutputTokens ?? 8192
@@ -255,7 +261,8 @@ async function generateAssistantReply(params) {
   const prompt = buildPrompt(agent, history, userMessage);
   const text = await generateText(prompt, {
     temperature: agent.temperature ?? 0.8,
-    maxOutputTokens: 8192
+    maxOutputTokens: 8192,
+    model: agent.model
   });
   if (!text) {
     return "Desculpe, encontrei uma dificuldade t\xE9cnica ao responder agora. Podemos tentar novamente?";
@@ -514,6 +521,14 @@ router.post("/", async (req, res, next) => {
         content: greetingContent
       }
     });
+    await prisma.lead.create({
+      data: {
+        conversationId: conversation.id,
+        status: "new",
+        score: 0,
+        lastActivity: /* @__PURE__ */ new Date()
+      }
+    });
     await prisma.conversation.update({
       where: { id: conversation.id },
       data: { updatedAt: greetingMessage.timestamp }
@@ -559,6 +574,17 @@ router.post("/:id/messages", async (req, res) => {
       content
     }
   });
+  await prisma.lead.updateMany({
+    where: { conversationId: conversation.id },
+    data: { lastActivity: /* @__PURE__ */ new Date() }
+  });
+  if (!conversation.aiActive) {
+    return res.json({
+      message: mapMessage(userMessageRecord),
+      assistantMessage: null,
+      suggestions: []
+    });
+  }
   const history = [
     ...conversation.messages.map((message) => ({
       role: message.role,
@@ -696,6 +722,36 @@ router.post("/:id/messages", async (req, res) => {
     suggestions: suggestions.length > 0 ? suggestions : void 0
   });
 });
+router.post("/:id/toggle-ai", requireAuth, async (req, res) => {
+  const { id } = req.params;
+  const { active } = z.object({ active: z.boolean() }).parse(req.body);
+  const conversation = await prisma.conversation.update({
+    where: { id },
+    data: { aiActive: active }
+  });
+  res.json({ conversation: mapConversation(conversation) });
+});
+router.post("/:id/admin-messages", requireAuth, async (req, res) => {
+  const { id } = req.params;
+  const { content } = sendMessageSchema.parse(req.body);
+  const message = await prisma.message.create({
+    data: {
+      conversationId: id,
+      role: "assistant",
+      // Admin acts as assistant
+      content
+    }
+  });
+  await prisma.conversation.update({
+    where: { id },
+    data: {
+      updatedAt: message.timestamp
+      // Ensure AI is paused when admin intervenes? Optional, but good practice.
+      // aiActive: false 
+    }
+  });
+  res.json({ message: mapMessage(message) });
+});
 var conversations_default = router;
 
 // server/routes/leads.ts
@@ -807,6 +863,24 @@ router2.patch("/:id/status", async (req, res) => {
     where: { id },
     data: {
       status,
+      updatedAt: /* @__PURE__ */ new Date()
+    }
+  });
+  res.json({ lead: mapLead(lead) });
+});
+var scheduleSchema = z2.object({
+  scheduledDate: z2.string().datetime(),
+  notes: z2.string().optional()
+});
+router2.patch("/:id/schedule", async (req, res) => {
+  const { id } = req.params;
+  const { scheduledDate, notes } = scheduleSchema.parse(req.body);
+  const lead = await prisma.lead.update({
+    where: { id },
+    data: {
+      scheduledDate: new Date(scheduledDate),
+      schedulingNotes: notes,
+      status: "scheduled",
       updatedAt: /* @__PURE__ */ new Date()
     }
   });
