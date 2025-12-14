@@ -2,7 +2,8 @@
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import { LandingHero } from '@/components/LandingHero'
 import { MinimalChatInterface } from '@/components/MinimalChatInterface'
-import { Toaster, toast } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/sonner'
+import { toast } from 'sonner'
 import { getDefaultAgent, AIAgentConfig } from '@/lib/predefined-agents'
 
 // Lazy load heavy components

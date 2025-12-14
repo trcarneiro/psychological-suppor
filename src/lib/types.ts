@@ -108,7 +108,7 @@ export interface AIAgentConfig {
   name: string
   personality: string
   description: string
-  model: 'gpt-4o' | 'gpt-4o-mini' | 'gemini-2.5-pro' | 'gemini-2.5-flash'
+  model: 'gemini-1.5-flash' | 'gemini-1.5-pro' | 'gemini-2.0-flash-exp' | 'gpt-4o' | 'gpt-4o-mini'
   systemPrompt: string
   greeting: string
   conversationStyle: 'empathetic' | 'professional' | 'friendly' | 'custom'

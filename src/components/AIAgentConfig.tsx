@@ -34,7 +34,7 @@ const DEFAULT_CONFIG: AIAgentConfigType = {
   name: 'Assistente Virtual de Acolhimento',
   personality: 'Empático e Profissional',
   description: 'Assistente virtual padrão para acolhimento psicológico inicial',
-  model: 'gpt-4o',
+  model: 'gemini-1.5-flash',
   systemPrompt: `Você é um assistente virtual especializado em acolhimento psicológico inicial. Seu papel é:
 
 1. Acolher a pessoa com empatia e sem julgamentos
@@ -304,19 +304,27 @@ export function AIAgentConfig() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="gpt-4o">
+                    <SelectItem value="gemini-1.5-flash">
                       <div className="flex flex-col items-start">
-                        <span className="font-medium">GPT-4o</span>
+                        <span className="font-medium">Gemini 1.5 Flash</span>
                         <span className="text-xs text-muted-foreground">
-                          Mais inteligente, melhor compreensão de contexto
+                          Rápido e eficiente, ideal para respostas ágeis
                         </span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="gpt-4o-mini">
+                    <SelectItem value="gemini-1.5-pro">
                       <div className="flex flex-col items-start">
-                        <span className="font-medium">GPT-4o Mini</span>
+                        <span className="font-medium">Gemini 1.5 Pro</span>
                         <span className="text-xs text-muted-foreground">
-                          Mais rápido e econômico, bom para tarefas simples
+                          Melhor raciocínio e compreensão de contexto complexo
+                        </span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="gemini-2.0-flash-exp">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">Gemini 2.0 Flash (Experimental)</span>
+                        <span className="text-xs text-muted-foreground">
+                          Nova geração, ultra-rápido e capaz
                         </span>
                       </div>
                     </SelectItem>

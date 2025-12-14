@@ -13,6 +13,7 @@ function getGeminiClient() {
 interface GenerateTextOptions {
   temperature?: number
   maxOutputTokens?: number
+  model?: string
 }
 
 const MAX_RETRIES = 3
@@ -67,8 +68,9 @@ async function generateWithOpenRouter(prompt: string, options: GenerateTextOptio
 async function generateWithGemini(prompt: string, options: GenerateTextOptions): Promise<string> {
   const startTime = Date.now()
   
+  const modelName = options.model || GEMINI_MODEL
   console.log('[LLM:Gemini] ====== NOVA REQUISIÇÃO ======')
-  console.log('[LLM:Gemini] Modelo:', GEMINI_MODEL)
+  console.log('[LLM:Gemini] Modelo:', modelName)
 
   const genAI = getGeminiClient()
   if (!genAI) {
@@ -76,7 +78,7 @@ async function generateWithGemini(prompt: string, options: GenerateTextOptions):
   }
 
   const model = genAI.getGenerativeModel({
-    model: GEMINI_MODEL,
+    model: modelName,
     generationConfig: {
       temperature: options.temperature ?? 0.8,
       maxOutputTokens: options.maxOutputTokens ?? 8192,
