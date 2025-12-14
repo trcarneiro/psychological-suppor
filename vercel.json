@@ -33,7 +33,7 @@
     }
   ],
   "functions": {
-    "api/index.mjs": {
+    "api/index.ts": {
       "includeFiles": "server/**/*",
       "maxDuration": 30
     }
