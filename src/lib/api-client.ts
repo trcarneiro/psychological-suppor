@@ -204,3 +204,10 @@ export async function sendAdminMessage(conversationId: string, content: string) 
   return data.message
 }
 
+export async function updateLeadScheduling(leadId: string, data: { scheduledDate: string; schedulingNotes: string }) {
+  return apiFetch<{ lead: Lead }>(`/api/leads/${leadId}/schedule`, {
+    method: 'PATCH',
+    body: JSON.stringify(data),
+  })
+}
+

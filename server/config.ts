@@ -13,4 +13,7 @@ export const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || ''
 export const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-2.5-pro-preview'
 export const LLM_PROVIDER = process.env.LLM_PROVIDER || 'gemini' // 'gemini' ou 'openrouter'
 
+export const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
+export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || ''
+
 

@@ -26,12 +26,14 @@ import {
   CurrencyDollar,
   VideoCamera,
   PaperPlaneRight,
-  Robot
+  Robot,
+  Calendar as CalendarIcon
 } from '@phosphor-icons/react'
 import { useEffect, useState, useRef } from 'react'
 import { getLeadMatches, toggleAI, sendAdminMessage } from '@/lib/api-client'
 import { toast } from 'sonner'
 import { useQueryClient } from '@tanstack/react-query'
+import { SchedulingDialog } from './SchedulingDialog'
 
 interface LeadDetailDialogProps {
   lead: Lead

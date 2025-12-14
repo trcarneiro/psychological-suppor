@@ -89,6 +89,8 @@ model Lead {
   score               Int              @default(0)
   suggestedProfessional String?
   notes               String?          @db.LongText
+  scheduledDate       DateTime?
+  schedulingNotes     String?          @db.LongText
   createdAt           DateTime         @default(now())
   updatedAt           DateTime         @updatedAt
   lastActivity        DateTime         @default(now())

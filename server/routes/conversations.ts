@@ -5,6 +5,7 @@ import { mapConversation, mapMessage, mapLead } from './formatters'
 import { generateAssistantReply, generateSuggestions, type AgentSnapshot, type ConversationMessage } from '../services/aiProvider'
 import { extractLeadData } from '../services/leadExtractor'
 import { calculateLeadScore } from '../services/leadScore'
+import { sendLeadAlert } from '../services/email'
 import { shouldSuggestReferral } from '../services/referral'
 import { requireAuth } from '../middleware/auth'
 

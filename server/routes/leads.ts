@@ -76,4 +76,26 @@ router.patch('/:id/status', async (req, res) => {
   res.json({ lead: mapLead(lead) })
 })
 
+const scheduleSchema = z.object({
+  scheduledDate: z.string().datetime(),
+  notes: z.string().optional(),
+})
+
+router.patch('/:id/schedule', async (req, res) => {
+  const { id } = req.params
+  const { scheduledDate, notes } = scheduleSchema.parse(req.body)
+
+  const lead = await prisma.lead.update({
+    where: { id },
+    data: {
+      scheduledDate: new Date(scheduledDate),
+      schedulingNotes: notes,
+      status: 'scheduled',
+      updatedAt: new Date(),
+    },
+  })
+
+  res.json({ lead: mapLead(lead) })
+})
+
 export default router

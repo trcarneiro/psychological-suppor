@@ -1,4 +1,5 @@
 import { AIAgentConfig } from './types'
+export type { AIAgentConfig }
 
 export const PREDEFINED_AGENTS: AIAgentConfig[] = [
   {

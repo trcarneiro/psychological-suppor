@@ -1,13 +1,18 @@
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai'
-import { GEMINI_API_KEY, GEMINI_MODEL, OPENROUTER_API_KEY, OPENROUTER_MODEL, LLM_PROVIDER } from '../config'
+import { GEMINI_API_KEYS, GEMINI_MODEL, OPENROUTER_API_KEY, OPENROUTER_MODEL, LLM_PROVIDER } from '../config'
 
-let geminiClient: GoogleGenerativeAI | null = null
+let geminiClients: GoogleGenerativeAI[] = []
 
 function getGeminiClient() {
-  if (!geminiClient && GEMINI_API_KEY) {
-    geminiClient = new GoogleGenerativeAI(GEMINI_API_KEY)
+  if (geminiClients.length === 0 && GEMINI_API_KEYS.length > 0) {
+    geminiClients = GEMINI_API_KEYS.map(key => new GoogleGenerativeAI(key))
   }
-  return geminiClient
+  
+  if (geminiClients.length === 0) return null
+
+  // Simple random rotation
+  const randomIndex = Math.floor(Math.random() * geminiClients.length)
+  return geminiClients[randomIndex]
 }
 
 interface GenerateTextOptions {

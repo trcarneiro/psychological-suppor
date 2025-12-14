@@ -38,6 +38,8 @@ export interface Lead {
   score: number
   suggestedProfessional?: string
   notes?: string
+  scheduledDate?: string
+  schedulingNotes?: string
   createdAt: number
   updatedAt: number
   lastActivity: number

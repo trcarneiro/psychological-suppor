@@ -34,8 +34,9 @@ export function LandingPage({ onStartChat, onAdminLogin }: LandingPageProps) {
               <Heart weight="fill" size={26} className="text-primary-foreground" />
             </div>
             <div>
-              <h1 className="font-serif text-xl font-semibold text-foreground">
+              <h1 className="font-serif text-xl font-semibold text-foreground flex items-center gap-2">
                 Psicólogo BH
+                <Badge variant="secondary" className="text-xs font-normal">Beta</Badge>
               </h1>
               <p className="text-xs text-muted-foreground">Seu bem-estar emocional</p>
             </div>

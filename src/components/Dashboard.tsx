@@ -34,6 +34,7 @@ import { AIAgentConfig } from './AIAgentConfig'
 import { AgentsManagementPanel } from './AgentsManagementPanel'
 import { fetchLeads, updateLeadStatus as apiUpdateLeadStatus, fetchConversation } from '@/lib/api-client'
 import { useNavigate } from 'react-router-dom'
+import { BetaBanner } from './BetaBanner'
 
 export function Dashboard() {
   const navigate = useNavigate()
