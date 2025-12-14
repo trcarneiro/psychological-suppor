@@ -44,6 +44,7 @@ model Conversation {
   clientEmail    String?
   needsReferral  Boolean   @default(false)
   isConverted    Boolean   @default(false)
+  aiActive       Boolean   @default(true)
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   messages       Message[]

@@ -65,6 +65,7 @@ export async function generateAssistantReply(params: {
   const text = await generateText(prompt, {
     temperature: agent.temperature ?? 0.8,
     maxOutputTokens: 8192,
+    model: agent.model,
   })
 
   if (!text) {

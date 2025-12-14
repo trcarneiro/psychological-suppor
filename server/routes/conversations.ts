@@ -99,6 +99,16 @@ router.post('/', async (req, res, next) => {
     },
   })
 
+  // Create initial lead entry
+  await prisma.lead.create({
+    data: {
+      conversationId: conversation.id,
+      status: 'new',
+      score: 0,
+      lastActivity: new Date(),
+    }
+  })
+
   await prisma.conversation.update({
     where: { id: conversation.id },
     data: { updatedAt: greetingMessage.timestamp },
@@ -152,6 +162,21 @@ router.post('/:id/messages', async (req, res) => {
       content,
     },
   })
+
+  // Update lead last activity
+  await prisma.lead.updateMany({
+    where: { conversationId: conversation.id },
+    data: { lastActivity: new Date() }
+  })
+
+  // If AI is disabled, stop here
+  if (!conversation.aiActive) {
+    return res.json({
+      message: mapMessage(userMessageRecord),
+      assistantMessage: null,
+      suggestions: [],
+    })
+  }
 
   const history: ConversationMessage[] = [
     ...conversation.messages.map(message => ({
@@ -304,6 +329,44 @@ router.post('/:id/messages', async (req, res) => {
     lead: leadRecord ? mapLead(leadRecord) : undefined,
     suggestions: suggestions.length > 0 ? suggestions : undefined,
   })
+})
+
+// Toggle AI status
+router.post('/:id/toggle-ai', requireAuth, async (req, res) => {
+  const { id } = req.params
+  const { active } = z.object({ active: z.boolean() }).parse(req.body)
+
+  const conversation = await prisma.conversation.update({
+    where: { id },
+    data: { aiActive: active },
+  })
+
+  res.json({ conversation: mapConversation(conversation) })
+})
+
+// Send admin message
+router.post('/:id/admin-messages', requireAuth, async (req, res) => {
+  const { id } = req.params
+  const { content } = sendMessageSchema.parse(req.body)
+
+  const message = await prisma.message.create({
+    data: {
+      conversationId: id,
+      role: 'assistant', // Admin acts as assistant
+      content,
+    },
+  })
+
+  await prisma.conversation.update({
+    where: { id },
+    data: { 
+      updatedAt: message.timestamp,
+      // Ensure AI is paused when admin intervenes? Optional, but good practice.
+      // aiActive: false 
+    },
+  })
+
+  res.json({ message: mapMessage(message) })
 })
 
 export default router

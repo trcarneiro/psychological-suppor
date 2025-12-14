@@ -45,6 +45,7 @@ export function Dashboard() {
   } = useQuery({
     queryKey: ['leads'],
     queryFn: fetchLeads,
+    refetchInterval: 5000, // Poll every 5 seconds
   })
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')

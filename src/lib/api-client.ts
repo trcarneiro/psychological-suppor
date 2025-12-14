@@ -188,3 +188,19 @@ export async function getLeadMatches(leadId: string) {
   return data.matches
 }
 
+export async function toggleAI(conversationId: string, active: boolean) {
+  const data = await apiFetch<{ conversation: Conversation }>(`/api/conversations/${conversationId}/toggle-ai`, {
+    method: 'POST',
+    body: JSON.stringify({ active }),
+  })
+  return data.conversation
+}
+
+export async function sendAdminMessage(conversationId: string, content: string) {
+  const data = await apiFetch<{ message: Message }>(`/api/conversations/${conversationId}/admin-messages`, {
+    method: 'POST',
+    body: JSON.stringify({ content }),
+  })
+  return data.message
+}
+
