@@ -29,7 +29,7 @@ export function AdminLogin() {
     const baseUrl = import.meta.env.VITE_SITE_URL || window.location.origin
     // Remove trailing slash if present
     const cleanBaseUrl = baseUrl.replace(/\/$/, '')
-    return ${cleanBaseUrl}
+    return `${cleanBaseUrl}${path}`
   }
 
   const handleLogin = async () => {

@@ -9,7 +9,7 @@ export function LandingHero() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex justify-end mb-4">
+        <div className="flex justify-end mb-4 gap-2">
           <Button
             variant="outline"
             onClick={() => navigate('/blog')}
@@ -17,6 +17,13 @@ export function LandingHero() {
           >
             <Article size={20} />
             Blog
+          </Button>
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/admin')}
+            className="gap-2 hover:bg-primary/5"
+          >
+            Entrar
           </Button>
         </div>
         <motion.div
@@ -65,6 +72,14 @@ export function LandingHero() {
             >
               <Article size={20} className="mr-2" />
               Ver Blog
+            </Button>
+            <Button 
+              size="lg" 
+              variant="ghost"
+              onClick={() => navigate('/admin')}
+              className="group h-14 px-8 text-lg hover:bg-primary/5 transition-all duration-300"
+            >
+              Entrar
             </Button>
           </div>
         </motion.div>
