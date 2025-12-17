@@ -142,7 +142,7 @@ export async function generateText(prompt: string, options: GenerateTextOptions 
         if (!OPENROUTER_API_KEY) throw new Error('OPENROUTER_API_KEY missing')
         return await generateWithOpenRouter(prompt, options)
       } else {
-        if (!GEMINI_API_KEY) throw new Error('GEMINI_API_KEY missing')
+        if (!GEMINI_API_KEYS || GEMINI_API_KEYS.length === 0) throw new Error('GEMINI_API_KEY missing')
         return await generateWithGemini(prompt, options)
       }
     } catch (error: any) {

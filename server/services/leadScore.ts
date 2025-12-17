@@ -32,3 +32,20 @@ export function calculateLeadScore(data: LeadDataPayload | null): number {
 
   return Math.min(urgency + emotionalWeight + symptomBonus + completenessBonus, 100)
 }
+
+export function shouldTriggerLeadAlert(params: {
+  score: number
+  emotionalState?: 'low' | 'moderate' | 'high' | 'critical' | null
+  urgencyLevel?: number | null
+}): boolean {
+  // Trigger if score is high (>= 70)
+  if (params.score >= 70) return true
+  
+  // Trigger if emotional state is critical
+  if (params.emotionalState === 'critical') return true
+  
+  // Trigger if urgency level is very high (>= 8 out of 10)
+  if (params.urgencyLevel && params.urgencyLevel >= 8) return true
+  
+  return false
+}

@@ -16,3 +16,6 @@ export const LLM_PROVIDER = process.env.LLM_PROVIDER || 'gemini' // 'gemini' ou 
 
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || ''
 export const ADMIN_EMAIL = process.env.ADMIN_EMAIL || ''
+
+export const SITE_URL = process.env.VITE_SITE_URL || 'http://localhost:5000'
+export const DASHBOARD_URL = process.env.DASHBOARD_URL || 'http://localhost:5000/dashboard'
