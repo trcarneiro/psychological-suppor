@@ -3,8 +3,8 @@ import { z } from 'zod'
 import { prisma } from '../prisma'
 import { mapConversation, mapMessage, mapLead } from './formatters'
 import { generateAssistantReply, generateSuggestions, type AgentSnapshot, type ConversationMessage } from '../services/aiProvider'
-import { extractLeadData } from '../services/leadExtractor'
-import { calculateLeadScore } from '../services/leadScore'
+import { extractLeadData, type LeadDataPayload } from '../services/leadExtractor'
+import { calculateLeadScore, shouldTriggerLeadAlert } from '../services/leadScore'
 import { sendLeadAlert } from '../services/email'
 import { shouldSuggestReferral } from '../services/referral'
 import { requireAuth } from '../middleware/auth'
@@ -239,6 +239,12 @@ router.post('/:id/messages', async (req, res) => {
     if (leadData) {
       const score = calculateLeadScore(leadData)
 
+      const previouslyQualified = shouldTriggerLeadAlert({
+        score: conversation.lead?.score ?? 0,
+        emotionalState: conversation.lead?.emotionalState as LeadDataPayload['emotionalState'],
+        urgencyLevel: conversation.lead?.urgencyLevel as LeadDataPayload['urgencyLevel'],
+      })
+
       leadRecord = await prisma.lead.upsert({
         where: { conversationId: conversation.id },
         create: {
@@ -293,6 +299,28 @@ router.post('/:id/messages', async (req, res) => {
           lastActivity: new Date(),
         },
       })
+
+      const nowQualifies = shouldTriggerLeadAlert({
+        score,
+        emotionalState: leadData.emotionalState,
+        urgencyLevel: leadData.urgencyLevel,
+      })
+
+      if (nowQualifies && !previouslyQualified && leadRecord) {
+        sendLeadAlert({
+          id: leadRecord.id,
+          conversationId: leadRecord.conversationId,
+          name: leadRecord.name,
+          email: leadRecord.email,
+          phone: leadRecord.phone,
+          score: leadRecord.score,
+          urgencyLevel: leadRecord.urgencyLevel,
+          emotionalState: leadRecord.emotionalState as LeadDataPayload['emotionalState'],
+          mainConcern: leadRecord.mainConcern,
+        }).catch(error => {
+          console.error('[POST /conversations/:id/messages] Erro ao enviar alerta de lead:', error);
+        });
+      }
     }
   }
 
