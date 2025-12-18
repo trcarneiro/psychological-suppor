@@ -1,0 +1,36 @@
+﻿openapi: 3.0.3
+info:
+  title: Conversations API
+  version: 1.0.0
+paths:
+  /api/conversations:
+    get:
+      summary: List conversations
+      responses:
+        200:
+          description: List of conversations
+    post:
+      summary: Create conversation
+      responses:
+        201:
+          description: Created
+  /api/conversations/{id}:
+    get:
+      summary: Get conversation by ID
+      responses:
+        200:
+          description: Conversation details
+  /api/conversations/{id}/messages:
+    post:
+      summary: Send message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+      responses:
+        200:
+          description: AI response

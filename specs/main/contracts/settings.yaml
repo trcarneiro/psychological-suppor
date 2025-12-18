@@ -1,0 +1,26 @@
+﻿openapi: 3.0.3
+info:
+  title: Settings API
+  version: 1.0.0
+paths:
+  /api/settings:
+    get:
+      summary: Get platform settings
+      responses:
+        200:
+          description: Current settings
+    patch:
+      summary: Update settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activeAgentId:
+                  type: string
+                welcomeMessage:
+                  type: string
+      responses:
+        200:
+          description: Updated settings

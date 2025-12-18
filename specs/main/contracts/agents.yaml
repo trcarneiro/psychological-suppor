@@ -1,0 +1,17 @@
+﻿openapi: 3.0.3
+info:
+  title: Agents API
+  version: 1.0.0
+paths:
+  /api/agents:
+    get:
+      summary: List AI agents
+      responses:
+        200:
+          description: List of AI agent configs
+  /api/agents/{id}:
+    get:
+      summary: Get agent by ID
+      responses:
+        200:
+          description: Agent configuration

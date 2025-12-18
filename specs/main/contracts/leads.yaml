@@ -1,0 +1,38 @@
+﻿openapi: 3.0.3
+info:
+  title: Leads API
+  version: 1.0.0
+paths:
+  /api/leads:
+    get:
+      summary: List leads with filtering
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [new, contacted, scheduled, converted, lost]
+      responses:
+        200:
+          description: List of leads
+  /api/leads/{id}:
+    get:
+      summary: Get lead by ID
+      responses:
+        200:
+          description: Lead details
+    patch:
+      summary: Update lead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                notes:
+                  type: string
+      responses:
+        200:
+          description: Updated lead
